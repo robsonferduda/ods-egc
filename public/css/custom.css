@@ -1,0 +1,6 @@
+.center{ text-align: center;}
+.forget-password{ font-weight: 600; font-size: 0.8571em; text-transform: uppercase; }
+.card-footer a { text-decoration: none; }
+.select2 { width: 100% !important;}
+footer { background-image: url('../img/ods-rodape.png'); padding: 8px 0 !important; }
+.box-ods > div > div > img:hover { cursor: pointer; }
