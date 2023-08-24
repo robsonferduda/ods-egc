@@ -25,6 +25,8 @@ class ODSController extends Controller
 
         $process->run(function ($type, $buffer){
 
+            dd($buffer);
+
             
             if (Process::ERR === $type) {
                echo 'ERR > '.$buffer.'<br />';
