@@ -21,7 +21,7 @@ class ODSController extends Controller
 
     public function discovery()
     {
-        $process = new Process(['python3', '/home/robson/repositorios/ods-egc/ods.py']);
+        $process = new Process(['python3', base_path().'/ods.py']);
 
         $process->run(function ($type, $buffer){
 
