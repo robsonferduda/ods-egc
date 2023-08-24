@@ -60,7 +60,7 @@
                   },
                   success: function(response) {
 
-                     $(".img-ods").attr('src','http://ods-egc.localhost/public/img/ods-icone/ods_0'+response.ods+'.png');
+                     $(".img-ods").attr('src',host+'/img/ods-icone/ods_0'+response.ods+'.png');
                      
                   },
                   error: function(){
