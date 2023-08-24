@@ -23,17 +23,20 @@ class ODSController extends Controller
     {
         $process = new Process(['python3', base_path().'/ods.py']);
 
+        $dados = array('ods' => rand(1,9));
+
+        return response()->json($dados);
+
         $process->run(function ($type, $buffer){
 
-            dd($buffer);
 
             
             if (Process::ERR === $type) {
-               echo 'ERR > '.$buffer.'<br />';
+               //echo 'ERR > '.$buffer.'<br />';
             } else {
 
                 if(trim($buffer) == 'END') {
-                    echo 'OUT > '.$buffer.'<br />';
+                    //echo 'OUT > '.$buffer.'<br />';
                 }
 
             }

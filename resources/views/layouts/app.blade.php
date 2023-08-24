@@ -170,7 +170,7 @@
   <script src="{{ asset('js/plugins/jquery.validate.min.js') }}"></script>
   <script src="{{ asset('demo/demo.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-  
+  @yield('script')
   <script>
     function setFormValidation(id) {
       $(id).validate({
@@ -199,6 +199,10 @@
     $(document).ready(function() {
 
       $('.select2').select2();
+
+      $(".btn-discovery").click(function(){
+               alert("Teste");
+            });
 
       $("#id_tipo_participacao_tip").change(function(){
         let valor = $('#id_tipo_participacao_tip option:selected').val(); 

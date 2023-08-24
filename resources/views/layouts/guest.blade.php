@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="base-url" content="{{ env('BASE_URL') }}">
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -18,6 +20,7 @@
   <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/all.css') }}" rel="stylesheet" />
+  <link href="{{ asset('css/jquery.loader.min.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -107,7 +110,8 @@
   <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-
+  <script src="{{ asset('js/plugins/jquery.loader.min.js') }}"></script>
+  @yield('script')
   <script>
     $(document).ready(function() {
 
