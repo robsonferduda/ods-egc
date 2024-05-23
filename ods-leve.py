@@ -11,6 +11,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, top_k_accuracy_score, f1_score
 
+from decouple import config
+
 # regular expression import
 import re
 
@@ -24,7 +26,13 @@ from nltk.corpus import stopwords
 nltk.download('wordnet')
 nltk.download('stopwords')
 
-dados_rotulados_osdg = pd.read_csv('/var/www/html/ods-egc/dados.csv')
+host = config('DB_HOST')
+database = config('DB_DATABASE')
+user = config('DB_USERNAME')
+password = config('DB_PASSWORD')
+path = config('APP_PATH')
+
+dados_rotulados_osdg = pd.read_csv(path+'dados.csv')
 feature_ods = pd.read_csv('/var/www/html/ods-egc/feature_ods_5.csv')
 
 X_train, X_test, y_train, y_test = train_test_split(
