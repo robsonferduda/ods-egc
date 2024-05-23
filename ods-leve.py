@@ -33,7 +33,7 @@ password = config('DB_PASSWORD')
 path = config('APP_PATH')
 
 dados_rotulados_osdg = pd.read_csv(path+'dados.csv')
-feature_ods = pd.read_csv('/var/www/html/ods-egc/feature_ods_5.csv')
+feature_ods = pd.read_csv(path+'feature_ods_5.csv')
 
 X_train, X_test, y_train, y_test = train_test_split(
     dados_rotulados_osdg['docs'].values,
