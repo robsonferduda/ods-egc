@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use App\Ods;
 use App\Documento;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
@@ -19,6 +20,13 @@ class ODSController extends Controller
     public function index()
     {
         
+    }
+
+    public function getDadosOds($ods)
+    {
+        $ods = Ods::find($ods);
+
+        return response()->json($ods);
     }
 
     public function classificar()

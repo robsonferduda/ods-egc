@@ -106,3 +106,10 @@ mark17{
     padding: 2px 3px;
     border-radius: 5px;
 }
+/*  Background Image */
+
+.barra {
+    background-image: url('../img/ods-barra.png'); 
+    padding: 2px 0 !important; 
+    width: 100%;
+}

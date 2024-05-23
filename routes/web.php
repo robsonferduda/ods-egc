@@ -16,3 +16,5 @@ Route::get('dados/ano', 'ODSController@getAno');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
+
+Route::get('ods/{ods}', 'ODSController@getDadosOds');

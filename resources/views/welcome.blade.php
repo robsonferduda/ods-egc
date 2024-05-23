@@ -21,98 +21,147 @@
     <div class="row justify-content-center box-ods">
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_1.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_1.png') }}" class="img-fluid icone-ods" data-ods="1" alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_2.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_2.png') }}" class="img-fluid icone-ods" data-ods="2" alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_3.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_3.png') }}" class="img-fluid icone-ods" data-ods="3"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_4.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_4.png') }}" class="img-fluid icone-ods" data-ods="4"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_5.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_5.png') }}" class="img-fluid icone-ods" data-ods="5"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_6.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_7.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_8.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_9.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_10.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_11.png') }}" class="img-fluid" alt="Responsive image">
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-            <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_12.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_6.png') }}" class="img-fluid icone-ods" data-ods="6"  alt="Responsive image">
             </div>
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center box-ods">
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_13.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_7.png') }}" class="img-fluid icone-ods" data-ods="7"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_14.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_8.png') }}" class="img-fluid icone-ods" data-ods="8"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_15.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_9.png') }}" class="img-fluid icone-ods" data-ods="9"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_16.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_10.png') }}" class="img-fluid icone-ods" data-ods="10" alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card">
-                <img src="{{ asset('img/ods-icone/ods_17.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods_11.png') }}" class="img-fluid icone-ods" data-ods="11"  alt="Responsive image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_12.png') }}" class="img-fluid icone-ods" data-ods="12"  alt="Responsive image">
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center box-ods">
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_13.png') }}" class="img-fluid icone-ods" data-ods="13"  alt="Responsive image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_14.png') }}" class="img-fluid icone-ods" data-ods="14"  alt="Responsive image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_15.png') }}" class="img-fluid icone-ods" data-ods="15"  alt="Responsive image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_16.png') }}" class="img-fluid icone-ods" data-ods="16"  alt="Responsive image">
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+            <div class="card">
+                <img src="{{ asset('img/ods-icone/ods_17.png') }}" class="img-fluid icone-ods" data-ods="17"  alt="Responsive image">
             </div>
         </div>
         <div class="col-md-2 col-sm-2">
             <div class="card" style="box-shadow: none;">
-                <img src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid icone-ods" alt="Responsive image">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 mb-5">
+            <div class="row">
+                <div class="col-md-12 mb-3 ods-header d-none">
+                    <h6>ODS SELECIONADO</h6>
+                    <div class="barra"></div>
+                </div>
+                <div class="col-md-2 ods-img">
+                    
+                </div>
+                <div class="col-md-10">
+                    <p class="mb-2"><strong class="ods-objetivo text-uppercase"></strong></p>
+                    <p><strong class="ods-descricao"></strong></p>
+                    <div class="clearfix ods-metas">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() { 
+
+            var host =  $('meta[name="base-url"]').attr('content');
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            $(".icone-ods").click(function(){
+
+                var ods = $(this).data("ods");
+
+                $.ajax({
+                    url: host+'/ods/'+ods,
+                    type: 'GET',
+                    beforeSend: function() {
+                    
+                    },
+                    success: function(data) {
+                        $(".ods-header").addClass("d-block");
+                        $(".ods-objetivo").html('OBJETIVO '+data.cod+' - '+data.objetivo);
+                        $(".ods-descricao").html(data.descricao);
+                        $(".ods-metas").html(data.metas);
+                        $(".ods-img").html('<img src="'+host+'/img/ods-icone/ods_'+data.cod+'.png" class="img-fluid ods-img" alt="Responsive image">');
+                    }
+                });
+
+            });            
+        });
+    </script>
 @endsection
