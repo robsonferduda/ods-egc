@@ -37,7 +37,7 @@
         </div>
         <a class="navbar-brand" href="{{ url('/') }}">
           <span style="text-transform: none;"> 
-            <img style="width: 30px; margin-right: 8px;" src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">Objetivos de Desenvolvimento Sustentável
+            <img style="width: 30px; margin-right: 8px;" src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">PERFIL ODS
           </span>
         </a>
       </div>
@@ -46,25 +46,36 @@
         <span class="navbar-toggler-bar navbar-kebab"></span>
         <span class="navbar-toggler-bar navbar-kebab"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+      <div class="collapse navbar-collapse justify-content-start" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item">
             <a href="{{ url('/') }}" class="nav-link">
             <i class="fa fa-home mr-2"></i> Início
             </a>
           </li>
-
           <li class="nav-item">
-            <a href="{{ url('community') }}" class="nav-link">
-            <i class="fa fa-users mr-2"></i> Community
+            <a href="{{ url('dashboard') }}" class="nav-link">
+            <i class="fa fa-pie-chart mr-2"></i> Dashboard
             </a>
           </li>
-         
+          <li class="nav-item">
+            <a href="{{ url('colaborar') }}" class="nav-link">
+            <i class="fa fa-users mr-2"></i> COLABORAR
+            </a>
+          </li>
+          <!--
+          <li class="nav-item">
+            <a href="{{ url('classificar') }}" class="nav-link">
+            <i class="fa fa-tags mr-2"></i> Classificar
+            </a>
+          </li>    
+        -->     
           <li class="nav-item ">
-            <a href="{{ url('discovery') }}" class="nav-link">
-              <i class="fa fa-files-o"></i> Discovery
+            <a href="{{ url('descobrir') }}" class="nav-link">
+              <i class="fa fa-files-o"></i> DESCOBRIR
             </a>
           </li>
+          
           <li class="nav-item ">
             <a href="{{ url('login') }}" class="nav-link">
               <i class="fa fa-lock"></i> Login
@@ -111,6 +122,7 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('js/plugins/jquery.loader.min.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
   @yield('script')
   <script>
     $(document).ready(function() {

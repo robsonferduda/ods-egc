@@ -4,13 +4,17 @@
 <div class="col-lg-4 col-md-6 ml-auto mr-auto">
     <form method="POST" action="{{ route('login') }}">
     @csrf
-              <div class="card card-login">
+              <div class="card card-login" style="background: #fbfbfb; margin-top: 100px;">
                 <div class="card-header ">
                   <div class="card-header ">
-                    <h3 class="header text-center"><i class="fa fa-lock"></i> Login</h3>
+                    
+                    <h3 class="header text-center">
+                      <img style="width: 30px; margin-right: 8px;" src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">
+                      Login
+                    </h3>
                   </div>
                 </div>
-                <div class="card-body ">
+                <div class="card-body " >
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -49,11 +53,12 @@
                   </div>
                 </div>
                 <div class="card-footer center">
-                    <button type="submit" class="btn btn-primary btn-round btn-block mb-4">
-                        {{ __('Login') }}
+                    <button type="submit" class="btn btn-primary btn-round btn-block mb-4 w-50" style="    margin: 0 auto !important;">
+                        {{ __('Entrar') }}
                     </button>
+                    <br/>
                     @if (Route::has('password.request'))
-                        <a class="btn-link mb-3" href="{{ route('password.request') }}">
+                        <a class="btn-link mb-3 mt-5" href="{{ route('password.request') }}">
                             <span class="forget-password">{{ __('esqueceu sua senha?') }}</span>
                         </a>
                     @endif

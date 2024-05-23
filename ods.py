@@ -1,128 +1,7 @@
-from typing import List
-from textwrap import wrap
-
-# data wrangling
+import os
 import numpy as np
 import pandas as pd
-
-# visualisation
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# data modelling
-from sklearn.metrics import confusion_matrix, accuracy_score, f1_score
-
-# other settings
-sns.set(
-    style = 'whitegrid',
-    palette = 'tab10',
-    font_scale = 1.5,
-    rc = {
-        'figure.figsize': (12, 5),
-        'axes.labelsize': 16
-    }
-)
-
-def plot_confusion_matrix(y_true: np.ndarray, y_hat: np.ndarray, figsize = (16, 9)):
-    """
-    Convenience function to display a confusion matrix in a graph.
-    """
-    labels = sorted(list(set(y_true)))
-    df_lambda = pd.DataFrame(
-        confusion_matrix(y_true, y_hat),
-        index = labels,
-        columns = labels
-    )
-    acc = accuracy_score(y_true, y_hat)
-    f1s = f1_score(y_true, y_hat, average = 'weighted')
-
-    fig, ax = plt.subplots(figsize = figsize)
-    sns.heatmap(
-        df_lambda, annot = True, square = True, cbar = False,
-        fmt = 'd', linewidths = .5, cmap = 'YlGnBu',
-        ax = ax
-    )
-    ax.set(
-        title = f'Accuracy: {acc:.2f}, F1 (weighted): {f1s:.2f}',
-        xlabel = 'Predicted',
-        ylabel = 'Actual'
-    )
-    fig.suptitle('Confusion Matrix')
-    plt.tight_layout()
-
-def get_top_features(vectoriser, clf, selector = None, top_n: int = 25, how: str = 'long'):
-    """
-    Convenience function to extract top_n predictor per class from a model.
-    """
-
-    assert hasattr(vectoriser, 'get_feature_names')
-    assert hasattr(clf, 'coef_')
-    assert hasattr(selector, 'get_support')
-    assert how in {'long', 'wide'}, f'how must be either long or wide not {how}'
-
-    features = vectoriser.get_feature_names_out()
-    if selector is not None:
-        features = features[selector.get_support()]
-    axis_names = [f'freature_{x + 1}' for x in range(top_n)]
-
-    if len(clf.classes_) > 2:
-        results = list()
-        for c, coefs in zip(clf.classes_, clf.coef_):
-            idx = coefs.argsort()[::-1][:top_n]
-            results.extend(tuple(zip([c] * top_n, features[idx], coefs[idx])))
-    else:
-        coefs = clf.coef_.flatten()
-        idx = coefs.argsort()[::-1][:top_n]
-        results = tuple(zip([clf.classes_[1]] * top_n, features[idx], coefs[idx]))
-
-    df_lambda = pd.DataFrame(results, columns =  ['sdg', 'feature', 'coef'])
-
-    if how == 'wide':
-        df_lambda = pd.DataFrame(
-            np.array_split(df_lambda['feature'].values, len(df_lambda) / top_n),
-            index = clf.classes_ if len(clf.classes_) > 2 else [clf.classes_[1]],
-            columns = axis_names
-        )
-
-    return df_lambda
-
-def fix_sdg_name(sdg: str, width: int = 30) -> str:
-    sdg_id2name = {
-        1: 'GOAL 1: No Poverty',
-        2: 'GOAL 2: Zero Hunger',
-        3: 'GOAL 3: Good Health and Well-being',
-        4: 'GOAL 4: Quality Education',
-        5: 'GOAL 5: Gender Equality',
-        6: 'GOAL 6: Clean Water and Sanitation',
-        7: 'GOAL 7: Affordable and Clean Energy',
-        8: 'GOAL 8: Decent Work and Economic Growth',
-        9: 'GOAL 9: Industry, Innovation and Infrastructure',
-        10: 'GOAL 10: Reduced Inequality',
-        11: 'GOAL 11: Sustainable Cities and Communities',
-        12: 'GOAL 12: Responsible Consumption and Production',
-        13: 'GOAL 13: Climate Action',
-        14: 'GOAL 14: Life Below Water',
-        15: 'GOAL 15: Life on Land',
-        16: 'GOAL 16: Peace and Justice Strong Institutions',
-        17: 'GOAL 17: Partnerships to achieve the Goal'
-    }
-
-    name = sdg_id2name[int(sdg)]
-    return '<br>'.join(wrap(name, 30))
-
-# standard library
-from typing import List
-
-# data wrangling
-import numpy as np
-import pandas as pd
-
-# visualisation
-import plotly.express as px
-import plotly.io as pio
-
-# nlp
-import spacy
+import sys
 
 # data modelling
 from sklearn.model_selection import train_test_split
@@ -132,29 +11,157 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, top_k_accuracy_score, f1_score
 
-# utils
-from tqdm import tqdm
+# regular expression import
+import re
 
-# local packages
-#from helpers import plot_confusion_matrix, get_top_features, fix_sdg_name
+# uni-code library
+import unicodedata
 
-print('Loaded!')
+# natural language toolkit library/modules
+import nltk
+from nltk.tokenize.toktok import ToktokTokenizer
+from nltk.corpus import stopwords
+nltk.download('wordnet')
+nltk.download('stopwords')
 
-df_osdg = pd.read_csv('https://zenodo.org/record/5550238/files/osdg-community-dataset-v21-09-30.csv?download=1', sep='\t')
-print('Shape:', df_osdg.shape)
+def basic_clean(string):
+    '''
+    This function takes in a string and
+    returns the string normalized.
+    '''
+    string = unicodedata.normalize('NFKD', string)\
+             .encode('ascii', 'ignore')\
+             .decode('utf-8', 'ignore')
+    string = re.sub(r'[^\w\s]', '', string).lower()
+    return string
 
-# calculating cumulative probability over agreement scores
-df_lambda = df_osdg['agreement'].value_counts(normalize = True).sort_index().cumsum().to_frame(name = 'p_sum')
-df_lambda.reset_index(inplace = True)
-df_lambda.rename({'index': 'agreement'}, axis = 1, inplace = True)
+def tokenize(string):
+    '''
+    This function takes in a string and
+    returns a tokenized string.
+    '''
+    # Create tokenizer.
+    tokenizer = nltk.tokenize.ToktokTokenizer()
 
-print('Shape:', df_lambda.shape)
+    # Use tokenizer
+    string = tokenizer.tokenize(string, return_str = True)
 
-# keeping only the texts whose suggested sdg labels is accepted and the agreement score is at least .6
-print('Shape before:', df_osdg.shape)
-df_osdg = df_osdg.query('agreement >= .6 and labels_positive > labels_negative').copy()
-print('Shape after :', df_osdg.shape)
+    return string
 
+def stem(string):
+    '''
+    This function takes in a string and
+    returns a string with words stemmed.
+    '''
+    # Create porter stemmer.
+    ps = nltk.porter.PorterStemmer()
 
+    # Use the stemmer to stem each word in the list of words we created by using split.
+    stems = [ps.stem(word) for word in string.split()]
 
+    # Join our lists of words into a string again and assign to a variable.
+    string = ' '.join(stems)
 
+    return string
+
+def lemmatize(string):
+    '''
+    This function takes in string for and
+    returns a string with words lemmatized.
+    '''
+    # Create the lemmatizer.
+    wnl = nltk.stem.WordNetLemmatizer()
+
+    # Use the lemmatizer on each word in the list of words we created by using split.
+    lemmas = [wnl.lemmatize(word) for word in string.split()]
+
+    # Join our list of words into a string again and assign to a variable.
+    string = ' '.join(lemmas)
+
+    return string
+
+def remove_stopwords(string, extra_words = [], exclude_words = []):
+    '''
+    This function takes in a string, optional extra_words and exclude_words parameters
+    with default empty lists and returns a string.
+    '''
+    # Create stopword_list.
+    stopword_list = stopwords.words('portuguese')
+
+    stopword_list.extend(["da", "meu", "em", "você", "de", "ao", "os","sao","nao","uso","analise","pesquisa","estudo","tambem","sobre","partir","sendo","estudos","trabalho","objetivo","modelo","resultado","avaliacao"])
+
+    # Remove 'exclude_words' from stopword_list to keep these in my text.
+    stopword_list = set(stopword_list) - set(exclude_words)
+
+    # Add in 'extra_words' to stopword_list.
+    stopword_list = stopword_list.union(set(extra_words))
+
+    # Split words in string.
+    words = string.split()
+
+    # Create a list of words from my string with stopwords removed and assign to variable.
+    filtered_words = [word for word in words if word not in stopword_list]
+
+    # Join words in the list back into strings and assign to a variable.
+    string_without_stopwords = ' '.join(filtered_words)
+
+    return string_without_stopwords
+
+def clean(text):
+    '''
+    This function combines the above steps and added extra stop words to clean text
+    '''
+    return remove_stopwords(lemmatize(basic_clean(text)))
+
+dados_rotulados_osdg = pd.read_csv('https://zenodo.org/records/8397907/files/osdg-community-data-v2023-10-01.csv?download=1', sep='\t')
+dados_rotulados_osdg = dados_rotulados_osdg.query('agreement >= .6 and labels_positive > labels_negative').copy()
+
+#limpeza dos dados
+for index, row in dados_rotulados_osdg.iterrows():
+  dados_rotulados_osdg.loc[index, "docs"] = clean(row["text"])
+
+X_train, X_test, y_train, y_test = train_test_split(
+    dados_rotulados_osdg['docs'].values,
+    dados_rotulados_osdg['sdg'].values,
+    test_size = .3,
+    random_state = 42
+)
+
+pipe = Pipeline([
+    ('vectoriser', TfidfVectorizer(
+        ngram_range = (1, 2),
+        max_df = 0.75,
+        min_df = 2,
+        max_features = 100_000
+    )),
+    ('selector', SelectKBest(f_classif, k = 5_000)),
+    ('clf', LogisticRegression(
+        penalty = 'l2',
+        C = .9,
+        multi_class = 'multinomial',
+        class_weight = 'balanced',
+        random_state = 42,
+        solver = 'newton-cg',
+        max_iter = 100
+    ))
+])
+
+pipe.fit(X_train, y_train)
+
+y_hat = pipe.predict(X_test)
+
+from googletrans import Translator
+translator = Translator()
+
+texto_predicao = sys.argv[1]
+texto_traduzido = translator.translate(texto_predicao).text
+
+str_proba = ""
+separador=";"
+
+y_hat = pipe.predict([texto_traduzido]).item()
+y_proba = pipe.predict_proba([texto_traduzido]).flatten()
+for i in y_proba:
+    str_proba += str(i)+separador
+
+print(str_proba, end = '')

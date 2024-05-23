@@ -4,3 +4,105 @@
 .select2 { width: 100% !important;}
 footer { background-image: url('../img/ods-rodape.png'); padding: 8px 0 !important; }
 .box-ods > div > div > img:hover { cursor: pointer; }
+.cabecalho {border-left: 12px solid #00bcd4; padding-left: 10px;}
+mark1{
+    background: #e5243b;
+    color: black;
+    border-radius: 5px;
+}
+mark2{
+    background: #DDA63A;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark3{
+    background: #4C9F38;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark4{
+    background: #C5192D;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark5{
+    background: #FF3A21;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark6{
+    background: #26BDE2;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark7{
+    background: #FCC30B;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark8{
+    background: #A21942;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark9{
+    background: #FD6925;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark10{
+    background: #DD1367;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark11{
+    background: #FD9D24;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark12{
+    background: #BF8B2E;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark13{
+    background: #3F7E44;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark14{
+    background: #0A97D9;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark15{
+    background: #56C02B;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark16{
+    background: #00689D;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
+mark17{
+    background: #19486A;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 5px;
+}
