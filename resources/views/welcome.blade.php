@@ -156,7 +156,7 @@
 
                         $('html, body').animate({
                             scrollTop: $(".ods-descricao").offset().top
-                        }, 100);
+                        }, 1200);
 
                         $(".ods-header").addClass("d-block");
                         $(".ods-objetivo").html('OBJETIVO '+data.cod+' - '+data.objetivo);
