@@ -13,6 +13,7 @@ Route::get('descobrir', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
 Route::get('dados/ano', 'ODSController@getAno');
+Route::get('dados/geral', 'ODSController@getTotalGeral');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');

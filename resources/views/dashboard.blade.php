@@ -35,7 +35,11 @@
         </div>       
    </div>
    <div class="col-md-9 painel">
-        <div class="row mt-3">
+        <div class="row mt-3" id="dados-geral">
+            <p><strong>Dimensão</strong>: Pesquisa > Distribuição de ODS</p>
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+        <div class="row mt-3 d-none" id="perfil-docente">
             <div class="col-md-4 center">
                 <img src="{{ asset('img/user.png') }}" class="img-fluid rounded-circle w-75">
             
@@ -160,6 +164,7 @@
                         $(".perfil-ods").empty();
                     },
                     success: function(data) {
+
                         if(!data) {
                             Swal.fire({
                                 text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
@@ -168,6 +173,9 @@
                             });
                             return;
                         }
+
+                        $("#dados-geral").addClass("d-none");
+                        $("#perfil-docente").removeClass("d-none");
                         
                         ods = [];
                         data.forEach(element => {    
@@ -264,6 +272,46 @@
                   timer: 1500
                });
 
+            });
+
+            $.ajax({
+                url: host+'/dados/geral',
+                type: 'GET',
+                beforeSend: function() {
+                    
+                },
+                success: function(data) {
+
+                    var ctx = document.getElementById("myChart").getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.ods,
+                            datasets: [{
+                                label: false,
+                                data: data.total,
+                                backgroundColor: data.cor,
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                       
+                },
+                complete: function(){
+                        
+                }
             });
 
         });

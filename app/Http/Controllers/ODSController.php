@@ -29,6 +29,31 @@ class ODSController extends Controller
         return response()->json($ods);
     }
 
+    public function getTotalGeral()
+    {
+        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
+                FROM capes_teses_dissertacoes_ctd t0
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                JOIN ods t2 ON t2.cod = t1.ods 
+                GROUP BY t1.ods, t2.cor 
+                ORDER BY t1.ods";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+
+        $ods = array_column($dados, 'ods');
+        $cor = array_column($dados, 'cor');
+        $total = array_column($dados, 'total');
+
+        $ods[] = 17;
+        $cor[] = '#19486A';
+        $total[] = 837;
+
+        $totais = array('ods' => $ods, 'cor' => $cor, 'total' => $total);
+
+        return response()->json($totais);
+    }
+
     public function classificar()
     {
         $texto = Documento::find(rand(1681, 2681));
