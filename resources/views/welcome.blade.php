@@ -153,6 +153,11 @@
                     
                     },
                     success: function(data) {
+
+                        $('html, body').animate({
+                            scrollTop: $(".ods-descricao").offset().top
+                        }, 100);
+
                         $(".ods-header").addClass("d-block");
                         $(".ods-objetivo").html('OBJETIVO '+data.cod+' - '+data.objetivo);
                         $(".ods-descricao").html(data.descricao);
