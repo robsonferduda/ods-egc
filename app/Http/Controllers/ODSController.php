@@ -29,6 +29,17 @@ class ODSController extends Controller
         return response()->json($ods);
     }
 
+    public function getDocumentos()
+    {
+            $sql = "SELECT t1.ods, t2.cor, t0.nm_programa, t0.nm_producao 
+                    FROM capes_teses_dissertacoes_ctd t0
+                    JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                    JOIN ods t2 ON t2.cod = t1.ods 
+                    LIMIT 5";
+
+        return $dados = DB::connection('pgsql')->select($sql);
+    }
+
     public function getTotalGeral()
     {
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 

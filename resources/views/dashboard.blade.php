@@ -38,6 +38,9 @@
         <div class="row mt-3" id="dados-geral">
             <p><strong>Dimensão</strong>: Pesquisa > Distribuição de ODS</p>
             <canvas id="myChart" width="400" height="400"></canvas>
+            <h6>DOCUMENTOS ANALISADOS</h6>
+            <div class="mb-1" id="lista_documentos"></div>
+            <a href="#" class="mb-5">VER TODOS</a>
         </div>
         <div class="row mt-3 d-none" id="perfil-docente">
             <div class="col-md-4 center">
@@ -64,6 +67,24 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: host+'/dados/documentos',
+                type: 'GET',
+                beforeSend: function() {
+                    
+                },
+                success: function(data) {
+        
+                    data.forEach(element => {
+                        
+                        $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.nm_producao+'</p><p class="mt-1 mb-0"><strong> '+element.nm_programa+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
+                    });
+                },
+                complete: function(){
+                    
+                }
+            });
 
             $.ajax({
                 url: host+'/dados/ppg/ufsc',
