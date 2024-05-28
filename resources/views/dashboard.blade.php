@@ -57,7 +57,10 @@
 
                 </div>
             </div>
-        </div>
+            <div class="row lista-ods mb-5">
+                
+            </div>            
+        </div>  
    </div>
 </div>
 @endsection
@@ -183,6 +186,7 @@
                     beforeSend: function() {
                         $('.painel').loader('show');
                         $(".perfil-ods").empty();
+                        $(".lista-ods").empty();
                     },
                     success: function(data) {
 
@@ -199,13 +203,28 @@
                         $("#perfil-docente").removeClass("d-none");
                         
                         ods = [];
+                        totais = [];
+                        cores = [];
+                        total = 0;
                         data.forEach(element => {    
                             ods.push(element.ods);
+                            totais[element.ods] = element.total;
+                            cores[element.ods] = element.cor;
+                            total += element.total;
                         });
 
                         for (let i=1; i<=17; i++)  {
                             if(ods.includes(i)){
+
+                                var percentual = (totais[i]*100)/total;
+                                var label = (totais[i] > 1) ? 'Documentos' : 'Documento';
+
                                 $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+
+                                $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-2"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
+                                                        '<div class="col-md-10"><h6 class="progresso-title">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
+                                                        '<div class="progresso ods-'+i+'"><div class="progresso-bar" style="width:'+percentual.toFixed(1)+'%; background:'+cores[i]+';"><div class="progresso-value">'+percentual.toFixed(1)+'%</div></div></div></div></div>');
+
                             }else{
                                 $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }
