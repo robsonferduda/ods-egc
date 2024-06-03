@@ -134,11 +134,13 @@ class ODSController extends Controller
 
     public function getODS($ppg, $docente){
 
-        $sql = "SELECT DISTINCT t2.ods 
+        $sql = "SELECT DISTINCT t2.ods, t3.cor, count(*) AS total 
                 FROM capes_teses_dissertacoes_ctd t1 
                 JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+                JOIN ods t3 ON t3.cod = t2.ods 
                 WHERE nm_programa = '$ppg'
                 AND nm_orientador = '$docente'
+                GROUP BY t2.ods, t3.cor 
                 ORDER BY ods ";
 
         $dados = DB::connection('pgsql')->select($sql);
