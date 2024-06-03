@@ -50,12 +50,13 @@
                 <span id="nm_ppg"></span>
             </div>
             <div class="col-md-8 mt-3">
-                <canvas id="chartjs-3" class="chartjs"></canvas>
+                <canvas id="chartjs-3" class="chartjs"></canvas>red;
             </div>
             <div class="col-md-12 painel mt-3 mb-5">
                 <div class="row perfil-ods"> 
 
                 </div>
+                
             </div>
         </div>
    </div>
