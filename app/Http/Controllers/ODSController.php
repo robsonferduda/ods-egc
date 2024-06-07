@@ -100,7 +100,7 @@ class ODSController extends Controller
         }    
         
         usort($dados, function($a, $b) {
-            return $a['probabilidade'] <=> $b['probabilidade'];
+            return $b['probabilidade'] <=> $a['probabilidade'];
         });
 
         return response()->json($dados);
