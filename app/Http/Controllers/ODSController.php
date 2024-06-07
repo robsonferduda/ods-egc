@@ -99,9 +99,7 @@ class ODSController extends Controller
             }
         }    
         
-        usort($dados, function ($a, $b){ 
-            return strcmp($dados['ods'], $dados['ods']); 
-        });
+        $dados = collect($dados);
 
         return response()->json($dados);
     }
