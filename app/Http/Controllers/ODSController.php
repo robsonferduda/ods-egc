@@ -98,13 +98,11 @@ class ODSController extends Controller
                 $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
             }
         }    
-
-        dd($dados);
         
         $dados = collect($dados);
         $dados = $dados->sortByDesc('probabilidade');
 
-        dd($dados);
+        dd($dados->toArray());
 
         return response()->json($dados);
     }
