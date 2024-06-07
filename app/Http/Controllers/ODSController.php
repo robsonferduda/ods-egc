@@ -97,7 +97,12 @@ class ODSController extends Controller
             if($probabilidades[$i] > 0.1){
                 $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
             }
-        }       
+        }    
+        
+        usort($dados, function ($a, $b){ 
+            return strcmp($dados['ods'], $dados['ods']); 
+        });
+
         return response()->json($dados);
     }
 
