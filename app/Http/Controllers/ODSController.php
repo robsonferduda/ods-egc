@@ -100,7 +100,7 @@ class ODSController extends Controller
         }    
         
         $dados = collect($dados);
-        dd($dados->sortBy('probabilidade'));
+        dd($dados->sortBy('probabilidade','DESC'));
 
         return response()->json($dados);
     }
