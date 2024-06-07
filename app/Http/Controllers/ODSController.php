@@ -99,8 +99,9 @@ class ODSController extends Controller
             }
         }    
         
-        //$dados = collect($dados);
-        //$dados = $dados->sortByDesc('probabilidade');
+        usort($dados, function($a, $b) {
+            return $a['probabilidade'] <=> $b['probabilidade'];
+        });
 
         return response()->json($dados);
     }
