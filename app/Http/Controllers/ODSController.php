@@ -102,9 +102,7 @@ class ODSController extends Controller
         $dados = collect($dados);
         $dados = $dados->sortByDesc('probabilidade');
 
-        dd($dados->toArray());
-
-        return response()->json($dados);
+        return response()->json($dados->toArray());
     }
 
     public function getPPG($instituicao){
