@@ -30,7 +30,7 @@
             </div>
             <div class="row ods-result d-none">
                <div class="col-md-12 col-sm-12">
-                  <h6>ODS Identificadas</h6>
+                  <h6>ODS Identificadas Ordenadas por probabilidade</h6>
                </div>
             </div>
             <div class="row img-ods">
