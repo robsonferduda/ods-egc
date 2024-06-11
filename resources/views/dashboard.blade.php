@@ -50,7 +50,7 @@
                 <span id="nm_ppg"></span>
             </div>
             <div class="col-md-8 mt-3">
-                <canvas id="chartjs-3" class="chartjs"></canvas>red;
+                <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
             <div class="col-md-12 painel mt-3 mb-5">
                 <div class="row perfil-ods"> 
@@ -176,7 +176,7 @@
 
             });
 
-            $("#docente").click(function(){
+            $("#docente").change(function(){
 
                 var ppg = $("#ppg").val();
                 var docente = $(this).val();
@@ -229,12 +229,147 @@
                             }else{
                                 $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }
+                            
                         }
                         $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2"><img src="'+host+'/img/ods-icone/ods.png" class="img-fluid img-ods" alt="ODS"></div>');
                             //$(".perfil-ods").append('<div class="col-md-2 col-sm-2"><img src="'+host+'/img/ods-icone/ods_'+element.ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                         $("#nm_docente").text(docente);
                         $("#nm_ppg").text(ppg);
 
+                        
+
+                        new Chart(document.getElementById("chartjs-3"), {
+                            "type": "bar",
+                            data: { 
+                                labels: ["Ensino", "Pesquisa", "Extensão","Inovação", "Gestão"], 
+                                datasets: [
+                                    { 
+                                        label: 'ODS 1', 
+                                        backgroundColor: cores[1], 
+                                        data: [0, totais[1], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 2', 
+                                        backgroundColor: cores[2], 
+                                        data: [0, totais[2], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 3', 
+                                        backgroundColor: cores[3], 
+                                        data: [0, totais[3], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 4', 
+                                        backgroundColor: cores[4], 
+                                        data: [0, totais[4], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 5', 
+                                        backgroundColor: cores[5], 
+                                        data: [0, totais[5], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 6', 
+                                        backgroundColor: cores[6], 
+                                        data: [0, totais[6], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 7', 
+                                        backgroundColor: cores[7], 
+                                        data: [0, totais[7], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 8', 
+                                        backgroundColor: cores[8], 
+                                        data: [0, totais[8], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 9', 
+                                        backgroundColor: cores[9], 
+                                        data: [0, totais[9], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 10', 
+                                        backgroundColor: cores[10], 
+                                        data: [0, totais[10], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 11', 
+                                        backgroundColor: cores[11], 
+                                        data: [0, totais[11], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 12', 
+                                        backgroundColor: cores[12], 
+                                        data: [0, totais[12], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 13', 
+                                        backgroundColor: cores[13], 
+                                        data: [0, totais[13], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 14', 
+                                        backgroundColor: cores[14], 
+                                        data: [0, totais[14], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 15', 
+                                        backgroundColor: cores[15], 
+                                        data: [0, totais[15], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 16', 
+                                        backgroundColor: cores[16], 
+                                        data: [0, totais[16], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 17', 
+                                        backgroundColor: cores[17], 
+                                        data: [0, totais[17], 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    },                                     
+                                ], 
+                            }, 
+
+                            options: { 
+                                plugins: { 
+                                    title: { 
+                                        display: true, 
+                                        text: 'Stacked Bar chart for pollution status' 
+                                    }, 
+                                }, 
+                                legend: {
+                                    display: false
+                                },
+                                scales: { 
+                                    x: { 
+                                        stacked: true, 
+                                    }, 
+                                    y: { 
+                                        stacked: true 
+                                    } 
+                                } 
+                            } 
+                        });
+
+                        /*
                         new Chart(document.getElementById("chartjs-3"), {
                             "type": "radar",
                             "data": {
@@ -267,7 +402,7 @@
                                     }
                                 }
                             }
-                        });
+                        });*/
                     },
                     complete: function(){
                         $('.painel').loader('hide');
