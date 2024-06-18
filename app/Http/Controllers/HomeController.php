@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -20,5 +20,10 @@ class HomeController extends Controller
         $certificados = Certificado::count();
         $participantes = Participante::count();
         return view('home', compact('participantes','eventos','certificados'));
+    }
+
+    public function sobre()
+    {
+        return view('sobre');
     }
 }

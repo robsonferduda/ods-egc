@@ -103,7 +103,10 @@ class ODSController extends Controller
             return $b['probabilidade'] <=> $a['probabilidade'];
         });
 
-        return response()->json($dados);
+        $resultado['probabilidades'] = $probabilidades;
+        $resultado['resultado'] = $dados;
+
+        return response()->json($resultado);
     }
 
     public function getPPG($instituicao){

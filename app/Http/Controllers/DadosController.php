@@ -7,7 +7,7 @@ use Excel;
 use PDF;
 use Mail;
 use App\Utils;
-use App\Certificado;
+use App\Cidade;
 use App\CertificadoMetadado;
 use App\Participante;
 use App\ModeloCertificado;
@@ -28,6 +28,12 @@ class DadosController extends Controller
     public function index()
     {
         return view('dados/upload');
+    }
+
+    public function cidades($id)
+    {
+        $cidades = Cidade::where('cd_estado', $id)->orderBy('nm_cidade')->get();
+        return response()->json($cidades);
     }
 
     public function lerArquivo(Request $request)

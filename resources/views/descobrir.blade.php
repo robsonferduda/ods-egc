@@ -3,9 +3,9 @@
 <div class="row">
     <div class="col-md-12">
        <div class="header-text">
-          <h3><i class="fa fa-files-o"></i> ODS EGC Descobrir</h3>
+          <h3><i class="fa fa-files-o"></i> Perfil ODS Descobrir</h3>
           <div class="cabecalho">
-            <h5 class="mb-0">Classificação de Textos de acordo com a ODS</h5>
+            <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
             <p>Informe seu texto para classificação</p>
           </div>
        </div>
@@ -95,12 +95,12 @@
 
                      $(".resultado").html("");
 
-                     if(data.length){
+                     if(data.resultado.length){
 
                         $(".ods-result").removeClass("d-none");
                         $(".ods-result").addClass("d-block");
 
-                        $.each(data, function(i, item) {
+                        $.each(data.resultado, function(i, item) {
                               $(".img-ods").append('<div class="col-md-2 col-sm-12"><img src="'+host+'/img/ods-icone/ods_'+item.ods+'.png" class="img-fluid img-ods" alt="ODS '+item.ods+'"></div>');
                         });
 
@@ -108,7 +108,7 @@
 
                            var context = document.querySelector("#mytext"); 
 
-                           $.each(data, function(i, item) {
+                           $.each(data.resultado, function(i, item) {
 
                               var instance_ods = new Mark(context);
                               var marcador = "mark"+item.ods;

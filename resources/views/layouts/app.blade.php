@@ -171,6 +171,7 @@
   <script src="{{ asset('js/plugins/hr.js') }}"></script>
   <script src="{{ asset('demo/demo.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
   @yield('script')
   <script>
     function setFormValidation(id) {
@@ -200,6 +201,8 @@
     $(document).ready(function() {
 
       $('.select2').select2();
+
+      $('.data').mask('00/00/0000',{ "placeholder": "dd/mm/YYYY" });
 
       $(".btn-discovery").click(function(){
                alert("Teste");

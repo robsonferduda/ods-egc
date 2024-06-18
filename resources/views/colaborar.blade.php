@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
        <div class="header-text">
-            <h3><i class="fa fa-users"></i> ODS EGC Colaborar</h3>
+            <h3><i class="fa fa-users"></i> Colaborar</h3>
             <div class="cabecalho">
                 <h5 class="mb-0">Registre-se e ajude a aumentar nossa base de conhecimento</h5>
                 <p>A classificação manual auxilia no processo de melhoria da qualidade da classificação dos modelos de Inteligência Artificial</p>
@@ -11,55 +11,58 @@
        </div>
     </div>
     <div class="col-md-6">
-       <form method="#" action="#">
-          <div class="card card-plain">
-             <div class="content">
-                <h5 class="mb-0">Preencha seus dados</h5>
-                <span>Os participantes não serão identificados *</span>
-                <div class="form-group mt-2">
-                   <input type="email" placeholder="Email" class="form-control">
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Estado</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select class="form-control">
-                        <option>Cidade</option>
-                    </select>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select class="form-control" aria-label="">
-                                <option>Sexo</option>
-                                <option valeu="F">Feminono</option>
-                                <option value="M">Masculino</option>
-                            </select>
+        {!! Form::open(['id' => 'frm', 'url' => ['colaborador']]) !!}
+            <div class="card card-plain">
+                <div class="content">
+                    <h5 class="mb-0">Preencha seus dados</h5>
+                    <span>Os participantes não serão identificados *</span>
+                    <div class="form-group mt-2">
+                    <input type="email" name="email" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <select name="cd_estado" id="cd_estado" class="form-control" required>
+                            <option value="">Estado</option>
+                            @foreach($estados as $estado)
+                                <option value="{{ $estado->cd_estado }}">{{ $estado->nm_estado }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select name="cd_cidade" id="cd_cidade" class="form-control" >
+                            <option value="">Cidade</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select name="sexo" class="form-control" >
+                                    <option value="">Sexo</option>
+                                    <option value="F">Feminino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" name="dt_nascimento" id="dt_nascimento" class="form-control data" placeholder="__/__/____">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="dt_nascimento" id="dt_nascimento" class="form-control" placeholder="__/__/____">
-                        </div>
+                    <div class="form-group">
+                        <input type="password" name="password" placeholder="Senha" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="repeat_password" placeholder="Repita a Senha" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        * Os dados serão utilizados somente para o acesso do participante e para a geração de estatísticas de distribuição por regiões, sexo e faixa etária
+                    </div>
+                    <div class="center">
+                        <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-user"></i> Criar Conta</button>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="password" name="password" placeholder="Senha" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" name="repeat_password" placeholder="Repita a Senha" class="form-control">
-                </div>
-                <div class="col-md-12">
-                    * Os dados serão utilizados somente para o acesso do participante e para a geração de estatísticas de distribuição por regiões, sexo e faixa etária
-                </div>
-                <div class="center">
-                    <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-user"></i> Criar Conta</button>
-                </div>
-             </div>
-          </div>
-       </form>
+            </div>
+        {!! Form::close() !!} 
     </div>
     <div class="col-md-6">
         <div class="row mt-5">

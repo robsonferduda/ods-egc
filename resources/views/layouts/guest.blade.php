@@ -75,6 +75,12 @@
               <i class="fa fa-files-o"></i> DESCOBRIR
             </a>
           </li>
+
+          <li class="nav-item ">
+            <a href="{{ url('sobre') }}" class="nav-link">
+              <i class="fa fa-info-circle"></i> SOBRE
+            </a>
+          </li>
           
           <li class="nav-item ">
             <a href="{{ url('login') }}" class="nav-link">
@@ -123,11 +129,55 @@
   <script src="{{ asset('js/paper-dashboard.min.js?v=2.0.1') }}" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{ asset('js/plugins/jquery.loader.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
+  <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
   @yield('script')
   <script>
     $(document).ready(function() {
 
-      
+      var host =  $('meta[name="base-url"]').attr('content');
+      var token = $('meta[name="csrf-token"]').attr('content');
+
+      $('.data').mask('00/00/0000',{ "placeholder": "dd/mm/YYYY" });
+
+      $(document).on('change', '#cd_estado', function() {
+
+        var estado = $(this).val();
+        var cd_cidade = $("#cd_cidade").val();
+
+        $('#cd_cidade').find('option').remove().end();
+
+        if($(this).val() == '') {
+            $('#cd_cidade').attr('disabled', true);
+            $('#cd_cidade').append('<option value="">Selecione uma cidade</option>').val('');
+            return;
+        }
+
+        $('#cd_cidade').append('<option value="">Carregando...</option>').val('');
+
+        $.ajax({
+            url: host+'/estado/'+estado+'/cidades',
+            type: 'GET',           
+            beforeSend: function() {
+                
+            },
+            success: function(data) {
+                
+                $('#cd_cidade').attr('disabled', false);
+                $('#cd_cidade').find('option').remove().end();
+                $('#cd_cidade').append('<option value="">Selecione uma cidade</option>').val('');
+
+                data.forEach(element => {
+                    let option = new Option(element.nm_cidade, element.cd_cidade);
+                    $('#cd_cidade').append(option);
+                });
+
+                $('#cd_cidade').val(cd_cidade).change();
+            },
+            complete: function(){
+                
+            }
+        });
+});
 
      
     });
