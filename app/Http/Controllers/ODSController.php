@@ -68,9 +68,14 @@ class ODSController extends Controller
     public function classificar()
     {
         $texto = Documento::find(rand(1681, 2681));
-        $ods = rand(1,17);
+        $ods = $texto->classificacao->ods;
 
         return view('classificar', compact('texto','ods'));
+    }
+
+    public function classificarManual($id)
+    {
+        
     }
 
     public function descobrir(Request $request)

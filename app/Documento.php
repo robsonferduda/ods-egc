@@ -13,4 +13,9 @@ class Documento extends Model
     protected $table = 'capes_teses_dissertacoes_ctd';
     protected $primaryKey = 'id_capes_teses_dissertacoes_ctd';
     protected $fillable = [""];
+
+    public function classificacao()
+    {
+        return $this->hasOne(Classificacao::class, 'id_producao_intelectual', 'id_producao_intelectual');
+    }
 }

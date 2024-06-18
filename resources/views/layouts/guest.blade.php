@@ -139,6 +139,24 @@
 
       $('.data').mask('00/00/0000',{ "placeholder": "dd/mm/YYYY" });
 
+      $('body').on("click", ".fa-eye", function(e) {
+
+        var target = "#"+$(this).data('target');
+
+        $(target).attr('type','text');
+        $(this).removeClass('fa-eye');
+        $(this).addClass('fa-eye-slash');
+      });
+
+      $('body').on("click", ".fa-eye-slash", function(e) {
+
+        var target = "#"+$(this).data('target');
+
+        $(target).attr('type','password');
+        $(this).removeClass('fa-eye-slash');
+        $(this).addClass('fa-eye');
+      });
+
       $(document).on('change', '#cd_estado', function() {
 
         var estado = $(this).val();

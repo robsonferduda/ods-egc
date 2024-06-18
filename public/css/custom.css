@@ -204,3 +204,14 @@ mark17{
 .progresso.ods-15 .progresso-value{ border: 5px solid #56C02B; color: #56C02B;}
 .progresso.ods-16 .progresso-value{ border: 5px solid #00689D; color: #00689D;}
 .progresso.ods-17 .progresso-value{ border: 5px solid #19486A; color: #19486A;}
+
+.view-eye {
+    position: absolute;
+    top: 10px;
+    right: 8px;
+    z-index: 1000;
+}
+
+.view-eye:hover{
+    cursor: pointer;
+}

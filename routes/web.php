@@ -18,6 +18,8 @@ Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
 
+Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
+
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 
 Route::get('sobre', 'HomeController@sobre');

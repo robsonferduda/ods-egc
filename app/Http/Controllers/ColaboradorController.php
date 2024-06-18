@@ -29,14 +29,22 @@ class ColaboradorController extends Controller
 
     public function store(Request $request)
     {
-        $pessoa = Colaborador::create($request->all());
+        $user = User::where('email', $request->email)->first();
 
-        $user = array('name' => $request->email,
-                      'email' => $request->email,
-                      'password' => \Hash::make($request->password),
-                      'pessoa_id' => $pessoa->id);
+        if($user){
 
-        User::create($user);
+            Flash::info('<p class="mb-1"><strong>Já existe um cadastro com o email informado.</strong></p> Use seu usuário e senha para acessar ou redefina sua senha utilizando a recuperação de senha');
+            return redirect('colaborar')->withInput();
+
+        }else{
+
+            $nome = 'usuario-'.str_pad(User::max('id'), 6, "0", STR_PAD_LEFT);
+
+            $request->merge(['name' => $nome]);
+            $request->merge(['password' => \Hash::make($request->password)]);
+            $user = User::create($request->all());
+
+            return redirect('classificar');
+        }
     }
-
 }
