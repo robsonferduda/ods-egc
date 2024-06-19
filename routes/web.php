@@ -24,6 +24,8 @@ Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 
 Route::get('sobre', 'HomeController@sobre');
 
+Route::get('minhas-avaliacoes', 'ODSController@avaliacoes');
+
 Route::get('ods/{ods}', 'ODSController@getDadosOds');
 
 Route::get('colaborar', 'ColaboradorController@colaborar');

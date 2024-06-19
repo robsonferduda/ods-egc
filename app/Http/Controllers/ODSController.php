@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Auth;
 use App\Ods;
+use App\Avaliacao;
 use App\Documento;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -73,9 +76,48 @@ class ODSController extends Controller
         return view('classificar', compact('texto','ods'));
     }
 
-    public function classificarManual($id)
+    public function avaliacoes()
     {
+        $sql = "SELECT * 
+            FROM capes_teses_dissertacoes_ctd t1
+            JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+            JOIN avaliacao t3 ON t3.id_documento = t1.id_producao_intelectual 
+            JOIN ods t4 ON t4.id = t2.ods 
+            WHERE t3.usuario = ".Auth::user()->id;
+
+        $dados = DB::connection('pgsql')->select($sql);
         
+        return view('avaliacoes', compact('dados'));
+    }
+
+    public function classificarManual($id, $voto)
+    {
+        $valor = 0;
+        $documento = Documento::where('id_producao_intelectual',$id)->first();
+        switch ($voto) {
+            case 'positivo':
+                $valor = 1;
+                $documento->classificacao->positivo = $documento->classificacao->positivo + 1;
+                break;
+            case 'negativo':
+                $valor = -1;
+                $documento->classificacao->negativo = $documento->classificacao->negativo + 1;
+                break;
+            case 'neutro':
+                $valor = 0;
+                $documento->classificacao->neutro = $documento->classificacao->neutro + 1;
+            break;
+        }
+        $documento->classificacao->save();
+
+        $dados = array("tipo" => 1,
+                        "id_documento" => $id,     
+                        "usuario" => Auth::user()->id,
+                        "voto" => $valor);
+
+        Avaliacao::create($dados);
+
+        return redirect('classificar');
     }
 
     public function descobrir(Request $request)
