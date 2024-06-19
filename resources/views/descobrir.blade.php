@@ -58,11 +58,6 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
-
-            function ajuste(nr, casas) {
-               const og = Math.pow(10, casas)
-               return Math.trunc(nr * og) / og;
-            }
             
             var lista_ods = [
                [],
@@ -141,7 +136,7 @@
 
                            var percentuais = [];
                            $.each(data.probabilidades, function(i, item) {
-                              percentuais.push(ajuste(item*100));
+                              percentuais.push(Math.trunc(item*100));
                            });
 
                            new Chart(document.getElementById("resultado-ods"), {
