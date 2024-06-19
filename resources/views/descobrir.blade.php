@@ -45,6 +45,10 @@
           
        </form>
     </div>
+      <div class="col-md-12 mt-3 mb-5">
+         <canvas id="resultado-ods" class="chartjs"></canvas>
+      </div>
+      
  </div>
 @endsection
 @section('script')
@@ -97,6 +101,8 @@
 
                      if(data.resultado.length){
 
+                        var cores = ["#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21"];
+
                         $(".ods-result").removeClass("d-none");
                         $(".ods-result").addClass("d-block");
 
@@ -125,6 +131,23 @@
 
                               instance_ods.mark(lista_ods[item.ods], options); 
 
+                           });
+
+                           new Chart(document.getElementById("resultado-ods"), {
+                           "type": "doughnut",
+                              "data": {
+                                    "labels": ["ODS 1", "ODS 2", "ODS 3", "ODS 4","ODS 5","ODS 6","ODS 7","ODS 8","ODS 9","ODS 10","ODS 11","ODS 12","ODS 13","ODS 14","ODS 15","ODS 16","ODS 17"],
+                                    "datasets": [{
+                                                   "label": "Radar ODS",
+                                                   "data": [1,1,1,1,1,1,1,25,5,5,5,5,2,5,2,2,2],
+                                                   "backgroundColor": ["#e5243b","#4C9F38","#FF3A21","#C5192D","#FF3A21","#26BDE2","#FCC30B","#A21942","#FD6925","#DD1367","#FD9D24","#BF8B2E","#3F7E44","#0A97D9","#56C02B","#00689D","#19486A"]
+                                                }]
+                              },
+                              "options": {                                
+                                 legend: {
+                                    display: false
+                                 }
+                              }      
                            });
 
                      }else{

@@ -169,6 +169,24 @@ mark17{
     text-align: center;
 }
 
+.percentual-ods-1{ background:#e5243b; }
+.percentual-ods-2{ background: #DDA63A; }
+.percentual-ods-3{ background: #4C9F38; }
+.percentual-ods-4{ background: #C5192D; }
+.percentual-ods-5{ background: #FF3A21; }
+.percentual-ods-6{ background: #26BDE2; }
+.percentual-ods-7{ background: #FCC30B; }
+.percentual-ods-8{ background: #A21942; }
+.percentual-ods-9{ background: #FD6925; }
+.percentual-ods-10{ background: #DD1367; }
+.percentual-ods-11{ background: #FD9D24; }
+.percentual-ods-12{ background: #BF8B2E; }
+.percentual-ods-13{ background: #3F7E44; }
+.percentual-ods-14{ background: #0A97D9; }
+.percentual-ods-15{ background: #56C02B; }
+.percentual-ods-16{ background: #00689D; }
+.percentual-ods-17{ background: #19486A; }
+
 .progresso.ods-1:before{ border: 7px solid #e5243b; }
 .progresso.ods-2:before{ border: 7px solid #DDA63A; }
 .progresso.ods-3:before{ border: 7px solid #4C9F38; }
@@ -214,4 +232,16 @@ mark17{
 
 .view-eye:hover{
     cursor: pointer;
+}
+
+.container-ods {position: relative;}
+
+.container-ods > div{
+    display: inline;
+    float: left;
+    text-align: center;
+}
+
+.container-ods > div > strong{
+    display: block;
 }
