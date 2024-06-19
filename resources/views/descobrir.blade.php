@@ -136,7 +136,7 @@
 
                            var percentuais = [];
                            $.each(data.probabilidades, function(i, item) {
-                              percentuais[] = item*100;
+                              percentuais.push(item*100);
                            });
 
                            new Chart(document.getElementById("resultado-ods"), {
