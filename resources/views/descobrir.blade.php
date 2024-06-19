@@ -42,7 +42,7 @@
                </div>
             </div>
             <div class="row">
-               <div class="col-md-8 mt-3 mb-5">
+               <div class="col-md-12 mt-3 mb-5">
                   <canvas id="resultado-ods" class="chartjs"></canvas>
                </div>
             </div>
