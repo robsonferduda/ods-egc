@@ -41,14 +41,15 @@
                   <p id="mytext"></p>
                </div>
             </div>
+            <div class="row">
+               <div class="col-md-12 mt-3 mb-5">
+                  <canvas id="resultado-ods" class="chartjs"></canvas>
+               </div>
+            </div>
          </div>         
           
        </form>
-    </div>
-      <div class="col-md-12 mt-3 mb-5">
-         <canvas id="resultado-ods" class="chartjs"></canvas>
-      </div>
-      
+    </div>      
  </div>
 @endsection
 @section('script')
