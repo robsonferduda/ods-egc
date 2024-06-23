@@ -236,139 +236,176 @@
                         $("#nm_docente").text(docente);
                         $("#nm_ppg").text(ppg);
 
-                        
+                        let myChart = null;
+                        let grapharea = document.getElementById("chartjs-3").getContext("2d");
 
-                        new Chart(document.getElementById("chartjs-3"), {
+                        let chartStatus = Chart.getChart("chartjs-3"); // <canvas> id
+                        if (chartStatus != undefined) {
+                        chartStatus.destroy();
+                        }
+
+                        myChart = new Chart(grapharea, {
                             "type": "bar",
+                            showTooltips: false,
                             data: { 
                                 labels: ["Ensino", "Pesquisa", "Extensão","Inovação", "Gestão"], 
                                 datasets: [
                                     { 
                                         label: 'ODS 1', 
                                         backgroundColor: cores[1], 
-                                        data: [0, totais[1], 0, 0, 0], 
+                                        data: [0, ((totais[1]*100)/total).toFixed(3), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 2', 
                                         backgroundColor: cores[2], 
-                                        data: [0, totais[2], 0, 0, 0], 
+                                        data: [0, ((totais[2]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 3', 
                                         backgroundColor: cores[3], 
-                                        data: [0, totais[3], 0, 0, 0], 
+                                        data: [0, ((totais[3]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 4', 
                                         backgroundColor: cores[4], 
-                                        data: [0, totais[4], 0, 0, 0], 
+                                        data: [0, ((totais[4]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 5', 
                                         backgroundColor: cores[5], 
-                                        data: [0, totais[5], 0, 0, 0], 
+                                        data: [0, ((totais[5]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 6', 
                                         backgroundColor: cores[6], 
-                                        data: [0, totais[6], 0, 0, 0], 
+                                        data: [0, ((totais[6]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 7', 
                                         backgroundColor: cores[7], 
-                                        data: [0, totais[7], 0, 0, 0], 
+                                        data: [0, ((totais[7]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 8', 
                                         backgroundColor: cores[8], 
-                                        data: [0, totais[8], 0, 0, 0], 
+                                        data: [0, ((totais[8]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 9', 
                                         backgroundColor: cores[9], 
-                                        data: [0, totais[9], 0, 0, 0], 
+                                        data: [0, ((totais[9]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 10', 
                                         backgroundColor: cores[10], 
-                                        data: [0, totais[10], 0, 0, 0], 
+                                        data: [0, ((totais[10]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 11', 
                                         backgroundColor: cores[11], 
-                                        data: [0, totais[11], 0, 0, 0], 
+                                        data: [0, ((totais[11]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 12', 
                                         backgroundColor: cores[12], 
-                                        data: [0, totais[12], 0, 0, 0], 
+                                        data: [0, ((totais[12]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 13', 
                                         backgroundColor: cores[13], 
-                                        data: [0, totais[13], 0, 0, 0], 
+                                        data: [0, ((totais[13]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 14', 
                                         backgroundColor: cores[14], 
-                                        data: [0, totais[14], 0, 0, 0], 
+                                        data: [0, ((totais[14]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 15', 
                                         backgroundColor: cores[15], 
-                                        data: [0, totais[15], 0, 0, 0], 
+                                        data: [0, ((totais[15]*100)/total).toFixed(12), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 16', 
                                         backgroundColor: cores[16], 
-                                        data: [0, totais[16], 0, 0, 0], 
+                                        data: [0, ((totais[16]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
                                         label: 'ODS 17', 
                                         backgroundColor: cores[17], 
-                                        data: [0, totais[17], 0, 0, 0], 
+                                        data: [0, ((totais[17]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     },                                     
                                 ], 
                             }, 
 
                             options: { 
+                                tooltips: {
+                                callbacks: {
+                                    title: function(chart, data) {
+                                        return data.labels[chart[0].datasetIndex];
+                                        }
+                                    }
+                                },
                                 plugins: { 
                                     title: { 
-                                        display: true, 
-                                        text: 'Stacked Bar chart for pollution status' 
+                                        display: false, 
+                                        text: 'Distribuição de total por dimensão' 
                                     }, 
+                                    legend: {
+                                        display: false,
+                                        labels: {
+                                            color: 'rgb(255, 99, 132)'
+                                        }
+                                    },
+                                    datalabels: {
+                                        color: 'black',
+                                        anchor: 'end',
+                                        align: 'end',
+                                        offset: 15,
+                                        formatter: (val, ctx) => (ctx.chart.data.labels[ctx.dataIndex])
+                                    }
                                 }, 
-                                legend: {
-                                    display: false
-                                },
+                                
                                 scales: { 
                                     x: { 
-                                        stacked: true, 
+                                        stacked: true
                                     }, 
                                     y: { 
-                                        stacked: true 
+                                        stacked: true,
+                                        title: {
+                                            display: true
+                                        },
+                                        ticks: {
+                                            beginAtZero: true,
+                                            min: 0,
+                                            max: 100,
+                                            stepSize: 5
+                                        } 
                                     } 
                                 } 
                             } 
                         });
 
+                        
+
+                
                         /*
                         new Chart(document.getElementById("chartjs-3"), {
                             "type": "radar",
@@ -471,9 +508,16 @@
                             }]
                         },
                         options: {
-                            legend: {
-                                display: false
-                            },
+                            
+                            plugins: { 
+                                    title: { 
+                                        display: false, 
+                                        text: 'Distribuição de total por dimensão' 
+                                    }, 
+                                    legend: {
+                                        display: false
+                                    }
+                                }, 
                             scales: {
                                 yAxes: [{
                                     ticks: {
