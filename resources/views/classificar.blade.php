@@ -3,9 +3,9 @@
 <div class="row">
     <div class="col-md-12">
         <div class="header-text">
-            <h3><i class="fa fa-check"></i> Perfil ODS Classificar</h3>
+            <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Classificar</h3>
             <div class="cabecalho">
-              <h5 class="mb-0">Classifique os textos de acordo com a ODS identificada na leitura</h5>
+              <h5 class="mb-0">Classifique os textos de acordo com o ODS identificado na leitura</h5>
               <p>A classificação manual auxilia no processo de melhoria da qualidade da classificação dos modelos de Inteligência Artificial</p>
             </div>
          </div>

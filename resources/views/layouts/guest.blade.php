@@ -58,11 +58,19 @@
             <i class="fa fa-pie-chart mr-2"></i> Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ url('colaborar') }}" class="nav-link">
-            <i class="fa fa-users mr-2"></i> COLABORAR
-            </a>
-          </li>
+          @if(Auth::user())
+            <li class="nav-item">
+              <a href="{{ url('classificar') }}" class="nav-link">
+              <i class="fa fa-users mr-2"></i> COLABORAR
+              </a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a href="{{ url('colaborar') }}" class="nav-link">
+              <i class="fa fa-users mr-2"></i> COLABORAR
+              </a>
+            </li>
+          @endif
           <!--
           <li class="nav-item">
             <a href="{{ url('classificar') }}" class="nav-link">
@@ -82,12 +90,24 @@
             </a>
           </li>
           
-          <li class="nav-item ">
-            <a href="{{ url('login') }}" class="nav-link">
-              <i class="fa fa-lock"></i> Login
-            </a>
-          </li>
+          @if(Auth::user())
+            <li class="nav-item ">
+              <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
+                <i class="fa fa-power-off"></i> Sair
+              </a>
+            </li>
+          @else
+            <li class="nav-item ">
+              <a href="{{ url('login') }}" class="nav-link">
+                <i class="fa fa-lock"></i> Login
+              </a>
+            </li>
+          @endif      
+
         </ul>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          @csrf
+        </form>
       </div>
     </div>
   </nav>

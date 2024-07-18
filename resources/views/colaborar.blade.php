@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
        <div class="header-text">
-            <h3><i class="fa fa-users"></i> Perfil ODS Colaborar</h3>
+            <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Colaborar</h3>
             <div class="cabecalho">
                 <h5 class="mb-0">Registre-se e ajude a aumentar nossa base de conhecimento</h5>
                 <p>A classificação manual auxilia no processo de melhoria da qualidade da classificação dos modelos de Inteligência Artificial</p>

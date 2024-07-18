@@ -4,33 +4,35 @@
     <div class="col-md-3">
         <h6 class="mb-2"><i class="fa fa-filter"></i> Filtros</h6>
         <div class="form-group">
+            <label>Instituição</label>
             <select class="form-control" name="ies" id="ies" aria-label="Default select example">
-                <option>IES</option>
+                <option>Todas</option>
                 <option>UFSC</option>
             </select>
         </div>
         <div class="form-group">
+            <label>Ano</label>
             <select class="form-control" name="ano" id="ano" aria-label="Default select example">
-                <option>Ano</option>
+                <option>Todos</option>
             </select>
         </div>
         <div class="form-group">
+            <label>Dimensão</label>
             <select class="form-control" aria-label="Default select example">
-                <option>Dimensão</option>
-                <option>Ensino</option>
+                <option>Todas</option>
                 <option>Pesquisa</option>
-                <option>Extensão</option>
-                <option>Inovação</option>
             </select>
         </div>
         <div class="form-group">
+            <label>PPG</label>
             <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
-                <option>PPG</option>
+                <option>Todos</option>
             </select>
         </div>        
         <div class="form-group">
+            <label>Docente</label>
             <select class="form-control" name="docente" id="docente" aria-label="Default select example">
-                <option>Docente</option>
+                <option>Todos</option>
             </select>
         </div>       
    </div>

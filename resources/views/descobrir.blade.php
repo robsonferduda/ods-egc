@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-md-12">
        <div class="header-text">
-          <h3><i class="fa fa-files-o"></i> Perfil ODS Descobrir</h3>
+          <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Descobrir</h3>
           <div class="cabecalho">
             <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
             <p>Informe seu texto para classificação</p>
