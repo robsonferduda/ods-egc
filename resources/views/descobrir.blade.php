@@ -140,7 +140,7 @@
                            });
 
                            new Chart(document.getElementById("resultado-ods"), {
-                           "type": "doughnut",
+                           "type": "bar",
                               "data": {
                                     "labels": ["ODS 1", "ODS 2", "ODS 3", "ODS 4","ODS 5","ODS 6","ODS 7","ODS 8","ODS 9","ODS 10","ODS 11","ODS 12","ODS 13","ODS 14","ODS 15","ODS 16","ODS 17"],
                                     "datasets": [{
