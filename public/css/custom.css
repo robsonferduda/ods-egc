@@ -245,3 +245,8 @@ mark17{
 .container-ods > div > strong{
     display: block;
 }
+
+.result-proba{
+    text-align: center;
+    font-size: 35px;
+}
