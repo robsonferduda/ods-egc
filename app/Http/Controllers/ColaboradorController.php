@@ -39,6 +39,7 @@ class ColaboradorController extends Controller
         }else{
 
             $nome = 'usuario-'.str_pad(User::max('id'), 6, "0", STR_PAD_LEFT);
+            $nome = $request->nome;
 
             $request->merge(['name' => $nome]);
             $request->merge(['password' => \Hash::make($request->password)]);
