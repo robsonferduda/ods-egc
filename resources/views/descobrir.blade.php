@@ -6,7 +6,7 @@
           <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Descobrir</h3>
           <div class="cabecalho">
             <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
-            <p>Informe seu texto para classificação</p>
+            <p>Informe seu texto para classificação automática</p>
           </div>
        </div>
     </div>  
