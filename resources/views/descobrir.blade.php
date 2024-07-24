@@ -44,6 +44,7 @@
             <div class="row">
                <div class="col-md-12 mt-3 mb-5">
                   <canvas id="resultado-ods" class="chartjs"></canvas>
+                  <p><strong>Importante!</strong>: </p>
                </div>
             </div>
          </div>         
@@ -108,7 +109,7 @@
                         $(".ods-result").addClass("d-block");
 
                         $.each(data.resultado, function(i, item) {
-                              $(".img-ods").append('<div class="col-md-2 col-sm-12"><img src="'+host+'/img/ods-icone/ods_'+item.ods+'.png" class="img-fluid img-ods" alt="ODS '+item.ods+'"></div>');
+                              $(".img-ods").append('<div class="col-md-2 col-sm-12"><img src="'+host+'/img/ods-icone/ods_'+item.ods+'.png" class="img-fluid img-ods" alt="ODS '+item.ods+'"><p>'+Math.trunc(item.probabilidade*100)+'</p></div>');
                         });
 
                         $("#mytext").text($("#texto_ods").val());
