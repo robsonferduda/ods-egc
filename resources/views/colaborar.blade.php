@@ -18,7 +18,10 @@
                     <h5 class="mb-0">Preencha seus dados</h5>
                     <span>Os participantes não serão identificados *</span>
                     <div class="form-group mt-2">
-                    <input type="email" name="email" placeholder="Email" class="form-control" required>
+                        <input type="nome" name="nome" placeholder="Nome" class="form-control" required>
+                    </div>
+                    <div class="form-group mt-2">
+                        <input type="email" name="email" placeholder="Email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <select name="cd_estado" id="cd_estado" class="form-control" required>
