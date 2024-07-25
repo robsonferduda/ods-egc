@@ -202,4 +202,45 @@ class ODSController extends Controller
 
         return response()->json($dados);
     }
+
+    public function getTotalProfessores(){
+
+        $sql = "SELECT t1.nm_orientador, count(*) AS total 
+                FROM capes_teses_dissertacoes_ctd t1 
+                JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+                GROUP BY nm_orientador 
+                ORDER BY total DESC, nm_orientador ASC
+                LIMIT 5";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+        return response()->json($dados);
+    }
+
+    public function getRanking($docente){
+
+        $sql = "SELECT rank_number FROM(
+                    SELECT nm_orientador, count(*) AS total , 
+                        RANK () OVER ( 
+                            
+                            ORDER BY count(*) DESC
+                        ) rank_number
+                    FROM capes_teses_dissertacoes_ctd
+                    GROUP BY nm_orientador 
+                    ORDER BY total DESC) ranking 
+                WHERE nm_orientador ILIKE '%$docente%'";
+
+        $dados = DB::connection('pgsql')->select($sql)[0];
+
+        return response()->json($dados);
+    }
+
+    public function getMaxRanking(){
+
+        $sql = "SELECT count(distinct nm_orientador) AS total FROM capes_teses_dissertacoes_ctd";
+
+        $dados = DB::connection('pgsql')->select($sql)[0];
+
+        return response()->json($dados);
+    }
 }

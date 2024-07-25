@@ -22,6 +22,10 @@ Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classifi
 
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 
+Route::get('docentes', 'ODSController@getTotalProfessores');
+Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
+Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
+
 Route::get('sobre', 'HomeController@sobre');
 
 Route::get('minhas-avaliacoes', 'ODSController@avaliacoes');

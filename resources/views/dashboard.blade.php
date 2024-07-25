@@ -1,57 +1,102 @@
 @extends('layouts.guest')
 @section('content')
 <div class="row">
-    <div class="col-md-3">
-        <h6 class="mb-2"><i class="fa fa-filter"></i> Filtros</h6>
-        <div class="form-group">
-            <label>Instituição</label>
-            <select class="form-control" name="ies" id="ies" aria-label="Default select example">
-                <option>Todas</option>
-                <option>UFSC</option>
-            </select>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <h6 class="mb-2"><i class="fa fa-filter"></i> Filtros</h6>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Instituição</label>
+                    <select class="form-control" name="ies" id="ies" aria-label="Default select example">
+                        <option>Todas</option>
+                        <option value="ufsc" selected>UFSC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Dimensão</label>
+                    <select class="form-control" aria-label="Default select example">
+                        <option value="todas">Todas</option>
+                        <option value="pesquisa">Pesquisa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Ano</label>
+                    <select class="form-control" name="ano" id="ano" aria-label="Default select example">
+                        <option>Todos</option>
+                    </select>
+                </div>   
+            </div>    
+            <div class="col-md-3"> 
+                <div class="form-group">
+                    <label>PPG</label>
+                    <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
+                        <option>Todos</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="col-md-3">       
+                <div class="form-group">
+                    <label>Docente</label>
+                    <select class="form-control" name="docente" id="docente" aria-label="Default select example">
+                        <option>Todos</option>
+                    </select>
+                </div> 
+            </div>    
+        </div>  
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-12"> 
+        <h6>UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
+        <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
+    </div>
+</div>
+<div class="row mt-3" id="dados-geral">
+    <div class="col-md-6 painel">            
+        <div class="col-md-12">
+            <canvas id="myChart" width="400" height="400"></canvas>  
         </div>
-        <div class="form-group">
-            <label>Ano</label>
-            <select class="form-control" name="ano" id="ano" aria-label="Default select example">
-                <option>Todos</option>
-            </select>
+    </div>
+    <div class="col-md-5 ml-3 top-docentes"> 
+        <div class="row">
+            <h6>RANKING DOCENTES</h6>
         </div>
-        <div class="form-group">
-            <label>Dimensão</label>
-            <select class="form-control" aria-label="Default select example">
-                <option>Todas</option>
-                <option>Pesquisa</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>PPG</label>
-            <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
-                <option>Todos</option>
-            </select>
-        </div>        
-        <div class="form-group">
-            <label>Docente</label>
-            <select class="form-control" name="docente" id="docente" aria-label="Default select example">
-                <option>Todos</option>
-            </select>
-        </div>       
-   </div>
-   <div class="col-md-9 painel">
-        <div class="row mt-3" id="dados-geral">
-            <p><strong>Dimensão</strong>: Pesquisa > Distribuição de ODS</p>
-            <canvas id="myChart" width="400" height="400"></canvas>
-            <h6>DOCUMENTOS ANALISADOS</h6>
-            <div class="mb-1" id="lista_documentos"></div>
-            <a href="#" class="mb-5">VER TODOS</a>
-        </div>
-        <div class="row mt-3 d-none" id="perfil-docente">
-            <div class="col-md-4 center">
-                <img src="{{ asset('img/user.png') }}" class="img-fluid rounded-circle w-75">
+        <div class="row lista-docentes">           
             
+        </div>
+    </div>
+    <div class="col-md-12 mt-5 mb-5 painel">
+        <h6>DOCUMENTOS ANALISADOS</h6>
+        <div class="mb-1" id="lista_documentos"></div>
+        <a href="#" class="mb-5">VER TODOS</a>
+    </div>
+</div>
+    <div class="col-md-12 painel">
+        <div class="row mt-3 d-none" id="perfil-docente">
+            <div class="col-md-3 center">
+                <img src="{{ asset('img/user.png') }}" class="img-fluid rounded-circle w-75">            
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
             </div>
-            <div class="col-md-8 mt-3">
+            <div class="col-md-2 center">
+                <div class="row">
+                    <div class="col-md-12 center">
+                        <h1 class="mb-0">125</h1>
+                        <p>SCORE</p>
+                    </div>
+                    <div class="col-md-12 center">
+                        <h1 class="mb-0"><span class="ranking"></span><span class="ranking_geral" style="font-size: 14px; font-weight: 400;"></span></h1>
+                        <p>RANKING</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
                 <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
             <div class="col-md-12 painel mt-3 mb-5">
@@ -65,7 +110,7 @@
             </div>            
         </div>  
    </div>
-</div>
+
 @endsection
 @section('script')
     <script>
@@ -85,6 +130,24 @@
                     data.forEach(element => {
                         
                         $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.nm_producao+'</p><p class="mt-1 mb-0"><strong> '+element.nm_programa+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
+                    });
+                },
+                complete: function(){
+                    
+                }
+            });
+
+            $.ajax({
+                url: host+'/docentes',
+                type: 'GET',
+                beforeSend: function() {
+                    
+                },
+                success: function(data) {
+        
+                    data.forEach(element => {
+                        
+                        $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="{{ asset("img/user.png") }}" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
                     });
                 },
                 complete: function(){
@@ -201,6 +264,34 @@
                             });
                             return;
                         }
+
+                        $.ajax({
+                            url: host+'/docentes/ranking/'+docente,
+                            type: 'GET',
+                            beforeSend: function() {
+                                
+                            },
+                            success: function(data) {
+                                $(".ranking").html(data.rank_number);
+                            },
+                            complete: function(){
+                                
+                            }
+                        });
+
+                        $.ajax({
+                            url: host+'/docentes/max-ranking',
+                            type: 'GET',
+                            beforeSend: function() {
+                                
+                            },
+                            success: function(data) {
+                                $(".ranking_geral").html('/'+data.total);
+                            },
+                            complete: function(){
+                                
+                            }
+                        });
 
                         $("#dados-geral").addClass("d-none");
                         $("#perfil-docente").removeClass("d-none");
