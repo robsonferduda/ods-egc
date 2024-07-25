@@ -44,7 +44,6 @@
             <div class="row">
                <div class="col-md-12 mt-3 mb-5">
                   <canvas id="resultado-ods" class="chartjs"></canvas>
-                  <p><strong>Importante!</strong>: </p>
                </div>
             </div>
          </div>         
