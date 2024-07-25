@@ -141,7 +141,7 @@
                 url: host+'/docentes',
                 type: 'GET',
                 beforeSend: function() {
-                    
+                    $('.top-docentes').loader('show');                    
                 },
                 success: function(data) {
         
@@ -151,7 +151,7 @@
                     });
                 },
                 complete: function(){
-                    
+                    $('.top-docentes').loader('hide');
                 }
             });
 
@@ -228,7 +228,7 @@
                         }
                         
                         $('#docente').empty();
-                        $('#docente').append('<option value="">Docente</option>').val('');
+                        $('#docente').append('<option value="">Todos</option>').val('');
                         data.forEach(element => {
                             let option = new Option(element.nm_orientador, element.nm_orientador);
                             $('#docente').append(option);
