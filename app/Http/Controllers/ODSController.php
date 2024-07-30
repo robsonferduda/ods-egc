@@ -68,6 +68,34 @@ class ODSController extends Controller
         return response()->json($totais);
     }
 
+    public function getTotalGeralPPG($ppg)
+    {
+        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
+                FROM capes_teses_dissertacoes_ctd t0
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                JOIN ods t2 ON t2.cod = t1.ods 
+                WHERE nm_programa = '$ppg'
+                GROUP BY t1.ods, t2.cor 
+                ORDER BY t1.ods";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+
+        $ods = array_column($dados, 'ods');
+        $cor = array_column($dados, 'cor');
+        $total = array_column($dados, 'total');
+
+        /*
+        $ods[] = 17;
+        $cor[] = '#19486A';
+        $total[] = 0;
+        */
+
+        $totais = array('ods' => $ods, 'cor' => $cor, 'total' => $total);
+
+        return response()->json($totais);
+    }
+
     public function classificar()
     {
         $texto = Documento::find(rand(1681, 2681));
@@ -208,6 +236,21 @@ class ODSController extends Controller
         $sql = "SELECT t1.nm_orientador, count(*) AS total 
                 FROM capes_teses_dissertacoes_ctd t1 
                 JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+                GROUP BY nm_orientador 
+                ORDER BY total DESC, nm_orientador ASC
+                LIMIT 5";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+        return response()->json($dados);
+    }
+
+    public function getTotalProfessoresPPG($ppg){
+
+        $sql = "SELECT t1.nm_orientador, count(*) AS total 
+                FROM capes_teses_dissertacoes_ctd t1 
+                JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+                WHERE nm_programa = '$ppg'
                 GROUP BY nm_orientador 
                 ORDER BY total DESC, nm_orientador ASC
                 LIMIT 5";

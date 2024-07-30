@@ -14,6 +14,7 @@ Route::post('ods/descobrir', 'ODSController@descobrir');
 Route::get('dados/ano', 'ODSController@getAno');
 Route::get('dados/documentos', 'ODSController@getDocumentos');
 Route::get('dados/geral', 'ODSController@getTotalGeral');
+Route::get('dados/geral/ppg/{ppg}', 'ODSController@getTotalGeralPPG');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
@@ -23,6 +24,7 @@ Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classifi
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
+Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
 Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
 

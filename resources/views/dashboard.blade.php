@@ -120,6 +120,60 @@
             var token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
+                url: host+'/dados/geral',
+                type: 'GET',
+                beforeSend: function() {
+                    
+                },
+                success: function(data) {
+
+                    let GraficoGeral = null;
+                    let graphareaGeral = document.getElementById("myChart").getContext("2d");
+                    let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
+                                
+                    if (chartStatusGeral != undefined) {
+                        chartStatusGeral.destroy();
+                    }
+
+                    GraficoGeral = new Chart(graphareaGeral, {
+                        type: 'bar',
+                        data: {
+                            labels: data.ods,
+                            datasets: [{
+                                label: false,
+                                data: data.total,
+                                backgroundColor: data.cor,
+                                borderWidth: 0
+                            }]
+                        },
+                        options: {
+                            
+                            plugins: { 
+                                    title: { 
+                                        display: false, 
+                                        text: 'Distribuição de total por dimensão' 
+                                    }, 
+                                    legend: {
+                                        display: false
+                                    }
+                                }, 
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                       
+                },
+                complete: function(){
+                        
+                }
+            });
+
+            $.ajax({
                 url: host+'/dados/documentos',
                 type: 'GET',
                 beforeSend: function() {
@@ -218,6 +272,10 @@
                         $('.painel').loader('show');
                     },
                     success: function(data) {
+
+                        $("#dados-geral").removeClass("d-none");
+                        $("#perfil-docente").addClass("d-none");
+
                         if(!data) {
                             Swal.fire({
                                 text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
@@ -233,6 +291,80 @@
                             let option = new Option(element.nm_orientador, element.nm_orientador);
                             $('#docente').append(option);
                         });
+
+                        $.ajax({
+                            url: host+'/docentes/ppg/'+ppg,
+                            type: 'GET',
+                            beforeSend: function() {
+                                $('.top-docentes').loader('show');                    
+                            },
+                            success: function(data) {
+
+                                $('.lista-docentes').empty();
+                                data.forEach(element => {
+                                    
+                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="{{ asset("img/user.png") }}" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                                });
+                            },
+                            complete: function(){
+                                $('.top-docentes').loader('hide');
+                            }
+                        });
+
+                        $.ajax({
+                            url: host+'/dados/geral/ppg/'+ppg,
+                            type: 'GET',
+                            beforeSend: function() {
+                                
+                            },
+                            success: function(data) {
+
+                                let GraficoGeral = null;
+                                let graphareaGeral = document.getElementById("myChart").getContext("2d");
+                                let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
+                                            
+                                if (chartStatusGeral != undefined) {
+                                    chartStatusGeral.destroy();
+                                }
+
+                                GraficoGeral = new Chart(graphareaGeral, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: data.ods,
+                                        datasets: [{
+                                            label: false,
+                                            data: data.total,
+                                            backgroundColor: data.cor,
+                                            borderWidth: 0
+                                        }]
+                                    },
+                                    options: {
+                                        
+                                        plugins: { 
+                                                title: { 
+                                                    display: false, 
+                                                    text: 'Distribuição de total por dimensão' 
+                                                }, 
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }, 
+                                        scales: {
+                                            yAxes: [{
+                                                ticks: {
+                                                    beginAtZero:true
+                                                }
+                                            }]
+                                        }
+                                    }
+                                });
+                                
+                            },
+                            complete: function(){
+                                    
+                            }
+                        });
+
                     },
                     complete: function(){
                         $('.painel').loader('hide');
@@ -578,53 +710,6 @@
                   timer: 1500
                });
 
-            });
-
-            $.ajax({
-                url: host+'/dados/geral',
-                type: 'GET',
-                beforeSend: function() {
-                    
-                },
-                success: function(data) {
-
-                    var ctx = document.getElementById("myChart").getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: data.ods,
-                            datasets: [{
-                                label: false,
-                                data: data.total,
-                                backgroundColor: data.cor,
-                                borderWidth: 0
-                            }]
-                        },
-                        options: {
-                            
-                            plugins: { 
-                                    title: { 
-                                        display: false, 
-                                        text: 'Distribuição de total por dimensão' 
-                                    }, 
-                                    legend: {
-                                        display: false
-                                    }
-                                }, 
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-                       
-                },
-                complete: function(){
-                        
-                }
             });
 
         });
