@@ -234,6 +234,10 @@ mark17{
     cursor: pointer;
 }
 
+.perfil-docente-mostrar:hover{
+    cursor: pointer;
+}
+
 .container-ods {position: relative;}
 
 .container-ods > div{

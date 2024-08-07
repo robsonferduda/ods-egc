@@ -67,9 +67,15 @@
         <div class="row">
             <h6>RANKING DOCENTES</h6>
         </div>
-        <div class="row lista-docentes">           
+        <div class="lista-docentes">           
             
         </div>
+    </div>
+    <div class="col-md-12 painel-icones mt-3 mb-0 mr-4 ml-4">
+        <div class="row perfil-ods"> 
+
+        </div>
+        
     </div>
     <div class="col-md-12 mt-5 mb-5 painel">
         <h6>DOCUMENTOS ANALISADOS</h6>
@@ -80,7 +86,7 @@
     <div class="col-md-12 painel">
         <div class="row mt-3 d-none" id="perfil-docente">
             <div class="col-md-3 center">
-                <img src="{{ asset('img/user.png') }}" class="img-fluid rounded-circle w-75">            
+                <img src="" class="img-fluid rounded-circle w-75 foto-perfil">            
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
             </div>
@@ -99,7 +105,7 @@
             <div class="col-md-7">
                 <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
-            <div class="col-md-12 painel mt-3 mb-5">
+            <div class="col-md-12 painel-icones mt-3 mb-5">
                 <div class="row perfil-ods"> 
 
                 </div>
@@ -114,6 +120,7 @@
 @endsection
 @section('script')
     <script>
+
         $(document).ready(function() { 
 
             var host =  $('meta[name="base-url"]').attr('content');
@@ -201,7 +208,7 @@
         
                     data.forEach(element => {
                         
-                        $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="{{ asset("img/user.png") }}" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                        $('.lista-docentes').append('<div class="row mt-3 perfil-docente-mostrar" data-docente="'+element.nm_orientador+'"><div class="col-md-2 center"><img src="'+host+'/img/docentes/'+element.foto+'.jpg" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-1"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
                     });
                 },
                 complete: function(){
@@ -261,6 +268,14 @@
                 }
             });
 
+            $(document).on('click', '.perfil-docente-mostrar', function() {
+                
+                var docente = $(this).data("docente");
+
+                carregaDocente("Todos", docente);
+                
+            });
+
             $("#ppg").click(function(){
 
                 var ppg = $(this).val();
@@ -303,7 +318,7 @@
                                 $('.lista-docentes').empty();
                                 data.forEach(element => {
                                     
-                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="{{ asset("img/user.png") }}" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="'+element.foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
                                 });
                             },
                             complete: function(){
@@ -318,6 +333,16 @@
                                 
                             },
                             success: function(data) {
+
+                                $(".perfil-ods").empty();
+
+                                for (let i=1; i<=17; i++)  {
+                                    if(data.ods.includes(i)){
+                                        $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                    }else{
+                                        $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                    }
+                                }
 
                                 let GraficoGeral = null;
                                 let graphareaGeral = document.getElementById("myChart").getContext("2d");
@@ -378,6 +403,12 @@
                 var ppg = $("#ppg").val();
                 var docente = $(this).val();
 
+                carregaDocente(ppg, docente);        
+
+            });
+
+            function carregaDocente(ppg, docente){
+
                 $.ajax({
                     url: host+'/dados/ppg/'+ppg+'/docente/'+docente+'/ods',
                     type: 'GET',
@@ -405,6 +436,20 @@
                             },
                             success: function(data) {
                                 $(".ranking").html(data.rank_number);
+                            },
+                            complete: function(){
+                                
+                            }
+                        });
+
+                        $.ajax({
+                            url: host+'/docentes/foto/'+docente,
+                            type: 'GET',
+                            beforeSend: function() {
+                                
+                            },
+                            success: function(data) {
+                                $(".foto-perfil").attr('src', host+'/img/docentes/'+data.foto+'.jpg');
                             },
                             complete: function(){
                                 
@@ -627,51 +672,13 @@
                                 } 
                             } 
                         });
-
-                        
-
-                
-                        /*
-                        new Chart(document.getElementById("chartjs-3"), {
-                            "type": "radar",
-                            "data": {
-                                "labels": ["ENSINO", "PESQUISA", "EXTENSÃO", "INOVAÇÃO","GESTÃO"],
-                                "datasets": [ {
-                                    "label": "Radar ODS",
-                                    "data": [ 48, 40, 50, 65, 54],
-                                    "fill": false,
-                                    "backgroundColor": "rgba(54, 162, 235, 0.2)",
-                                    "borderColor": "rgb(54, 162, 235)",
-                                    "pointBackgroundColor": "rgb(54, 162, 235)",
-                                    "pointBorderColor": "#fff",
-                                    "pointHoverBackgroundColor": "#fff",
-                                    "pointHoverBorderColor": "rgb(54, 162, 235)"
-                                }]
-                            },
-                            "options": {
-                                "elements": {
-                                    "line": {
-                                        "tension": 0,
-                                        "borderWidth": 3
-                                    }
-                                },
-                                legend: {
-                                    display: false
-                                },
-                                scale: {
-                                    pointLabels: {
-                                    fontSize: 16
-                                    }
-                                }
-                            }
-                        });*/
                     },
                     complete: function(){
                         $('.painel').loader('hide');
                     }
                 });
 
-            });
+            }
 
             $(".btn-discovery").click(function(){
 

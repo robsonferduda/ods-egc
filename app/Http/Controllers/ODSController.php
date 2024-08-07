@@ -221,8 +221,8 @@ class ODSController extends Controller
                 FROM capes_teses_dissertacoes_ctd t1 
                 JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
                 JOIN ods t3 ON t3.cod = t2.ods 
-                WHERE nm_programa = '$ppg'
-                AND nm_orientador = '$docente'
+                WHERE nm_orientador = '$docente'
+                /*AND nm_programa = '$ppg'*/
                 GROUP BY t2.ods, t3.cor 
                 ORDER BY ods ";
 
@@ -233,10 +233,11 @@ class ODSController extends Controller
 
     public function getTotalProfessores(){
 
-        $sql = "SELECT t1.nm_orientador, count(*) AS total 
+        $sql = "SELECT t1.nm_orientador, foto, count(*) AS total 
                 FROM capes_teses_dissertacoes_ctd t1 
-                JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
-                GROUP BY nm_orientador 
+                JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual
+                LEFT JOIN docente_foto t3 ON t3.nm_docente = t1.nm_orientador 
+                GROUP BY nm_orientador, foto 
                 ORDER BY total DESC, nm_orientador ASC
                 LIMIT 5";
 
@@ -272,6 +273,15 @@ class ODSController extends Controller
                     GROUP BY nm_orientador 
                     ORDER BY total DESC) ranking 
                 WHERE nm_orientador ILIKE '%$docente%'";
+
+        $dados = DB::connection('pgsql')->select($sql)[0];
+
+        return response()->json($dados);
+    }
+
+    public function getImagem($docente){
+
+        $sql = "SELECT * FROM docente_foto WHERE nm_docente ILIKE '%$docente%'";
 
         $dados = DB::connection('pgsql')->select($sql)[0];
 

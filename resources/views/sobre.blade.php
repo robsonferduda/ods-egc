@@ -19,6 +19,8 @@
             <p class="mb-1"><strong>Nível</strong>: Doutorado </p>
             <p class="mb-1"><strong>Área de Concentração</strong>: Engenharia do Conhecimento</p>
             <p class="mb-1"><strong>Linha de Pesquisa</strong>: Teoria e prática em Engenharia do Conhecimento </p>
+            <p class="mb-1"><strong>Projeto de Pesquisa</strong>: A ferramenta denominada de <strong>Perfil ODS</strong> é resultado de uma pesquisa de doutorado que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
+            documentos de natureza heterogênea, produzidos pelas IES em suas atividades de ensino, pesquisa, extensão, gestão e inovação.</p>
         </div>
     </div>  
     <div class="row mt-5">
