@@ -206,8 +206,9 @@ class ODSController extends Controller
 
     public function getDocente($ppg){
 
-        $sql = "SELECT DISTINCT nm_orientador 
-                FROM capes_teses_dissertacoes_ctd
+        $sql = "SELECT DISTINCT nm_orientador, t2.chave 
+                FROM capes_teses_dissertacoes_ctd t1
+                LEFT JOIN docente_foto t2 ON t2.nm_docente = t1.nm_orientador 
                 WHERE nm_programa = '$ppg'
                 ORDER BY nm_orientador";
 
@@ -233,11 +234,11 @@ class ODSController extends Controller
 
     public function getTotalProfessores(){
 
-        $sql = "SELECT t1.nm_orientador, foto, count(*) AS total 
+        $sql = "SELECT t1.nm_orientador, chave, count(*) AS total 
                 FROM capes_teses_dissertacoes_ctd t1 
                 JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual
                 LEFT JOIN docente_foto t3 ON t3.nm_docente = t1.nm_orientador 
-                GROUP BY nm_orientador, foto 
+                GROUP BY nm_orientador, chave 
                 ORDER BY total DESC, nm_orientador ASC
                 LIMIT 5";
 
@@ -248,11 +249,12 @@ class ODSController extends Controller
 
     public function getTotalProfessoresPPG($ppg){
 
-        $sql = "SELECT t1.nm_orientador, count(*) AS total 
+        $sql = "SELECT t1.nm_orientador, chave, count(*) AS total 
                 FROM capes_teses_dissertacoes_ctd t1 
                 JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
+                LEFT JOIN docente_foto t3 ON t3.nm_docente = t1.nm_orientador
                 WHERE nm_programa = '$ppg'
-                GROUP BY nm_orientador 
+                GROUP BY nm_orientador, chave 
                 ORDER BY total DESC, nm_orientador ASC
                 LIMIT 5";
 
