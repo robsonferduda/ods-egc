@@ -23,6 +23,11 @@ Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classifi
 
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 
+Route::get('dados/extensao/exportar', 'ExtensaoController@importar');
+Route::get('dados/extensao/coordenador', 'ExtensaoController@mapCoordenador');
+Route::get('dados/extensao/participantes', 'ExtensaoController@mapParticipantes');
+Route::get('dados/extensao/grafo', 'ExtensaoController@grafo');
+
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');

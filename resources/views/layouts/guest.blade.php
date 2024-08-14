@@ -152,6 +152,12 @@
   <script src="{{ asset('js/plugins/jquery.loader.min.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js"></script>
   <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+
+<script src="//cdn.amcharts.com/lib/4/core.js"></script>
+<script src="//cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="//cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+
   @yield('script')
   <script>
     $(document).ready(function() {
