@@ -205,10 +205,18 @@
                     $('.top-docentes').loader('show');                    
                 },
                 success: function(data) {
+
+                    var foto = "";
         
                     data.forEach(element => {
+
+                        if(element.chave){
+                            foto = host+'/img/docentes/'+element.chave+'.jpg';
+                        }else{
+                            foto = host+'/img/docentes/user.png';
+                        }
                         
-                        $('.lista-docentes').append('<div class="row mt-3 perfil-docente-mostrar" data-docente="'+element.nm_orientador+'"><div class="col-md-2 center"><img src="'+host+'/img/docentes/'+element.foto+'.jpg" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-1"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                        $('.lista-docentes').append('<div class="row mt-3 perfil-docente-mostrar" data-docente="'+element.nm_orientador+'"><div class="col-md-2 center"><img src="'+foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-1"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
                     });
                 },
                 complete: function(){
@@ -276,7 +284,7 @@
                 
             });
 
-            $("#ppg").click(function(){
+            $("#ppg").change(function(){
 
                 var ppg = $(this).val();
                 
@@ -317,8 +325,14 @@
 
                                 $('.lista-docentes').empty();
                                 data.forEach(element => {
-                                    
-                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img src="'+element.foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+
+                                    foto = host+'/img/docentes/user.png';
+                                
+                                    if(element.chave){
+                                        foto = host+'/img/docentes/'+element.chave+'.jpg';
+                                    }
+                                        
+                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img style="height: 50px;" src="'+foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
                                 });
                             },
                             complete: function(){
@@ -449,7 +463,14 @@
                                 
                             },
                             success: function(data) {
-                                $(".foto-perfil").attr('src', host+'/img/docentes/'+data.foto+'.jpg');
+
+                                foto = host+'/img/docentes/user.png';
+                                
+                                if(data.chave){
+                                    foto = host+'/img/docentes/'+data.chave+'.jpg';
+                                }
+
+                                $(".foto-perfil").attr('src', foto);
                             },
                             complete: function(){
                                 
