@@ -43,7 +43,7 @@ class ExtensaoController extends Controller
             $coordenador = preg_replace('/[\[\]]/ui', '', $row[2]);
             $participantes = preg_replace('/[\[\]]/ui', '', $row[4]);
             
-            $insert = array('titulo', $row[0],
+            $insert = array('titulo' => $row[0],
                             'resumo' => $row[1],
                             'coordenador' => $coordenador,
                             'depto' => $row[3],
