@@ -98,4 +98,26 @@ class ExtensaoController extends Controller
             }
         }
     }
+
+    public function getRelacoes()
+    {
+        /*
+        $dados = array(
+                array("name" => "Giustino Tribuzi", "value" => 100),
+                array("name" => "Robson Fernando Duda", "value" => 100),
+                array("name" => "Teste", 
+                      "value" => 100,
+                      "children" => array(array("name" => "Amandeus", "value" => 100)))
+            );
+        */
+
+        $dados = array();
+        $relacoes = Relacao::limit(10)->get();
+
+        foreach ($relacoes as $key => $relacao) {
+            $dados[] = array("name" => $relacao->id_coordenador, "value" => 100);
+        }
+
+        return response()->json($dados);
+    }
 }
