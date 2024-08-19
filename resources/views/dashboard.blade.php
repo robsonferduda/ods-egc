@@ -81,7 +81,7 @@
     <div class="col-md-12 mt-5 mb-5 painel">
         <h6>DOCUMENTOS ANALISADOS</h6>
         <div class="mb-1" id="lista_documentos"></div>
-        <a href="#" class="mb-5">VER TODOS</a>
+        <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
     </div>
 </div>
     <div class="col-md-12 painel">
@@ -129,7 +129,7 @@
             var dimensao = $("#dimensao").val();
 
             graficoDistribuicaoBarras(dimensao);  
-            documentosAnalisados(dimensao); 
+            documentosAnalisados(dimensao, 'todos'); 
 
             $.ajax({
                 url: host+'/docentes',
@@ -214,7 +214,7 @@
                 var dimensao = $(this).val();
 
                 graficoDistribuicaoBarras(dimensao); 
-                documentosAnalisados(dimensao);
+                documentosAnalisados(dimensao, 'todos');
                 
             });
 
@@ -363,10 +363,10 @@
 
             });
 
-            function documentosAnalisados(dimensao){
+            function documentosAnalisados(dimensao, ods){
 
                 $.ajax({
-                    url: host+'/dados/documentos/'+dimensao,
+                    url: host+'/dados/documentos/'+dimensao+'/ods/'+ods,
                     type: 'GET',
                     beforeSend: function() {
                         

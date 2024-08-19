@@ -25,6 +25,12 @@ class ODSController extends Controller
         
     }
 
+    public function repositorio()
+    {
+        $ods = Ods::orderBy('cod')->get();
+        return view('repositorio', compact('ods'));
+    }
+
     public function getDadosOds($ods)
     {
         $ods = Ods::find($ods);
@@ -32,23 +38,25 @@ class ODSController extends Controller
         return response()->json($ods);
     }
 
-    public function getDocumentos($dimensao)
+    public function getDocumentos($dimensao, $ods)
     {
-        $where = "";
+        $where = " WHERE 1=1 ";
 
         switch ($dimensao) {
             case 'extensao':
-                $where = ' WHERE id_dimensao = 2 '; 
+                $where = ' AND id_dimensao = 2 '; 
                 break;
 
             case 'pesquisa':
-                $where = ' WHERE id_dimensao = 1 ';
+                $where = ' AND id_dimensao = 1 ';
                 break;
             
             default:
                 $where = "";
                 break;
         }
+
+        if($ods > 0) $where .= " AND t3.cod = $ods";
 
         $sql = "SELECT t0.ods, 
 	            t3.cor, 
