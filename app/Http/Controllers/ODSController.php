@@ -32,23 +32,70 @@ class ODSController extends Controller
         return response()->json($ods);
     }
 
-    public function getDocumentos()
+    public function getDocumentos($dimensao)
     {
-            $sql = "SELECT t1.ods, t2.cor, t0.nm_programa, t0.nm_producao 
-                    FROM capes_teses_dissertacoes_ctd t0
-                    JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                    JOIN ods t2 ON t2.cod = t1.ods 
-                    LIMIT 5";
+        $where = "";
 
-        return $dados = DB::connection('pgsql')->select($sql);
+        switch ($dimensao) {
+            case 'extensao':
+                $where = ' WHERE id_dimensao = 2 '; 
+                break;
+
+            case 'pesquisa':
+                $where = ' WHERE id_dimensao = 1 ';
+                break;
+            
+            default:
+                $where = "";
+                break;
+        }
+
+        $sql = "SELECT t0.ods, 
+	            t3.cor, 
+	            t1.nm_programa,
+                CASE 
+                    WHEN t1.nm_subtipo_producao IS NOT NULL THEN t1.nm_subtipo_producao
+                    WHEN t1.nm_subtipo_producao IS NULL THEN 'Projeto de Extensão'
+                END AS complemento,
+                CASE 
+                    WHEN t1.nm_producao IS NOT NULL THEN t1.nm_producao
+                    WHEN t2.titulo IS NOT NULL THEN t2.titulo
+                END AS titulo
+                FROM documento_ods t0
+                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                LEFT JOIN extensao t2 ON t2.id = t0.id_producao_intelectual 
+                JOIN ods t3 ON t3.cod = t0.ods    
+                $where
+                LIMIT 5";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+        return $dados;
     }
 
-    public function getTotalGeral()
+    public function getTotalGeral($dimensao)
     {
+        $where = "";
+
+        switch ($dimensao) {
+            case 'extensao':
+                $where = ' WHERE id_dimensao = 2 '; 
+                break;
+
+            case 'pesquisa':
+                $where = ' WHERE id_dimensao = 1 ';
+                break;
+            
+            default:
+                $where = "";
+                break;
+        }
+
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 
                 FROM capes_teses_dissertacoes_ctd t0
-                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                RIGHT JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
                 JOIN ods t2 ON t2.cod = t1.ods 
+                $where
                 GROUP BY t1.ods, t2.cor 
                 ORDER BY t1.ods";
 

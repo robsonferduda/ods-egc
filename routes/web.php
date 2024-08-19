@@ -12,8 +12,8 @@ Route::get('descobrir', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
 Route::get('dados/ano', 'ODSController@getAno');
-Route::get('dados/documentos', 'ODSController@getDocumentos');
-Route::get('dados/geral', 'ODSController@getTotalGeral');
+Route::get('dados/documentos/{dimensao}', 'ODSController@getDocumentos');
+Route::get('dados/geral/{dimensao}', 'ODSController@getTotalGeral');
 Route::get('dados/geral/ppg/{ppg}', 'ODSController@getTotalGeralPPG');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
