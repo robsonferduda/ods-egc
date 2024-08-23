@@ -11,9 +11,11 @@ Route::get('classificar', 'ODSController@classificar');
 Route::get('descobrir', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
+Route::get('repositorio', 'ODSController@repositorio');
+
 Route::get('dados/ano', 'ODSController@getAno');
-Route::get('dados/documentos', 'ODSController@getDocumentos');
-Route::get('dados/geral', 'ODSController@getTotalGeral');
+Route::get('dados/documentos/{dimensao}/ods/{ods}', 'ODSController@getDocumentos');
+Route::get('dados/geral/{dimensao}', 'ODSController@getTotalGeral');
 Route::get('dados/geral/ppg/{ppg}', 'ODSController@getTotalGeralPPG');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
@@ -27,6 +29,7 @@ Route::get('dados/extensao/exportar', 'ExtensaoController@importar');
 Route::get('dados/extensao/coordenador', 'ExtensaoController@mapCoordenador');
 Route::get('dados/extensao/participantes', 'ExtensaoController@mapParticipantes');
 Route::get('dados/extensao/grafo', 'ExtensaoController@grafo');
+Route::get('dados/extensao/relacoes', 'ExtensaoController@getRelacoes');
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');

@@ -18,8 +18,9 @@
             <div class="col-md-2">
                 <div class="form-group">
                     <label>Dimensão</label>
-                    <select class="form-control" aria-label="Default select example">
+                    <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
                         <option value="todas">Todas</option>
+                        <option value="extensao">Extensão</option>
                         <option value="pesquisa">Pesquisa</option>
                     </select>
                 </div>
@@ -80,7 +81,7 @@
     <div class="col-md-12 mt-5 mb-5 painel">
         <h6>DOCUMENTOS ANALISADOS</h6>
         <div class="mb-1" id="lista_documentos"></div>
-        <a href="#" class="mb-5">VER TODOS</a>
+        <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
     </div>
 </div>
     <div class="col-md-12 painel">
@@ -125,78 +126,10 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
+            var dimensao = $("#dimensao").val();
 
-            $.ajax({
-                url: host+'/dados/geral',
-                type: 'GET',
-                beforeSend: function() {
-                    
-                },
-                success: function(data) {
-
-                    let GraficoGeral = null;
-                    let graphareaGeral = document.getElementById("myChart").getContext("2d");
-                    let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
-                                
-                    if (chartStatusGeral != undefined) {
-                        chartStatusGeral.destroy();
-                    }
-
-                    GraficoGeral = new Chart(graphareaGeral, {
-                        type: 'bar',
-                        data: {
-                            labels: data.ods,
-                            datasets: [{
-                                label: false,
-                                data: data.total,
-                                backgroundColor: data.cor,
-                                borderWidth: 0
-                            }]
-                        },
-                        options: {
-                            
-                            plugins: { 
-                                    title: { 
-                                        display: false, 
-                                        text: 'Distribuição de total por dimensão' 
-                                    }, 
-                                    legend: {
-                                        display: false
-                                    }
-                                }, 
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-                       
-                },
-                complete: function(){
-                        
-                }
-            });
-
-            $.ajax({
-                url: host+'/dados/documentos',
-                type: 'GET',
-                beforeSend: function() {
-                    
-                },
-                success: function(data) {
-        
-                    data.forEach(element => {
-                        
-                        $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.nm_producao+'</p><p class="mt-1 mb-0"><strong> '+element.nm_programa+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
-                    });
-                },
-                complete: function(){
-                    
-                }
-            });
+            graficoDistribuicaoBarras(dimensao);  
+            documentosAnalisados(dimensao, 'todos'); 
 
             $.ajax({
                 url: host+'/docentes',
@@ -274,6 +207,15 @@
                 complete: function(){
                     $('.painel').loader('hide');
                 }
+            });
+
+            $(document).on('change', '#dimensao', function() {
+                
+                var dimensao = $(this).val();
+
+                graficoDistribuicaoBarras(dimensao); 
+                documentosAnalisados(dimensao, 'todos');
+                
             });
 
             $(document).on('click', '.perfil-docente-mostrar', function() {
@@ -420,6 +362,88 @@
                 carregaDocente(ppg, docente);        
 
             });
+
+            function documentosAnalisados(dimensao, ods){
+
+                $.ajax({
+                    url: host+'/dados/documentos/'+dimensao+'/ods/'+ods,
+                    type: 'GET',
+                    beforeSend: function() {
+                        
+                    },
+                    success: function(data) {
+
+                        $('#lista_documentos').empty();
+            
+                        data.forEach(element => {
+                            
+                            $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
+                        });
+                    },
+                    complete: function(){
+                        
+                    }
+                });
+
+            }
+
+            function graficoDistribuicaoBarras(dimensao){
+
+                $.ajax({
+                    url: host+'/dados/geral/'+dimensao,
+                    type: 'GET',
+                    beforeSend: function() {
+                        
+                    },
+                    success: function(data) {
+
+                        let GraficoGeral = null;
+                        let graphareaGeral = document.getElementById("myChart").getContext("2d");
+                        let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
+                                    
+                        if (chartStatusGeral != undefined) {
+                            chartStatusGeral.destroy();
+                        }
+
+                        GraficoGeral = new Chart(graphareaGeral, {
+                            type: 'bar',
+                            data: {
+                                labels: data.ods,
+                                datasets: [{
+                                    label: false,
+                                    data: data.total,
+                                    backgroundColor: data.cor,
+                                    borderWidth: 0
+                                }]
+                            },
+                            options: {
+                                
+                                plugins: { 
+                                        title: { 
+                                            display: false, 
+                                            text: 'Distribuição de total por dimensão' 
+                                        }, 
+                                        legend: {
+                                            display: false
+                                        }
+                                    }, 
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero:true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                        
+                    },
+                    complete: function(){
+                            
+                    }
+                });
+
+            }
 
             function carregaDocente(ppg, docente){
 
