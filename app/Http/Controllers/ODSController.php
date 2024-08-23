@@ -151,6 +151,7 @@ class ODSController extends Controller
     public function descobrir(Request $request)
     {
         $dados = array();
+        $distribuicao = array();
 
         $item = array(
             '--texto' => $request->texto
@@ -172,13 +173,14 @@ class ODSController extends Controller
             if($probabilidades[$i] > 0.1){
                 $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
             }
+            $distribuicao[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
         }    
         
         usort($dados, function($a, $b) {
             return $b['probabilidade'] <=> $a['probabilidade'];
         });
 
-        $resultado['probabilidades'] = $probabilidades;
+        $resultado['probabilidades'] = $distribuicao;
         $resultado['resultado'] = $dados;
 
         return response()->json($resultado);
