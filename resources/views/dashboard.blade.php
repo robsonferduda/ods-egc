@@ -54,7 +54,7 @@
 </div>
 <div class="row mt-3">
     <div class="col-md-12"> 
-        <h6>UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
+        <h6><i class="fa fa-university" aria-hidden="true"></i> UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
         <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
     </div>
 </div>
@@ -212,6 +212,9 @@
             $(document).on('change', '#dimensao', function() {
                 
                 var dimensao = $(this).val();
+                var dimensao_selecionada = $("#dimensao option:selected" ).text();
+
+                $(".dimensao-selecionada").text(dimensao_selecionada);
 
                 graficoDistribuicaoBarras(dimensao); 
                 documentosAnalisados(dimensao, 'todos');
@@ -223,6 +226,15 @@
                 var docente = $(this).data("docente");
 
                 carregaDocente("Todos", docente);
+                
+            });
+
+            $(document).on('click', '.box-documento', function() {
+                
+                var id = $(this).data("id");
+                var dimensao = $(this).data("dimensao");
+
+                window.location.href = host+"/documentos/dimensao/"+dimensao+"/detalhes/"+id;
                 
             });
 
@@ -377,7 +389,7 @@
             
                         data.forEach(element => {
                             
-                            $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
+                            $('#lista_documentos').append('<div class="box-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p></div>');
                         });
                     },
                     complete: function(){

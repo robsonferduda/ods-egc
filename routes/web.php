@@ -22,6 +22,7 @@ Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
 
 Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
+Route::get('documentos/dimensao/{dimensao}/detalhes/{id}', 'DocumentoController@detalhes');
 
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
 

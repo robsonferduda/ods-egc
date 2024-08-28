@@ -61,6 +61,8 @@ class ODSController extends Controller
         $sql = "SELECT t0.ods, 
 	            t3.cor, 
 	            t1.nm_programa,
+                t0.id,
+                t0.id_dimensao as dimensao,
                 CASE 
                     WHEN t1.nm_subtipo_producao IS NOT NULL THEN t1.nm_subtipo_producao
                     WHEN t1.nm_subtipo_producao IS NULL THEN 'Projeto de Extensão'
