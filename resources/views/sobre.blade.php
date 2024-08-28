@@ -1,6 +1,6 @@
 @extends('layouts.guest')
 @section('content')
-
+<div class="row">
     <div class="row mb-5">
         <div class="col-md-2 col-sm-2">
             <img src="{{ asset('img/logo-egc.png') }}" class="img-fluid" alt="Responsive image">
