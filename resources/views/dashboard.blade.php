@@ -76,12 +76,16 @@
         <div class="row perfil-ods"> 
 
         </div>
-        
     </div>
-    <div class="col-md-12 mt-5 mb-5 painel">
+    <div class="col-md-8 mt-5 mb-5 painel">
         <h6>DOCUMENTOS ANALISADOS</h6>
         <div class="mb-1" id="lista_documentos"></div>
         <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
+    </div>
+    <div class="col-md-4 mt-5 mb-5 ">
+        @foreach ($ods as $item)
+            <p class="mb-0"><span class="badge badge-pill" style="background: {{ $item->cor }}"> ODS {{ $item->cod }} - {{ $item->objetivo }}</span></p>
+        @endforeach
     </div>
 </div>
     <div class="col-md-12 painel">
