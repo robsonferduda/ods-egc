@@ -153,6 +153,37 @@ class ODSController extends Controller
         return response()->json($totais);
     }
 
+    public function getTotalDimensaoODS($dimensao)
+    {
+        $where = "";
+
+        switch ($dimensao) {
+            case 'extensao':
+                $where = ' WHERE id_dimensao = 2 '; 
+                break;
+
+            case 'pesquisa':
+                $where = ' WHERE id_dimensao = 1 ';
+                break;
+            
+            default:
+                $where = "";
+                break;
+        }
+
+        $sql = "SELECT ods, objetivo, cor, count(*) as total 
+               	FROM documento_ods t1
+               	JOIN ods t2 ON t2.cod = t1.ods 
+                $where
+               	GROUP BY ods, objetivo, cor 
+               	ORDER BY total DESC  
+               	LIMIT 5";
+
+        $dados = DB::connection('pgsql')->select($sql);
+
+        return response()->json($dados);
+    }
+
     public function classificar()
     {
         $texto = Documento::find(rand(1681, 2681));

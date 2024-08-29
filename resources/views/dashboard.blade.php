@@ -64,11 +64,11 @@
             <canvas id="myChart" width="400" height="400"></canvas>  
         </div>
     </div>
-    <div class="col-md-5 ml-3 top-docentes"> 
+    <div class="col-md-5 ml-3 top-ods"> 
         <div class="row">
-            <h6>RANKING DOCENTES</h6>
+            <h6>RANKING ODS</h6>
         </div>
-        <div class="lista-docentes">           
+        <div class="lista-ods">           
             
         </div>
     </div>
@@ -83,9 +83,7 @@
         <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
     </div>
     <div class="col-md-4 mt-5 mb-5 ">
-        @foreach ($ods as $item)
-            <p class="mb-0"><span class="badge badge-pill" style="background: {{ $item->cor }}"> ODS {{ $item->cod }} - {{ $item->objetivo }}</span></p>
-        @endforeach
+        
     </div>
 </div>
     <div class="col-md-12 painel">
@@ -134,6 +132,7 @@
 
             graficoDistribuicaoBarras(dimensao);  
             documentosAnalisados(dimensao, 'todos'); 
+            graficoTopOds(dimensao);
 
             $.ajax({
                 url: host+'/docentes',
@@ -220,6 +219,7 @@
 
                 $(".dimensao-selecionada").text(dimensao_selecionada);
 
+                graficoTopOds(dimensao);
                 graficoDistribuicaoBarras(dimensao); 
                 documentosAnalisados(dimensao, 'todos');
                 
@@ -378,6 +378,32 @@
                 carregaDocente(ppg, docente);        
 
             });
+
+            function graficoTopOds(dimensao){
+
+                $.ajax({
+                    url: host+'/documento/ods/dimensao/'+dimensao,
+                    type: 'GET',
+                    beforeSend: function() {
+                        $('.top-ods').loader('show');                    
+                    },
+                    success: function(data) {
+
+                        var foto = "";
+
+                        $('.lista-ods').empty();            
+                        data.forEach(element => {
+
+                            foto = host+'/img/ods-icone/ods_'+element.ods+'.png';
+                            
+                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-2 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-10 pl-1"><p class="mb-0"><strong>ODS '+element.ods+' - '+element.objetivo+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                        });
+                    },
+                    complete: function(){
+                        $('.top-ods').loader('hide');
+                    }
+                });
+            }
 
             function documentosAnalisados(dimensao, ods){
 
