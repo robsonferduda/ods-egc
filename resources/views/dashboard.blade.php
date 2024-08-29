@@ -233,7 +233,7 @@
                 
             });
 
-            $(document).on('click', '.box-documento', function() {
+            $(document).on('click', '.detalhes-documento', function() {
                 
                 var id = $(this).data("id");
                 var dimensao = $(this).data("dimensao");
@@ -419,7 +419,7 @@
             
                         data.forEach(element => {
                             
-                            $('#lista_documentos').append('<div class="box-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p></div>');
+                            $('#lista_documentos').append('<div class="box-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><span class="badge badge-pill detalhes-documento" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></p></div>');
                         });
                     },
                     complete: function(){
