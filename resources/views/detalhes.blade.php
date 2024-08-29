@@ -15,8 +15,8 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>
             <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->dimensao }} </p>
             <p class="mb-1"><strong>Documento</strong>: {{ $documento->complemento }} </p>
-            <p class="mb-1"><strong>Conteúdo</strong>:</p>
-            <div class="documento-conteudo">{{ $documento->resumo }} </div>
+            <p class="mb-1"><strong>Conteúdo</strong></p>
+            <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->resumo, 'UTF-8')) }} </div>
 
             <div class="row ods-result d-none mt-5">
                 <div class="col-md-12 col-sm-12">
