@@ -35,7 +35,7 @@
             </div>    
             <div class="col-md-3"> 
                 <div class="form-group">
-                    <label>PPG</label>
+                    <label>Unidade</label>
                     <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-md-3">       
                 <div class="form-group">
-                    <label>Docente</label>
+                    <label>Responsável</label>
                     <select class="form-control" name="docente" id="docente" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
