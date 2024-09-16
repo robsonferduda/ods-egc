@@ -78,9 +78,14 @@
         </div>
     </div>
     <div class="col-md-8 mt-5 mb-5 painel">
+
+        <canvas id="chart"></canvas>
+
         <h6>DOCUMENTOS ANALISADOS</h6>
         <div class="mb-1" id="lista_documentos"></div>
         <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
+
+        
     </div>
     <div class="col-md-4 mt-5 mb-5 ">
         
@@ -806,6 +811,82 @@
 
             });
 
-        });
+            var a = [ 186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478 ];
+
+            var b = [ 1282, 1350, 2411, 2502, 2635, 2809, 3947, 4402, 3700, 5267 ];
+
+            let chx = document.getElementById("chart").getContext('2d');
+
+            let config = {
+                type : 'line',
+                data : {
+                    labels : [ 1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050 ],
+                    datasets : [
+                            {
+                                data : a,
+                                label : "America",
+                                borderColor : "#3cba9f",
+                                fill : false
+                            },
+                            {
+                                data : b,
+                                label : "Europe",
+                                borderColor : "#e43202",
+                                fill : false
+                            } ]
+                },
+                options : {
+                    title : {
+                        display : true,
+                        text : 'Chart JS Multiple Lines Example'
+                    }
+                }
+            };
+
+            var grafico = new Chart(chx, config);            
+
+            var tid = setTimeout(mycode, 2000);
+
+            function mycode() {
+
+                //grafico.destroy();
+                
+                /*
+                grafico.data.datasets.forEach((dataset) => {
+                    dataset.data.push(15);
+                });
+                */
+
+                chartStatusGeral = Chart.getChart("chart"); // <canvas> id
+
+                chartStatusGeral.data.datasets.forEach((dataset) => {
+                    dataset.data.push(15);
+                });
+
+                a.push(56);
+                b.push(76);
+
+                //grafico = new Chart( chx, config );
+                chartStatusGeral.destroy();
+
+                grafico = new Chart(chx, config); 
+
+              
+                tid = setTimeout(mycode, 2000); // repeat myself
+            }
+            function abortTimer() { // to be called when you want to stop the timer
+            clearTimeout(tid);
+            }
+
+            
+
+           
+
+});
+
+
+
+
+
     </script>
 @endsection
