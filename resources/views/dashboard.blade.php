@@ -857,7 +857,7 @@
                 });
                 */
 
-                chartStatusGeral = Chart.getChart("chart"); // <canvas> id
+                chartStatusGeral = Chart.getChart("chart-off"); // <canvas> id
 
                 chartStatusGeral.data.datasets.forEach((dataset) => {
                     dataset.data.push(15);
@@ -872,7 +872,7 @@
                 grafico = new Chart(chx, config); 
 
               
-                tid = setTimeout(mycode, 2000); // repeat myself
+                //tid = setTimeout(mycode, 2000); // repeat myself
             }
             function abortTimer() { // to be called when you want to stop the timer
             clearTimeout(tid);
