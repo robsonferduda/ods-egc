@@ -824,13 +824,13 @@
                     datasets : [
                             {
                                 data : a,
-                                label : "America",
+                                label : "ODS 1",
                                 borderColor : "#3cba9f",
                                 fill : false
                             },
                             {
                                 data : b,
-                                label : "Europe",
+                                label : "ODS 2",
                                 borderColor : "#e43202",
                                 fill : false
                             } ]
