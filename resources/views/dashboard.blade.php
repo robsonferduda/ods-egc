@@ -81,7 +81,9 @@
             
             <div class="col-md-8 painel">            
                 <div class="col-md-12">
+                    <h6 class="center">Totais de documentos por ODS</h6>
                     <canvas id="myChart" width="400" height="365"></canvas>  
+                    <h6 class="center">ODS</h6>
                 </div>
             </div>
             <div class="col-md-4 top-ods"> 
