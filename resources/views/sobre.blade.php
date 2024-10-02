@@ -19,7 +19,7 @@
             <p class="mb-1"><strong>Nível</strong>: Doutorado </p>
             <p class="mb-1"><strong>Área de Concentração</strong>: Engenharia do Conhecimento</p>
             <p class="mb-1"><strong>Linha de Pesquisa</strong>: Teoria e prática em Engenharia do Conhecimento </p>
-            <p class="mb-1"><strong>Projeto de Pesquisa</strong>: A ferramenta denominada de <strong>Perfil ODS</strong> é resultado de uma pesquisa de doutorado que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
+            <p class="mb-1"><strong>Projeto de Pesquisa</strong>: A ferramenta denominada de <strong>Perfil ODS</strong> é resultado de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
             documentos de natureza heterogênea, produzidos pelas IES em suas atividades de ensino, pesquisa, extensão, gestão e inovação.</p>
         </div>
     </div>  
@@ -30,9 +30,10 @@
         <div class="col-md-10">
             <h5 class="mb-0 mt-3">Robson Fernando Duda</h5>
             <strong>Doutorando</strong>
-            <p>
+            <p class="mb-1">
                 Formação em Bacharel em Informática pela Universidade Estadual de Ponta Grossa (2012), Mestre em Computação Aplicada pela Universidade Estadual de Ponta Grossa (2014) e atualmente Doutorando em Engenharia e Gestão do Conhecimento pela Universidade Federal de Santa Catarina. Atua como Analista de Tecnologia da Informação lotado na Superintendência de Governança Eletrônica e Tecnologia da Informação e Comunicação (SeTIC) da Universidade Federal de Santa Catarina, onde ocupa o cargo de Assessor de Informática na Comissão Permanente do Vestibular (Coperve), onde desenvolve atividade de análise e desenvolvimento de sistemas web. Possui experiência nas linguagens PHP e Javascript e suas tecnologias, trabalhando com Laravel, Lumen, React e React Native. Conhecimento em banco de dados com experiência em Postgres e Sybase. Pesquisas nas áreas de Machine Learning e Análise de Dados.
             </p>
+            <p><a href="mailto:robsonferduda@gmail.com" class="text-dark"><span><i class="fa fa-envelope mr-2"></i>robsonferduda@gmail.com</span></a></p>
             <a href="http://lattes.cnpq.br/7814299867942521" target="blank"><span class="badge badge-pill badge-primary">Lattes</span></a>
         </div>
     </div>  

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ods;
+use App\Dimensao;
 use App\Certificado;
 use App\Participante;
 use Illuminate\Http\Request;
@@ -25,8 +26,9 @@ class HomeController extends Controller
     public function dashboard()
     {
         $ods = Ods::orderBy('cod')->get();
+        $dimensoes = Dimensao::all();
 
-        return view('dashboard', compact('ods'));
+        return view('dashboard', compact('ods','dimensoes'));
     }
 
     public function sobre()

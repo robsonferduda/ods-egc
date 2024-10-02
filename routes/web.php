@@ -14,8 +14,9 @@ Route::get('dashboard', 'HomeController@dashboard');
 
 Route::get('repositorio', 'ODSController@repositorio');
 
+Route::post('dados/geral', 'ODSController@getTotalGeral');
 Route::get('dados/ano', 'ODSController@getAno');
-Route::get('dados/documentos/{dimensao}/ods/{ods}', 'ODSController@getDocumentos');
+Route::post('dados/documentos', 'ODSController@getDocumentos');
 Route::get('dados/geral/{dimensao}', 'ODSController@getTotalGeral');
 Route::get('dados/geral/ppg/{ppg}', 'ODSController@getTotalGeralPPG');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
@@ -23,7 +24,7 @@ Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
 
 Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
-Route::get('documento/ods/dimensao/{dimensao}', 'ODSController@getTotalDimensaoODS');
+Route::post('documento/ranking/ods', 'ODSController@getTotalDimensaoODS');
 Route::get('documentos/dimensao/{dimensao}/detalhes/{id}', 'DocumentoController@detalhes');
 
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');

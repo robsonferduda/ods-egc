@@ -26,8 +26,17 @@
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
                         <option value="todas">Todas</option>
-                        <option value="extensao">Extensão</option>
                         <option value="pesquisa">Pesquisa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Tipo de Documento</label>
+                    <select class="form-control" name="tipo" id="tipo" aria-label="Selecione o tipo">
+                        <option value="todos">Todas</option>
+                        <option value="DISSERTAÇÃO">Dissertações</option>
+                        <option value="TESE">Teses</option>
                     </select>
                 </div>
             </div>
@@ -36,15 +45,13 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <select class="form-control" name="ano" id="ano" aria-label="Default select example">
-                        <option>Início</option>
+                    <select class="form-control" name="ano_inicio" id="ano_inicio" aria-label="Default select example">
                     </select>
                 </div>   
             </div>    
             <div class="col-md-6">
                 <div class="form-group">
-                    <select class="form-control" name="ano" id="ano" aria-label="Default select example">
-                        <option>Fim</option>
+                    <select class="form-control" name="ano_fim" id="ano_fim" aria-label="Default select example">
                     </select>
                 </div>   
             </div> 
@@ -52,7 +59,7 @@
                 <div class="form-group">
                     <label>Programa de Pós-Graduação</label>
                     <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
-                        <option>Todos</option>
+                        <option value="">Todos</option>
                     </select>
                 </div> 
             </div>
@@ -65,106 +72,55 @@
                 </div> 
             </div>  
             <div class="col-md-12 center"> 
-                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-filter"></i> Filtrar</button>
+                <button type="button" class="btn btn-fill btn-primary btn-wd btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
             </div>
         </div>  
     </div>
     <div class="col-md-9">
         <div class="row mt-3" id="dados-geral">
+            
             <div class="col-md-8 painel">            
                 <div class="col-md-12">
-                    <canvas id="myChart" width="400" height="400"></canvas>  
+                    <canvas id="myChart" width="400" height="365"></canvas>  
                 </div>
             </div>
             <div class="col-md-4 top-ods"> 
                 <div class="lista-ods">           
-                    
+                        
                 </div>
             </div>
-
+            
             <div class="col-md-8 mt-5 mb-5 ">
                 <h6>EVOLUÇÃO POR ODS</h6>
                 <canvas id="chart"></canvas>
             </div>
-
-             <!-- Componete que indica os ODS presentes na esntidade analisada: PPG ou docente -->
-            <div class="col-md-4 painel-icones mt-3 mb-0 mr-4 ml-4">
-                <div class="row perfil-ods"> 
+            <div class="col-md-4 painel-icones mt-8 mb-0">
+                <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
+                <div class="row perfil-ods mt-8"> 
         
                 </div>
             </div>
 
-            <div class="col-md-9 painel">        
-                
-                <h6>DOCUMENTOS ANALISADOS</h6>
+            <div class="col-sm-12 col-md-9 painel mb-5">        
+                <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
                 <div class="mb-1" id="lista_documentos"></div>
-                <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
-                
             </div>
 
-
-            <div class="col-md-3"> 
-                <div class="row box-dimensao box-dimensao-ensino mt-4">
-                    <div class="col-md-4 px-0 py-0"> 
-                        <img src="{{ asset('img/icones-dimensao/ensino.png') }}" class="img-fluid">
+            <div class="col-sm-6 col-md-3"> 
+                @foreach($dimensoes as $key => $dimensao)
+                    <div class="row box-dimensao box-dimensao-{{ $dimensao->apelido }}">
+                        <div class="col-md-4 px-0 py-0"> 
+                            <img src="{{ asset('img/icones-dimensao/'.$dimensao->img) }}" class="img-fluid">
+                        </div>
+                        <div class="col-md-8"> 
+                            <p class="mt-3 total_dimensao" data-dimensao="{{ $dimensao->id }}">{{ $dimensao->total_dimensao }}</p>
+                            <p><strong>Documentos</strong></p>
+                        </div>
                     </div>
-                    <div class="col-md-8"> 
-                        <p class="mt-3">456</p>
-                        <p><strong>Documentos</strong></p>
-                    </div>
-                </div>
-                <div class="row box-dimensao box-dimensao-pesquisa">
-                    <div class="col-md-4 px-0 py-0"> 
-                        <img src="{{ asset('img/icones-dimensao/pesquisa.png') }}" class="img-fluid">
-                    </div>
-                    <div class="col-md-8"> 
-                        <p class="mt-3">456</p>
-                        <p><strong>Documentos</strong></p>
-                    </div>
-                </div>
-                <div class="row box-dimensao box-dimensao-extensao">
-                    <div class="col-md-4 px-0 py-0"> 
-                        <img src="{{ asset('img/icones-dimensao/extensao.png') }}" class="img-fluid">
-                    </div>
-                    <div class="col-md-8"> 
-                        <p class="mt-3">456</p>
-                        <p><strong>Documentos</strong></p>
-                    </div>
-                </div>
-                <div class="row box-dimensao box-dimensao-gestao">
-                    <div class="col-md-4 px-0 py-0"> 
-                        <img src="{{ asset('img/icones-dimensao/gestao.png') }}" class="img-fluid">
-                    </div>
-                    <div class="col-md-8"> 
-                        <p class="mt-3">456</p>
-                        <p><strong>Documentos</strong></p>
-                    </div>
-                </div>
-                <div class="row box-dimensao box-dimensao-inovacao">
-                    <div class="col-md-4 px-0 py-0"> 
-                        <img src="{{ asset('img/icones-dimensao/inovacao.png') }}" class="img-fluid">
-                    </div>
-                    <div class="col-md-8"> 
-                        <p class="mt-3">456</p>
-                        <p><strong>Documentos</strong></p>
-                    </div>
-                </div>       
+                @endforeach
             </div>
-        
-            
-        
-            
-            
-        
-           
-            
-        
-           
-        
         </div>
     </div>
-</div>
-
 
 
     <div class="col-md-12 painel">
@@ -201,7 +157,7 @@
             </div>            
         </div>  
    </div>
-
+</div>
 @endsection
 @section('script')
     <script>
@@ -210,11 +166,68 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
-            var dimensao = $("#dimensao").val();
 
-            graficoDistribuicaoBarras(dimensao);  
-            documentosAnalisados(dimensao, 'todos'); 
-            graficoTopOds(dimensao);
+            //Carrega combo Período
+
+            $.ajax({
+                url: host+'/dados/ano',
+                type: 'GET',
+                dataType: "json",
+                beforeSend: function() {
+                    $('.painel').loader('show');
+                },
+                success: function(data) {
+                    if(!data) {
+                        Swal.fire({
+                            text: 'Erro ao carregar períodos',
+                            type: "warning",
+                            icon: "warning",
+                        });
+                        return;
+                    }
+
+                    data.forEach(function(value, i) {
+                        let option = new Option(value.an_base, value.an_base);
+                        if(i == 0) option.setAttribute('selected', true);
+                        $('#ano_inicio').append(option);
+                    });
+
+                    data.forEach(function(value, i) {
+                        let option = new Option(value.an_base, value.an_base);
+                        if(i == (data.length -1)) option.setAttribute('selected', true);
+                        $('#ano_fim').append(option);
+                    });
+                },
+                complete: function(){
+                    $('.painel').loader('hide');
+                }
+            });
+
+            //Primeiro carregamento de dados
+            window.onload = function() {
+                $(".btn-filtrar").trigger("click");
+            };
+
+            $(document).on('click', '.btn-filtrar', function() {
+
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var ano_inicial = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+                var tipo = $("#tipo").val();
+
+                //Atualiza label dimensão
+                var dimensao_selecionada = $("#dimensao option:selected" ).text();
+                $(".dimensao-selecionada").text(dimensao_selecionada);
+
+                graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim);  
+                documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim); 
+                graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
+                painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
+
+            });           
 
             $.ajax({
                 url: host+'/docentes',
@@ -268,45 +281,6 @@
                 }
             });
 
-            $.ajax({
-                url: host+'/dados/ano',
-                type: 'GET',
-                beforeSend: function() {
-                    $('.painel').loader('show');
-                },
-                success: function(data) {
-                    if(!data) {
-                        Swal.fire({
-                            text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
-                            type: "warning",
-                            icon: "warning",
-                        });
-                        return;
-                    }
-
-                    data.forEach(element => {
-                        let option = new Option(element.an_base, element.an_base);
-                        $('#ano').append(option);
-                    });
-                },
-                complete: function(){
-                    $('.painel').loader('hide');
-                }
-            });
-
-            $(document).on('change', '#dimensao', function() {
-                
-                var dimensao = $(this).val();
-                var dimensao_selecionada = $("#dimensao option:selected" ).text();
-
-                $(".dimensao-selecionada").text(dimensao_selecionada);
-
-                graficoTopOds(dimensao);
-                graficoDistribuicaoBarras(dimensao); 
-                documentosAnalisados(dimensao, 'todos');
-                
-            });
-
             $(document).on('click', '.perfil-docente-mostrar', function() {
                 
                 var docente = $(this).data("docente");
@@ -332,7 +306,7 @@
                     url: host+'/dados/ppg/docentes/'+ppg,
                     type: 'GET',
                     beforeSend: function() {
-                        $('.painel').loader('show');
+                        
                     },
                     success: function(data) {
 
@@ -380,73 +354,9 @@
                             }
                         });
 
-                        $.ajax({
-                            url: host+'/dados/geral/ppg/'+ppg,
-                            type: 'GET',
-                            beforeSend: function() {
-                                
-                            },
-                            success: function(data) {
-
-                                $(".perfil-ods").empty();
-
-                                for (let i=1; i<=17; i++)  {
-                                    if(data.ods.includes(i)){
-                                        $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
-                                    }else{
-                                        $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
-                                    }
-                                }
-
-                                let GraficoGeral = null;
-                                let graphareaGeral = document.getElementById("myChart").getContext("2d");
-                                let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
-                                            
-                                if (chartStatusGeral != undefined) {
-                                    chartStatusGeral.destroy();
-                                }
-
-                                GraficoGeral = new Chart(graphareaGeral, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: data.ods,
-                                        datasets: [{
-                                            label: false,
-                                            data: data.total,
-                                            backgroundColor: data.cor,
-                                            borderWidth: 0
-                                        }]
-                                    },
-                                    options: {
-                                        
-                                        plugins: { 
-                                                title: { 
-                                                    display: false, 
-                                                    text: 'Distribuição de total por dimensão' 
-                                                }, 
-                                                legend: {
-                                                    display: false
-                                                }
-                                            }, 
-                                        scales: {
-                                            yAxes: [{
-                                                ticks: {
-                                                    beginAtZero:true
-                                                }
-                                            }]
-                                        }
-                                    }
-                                });
-                                
-                            },
-                            complete: function(){
-                                    
-                            }
-                        });
-
                     },
                     complete: function(){
-                        $('.painel').loader('hide');
+                        
                     }
                 });
 
@@ -461,11 +371,19 @@
 
             });
 
-            function graficoTopOds(dimensao){
+            function graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim){
 
                 $.ajax({
-                    url: host+'/documento/ods/dimensao/'+dimensao,
-                    type: 'GET',
+                    url: host+'/documento/ranking/ods',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
                     beforeSend: function() {
                         $('.top-ods').loader('show');                    
                     },
@@ -487,11 +405,54 @@
                 });
             }
 
-            function documentosAnalisados(dimensao, ods){
+            function painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim){
 
                 $.ajax({
-                    url: host+'/dados/documentos/'+dimensao+'/ods/'+ods,
-                    type: 'GET',
+                    url: host+'/dados/geral',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
+                    beforeSend: function() {
+                                
+                    },
+                    success: function(data) {
+
+                        $(".perfil-ods").empty();
+
+                        for (let i=1; i<=17; i++)  {
+                            if(data.ods.includes(i)){
+                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                            }else{
+                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                            }
+                        }
+                    },
+                    complete: function(){
+                        
+                    }
+                });
+
+            }
+
+            function documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim){
+
+                $.ajax({
+                    url: host+'/dados/documentos',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
                     beforeSend: function() {
                         
                     },
@@ -511,13 +472,21 @@
 
             }
 
-            function graficoDistribuicaoBarras(dimensao){
+            function graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim){
 
                 $.ajax({
-                    url: host+'/dados/geral/'+dimensao,
-                    type: 'GET',
+                    url: host+'/dados/geral',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
                     beforeSend: function() {
-                        
+                        $('.painel').loader('show');
                     },
                     success: function(data) {
 
@@ -563,7 +532,7 @@
                         
                     },
                     complete: function(){
-                            
+                        $('.painel').loader('hide'); 
                     }
                 });
 
@@ -849,45 +818,6 @@
                 });
 
             }
-
-            $(".btn-discovery").click(function(){
-
-               $.ajax({
-                  url: host+'/ods/discovery',
-                  type: 'POST',
-                  data: {
-                        "_token": token
-                  },
-                  beforeSend: function() {
-                     $(".ods-result").removeClass("d-none");
-                     $(".ods-result").addClass("d-block");
-                     $(".img-ods").empty();
-                     $('.texto_ods').loader('show');
-                  },
-                  success: function(data) {
-
-                     $.each(data, function(i, item) {
-                        $(".img-ods").append('<div class="col-md-4 col-sm-4"><img src="'+host+'/img/ods-icone/ods_'+item.ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
-                     });
-                     
-                  },
-                  error: function(){
-                     $('.texto_ods').loader('hide');
-                  },
-                  complete: function(){
-                     $('.texto_ods').loader('hide');
-                  }
-               }); 
-               
-               $.notify({
-                  icon: 'fa fa-bell',
-                  message: "<b>Mensagem do Sistema</b><br/> O texto foi enviado para o servidor, aguarde o processamento."
-               },{
-                  type: 'info',
-                  timer: 1500
-               });
-
-            });
 
             var a = [ 186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478 ];
 

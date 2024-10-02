@@ -30,7 +30,10 @@ class DocumentoController extends Controller
         $sql = "SELECT t0.ods, 
 	            t3.cor, 
 	            t1.nm_programa,
+                t1.nm_discente,
+                t1.nm_orientador,
                 t0.id,
+                t2.coordenador,
                 t0.id_dimensao as dimensao,
                 CASE 
                     WHEN t1.nm_subtipo_producao IS NOT NULL THEN t1.nm_subtipo_producao
