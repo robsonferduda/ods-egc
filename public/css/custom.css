@@ -258,3 +258,35 @@ mark17{
 .detalhes-documento:hover{
     cursor: pointer;
 }
+.box-dimensao{
+    border: 100px;
+    margin-bottom: 6px;
+    min-height: 50px;
+    border-radius: 8px;
+}
+.box-dimensao p{
+    color:white;
+    margin: 0px;
+    padding: 0px;
+}
+.box-dimensao img{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 5px;
+}
+.box-dimensao-ensino{
+    background: #3c7f89;
+}
+.box-dimensao-pesquisa{
+    background: #a22245;
+}
+.box-dimensao-extensao{
+    background: #53a146;
+}
+.box-dimensao-gestao{
+    background: #1c4768;
+}
+.box-dimensao-inovacao{
+    background: #ed6a4a;
+}

@@ -1,12 +1,18 @@
 @extends('layouts.guest')
 @section('content')
+<div class="row mt-3">
+    <div class="col-md-12"> 
+        <h5 class="mb-2" style="font-size: 14px !important;"><i class="fa fa-university" aria-hidden="true"></i> UNIVERSIDADE FEDERAL DE SANTA CATARINA</h5>
+        <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
+    </div>
+</div>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3">
         <div class="row">
             <div class="col-md-12">
                 <h6 class="mb-2"><i class="fa fa-filter"></i> Filtros</h6>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Instituição</label>
                     <select class="form-control" name="ies" id="ies" aria-label="Default select example">
@@ -15,7 +21,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
                 <div class="form-group">
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
@@ -25,72 +31,142 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-12">
+                <label>Período</label>
+            </div>
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label>Ano</label>
                     <select class="form-control" name="ano" id="ano" aria-label="Default select example">
-                        <option>Todos</option>
+                        <option>Início</option>
                     </select>
                 </div>   
             </div>    
-            <div class="col-md-3"> 
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label>PPG</label>
+                    <select class="form-control" name="ano" id="ano" aria-label="Default select example">
+                        <option>Fim</option>
+                    </select>
+                </div>   
+            </div> 
+            <div class="col-md-12"> 
+                <div class="form-group">
+                    <label>Programa de Pós-Graduação</label>
                     <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
                 </div> 
             </div>
-            <div class="col-md-3">       
+            <div class="col-md-12">       
                 <div class="form-group">
                     <label>Docente</label>
                     <select class="form-control" name="docente" id="docente" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
                 </div> 
-            </div>    
+            </div>  
+            <div class="col-md-12 center"> 
+                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-filter"></i> Filtrar</button>
+            </div>
         </div>  
     </div>
-</div>
-<div class="row mt-3">
-    <div class="col-md-12"> 
-        <h6><i class="fa fa-university" aria-hidden="true"></i> UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
-        <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
-    </div>
-</div>
-<div class="row mt-3" id="dados-geral">
-    <div class="col-md-6 painel">            
-        <div class="col-md-12">
-            <canvas id="myChart" width="400" height="400"></canvas>  
-        </div>
-    </div>
-    <div class="col-md-5 ml-3 top-ods"> 
-        <div class="row">
-            <h6>RANKING ODS</h6>
-        </div>
-        <div class="lista-ods">           
+    <div class="col-md-9">
+        <div class="row mt-3" id="dados-geral">
+            <div class="col-md-8 painel">            
+                <div class="col-md-12">
+                    <canvas id="myChart" width="400" height="400"></canvas>  
+                </div>
+            </div>
+            <div class="col-md-4 top-ods"> 
+                <div class="lista-ods">           
+                    
+                </div>
+            </div>
+
+            <div class="col-md-8 mt-5 mb-5 ">
+                <h6>EVOLUÇÃO POR ODS</h6>
+                <canvas id="chart"></canvas>
+            </div>
+
+             <!-- Componete que indica os ODS presentes na esntidade analisada: PPG ou docente -->
+            <div class="col-md-4 painel-icones mt-3 mb-0 mr-4 ml-4">
+                <div class="row perfil-ods"> 
+        
+                </div>
+            </div>
+
+            <div class="col-md-9 painel">        
+                
+                <h6>DOCUMENTOS ANALISADOS</h6>
+                <div class="mb-1" id="lista_documentos"></div>
+                <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
+                
+            </div>
+
+
+            <div class="col-md-3"> 
+                <div class="row box-dimensao box-dimensao-ensino mt-4">
+                    <div class="col-md-4 px-0 py-0"> 
+                        <img src="{{ asset('img/icones-dimensao/ensino.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8"> 
+                        <p class="mt-3">456</p>
+                        <p><strong>Documentos</strong></p>
+                    </div>
+                </div>
+                <div class="row box-dimensao box-dimensao-pesquisa">
+                    <div class="col-md-4 px-0 py-0"> 
+                        <img src="{{ asset('img/icones-dimensao/pesquisa.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8"> 
+                        <p class="mt-3">456</p>
+                        <p><strong>Documentos</strong></p>
+                    </div>
+                </div>
+                <div class="row box-dimensao box-dimensao-extensao">
+                    <div class="col-md-4 px-0 py-0"> 
+                        <img src="{{ asset('img/icones-dimensao/extensao.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8"> 
+                        <p class="mt-3">456</p>
+                        <p><strong>Documentos</strong></p>
+                    </div>
+                </div>
+                <div class="row box-dimensao box-dimensao-gestao">
+                    <div class="col-md-4 px-0 py-0"> 
+                        <img src="{{ asset('img/icones-dimensao/gestao.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8"> 
+                        <p class="mt-3">456</p>
+                        <p><strong>Documentos</strong></p>
+                    </div>
+                </div>
+                <div class="row box-dimensao box-dimensao-inovacao">
+                    <div class="col-md-4 px-0 py-0"> 
+                        <img src="{{ asset('img/icones-dimensao/inovacao.png') }}" class="img-fluid">
+                    </div>
+                    <div class="col-md-8"> 
+                        <p class="mt-3">456</p>
+                        <p><strong>Documentos</strong></p>
+                    </div>
+                </div>       
+            </div>
+        
             
-        </div>
-    </div>
-    <div class="col-md-12 painel-icones mt-3 mb-0 mr-4 ml-4">
-        <div class="row perfil-ods"> 
-
-        </div>
-    </div>
-    <div class="col-md-8 mt-5 mb-5 painel">
-
-        <canvas id="chart"></canvas>
-
-        <h6>DOCUMENTOS ANALISADOS</h6>
-        <div class="mb-1" id="lista_documentos"></div>
-        <a href="{{ url('repositorio') }}" class="mb-5">VER TODOS</a>
-
         
-    </div>
-    <div class="col-md-4 mt-5 mb-5 ">
+            
+            
         
+           
+            
+        
+           
+        
+        </div>
     </div>
 </div>
+
+
+
     <div class="col-md-12 painel">
         <div class="row mt-3 d-none" id="perfil-docente">
             <div class="col-md-3 center">
@@ -113,13 +189,14 @@
             <div class="col-md-7">
                 <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
-            <div class="col-md-12 painel-icones mt-3 mb-5">
+
+            <div class="col-md-6 painel-icones mt-3 mb-5">
                 <div class="row perfil-ods"> 
 
                 </div>
                 
             </div>
-            <div class="row lista-ods mb-5">
+            <div class="col-md-6 lista-ods mb-5">
                 
             </div>            
         </div>  
@@ -401,7 +478,7 @@
 
                             foto = host+'/img/ods-icone/ods_'+element.ods+'.png';
                             
-                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-2 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-10 pl-1"><p class="mb-0"><strong>ODS '+element.ods+' - '+element.objetivo+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-4 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-8 pl-1"><p class="mb-0"><strong>ODS '+element.ods+'</strong></p><p class="mb-0">'+element.objetivo+'</p><span id="nm_ppg"><strong>'+element.total+' Documentos</strong></span></div></div>');
                         });
                     },
                     complete: function(){
@@ -814,25 +891,32 @@
 
             var a = [ 186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478 ];
 
-            var b = [ 1282, 1350, 2411, 2502, 2635, 2809, 3947, 4402, 3700, 5267 ];
+            var b = [ 256, 425, 124, 475, 125, 142, 125, 758, 451, 452 ];
+            var c = [ 478, 235, 475, 478, 745, 568, 789, 415, 123, 356 ];
 
             let chx = document.getElementById("chart").getContext('2d');
 
             let config = {
                 type : 'line',
                 data : {
-                    labels : [ 1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050 ],
+                    labels : [ 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 ],
                     datasets : [
                             {
                                 data : a,
                                 label : "ODS 1",
-                                borderColor : "#3cba9f",
+                                borderColor : "#e5243b",
                                 fill : false
                             },
                             {
                                 data : b,
                                 label : "ODS 2",
-                                borderColor : "#e43202",
+                                borderColor : "#DDA63A",
+                                fill : false
+                            },
+                            {
+                                data : c,
+                                label : "ODS 3",
+                                borderColor : "#4C9F38",
                                 fill : false
                             } ]
                 },
