@@ -49,13 +49,13 @@
       <div class="collapse navbar-collapse justify-content-start" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="{{ url('/') }}" class="nav-link">
-            <i class="fa fa-home mr-2"></i> Início
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="{{ url('dashboard') }}" class="nav-link">
             <i class="fa fa-pie-chart mr-2"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a href="{{ url('analisar') }}" class="nav-link">
+              <i class="fa fa-files-o"></i> ANALISAR
             </a>
           </li>
           @if(Auth::user())
@@ -78,11 +78,11 @@
             </a>
           </li>    
         -->     
-          <li class="nav-item ">
-            <a href="{{ url('descobrir') }}" class="nav-link">
-              <i class="fa fa-files-o"></i> DESCOBRIR
-            </a>
-          </li>
+        <li class="nav-item">
+          <a href="{{ url('/') }}" class="nav-link">
+          <i class="fa fa-tags mr-2"></i> ODS
+          </a>
+        </li>
 
           <li class="nav-item ">
             <a href="{{ url('sobre') }}" class="nav-link">

@@ -7,7 +7,7 @@ Auth::routes();
 Route::get('/', function () { return view('welcome'); });
 Route::get('perfil', function () { return view('perfil'); });
 Route::get('classificar', 'ODSController@classificar');
-Route::get('descobrir', function () { return view('descobrir'); });
+Route::get('analisar', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
 Route::get('dashboard', 'HomeController@dashboard');
