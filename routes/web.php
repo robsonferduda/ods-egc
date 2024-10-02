@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', 'HomeController@dashboard');
+Route::get('ods', function () { return view('welcome'); });
 Route::get('perfil', function () { return view('perfil'); });
 Route::get('classificar', 'ODSController@classificar');
 Route::get('analisar', function () { return view('descobrir'); });

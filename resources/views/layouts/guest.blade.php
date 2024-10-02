@@ -79,8 +79,8 @@
           </li>    
         -->     
         <li class="nav-item">
-          <a href="{{ url('/') }}" class="nav-link">
-          <i class="fa fa-tags mr-2"></i> ODS
+          <a href="{{ url('ods') }}" class="nav-link">
+          <i class="fa fa-tags mr-2"></i> CONHEÇA OS ODS
           </a>
         </li>
 
