@@ -185,11 +185,11 @@ class ODSController extends Controller
 
         switch ($request->dimensao) {
             case 'extensao':
-                $where .= ' WHERE id_dimensao = 2 '; 
+                $where .= ' AND id_dimensao = 2 '; 
                 break;
 
             case 'pesquisa':
-                $where .= ' WHERE id_dimensao = 1 ';
+                $where .= ' AND id_dimensao = 1 ';
                 break;
             
             default:
