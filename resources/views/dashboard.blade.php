@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label>Docente</label>
                     <select class="form-control" name="docente" id="docente" aria-label="Default select example">
-                        <option>Todos</option>
+                        <option>Selecione um docente</option>
                     </select>
                 </div> 
             </div>  
@@ -101,6 +101,7 @@
                 <h6>EVOLUÇÃO POR ODS</h6>
                 <canvas id="chart"></canvas>
             </div>
+
             <div class="col-md-4 painel-icones mt-8 mb-0">
                 <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
                 <div class="row perfil-ods mt-8"> 
@@ -127,43 +128,69 @@
                 @endforeach
             </div>
         </div>
+
+        <!-- Visualização de docente -->
+        
+            <div class="row mt-3 d-none" id="perfil-docente">
+               
+                <div class="col-md-4 center">
+                    <img src="" class="img-fluid rounded-circle w-75 foto-perfil">            
+                    <h5 class="mb-0 mt-3" id="nm_docente"></h5>
+                    <span id="nm_ppg"></span>
+                </div>
+
+                
+
+                <div class="col-md-8">
+                    <canvas id="chartjs-3" class="chartjs"></canvas>
+                </div>
+                <!--
+                <div class="col-md-2 center">
+                    <div class="row">
+                        <div class="col-md-12 center">
+                            <h1 class="mb-0">125</h1>
+                            <p>SCORE</p>
+                        </div>
+                        <div class="col-md-12 center">
+                            <h1 class="mb-0"><span class="ranking"></span><span class="ranking_geral" style="font-size: 14px; font-weight: 400;"></span></h1>
+                            <p>RANKING</p>
+                        </div>
+                    </div>
+                </div>
+            -->
+            <div class="col-md-12"><hr/></div>
+           
+               <div class="col-md-8 mt-3 mb-5 ">
+                    <h6>EVOLUÇÃO POR ODS</h6>
+                    <canvas id="evolucaoDocente"></canvas>
+                </div>
+
+                <div class="col-md-4 painel-icones mt-5 mb-5">
+                    <div class="row perfil-ods"> 
+
+                    </div>                    
+                </div>
+
+
+                <!--
+                <div class="col-md-8">
+                    <canvas id="chartjs-3" class="chartjs"></canvas>
+                </div>
+    
+            -->
+
+                <div class="col-sm-12 col-md-6 painel mb-5">        
+                    <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
+                    <div class="mb-1" id="lista_documentos"></div>
+                </div>
+
+                <div class="col-md-6 lista-ods mb-5">
+                    
+                </div>            
+            </div>  
+       
+
     </div>
-
-
-    <div class="col-md-12 painel">
-        <div class="row mt-3 d-none" id="perfil-docente">
-            <div class="col-md-3 center">
-                <img src="" class="img-fluid rounded-circle w-75 foto-perfil">            
-                <h5 class="mb-0 mt-3" id="nm_docente"></h5>
-                <span id="nm_ppg"></span>
-            </div>
-            <div class="col-md-2 center">
-                <div class="row">
-                    <div class="col-md-12 center">
-                        <h1 class="mb-0">125</h1>
-                        <p>SCORE</p>
-                    </div>
-                    <div class="col-md-12 center">
-                        <h1 class="mb-0"><span class="ranking"></span><span class="ranking_geral" style="font-size: 14px; font-weight: 400;"></span></h1>
-                        <p>RANKING</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <canvas id="chartjs-3" class="chartjs"></canvas>
-            </div>
-
-            <div class="col-md-6 painel-icones mt-3 mb-5">
-                <div class="row perfil-ods"> 
-
-                </div>
-                
-            </div>
-            <div class="col-md-6 lista-ods mb-5">
-                
-            </div>            
-        </div>  
-   </div>
 </div>
 @endsection
 @section('script')
@@ -250,6 +277,9 @@
                 graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
                 painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
 
+                $("#dados-geral").removeClass("d-none");
+                $("#perfil-docente").addClass("d-none");
+
             });           
 
             $.ajax({
@@ -324,64 +354,71 @@
             $("#ppg").change(function(){
 
                 var ppg = $(this).val();
-                
-                $.ajax({
-                    url: host+'/dados/ppg/docentes/'+ppg,
-                    type: 'GET',
-                    beforeSend: function() {
-                        
-                    },
-                    success: function(data) {
 
-                        $("#dados-geral").removeClass("d-none");
-                        $("#perfil-docente").addClass("d-none");
+                if(ppg){
 
-                        if(!data) {
-                            Swal.fire({
-                                text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
-                                type: "warning",
-                                icon: "warning",
-                            });
-                            return;
-                        }
-                        
-                        $('#docente').empty();
-                        $('#docente').append('<option value="">Todos</option>').val('');
-                        data.forEach(element => {
-                            let option = new Option(element.nm_orientador, element.nm_orientador);
-                            $('#docente').append(option);
-                        });
+                    $.ajax({
+                        url: host+'/dados/ppg/docentes/'+ppg,
+                        type: 'GET',
+                        beforeSend: function() {
+                            
+                        },
+                        success: function(data) {
 
-                        $.ajax({
-                            url: host+'/docentes/ppg/'+ppg,
-                            type: 'GET',
-                            beforeSend: function() {
-                                $('.top-docentes').loader('show');                    
-                            },
-                            success: function(data) {
+                            $("#dados-geral").removeClass("d-none");
+                            $("#perfil-docente").addClass("d-none");
 
-                                $('.lista-docentes').empty();
-                                data.forEach(element => {
-
-                                    foto = host+'/img/docentes/user.png';
-                                
-                                    if(element.chave){
-                                        foto = host+'/img/docentes/'+element.chave+'.jpg';
-                                    }
-                                        
-                                    $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img style="height: 50px;" src="'+foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                            if(!data) {
+                                Swal.fire({
+                                    text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
+                                    type: "warning",
+                                    icon: "warning",
                                 });
-                            },
-                            complete: function(){
-                                $('.top-docentes').loader('hide');
+                                return;
                             }
-                        });
+                            
+                            $('#docente').empty();
+                            $('#docente').append('<option value="">Selecione um docente</option>').val('');
+                            data.forEach(element => {
+                                let option = new Option(element.nm_orientador, element.nm_orientador);
+                                $('#docente').append(option);
+                            });
 
-                    },
-                    complete: function(){
-                        
-                    }
-                });
+                            $.ajax({
+                                url: host+'/docentes/ppg/'+ppg,
+                                type: 'GET',
+                                beforeSend: function() {
+                                    $('.top-docentes').loader('show');                    
+                                },
+                                success: function(data) {
+
+                                    $('.lista-docentes').empty();
+                                    data.forEach(element => {
+
+                                        foto = host+'/img/docentes/user.png';
+                                    
+                                        if(element.chave){
+                                            foto = host+'/img/docentes/'+element.chave+'.jpg';
+                                        }
+                                            
+                                        $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img style="height: 50px;" src="'+foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
+                                    });
+                                },
+                                complete: function(){
+                                    $('.top-docentes').loader('hide');
+                                }
+                            });
+
+                        },
+                        complete: function(){
+                            
+                        }
+                    });
+                
+                }else{
+                    $('#docente').empty();
+                    $('#docente').append('<option value="">Selecione um docente</option>').val('');
+                }
 
             });
 
@@ -390,7 +427,11 @@
                 var ppg = $("#ppg").val();
                 var docente = $(this).val();
 
-                carregaDocente(ppg, docente);        
+                if(docente){
+                    carregaDocente(ppg, docente); 
+                }else{
+                    $(".btn-filtrar").trigger("click");
+                }             
 
             });
 
@@ -448,11 +489,12 @@
 
                         $(".perfil-ods").empty();
 
-                        for (let i=1; i<=17; i++)  {
-                            if(data.ods.includes(i)){
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                        for (let i=0; i < 17; i++)  {
+                            var ods = i+1;
+                            if(data.total[i] > 0 ){
+                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }else{
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }
                         }
                     },
@@ -654,8 +696,8 @@
 
                                 $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
 
-                                $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-2"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
-                                                        '<div class="col-md-10"><h6 class="progresso-title">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
+                                $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-3"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
+                                                        '<div class="col-md-9"><h6 class="progresso-title">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
                                                         '<div class="progresso ods-'+i+'"><div class="progresso-bar" style="width:'+percentual.toFixed(1)+'%; background:'+cores[i]+';"><div class="progresso-value">'+percentual.toFixed(1)+'%</div></div></div></div></div>');
 
                             }else{
@@ -881,43 +923,12 @@
                 }
             };
 
-            var grafico = new Chart(chx, config);            
-
-            var tid = setTimeout(mycode, 2000);
-
-            function mycode() {
-
-                //grafico.destroy();
-                
-                /*
-                grafico.data.datasets.forEach((dataset) => {
-                    dataset.data.push(15);
-                });
-                */
-
-                chartStatusGeral = Chart.getChart("chart-off"); // <canvas> id
-
-                chartStatusGeral.data.datasets.forEach((dataset) => {
-                    dataset.data.push(15);
-                });
-
-                a.push(56);
-                b.push(76);
-
-                //grafico = new Chart( chx, config );
-                chartStatusGeral.destroy();
-
-                grafico = new Chart(chx, config); 
-
-              
-                //tid = setTimeout(mycode, 2000); // repeat myself
-            }
-            function abortTimer() { // to be called when you want to stop the timer
-            clearTimeout(tid);
-            }
-
+            var grafico = new Chart(chx, config);  
             
+            let chxDocente = document.getElementById("evolucaoDocente").getContext('2d');
+            var grafico = new Chart(chxDocente, config);
 
+           
            
 
 });

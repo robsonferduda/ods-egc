@@ -128,29 +128,36 @@ class ODSController extends Controller
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 
                 FROM capes_teses_dissertacoes_ctd t0
                 JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                JOIN ods t2 ON t2.cod = t1.ods 
+                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
                 $where
                 GROUP BY t1.ods, t2.cor 
                 ORDER BY t1.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
-
-
+        
         $ods = array_column($dados, 'ods');
-        $cor = array_column($dados, 'cor');
-        $total = array_column($dados, 'total');
 
-        /*
-        $ods[] = 17;
-        $cor[] = '#19486A';
-        $total[] = 837;
-        */
+        $j = 0;
+
+        for ($i=0; $i < 17; $i++) { 
+            if(!in_array($i+1, $ods)){
+                $obj = (object) ['ods' => $i+1, 'cor' => '#000000', 'total' => 0];
+                $resultado[] = $obj;
+            }else{
+                $resultado[] = $dados[$j];
+                $j++;
+            }
+        }
+
+        $ods = array_column($resultado, 'ods');
+        $cor = array_column($resultado, 'cor');
+        $total = array_column($resultado, 'total');
 
         $totais = array('ods' => $ods, 'cor' => $cor, 'total' => $total);
 
         return response()->json($totais);
     }
-
+   
     public function getTotalGeralPPG($ppg)
     {
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 
