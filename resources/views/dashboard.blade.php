@@ -83,7 +83,11 @@
                 <div class="col-md-12">
                     <h6 class="center">Totais de documentos por ODS</h6>
                     <canvas id="myChart" width="400" height="365"></canvas>  
-                    <h6 class="center">ODS</h6>
+                    <h6 class="center mb-0">ODS</h6>
+                    <p class="mb-0 mt-0">Filtros aplicados:</p>
+                    <div class="filtros">
+                        
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 top-ods"> 
@@ -220,6 +224,22 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
+
+                $(".filtros").empty();
+
+                if(ies != "todas")
+                    $(".filtros").append('<span class="badge badge-pill">'+$("#ies option:selected" ).text()+'</span>');
+
+                if(dimensao != "todas")
+                    $(".filtros").append('<span class="badge badge-pill">'+$("#dimensao option:selected" ).text()+'</span>');
+
+                if(tipo != "todos")
+                    $(".filtros").append('<span class="badge badge-pill">'+$("#tipo option:selected" ).text()+'</span>');
+
+                if(ppg != "")
+                    $(".filtros").append('<span class="badge badge-pill">'+$("#ppg option:selected" ).text()+'</span>');
+            
+                $(".filtros").append('<span class="badge badge-pill">'+$("#ano_inicio option:selected" ).text()+' - '+$("#ano_fim option:selected" ).text()+'</span>');
 
                 //Atualiza label dimensão
                 var dimensao_selecionada = $("#dimensao option:selected" ).text();
