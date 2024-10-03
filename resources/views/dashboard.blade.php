@@ -67,7 +67,7 @@
                 <div class="form-group">
                     <label>Docente</label>
                     <select class="form-control" name="docente" id="docente" aria-label="Default select example">
-                        <option>Selecione um docente</option>
+                        <option value="">Selecione um docente</option>
                     </select>
                 </div> 
             </div>  
@@ -252,33 +252,38 @@
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
 
-                $(".filtros").empty();
+                if(docente){
+                    
+                }else{
 
-                if(ies != "todas")
-                    $(".filtros").append('<span class="badge badge-pill">'+$("#ies option:selected" ).text()+'</span>');
+                    $(".filtros").empty();
 
-                if(dimensao != "todas")
-                    $(".filtros").append('<span class="badge badge-pill">'+$("#dimensao option:selected" ).text()+'</span>');
+                    if(ies != "todas")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#ies option:selected" ).text()+'</span>');
 
-                if(tipo != "todos")
-                    $(".filtros").append('<span class="badge badge-pill">'+$("#tipo option:selected" ).text()+'</span>');
+                    if(dimensao != "todas")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#dimensao option:selected" ).text()+'</span>');
 
-                if(ppg != "")
-                    $(".filtros").append('<span class="badge badge-pill">'+$("#ppg option:selected" ).text()+'</span>');
-            
-                $(".filtros").append('<span class="badge badge-pill">'+$("#ano_inicio option:selected" ).text()+' - '+$("#ano_fim option:selected" ).text()+'</span>');
+                    if(tipo != "todos")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#tipo option:selected" ).text()+'</span>');
 
-                //Atualiza label dimensão
-                var dimensao_selecionada = $("#dimensao option:selected" ).text();
-                $(".dimensao-selecionada").text(dimensao_selecionada);
+                    if(ppg != "")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#ppg option:selected" ).text()+'</span>');
+                
+                    $(".filtros").append('<span class="badge badge-pill">'+$("#ano_inicio option:selected" ).text()+' - '+$("#ano_fim option:selected" ).text()+'</span>');
 
-                graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim);  
-                documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim); 
-                graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
-                painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    //Atualiza label dimensão
+                    var dimensao_selecionada = $("#dimensao option:selected" ).text();
+                    $(".dimensao-selecionada").text(dimensao_selecionada);
 
-                $("#dados-geral").removeClass("d-none");
-                $("#perfil-docente").addClass("d-none");
+                    graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim);  
+                    documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim); 
+                    graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
+
+                    $("#dados-geral").removeClass("d-none");
+                    $("#perfil-docente").addClass("d-none");
+                }
 
             });           
 
@@ -365,8 +370,7 @@
                         },
                         success: function(data) {
 
-                            $("#dados-geral").removeClass("d-none");
-                            $("#perfil-docente").addClass("d-none");
+                            
 
                             if(!data) {
                                 Swal.fire({
@@ -429,9 +433,7 @@
 
                 if(docente){
                     carregaDocente(ppg, docente); 
-                }else{
-                    $(".btn-filtrar").trigger("click");
-                }             
+                }            
 
             });
 
