@@ -727,7 +727,7 @@
                                     { 
                                         label: 'ODS 1', 
                                         backgroundColor: cores[1], 
-                                        data: [0, ((totais[1]*100)/total).toFixed(3), 0, 0, 0], 
+                                        data: [0, ((totais[1]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
@@ -745,7 +745,7 @@
                                     { 
                                         label: 'ODS 4', 
                                         backgroundColor: cores[4], 
-                                        data: [0, ((totais[4]*100)/total).toFixed(2), ((1*100)/totalExtensao).toFixed(2), 0, 0], 
+                                        data: [0, ((totais[4]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
@@ -793,7 +793,7 @@
                                     { 
                                         label: 'ODS 12', 
                                         backgroundColor: cores[12], 
-                                        data: [0, ((totais[12]*100)/total).toFixed(2), ((1*100)/totalExtensao).toFixed(2), 0, 0], 
+                                        data: [0, ((totais[12]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
@@ -817,7 +817,7 @@
                                     { 
                                         label: 'ODS 16', 
                                         backgroundColor: cores[16], 
-                                        data: [0, ((totais[16]*100)/total).toFixed(2), ((2*100)/totalExtensao).toFixed(2), 0, 0], 
+                                        data: [0, ((totais[16]*100)/total).toFixed(2), 0, 0, 0], 
                                         stack: 'Stack 1',
                                     }, 
                                     { 
