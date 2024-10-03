@@ -253,6 +253,8 @@
                 var tipo = $("#tipo").val();
 
                 if(docente){
+
+                    carregaDocente(ppg, docente); 
                     
                 }else{
 
@@ -428,12 +430,13 @@
 
             $("#docente").change(function(){
 
+                /*
                 var ppg = $("#ppg").val();
                 var docente = $(this).val();
 
                 if(docente){
                     carregaDocente(ppg, docente); 
-                }            
+                }  */          
 
             });
 
