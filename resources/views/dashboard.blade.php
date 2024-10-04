@@ -252,6 +252,8 @@
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
 
+                getFrequencia(dimensao, tipo, ppg, ano_inicial, ano_fim);
+
                 if(docente){
 
                     carregaDocente(ppg, docente); 
@@ -889,49 +891,117 @@
 
             }
 
-            var a = [ 186, 205, 1321, 1516, 2107, 2191, 3133, 3221, 4783, 5478 ];
+            function getFrequencia(dimensao, tipo, ppg, ano_inicial, ano_fim){
 
-            var b = [ 256, 425, 124, 475, 125, 142, 125, 758, 451, 452 ];
-            var c = [ 478, 235, 475, 478, 745, 568, 789, 415, 123, 356 ];
+                let chx = document.getElementById("chart").getContext('2d');
 
-            let chx = document.getElementById("chart").getContext('2d');
+               
 
-            let config = {
-                type : 'line',
-                data : {
-                    labels : [ 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022 ],
-                    datasets : [
-                            {
-                                data : a,
-                                label : "ODS 1",
-                                borderColor : "#e5243b",
-                                fill : false
+                 
+
+                $.ajax({
+                    url: host+'/dados/geral/frequencia',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
+                    beforeSend: function() {
+                        
+                    },
+                    success: function(data) {
+
+                        datasets = [];
+
+                        data.frequencias.forEach(function(value, i) {
+
+                            dict = {};
+
+                            dict.data = value.totais;
+                            dict.label = "ODS "+value.ods;
+                            dict.borderColor = value.cor;
+                            dict.fill = false;
+
+                            datasets.push(dict);
+                        });
+                        
+                       
+
+                        let config = {
+                            type : 'line',
+                            data : {
+                                labels : data.sequencia,
+                                datasets : datasets
+
+                                /*
+                                    
+                                        {
+                                            data : a,
+                                            label : "ODS 1",
+                                            borderColor : "#e5243b",
+                                            fill : false
+                                        },
+                                        {
+                                            data : b,
+                                            label : "ODS 2",
+                                            borderColor : "#DDA63A",
+                                            fill : false
+                                        },
+                                        {
+                                            data : c,
+                                            label : "ODS 3",
+                                            borderColor : "#4C9F38",
+                                            fill : false
+                                        } ]*/
                             },
-                            {
-                                data : b,
-                                label : "ODS 2",
-                                borderColor : "#DDA63A",
-                                fill : false
-                            },
-                            {
-                                data : c,
-                                label : "ODS 3",
-                                borderColor : "#4C9F38",
-                                fill : false
-                            } ]
-                },
-                options : {
-                    title : {
-                        display : true,
-                        text : 'Chart JS Multiple Lines Example'
+                            options : {
+                                title : {
+                                    display : true,
+                                    text : 'Chart JS Multiple Lines Example'
+                                },
+                                plugins: { 
+                                        title: { 
+                                            display: false, 
+                                            text: 'Distribuição de total por dimensão' 
+                                        }, 
+                                        legend: {
+                                            display: true,
+                                            position: 'bottom'
+                                        }
+                                }, 
+                            }
+                        };
+
+                        let GraficoEvolucao = null;
+                        let graphareaEvolucao = document.getElementById("chart").getContext("2d");
+                        let chartStatusEvolucao = Chart.getChart("chart"); // <canvas> id
+                                    
+                        if (chartStatusEvolucao != undefined) {
+                            chartStatusEvolucao.destroy();
+                        }
+
+                        var grafico = new Chart(chx, config);
+
+                    },
+                    complete: function(){
+                         
                     }
-                }
-            };
+                });
 
-            var grafico = new Chart(chx, config);  
+            }
+
             
-            let chxDocente = document.getElementById("evolucaoDocente").getContext('2d');
-            var grafico = new Chart(chxDocente, config);
+
+            
+
+           
+            
+            //let chxDocente = document.getElementById("evolucaoDocente").getContext('2d');
+            //var grafico = new Chart(chxDocente, config);
 
            
            

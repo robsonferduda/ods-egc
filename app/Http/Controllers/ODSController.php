@@ -157,6 +157,85 @@ class ODSController extends Controller
 
         return response()->json($totais);
     }
+
+
+    public function getTotalGeralFrequencia(Request $request)
+    {
+        $where = "WHERE 1=1";
+
+        switch ($request->dimensao) {
+            case 'extensao':
+                $where .= ' AND id_dimensao = 2 '; 
+                break;
+
+            case 'pesquisa':
+                $where .= ' AND id_dimensao = 1 ';
+                break;
+            
+            default:
+                
+                break;
+        }
+
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+        }
+        
+        $anos = array();
+        $anos[] = (int) $request->ano_inicial;
+        $inicio = (int) $request->ano_inicial;
+
+        for ($i=$request->ano_inicial; $i < $request->ano_fim ; $i++) { 
+            $anos[] = $inicio += 1;
+        }
+
+        $frequencias = array();
+        $lista_ods = Ods::orderBy('cod')->get();
+
+        foreach ($lista_ods as $key => $ods) {
+
+            $historico = array();
+
+            for ($i=0; $i < count($anos); $i++) { 
+
+                $complemento = ' AND an_base = '.$anos[$i].'
+                            AND ods = '.$ods->cod.'
+                            GROUP BY t1.ods, an_base, t2.cor 
+                            ORDER BY t1.ods, an_base';
+
+                $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
+                        FROM capes_teses_dissertacoes_ctd t0
+                        JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                        RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                        $where
+                        $complemento";
+
+                $resultado = DB::connection('pgsql')->select($sql);
+
+                if($resultado){
+                    $historico[] = $resultado[0]->total;
+                }else{
+                    $historico[] = 0;
+                }
+            }
+
+            $totais = $anos;
+            $frequencias[] = array('ods' => $ods->cod, 'cor' => $ods->cor, 'totais' => $historico);
+            
+        }
+
+        $dados = array('sequencia' => $anos, 'frequencias' => $frequencias);
+
+        return response()->json($dados);
+    }
    
     public function getTotalGeralPPG($ppg)
     {

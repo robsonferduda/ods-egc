@@ -16,6 +16,7 @@ Route::get('dashboard', 'HomeController@dashboard');
 Route::get('repositorio', 'ODSController@repositorio');
 
 Route::post('dados/geral', 'ODSController@getTotalGeral');
+Route::post('dados/geral/frequencia', 'ODSController@getTotalGeralFrequencia');
 Route::get('dados/ano', 'ODSController@getAno');
 Route::post('dados/documentos', 'ODSController@getDocumentos');
 Route::get('dados/geral/{dimensao}', 'ODSController@getTotalGeral');
