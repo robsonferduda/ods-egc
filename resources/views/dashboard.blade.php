@@ -134,7 +134,7 @@
             <div class="row mt-3 d-none" id="perfil-docente">
                
                 <div class="col-md-4 center">
-                    <img src="" style="height: 180px;" class="img-fluid rounded-circle w-75 foto-perfil">            
+                    <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
                     <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                     <span id="nm_ppg"></span>
                 </div>
@@ -648,7 +648,7 @@
                             url: host+'/docentes/foto/'+docente,
                             type: 'GET',
                             beforeSend: function() {
-                                
+                                $('.foto-perfil').loader('show');
                             },
                             success: function(data) {
 
@@ -661,7 +661,7 @@
                                 $(".foto-perfil").attr('src', foto);
                             },
                             complete: function(){
-                                
+                                $('.foto-perfil').loader('hide');
                             }
                         });
 
