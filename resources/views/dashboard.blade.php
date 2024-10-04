@@ -134,7 +134,7 @@
             <div class="row mt-3 d-none" id="perfil-docente">
                
                 <div class="col-md-4 center">
-                    <img src="" class="img-fluid rounded-circle w-75 foto-perfil">            
+                    <img src="" style="height: 180px;" class="img-fluid rounded-circle w-75 foto-perfil">            
                     <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                     <span id="nm_ppg"></span>
                 </div>
@@ -701,7 +701,7 @@
                                 var float = percentual + 50;
                                 var label = (totais[i] > 1) ? 'Documentos' : 'Documento';
 
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" style="height: 180px;" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
 
                                 $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-3"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
                                                         '<div class="col-md-9"><h6 class="progresso-title mb-0">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
