@@ -95,6 +95,17 @@
                     
                     $(".ods-result").removeClass("d-block");
                     $(".ods-result").addClass("d-none");
+
+                    $("#mytext").empty();
+
+                    let Grafico = null;
+                           let graphareaGrafico = document.getElementById("resultado-ods").getContext("2d");
+                           let chartStatusGrafico = Chart.getChart("resultado-ods"); // <canvas> id
+                                       
+                           if (chartStatusGrafico != undefined) {
+                              chartStatusGrafico.destroy();
+                           }
+                           
                   },
                   success: function(data) {
 
@@ -139,21 +150,29 @@
                               percentuais.push(Math.trunc(item.probabilidade*100));
                            });
 
+                           let Grafico = null;
+                           let graphareaGrafico = document.getElementById("resultado-ods").getContext("2d");
+                           let chartStatusGrafico = Chart.getChart("resultado-ods"); // <canvas> id
+                                       
+                           if (chartStatusGrafico != undefined) {
+                              chartStatusGrafico.destroy();
+                           }
+
                            new Chart(document.getElementById("resultado-ods"), {
-                           "type": "bar",
-                              "data": {
-                                    "labels": ["ODS 1", "ODS 2", "ODS 3", "ODS 4","ODS 5","ODS 6","ODS 7","ODS 8","ODS 9","ODS 10","ODS 11","ODS 12","ODS 13","ODS 14","ODS 15","ODS 16","ODS 17"],
-                                    "datasets": [{
-                                                   "label": "Distribuição da probabilidade de relação com os ODS",
-                                                   "data": percentuais,
-                                                   "backgroundColor": ["#e5243b","#DDA63A","#4C9F38","#C5192D","#FF3A21","#26BDE2","#FCC30B","#A21942","#FD6925","#DD1367","#FD9D24","#BF8B2E","#3F7E44","#0A97D9","#56C02B","#00689D","#19486A"]
-                                                }]
-                              },
-                              "options": {                                
-                                 legend: {
-                                    display: false
-                                 }
-                              }      
+                                 "type": "bar",
+                                    "data": {
+                                          "labels": ["ODS 1", "ODS 2", "ODS 3", "ODS 4","ODS 5","ODS 6","ODS 7","ODS 8","ODS 9","ODS 10","ODS 11","ODS 12","ODS 13","ODS 14","ODS 15","ODS 16","ODS 17"],
+                                          "datasets": [{
+                                                         "label": "Distribuição da probabilidade de relação com os ODS",
+                                                         "data": percentuais,
+                                                         "backgroundColor": ["#e5243b","#DDA63A","#4C9F38","#C5192D","#FF3A21","#26BDE2","#FCC30B","#A21942","#FD6925","#DD1367","#FD9D24","#BF8B2E","#3F7E44","#0A97D9","#56C02B","#00689D","#19486A"]
+                                                      }]
+                                    },
+                                    "options": {                                
+                                       legend: {
+                                          display: false
+                                       }
+                                    }      
                            });
 
                      }else{
