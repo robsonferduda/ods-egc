@@ -698,7 +698,7 @@
                             if(ods.includes(i)){
 
                                 var percentual = (totais[i]*100)/total;
-                                var float = percentual + 50;
+                                var float = percentual + 30;
                                 var label = (totais[i] > 1) ? 'Documentos' : 'Documento';
 
                                 $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
