@@ -231,16 +231,15 @@
                         if(i == (data.length -1)) option.setAttribute('selected', true);
                         $('#ano_fim').append(option);
                     });
+
+                    $(".btn-filtrar").trigger("click");
                 },
                 complete: function(){
                     $('.painel').loader('hide');
                 }
             });
 
-            //Primeiro carregamento de dados
-            window.onload = function() {
-                $(".btn-filtrar").trigger("click");
-            };
+           
 
             $(document).on('click', '.btn-filtrar', function() {
 
