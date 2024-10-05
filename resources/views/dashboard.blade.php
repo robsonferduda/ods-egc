@@ -181,7 +181,7 @@
 
                 <div class="col-sm-12 col-md-6 painel mb-5">        
                     <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                    <div class="mb-1" id="lista_documentos"></div>
+                    <div class="mb-1" id="lista_documentos_docente"></div>
                 </div>
 
                 <div class="col-md-6 lista-ods mb-5">
@@ -256,6 +256,7 @@
                 if(docente){
 
                     carregaDocente(ppg, docente); 
+                    documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     
                 }else{
 
@@ -280,7 +281,7 @@
                     $(".dimensao-selecionada").text(dimensao_selecionada);
 
                     graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim);  
-                    documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim); 
+                    documentosAnalisados("#lista_documentos", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
                     painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
 
@@ -511,7 +512,7 @@
 
             }
 
-            function documentosAnalisados(dimensao, tipo, ppg, ano_inicial, ano_fim){
+            function documentosAnalisados(elemento_pai, dimensao, tipo, ppg, ano_inicial, ano_fim, docente){
 
                 $.ajax({
                     url: host+'/dados/documentos',
@@ -522,18 +523,19 @@
                             "ppg": ppg,
                             "ano_inicial": ano_inicial,
                             "ano_fim": ano_fim,
-                            "tipo": tipo
+                            "tipo": tipo,
+                            "docente": docente
                     },
                     beforeSend: function() {
                         
                     },
                     success: function(data) {
 
-                        $('#lista_documentos').empty();
+                        $(elemento_pai).empty();
             
                         data.forEach(element => {
                             
-                            $('#lista_documentos').append('<div class="box-documento"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><span class="badge badge-pill detalhes-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></p></div>');
+                            $(elemento_pai).append('<div class="box-documento"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><span class="badge badge-pill detalhes-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></p></div>');
                         });
                     },
                     complete: function(){

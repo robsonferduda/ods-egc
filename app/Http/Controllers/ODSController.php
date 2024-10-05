@@ -70,6 +70,10 @@ class ODSController extends Controller
             $where .= " AND nm_subtipo_producao = '$request->tipo' ";
         }
 
+        if($request->docente){
+            $where .= " AND nm_orientador = '$request->docente'";
+        }
+
         $sql = "SELECT t0.ods, 
 	            t3.cor, 
 	            t1.nm_programa,
