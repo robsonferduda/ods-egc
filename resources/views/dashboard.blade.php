@@ -561,6 +561,17 @@
                     },
                     success: function(data) {
 
+                        var soma_documentos = 0;
+                        data.total.forEach(element => {
+                            soma_documentos += element;
+                        });
+
+                        $('.total_dimensao').each(function(index, element) {
+                            if($(this).data("dimensao") == 5){
+                                $(this).text(soma_documentos);
+                            }
+                        });
+
                         let GraficoGeral = null;
                         let graphareaGeral = document.getElementById("myChart").getContext("2d");
                         let chartStatusGeral = Chart.getChart("myChart"); // <canvas> id
