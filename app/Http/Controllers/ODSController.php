@@ -196,6 +196,23 @@ class ODSController extends Controller
         if($request->docente){
             $where .= " AND nm_orientador = '$request->docente'";
         }
+
+        /*
+            Definição dos ODS existentes
+
+        */
+
+        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
+                FROM capes_teses_dissertacoes_ctd t0
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                $where
+                GROUP BY t1.ods, t2.cor 
+                ORDER BY t1.ods";
+
+        $dados = DB::connection('pgsql')->select($sql);
+        
+        $ods_encontrados = array_column($dados, 'ods');
         
         $anos = array();
         $anos[] = (int) $request->ano_inicial;
@@ -212,31 +229,34 @@ class ODSController extends Controller
 
             $historico = array();
 
-            for ($i=0; $i < count($anos); $i++) { 
+            if(in_array($ods->cod, $ods_encontrados)){
 
-                $complemento = ' AND an_base = '.$anos[$i].'
-                            AND ods = '.$ods->cod.'
-                            GROUP BY t1.ods, an_base, t2.cor 
-                            ORDER BY t1.ods, an_base';
+                for ($i=0; $i < count($anos); $i++) { 
 
-                $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
-                        FROM capes_teses_dissertacoes_ctd t0
-                        JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                        RIGHT JOIN ods t2 ON t2.cod = t1.ods 
-                        $where
-                        $complemento";
+                    $complemento = ' AND an_base = '.$anos[$i].'
+                                AND ods = '.$ods->cod.'
+                                GROUP BY t1.ods, an_base, t2.cor 
+                                ORDER BY t1.ods, an_base';
 
-                $resultado = DB::connection('pgsql')->select($sql);
+                    $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
+                            FROM capes_teses_dissertacoes_ctd t0
+                            JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                            RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                            $where
+                            $complemento";
 
-                if($resultado){
-                    $historico[] = $resultado[0]->total;
-                }else{
-                    $historico[] = 0;
+                    $resultado = DB::connection('pgsql')->select($sql);
+
+                    if($resultado){
+                        $historico[] = $resultado[0]->total;
+                    }else{
+                        $historico[] = 0;
+                    }
                 }
-            }
 
-            $totais = $anos;
-            $frequencias[] = array('ods' => $ods->cod, 'cor' => $ods->cor, 'totais' => $historico);
+                $totais = $anos;
+                $frequencias[] = array('ods' => $ods->cod, 'cor' => $ods->cor, 'totais' => $historico);
+            }
             
         }
 
