@@ -254,7 +254,7 @@
                 if(docente){
 
                     carregaDocente(ppg, docente); 
-                    getFrequencia("evolucaoDocente", dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    getFrequencia("evolucaoDocente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     
                 }else{
@@ -283,7 +283,7 @@
                     documentosAnalisados("#lista_documentos", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
                     painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
-                    getFrequencia("chart", dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    getFrequencia("chart", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
 
                     $("#dados-geral").removeClass("d-none");
                     $("#perfil-docente").addClass("d-none");
@@ -904,7 +904,7 @@
 
             }
 
-            function getFrequencia(elemento, dimensao, tipo, ppg, ano_inicial, ano_fim){
+            function getFrequencia(elemento, dimensao, tipo, ppg, ano_inicial, ano_fim, docente){
 
                 let chx = document.getElementById(elemento).getContext('2d');
 
@@ -917,7 +917,8 @@
                             "ppg": ppg,
                             "ano_inicial": ano_inicial,
                             "ano_fim": ano_fim,
-                            "tipo": tipo
+                            "tipo": tipo,
+                            "docente": docente
                     },
                     beforeSend: function() {
                         $('.box-evolucao').loader('show');

@@ -192,6 +192,10 @@ class ODSController extends Controller
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND nm_subtipo_producao = '$request->tipo' ";
         }
+
+        if($request->docente){
+            $where .= " AND nm_orientador = '$request->docente'";
+        }
         
         $anos = array();
         $anos[] = (int) $request->ano_inicial;
