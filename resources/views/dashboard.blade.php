@@ -97,7 +97,7 @@
                 </div>
             </div>
             
-            <div class="col-md-8 mt-5 mb-5 ">
+            <div class="col-md-8 mt-5 mb-5 box-evolucao">
                 <h6>EVOLUÇÃO POR ODS</h6>
                 <canvas id="chart"></canvas>
             </div>
@@ -160,7 +160,7 @@
             -->
             <div class="col-md-12"><hr/></div>
            
-               <div class="col-md-8 mt-3 mb-5 ">
+               <div class="col-md-8 mt-3 mb-5 box-evolucao">
                     <h6>EVOLUÇÃO POR ODS</h6>
                     <canvas id="evolucaoDocente"></canvas>
                 </div>
@@ -251,11 +251,10 @@
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
 
-                getFrequencia(dimensao, tipo, ppg, ano_inicial, ano_fim);
-
                 if(docente){
 
                     carregaDocente(ppg, docente); 
+                    getFrequencia("evolucaoDocente", dimensao, tipo, ppg, ano_inicial, ano_fim);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     
                 }else{
@@ -284,6 +283,7 @@
                     documentosAnalisados("#lista_documentos", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
                     graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
                     painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    getFrequencia("chart", dimensao, tipo, ppg, ano_inicial, ano_fim);
 
                     $("#dados-geral").removeClass("d-none");
                     $("#perfil-docente").addClass("d-none");
@@ -535,7 +535,7 @@
             
                         data.forEach(element => {
                             
-                            $(elemento_pai).append('<div class="box-documento"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><span class="badge badge-pill detalhes-documento" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></p></div>');
+                            $(elemento_pai).append('<div class="box-documento"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><a href="'+host+'/documentos/dimensao/'+element.dimensao+'/detalhes/'+element.id+'" target="BLANK"><span class="badge badge-pill detalhes-documento_off" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></a></p></div>');
                         });
                     },
                     complete: function(){
@@ -904,13 +904,9 @@
 
             }
 
-            function getFrequencia(dimensao, tipo, ppg, ano_inicial, ano_fim){
+            function getFrequencia(elemento, dimensao, tipo, ppg, ano_inicial, ano_fim){
 
-                let chx = document.getElementById("chart").getContext('2d');
-
-               
-
-                 
+                let chx = document.getElementById(elemento).getContext('2d');
 
                 $.ajax({
                     url: host+'/dados/geral/frequencia',
@@ -924,7 +920,7 @@
                             "tipo": tipo
                     },
                     beforeSend: function() {
-                        
+                        $('.box-evolucao').loader('show');
                     },
                     success: function(data) {
 
@@ -940,36 +936,13 @@
                             dict.fill = false;
 
                             datasets.push(dict);
-                        });
-                        
+                        });                        
                        
-
                         let config = {
                             type : 'line',
                             data : {
                                 labels : data.sequencia,
                                 datasets : datasets
-
-                                /*
-                                    
-                                        {
-                                            data : a,
-                                            label : "ODS 1",
-                                            borderColor : "#e5243b",
-                                            fill : false
-                                        },
-                                        {
-                                            data : b,
-                                            label : "ODS 2",
-                                            borderColor : "#DDA63A",
-                                            fill : false
-                                        },
-                                        {
-                                            data : c,
-                                            label : "ODS 3",
-                                            borderColor : "#4C9F38",
-                                            fill : false
-                                        } ]*/
                             },
                             options : {
                                 title : {
@@ -990,8 +963,8 @@
                         };
 
                         let GraficoEvolucao = null;
-                        let graphareaEvolucao = document.getElementById("chart").getContext("2d");
-                        let chartStatusEvolucao = Chart.getChart("chart"); // <canvas> id
+                        let graphareaEvolucao = document.getElementById(elemento).getContext("2d");
+                        let chartStatusEvolucao = Chart.getChart(elemento); // <canvas> id
                                     
                         if (chartStatusEvolucao != undefined) {
                             chartStatusEvolucao.destroy();
@@ -1001,29 +974,10 @@
 
                     },
                     complete: function(){
-                         
+                        $('.box-evolucao').loader('hide');
                     }
                 });
-
             }
-
-            
-
-            
-
-           
-            
-            //let chxDocente = document.getElementById("evolucaoDocente").getContext('2d');
-            //var grafico = new Chart(chxDocente, config);
-
-           
-           
-
 });
-
-
-
-
-
     </script>
 @endsection

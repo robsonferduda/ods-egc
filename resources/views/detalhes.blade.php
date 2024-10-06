@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12 mt-3">
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
 
             <p class="mb-1"><strong>Dimensão</strong>: {{ ($documento->dimensao == 1) ? 'Pesquisa' : 'Extensão' }} </p>
@@ -91,6 +91,9 @@
                     
                     $(".ods-result").removeClass("d-block");
                     $(".ods-result").addClass("d-none");
+
+                    $('.ods-result').loader('show');
+                    $('.img-ods').loader('show');
                   },
                   success: function(data) {
 
@@ -161,9 +164,13 @@
                   },
                   error: function(){
                      $('.texto_ods').loader('hide');
+                     $('.ods-result').loader('hide');
+                     $('.img-ods').loader('hide');
                   },
                   complete: function(){
                      $('.texto_ods').loader('hide');
+                     $('.ods-result').loader('hide');
+                     $('.img-ods').loader('hide');
                   }
                }); 
 
