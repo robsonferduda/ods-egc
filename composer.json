@@ -19,7 +19,7 @@
         "laravelcollective/html": "^6.2",
         "maatwebsite/excel": "^3.1",
         "santigarcor/laratrust": "^6.1",
-        "stevebauman/location": "^6.6"
+        "stevebauman/location": "^6.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
