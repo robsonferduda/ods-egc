@@ -26,7 +26,7 @@
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
                         <option value="todas">Todas</option>
-                        <option value="pesquisa">Pesquisa</option>
+                        <option value="pesquisa">Pós-Graduação</option>
                     </select>
                 </div>
             </div>
