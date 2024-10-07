@@ -36,7 +36,7 @@ class HomeController extends Controller
                         "cidade" => ($data) ? $data->cityName : "Não Definido",
                         "uf" => ($data) ? $data->areaCode : "Não Definido");*/
 
-        Log::create($acesso);
+        //Log::create($acesso);
 
         return view('dashboard', compact('ods','dimensoes'));
     }
