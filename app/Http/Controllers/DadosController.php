@@ -101,39 +101,46 @@ class DadosController extends Controller
 
         $lista = array();
         $lista_ods = Ods::orderBy('cod')->get();
+        $totais = array();
 
-        foreach ($lista_ods as $key => $ods) {
+        for ($i=0; $i < count($anos); $i++) { 
 
-            $historico = array();
+            $totais = array();
 
-            if(in_array($ods->cod, $ods_encontrados)){
+            foreach ($lista_ods as $key => $ods) {
 
-                for ($i=0; $i < count($anos); $i++) { 
+                $complemento = ' AND an_base = '.$anos[$i].'
+                AND ods = '.$ods->cod.'
+                GROUP BY t1.ods, an_base, t2.cor 
+                ORDER BY t1.ods, an_base';
 
-                    $complemento = ' AND an_base = '.$anos[$i].'
-                                AND ods = '.$ods->cod.'
-                                GROUP BY t1.ods, an_base, t2.cor 
-                                ORDER BY t1.ods, an_base';
+                $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
+                        FROM capes_teses_dissertacoes_ctd t0
+                        JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                        RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                        $where
+                        $complemento";
 
-                    $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
-                            FROM capes_teses_dissertacoes_ctd t0
-                            JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                            RIGHT JOIN ods t2 ON t2.cod = t1.ods 
-                            $where
-                            $complemento";
+                $resultado = DB::connection('pgsql')->select($sql);
 
-                    $resultado = DB::connection('pgsql')->select($sql);
-
-                    if($resultado){
-                        $total = $resultado[0]->total;
-                    }else{
-                        $total = 0;
-                    }
-
-                    $lista[] = array('ods'=> $ods->cod, 'ano' => $anos[$i], 'total' => $total);
+                if($resultado){
+                    $totais[] = $resultado[0]->total;
+                }else{
+                    $totais[] = 0;
                 }
             }
-            
+
+            $lista[$i]['ano'] = $anos[$i];
+
+            for ($j=0; $j < count($totais); $j++) { 
+                
+                $indice = $j + 1;
+                $lista[$i][$indice] = $totais[$j];
+
+            }
+
+            $lista[$i]['total'] = array_sum($totais);
+
         }
 
         return Excel::download(new DadosExport($lista), 'dados_evolucao.xlsx');
