@@ -99,7 +99,8 @@
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
                 <h6>EVOLUÇÃO POR ODS</h6>
-                <canvas id="chart"></canvas>
+                <canvas id="chart" width="400" height="380"></canvas>
+                <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
 
             <div class="col-md-4 painel-icones mt-8 mb-0">
@@ -162,10 +163,12 @@
            
                <div class="col-md-8 mt-3 mb-5 box-evolucao">
                     <h6>EVOLUÇÃO POR ODS</h6>
-                    <canvas id="evolucaoDocente"></canvas>
+                    <canvas id="evolucaoDocente" width="400" height="380"></canvas>
+                    <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
                 </div>
 
-                <div class="col-md-4 painel-icones mt-5 mb-5">
+                <div class="col-md-4 painel-icones mt-8 mb-0">
+                    <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
                     <div class="row perfil-ods"> 
 
                     </div>                    
@@ -499,9 +502,9 @@
                         for (let i=0; i < 17; i++)  {
                             var ods = i+1;
                             if(data.total[i] > 0 ){
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }else{
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }
                         }
                     },
@@ -714,18 +717,18 @@
                                 var float = percentual + 30;
                                 var label = (totais[i] > 1) ? 'Documentos' : 'Documento';
 
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
 
                                 $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-3"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
                                                         '<div class="col-md-9"><h6 class="progresso-title mb-0">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
                                                         '<div class="progresso ods-'+i+'"><div class="progresso-bar" style="width:'+percentual.toFixed(1)+'%; background:'+cores[i]+';"><div class="progresso-value" style="left: '+float.toFixed(1)+'%;">'+percentual.toFixed(1)+'%</div></div></div></div></div>');
 
                             }else{
-                                $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                             }
                             
                         }
-                        $(".perfil-ods").append('<div class="col-md-2 col-sm-2 mb-2"><img src="'+host+'/img/ods-icone/ods.png" class="img-fluid img-ods" alt="ODS"></div>');
+                        $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2"><img src="'+host+'/img/ods-icone/ods.png" class="img-fluid img-ods" alt="ODS"></div>');
                             //$(".perfil-ods").append('<div class="col-md-2 col-sm-2"><img src="'+host+'/img/ods-icone/ods_'+element.ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
                         $("#nm_docente").text(docente);
                         $("#nm_ppg").text(ppg);
