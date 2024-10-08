@@ -98,7 +98,7 @@
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
-                <h6>EVOLUÇÃO POR ODS</h6>
+                <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
                 <canvas id="chart" width="400" height="380"></canvas>
                 <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
@@ -240,9 +240,7 @@
                 complete: function(){
                     $('.painel').loader('hide');
                 }
-            });
-
-           
+            });           
 
             $(document).on('click', '.btn-filtrar', function() {
 
@@ -442,6 +440,53 @@
                 if(docente){
                     carregaDocente(ppg, docente); 
                 }  */          
+
+            });
+
+            $(".excel-download").click(function(){
+
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var ano_inicial = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+                var tipo = $("#tipo").val();
+
+                $.ajax({
+                    url: host+'/dados/excel',
+                    type: 'POST',
+                    xhrFields:{
+                        responseType: 'blob'
+                    },
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ppg": ppg,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo,
+                            "docente": docente
+                    },
+                    beforeSend: function() {
+                                           
+                    },
+                    success: function(data) {
+
+                        var blob = data;
+                        var downloadUrl = URL.createObjectURL(blob);
+
+                        console.log(downloadUrl);
+                        var a = document.createElement("a");
+                        a.href = downloadUrl;
+                        a.download = "dados_evolucao.xlsx";
+                        document.body.appendChild(a);
+                        a.click();
+                    },
+                    complete: function(){
+                       
+                    }
+                });
 
             });
 

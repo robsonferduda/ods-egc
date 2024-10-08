@@ -254,7 +254,9 @@ mark17{
     text-align: center;
     font-size: 35px;
 }
-
+.excel-download:hover{
+    cursor: pointer;
+}
 .detalhes-documento:hover{
     cursor: pointer;
 }
