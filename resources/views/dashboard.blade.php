@@ -98,9 +98,9 @@
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
-                <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
+                <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
                 <canvas id="chart" width="400" height="380"></canvas>
-                <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
+                <p class="text-danger center" style="color: #ef1000 !important;">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
 
             <div class="col-md-4 painel-icones mt-8 mb-0">

@@ -50,7 +50,7 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a href="{{ url('dashboard') }}" class="nav-link">
-            <i class="fa fa-pie-chart mr-2"></i> Dashboard
+            <i class="fa fa-pie-chart mr-2"></i> Painel
             </a>
           </li>
           <li class="nav-item ">

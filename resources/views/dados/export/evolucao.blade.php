@@ -1,6 +1,9 @@
 <table>
     <thead>
     <tr>
+        <td colspan="18"><strong>Relatório de Evolução por ODS/Ano</strong></td>
+    </tr>
+    <tr>
         <th>Ano</th>
         <th>ODS 1</th>
         <th>ODS 2</th>
@@ -44,25 +47,5 @@
                 <td>{{ $d['total'] }}</td>
             </tr>
         @endforeach
-        <tr>
-            <td>Total Geral</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
     </tbody>
 </table>

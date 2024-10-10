@@ -1,26 +1,30 @@
 @extends('layouts.guest')
 @section('content')
 <div class="row">
-    <div class="row mb-5">
+    <div class="row mb-5 mt-3">
         <div class="col-md-2 col-sm-2">
-            <img src="{{ asset('img/logo-egc.png') }}" class="img-fluid" alt="Responsive image">
+            <img src="{{ asset('img/logo-egc.png') }}" class="img-fluid mt-1" alt="Responsive image">
         </div>
         <div class="col-md-10 col-sm-10">
-            <h6>Universidade Federal de Santa catarina (UFSC)</h6>
-            <h6>Programa de Pós-graduação em Engenharia, Gestão e Mídia do Conhecimento (PPGEGC)</h6>
+            <h6 class="mb-0">Universidade Federal de Santa catarina (UFSC)</h6>
+            <h6 class="mb-0 mt-1">Programa de Pós-graduação em Engenharia, Gestão e Mídia do Conhecimento (PPGEGC)</h6>
+            <h6 class="mb-0 mt-1">Engenharia do Conhecimento/Teoria e prática em Engenharia do Conhecimento</h6>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <p class="mb-1"><strong>Aluno</strong>: Robson Fernando Duda </p>
-            <p class="mb-1"><strong>Orientador</strong>: Prof. Dr. Fernando Álvaro Ostuni Gauthier </p>
-            <p class="mb-1"><strong>Coorientador</strong>: Prof. Dr. Roberto Carlos dos Santos Pacheco </p>
+            <p class="mb-1">
+                <strong>Perfil ODS</strong> é uma ferramenta de visualização de dados sobre ODS nas IES resultante de uma 
+                pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
+                documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+            </p>
             <p class="mb-1"><strong>Programa de Pós-Graduação em Engenharia e Gestão do Conhecimento</strong></p>
-            <p class="mb-1"><strong>Nível</strong>: Doutorado </p>
             <p class="mb-1"><strong>Área de Concentração</strong>: Engenharia do Conhecimento</p>
             <p class="mb-1"><strong>Linha de Pesquisa</strong>: Teoria e prática em Engenharia do Conhecimento </p>
-            <p class="mb-1"><strong>Projeto de Pesquisa</strong>: A ferramenta denominada de <strong>Perfil ODS</strong> é resultado de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
-            documentos de natureza heterogênea, produzidos pelas IES em suas atividades de ensino, pesquisa, extensão, gestão e inovação.</p>
+            <p class="mb-1"><strong>Nível</strong>: Doutorado </p>
+            <p class="mb-1"><strong>Aluno</strong>: Robson Fernando Duda </p>
+            <p class="mb-1"><strong>Orientador</strong>: Prof. Dr. Fernando Álvaro Ostuni Gauthier </p>
+            <p class="mb-1"><strong>Coorientador</strong>: Prof. Dr. Roberto Carlos dos Santos Pacheco </p>            
         </div>
     </div>  
     <div class="row mt-5">
