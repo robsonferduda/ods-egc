@@ -38,25 +38,41 @@ class ODSController extends Controller
         return response()->json($ods);
     }
 
-    public function getDocumentos($dimensao, $ods)
+    public function getDocumentos(Request $request)
     {
         $where = " WHERE 1=1 ";
 
-        switch ($dimensao) {
+        switch ($request->dimensao) {
             case 'extensao':
-                $where = ' AND id_dimensao = 2 '; 
+                $where .= ' AND id_dimensao = 2 '; 
                 break;
 
             case 'pesquisa':
-                $where = ' AND id_dimensao = 1 ';
+                $where .= ' AND id_dimensao = 1 ';
                 break;
             
             default:
-                $where = "";
+                
                 break;
         }
 
-        if($ods > 0) $where .= " AND t3.cod = $ods";
+        //if($ods > 0) $where .= " AND t3.cod = $ods";
+
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+        }
+
+        if($request->docente){
+            $where .= " AND nm_orientador = '$request->docente'";
+        }
 
         $sql = "SELECT t0.ods, 
 	            t3.cor, 
@@ -83,48 +99,172 @@ class ODSController extends Controller
         return $dados;
     }
 
-    public function getTotalGeral($dimensao)
+    public function getTotalGeral(Request $request)
     {
-        $where = "";
+        $where = "WHERE 1=1";
 
-        switch ($dimensao) {
+        switch ($request->dimensao) {
             case 'extensao':
-                $where = ' WHERE id_dimensao = 2 '; 
+                $where .= ' AND id_dimensao = 2 '; 
                 break;
 
             case 'pesquisa':
-                $where = ' WHERE id_dimensao = 1 ';
+                $where .= ' AND id_dimensao = 1 ';
                 break;
             
             default:
-                $where = "";
+                
                 break;
+        }
+
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
         }
 
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 
                 FROM capes_teses_dissertacoes_ctd t0
-                RIGHT JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                JOIN ods t2 ON t2.cod = t1.ods 
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
                 $where
                 GROUP BY t1.ods, t2.cor 
                 ORDER BY t1.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
-
-
+        
         $ods = array_column($dados, 'ods');
-        $cor = array_column($dados, 'cor');
-        $total = array_column($dados, 'total');
 
-        $ods[] = 17;
-        $cor[] = '#19486A';
-        $total[] = 837;
+        $j = 0;
+
+        for ($i=0; $i < 17; $i++) { 
+            if(!in_array($i+1, $ods)){
+                $obj = (object) ['ods' => $i+1, 'cor' => '#000000', 'total' => 0];
+                $resultado[] = $obj;
+            }else{
+                $resultado[] = $dados[$j];
+                $j++;
+            }
+        }
+
+        $ods = array_column($resultado, 'ods');
+        $cor = array_column($resultado, 'cor');
+        $total = array_column($resultado, 'total');
 
         $totais = array('ods' => $ods, 'cor' => $cor, 'total' => $total);
 
         return response()->json($totais);
     }
 
+
+    public function getTotalGeralFrequencia(Request $request)
+    {
+        $where = "WHERE 1=1";
+
+        switch ($request->dimensao) {
+            case 'extensao':
+                $where .= ' AND id_dimensao = 2 '; 
+                break;
+
+            case 'pesquisa':
+                $where .= ' AND id_dimensao = 1 ';
+                break;
+            
+            default:
+                
+                break;
+        }
+
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+        }
+
+        if($request->docente){
+            $where .= " AND nm_orientador = '$request->docente'";
+        }
+
+        /*
+            Definição dos ODS existentes
+
+        */
+
+        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
+                FROM capes_teses_dissertacoes_ctd t0
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                $where
+                GROUP BY t1.ods, t2.cor 
+                ORDER BY t1.ods";
+
+        $dados = DB::connection('pgsql')->select($sql);
+        
+        $ods_encontrados = array_column($dados, 'ods');
+        
+        $anos = array();
+        $anos[] = (int) $request->ano_inicial;
+        $inicio = (int) $request->ano_inicial;
+
+        for ($i=$request->ano_inicial; $i < $request->ano_fim ; $i++) { 
+            $anos[] = $inicio += 1;
+        }
+
+        $frequencias = array();
+        $lista_ods = Ods::orderBy('cod')->get();
+
+        foreach ($lista_ods as $key => $ods) {
+
+            $historico = array();
+
+            if(in_array($ods->cod, $ods_encontrados)){
+
+                for ($i=0; $i < count($anos); $i++) { 
+
+                    $complemento = ' AND an_base = '.$anos[$i].'
+                                AND ods = '.$ods->cod.'
+                                GROUP BY t1.ods, an_base, t2.cor 
+                                ORDER BY t1.ods, an_base';
+
+                    $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
+                            FROM capes_teses_dissertacoes_ctd t0
+                            JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                            RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                            $where
+                            $complemento";
+
+                    $resultado = DB::connection('pgsql')->select($sql);
+
+                    if($resultado){
+                        $historico[] = $resultado[0]->total;
+                    }else{
+                        $historico[] = 0;
+                    }
+                }
+
+                $totais = $anos;
+                $frequencias[] = array('ods' => $ods->cod, 'cor' => $ods->cor, 'totais' => $historico);
+            }
+            
+        }
+
+        $dados = array('sequencia' => $anos, 'frequencias' => $frequencias);
+
+        return response()->json($dados);
+    }
+   
     public function getTotalGeralPPG($ppg)
     {
         $sql = "SELECT t1.ods, t2.cor, count(*) as total 
@@ -153,27 +293,40 @@ class ODSController extends Controller
         return response()->json($totais);
     }
 
-    public function getTotalDimensaoODS($dimensao)
+    public function getTotalDimensaoODS(Request $request)
     {
-        $where = "";
+        $where = "WHERE 1=1";
 
-        switch ($dimensao) {
+        switch ($request->dimensao) {
             case 'extensao':
-                $where = ' WHERE id_dimensao = 2 '; 
+                $where .= ' AND id_dimensao = 2 '; 
                 break;
 
             case 'pesquisa':
-                $where = ' WHERE id_dimensao = 1 ';
+                $where .= ' AND id_dimensao = 1 ';
                 break;
             
             default:
-                $where = "";
+                //$where = "";
                 break;
         }
 
-        $sql = "SELECT ods, objetivo, cor, count(*) as total 
-               	FROM documento_ods t1
-               	JOIN ods t2 ON t2.cod = t1.ods 
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+        }
+
+        $sql = "SELECT t1.ods, objetivo, t2.cor, count(*) as total 
+                FROM capes_teses_dissertacoes_ctd t0
+                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                JOIN ods t2 ON t2.cod = t1.ods 
                 $where
                	GROUP BY ods, objetivo, cor 
                	ORDER BY total DESC  

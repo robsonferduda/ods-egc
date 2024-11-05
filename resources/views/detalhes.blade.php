@@ -11,10 +11,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>
-            <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->dimensao }} </p>
-            <p class="mb-1"><strong>Documento</strong>: {{ $documento->complemento }} </p>
+        <div class="col-md-12 col-sm-12 mt-3">
+            <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
+
+            <p class="mb-1"><strong>Dimensão</strong>: {{ ($documento->dimensao == 1) ? 'Pesquisa' : 'Extensão' }} </p>
+            <p class="mb-1"><strong>Natureza do Documento</strong>: {{ $documento->complemento }} </p>
+
+            @if($documento->dimensao == 1)
+               <p class="mb-1"><strong>Programa de Pós-Graduação</strong>: {{ $documento->nm_programa }} </p> 
+               <p class="mb-1"><strong>Autor</strong>: {{ $documento->nm_discente }} </p> 
+               <p class="mb-1"><strong>Orientador</strong>: {{ $documento->nm_orientador }} </p> 
+            @endif
+            @if($documento->dimensao == 2)
+               <p class="mb-1"><strong>Coordenador</strong>: {{ $documento->coordenador }} </p> 
+            @endif
+            
+            <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->resumo, 'UTF-8')) }} </div>
 
@@ -79,6 +91,9 @@
                     
                     $(".ods-result").removeClass("d-block");
                     $(".ods-result").addClass("d-none");
+
+                    $('.ods-result').loader('show');
+                    $('.img-ods').loader('show');
                   },
                   success: function(data) {
 
@@ -149,9 +164,13 @@
                   },
                   error: function(){
                      $('.texto_ods').loader('hide');
+                     $('.ods-result').loader('hide');
+                     $('.img-ods').loader('hide');
                   },
                   complete: function(){
                      $('.texto_ods').loader('hide');
+                     $('.ods-result').loader('hide');
+                     $('.img-ods').loader('hide');
                   }
                }); 
 

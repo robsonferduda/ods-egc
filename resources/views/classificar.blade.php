@@ -30,7 +30,7 @@
                     <div class="col-md-12">
                         <h6>{{ $texto->nm_producao }}</h6>
                         <p>
-                            {{ $texto->ds_resumo }}
+                            {{ ucfirst(mb_strtolower($texto->ds_resumo, 'UTF-8')) }} 
                         </p>
                     </div>
                     <div class="col-md-2 mt-1">

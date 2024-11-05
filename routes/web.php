@@ -4,18 +4,22 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', function () { return view('welcome'); });
+Route::get('/', 'HomeController@dashboard');
+Route::get('ods', function () { return view('welcome'); });
 Route::get('perfil', function () { return view('perfil'); });
 Route::get('classificar', 'ODSController@classificar');
-Route::get('descobrir', function () { return view('descobrir'); });
+Route::get('analisar', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
 Route::get('dashboard', 'HomeController@dashboard');
 
 Route::get('repositorio', 'ODSController@repositorio');
 
+Route::post('dados/excel', 'DadosController@excel');
+Route::post('dados/geral', 'ODSController@getTotalGeral');
+Route::post('dados/geral/frequencia', 'ODSController@getTotalGeralFrequencia');
 Route::get('dados/ano', 'ODSController@getAno');
-Route::get('dados/documentos/{dimensao}/ods/{ods}', 'ODSController@getDocumentos');
+Route::post('dados/documentos', 'ODSController@getDocumentos');
 Route::get('dados/geral/{dimensao}', 'ODSController@getTotalGeral');
 Route::get('dados/geral/ppg/{ppg}', 'ODSController@getTotalGeralPPG');
 Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
@@ -23,7 +27,7 @@ Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
 
 Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
-Route::get('documento/ods/dimensao/{dimensao}', 'ODSController@getTotalDimensaoODS');
+Route::post('documento/ranking/ods', 'ODSController@getTotalDimensaoODS');
 Route::get('documentos/dimensao/{dimensao}/detalhes/{id}', 'DocumentoController@detalhes');
 
 Route::get('estado/{estado}/cidades', 'DadosController@cidades');
