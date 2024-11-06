@@ -51,11 +51,9 @@
             </div>    
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Unidade</label>
-                    <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
-                        <option value="">Todos</option>
+                    <select class="form-control" name="ano_fim" id="ano_fim" aria-label="Default select example">
                     </select>
-                </div> 
+                </div>   
             </div>
             <div class="col-md-12">       
                 <div class="form-group">
