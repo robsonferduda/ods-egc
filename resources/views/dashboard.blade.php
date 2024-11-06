@@ -55,6 +55,16 @@
                     </select>
                 </div>   
             </div>
+
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Unidade</label>
+                    <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
+                        <option value="">Todos</option>
+                    </select>
+                </div> 
+            </div> 
+            
             <div class="col-md-12">       
                 <div class="form-group">
                     <label>Responsável</label>
