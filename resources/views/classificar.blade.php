@@ -4,23 +4,31 @@
     <div class="col-md-12">
         <div class="header-text">
             <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Classificar</h3>
-            <div class="cabecalho">
+         </div>
+    </div>
+    @if(Auth::user())
+      <div class="col-md-12 mb-3">
+           <div class="pull-left">
+               <a href="{{ url('analisar') }}">
+                   <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
+               </a>
+               <a href="{{ url('classificar') }}">
+                   <span class="badge badge-pill badge-default">COLABORAR</span>
+               </a>
+               <a href="{{ url('minhas-avaliacoes') }}">
+                   <span class="badge badge-pill badge-default">Minhas Avaliações</span>
+               </a>
+               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                   <span class="badge badge-pill badge-danger">Sair</span>
+               </a>
+           </div>
+       </div>
+    @endif
+    <div class="col-md-12">
+        <div class="cabecalho">
               <h5 class="mb-0">Classifique os textos de acordo com o ODS identificado na leitura</h5>
               <p>A classificação manual auxilia no processo de melhoria da qualidade da classificação dos modelos de Inteligência Artificial</p>
             </div>
-         </div>
-    </div>
-    <div class="col-md-12 mb-3">
-        <div class="pull-left">
-            <a href="{{ url('minhas-avaliacoes') }}">
-                <span class="badge badge-pill badge-info">Minhas Avaliações</span>
-            </a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                <span class="badge badge-pill badge-danger">Sair</span>
-            </a>
-        </div>
-    </div>
-    <div class="col-md-12">
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
         </form>

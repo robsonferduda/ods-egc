@@ -40,6 +40,11 @@ class HomeController extends Controller
         return view('dashboard', compact('ods','dimensoes'));
     }
 
+    public function perfil()
+    {
+        return view('perfil');
+    }
+
     public function sobre()
     {
         return view('sobre');

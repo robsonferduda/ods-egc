@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@dashboard');
+Route::get('home', 'HomeController@dashboard');
 Route::get('ods', function () { return view('welcome'); });
 Route::get('perfil', function () { return view('perfil'); });
 Route::get('classificar', 'ODSController@classificar');
@@ -12,6 +13,7 @@ Route::get('analisar', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 
 Route::get('dashboard', 'HomeController@dashboard');
+Route::get('meu-perfil', 'HomeController@perfil');
 
 Route::get('repositorio', 'ODSController@repositorio');
 

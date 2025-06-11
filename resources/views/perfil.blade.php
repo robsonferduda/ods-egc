@@ -2,17 +2,32 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card card-plain">
-            <div class="content">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 mt-3">
-                        <canvas id="myChart" width="200" height="200"></canvas>   
-                        <canvas id="chartjs-3" class="chartjs" width="undefined" height="undefined"></canvas>
-                    </div>            
-                </div>
-            </div>
+        <div class="header-text">
+            <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Meu Perfil</h3>
+        </div>
+    </div>  
+    <div class="col-md-12">
+        <p class="mb-2">Olá <strong>{{ Auth::user()->name }}</strong>! O que deseja fazer hoje?</p>
+    </div>
+    <div class="col-md-12 mb-3">
+        <div class="pull-left">
+            <a href="{{ url('analisar') }}">
+                <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
+            </a>
+            <a href="{{ url('classificar') }}">
+                <span class="badge badge-pill badge-default">COLABORAR</span>
+            </a>
+            <a href="{{ url('minhas-avaliacoes') }}">
+                <span class="badge badge-pill badge-default">Minhas Avaliações</span>
+            </a>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                <span class="badge badge-pill badge-danger">Sair</span>
+            </a>
         </div>
     </div>
+    <div class="col-md-12">
+       
+    </div>      
  </div>
 @endsection
 @section('script')
@@ -22,61 +37,6 @@
             var token = $('meta[name="csrf-token"]').attr('content');
             var host =  $('meta[name="base-url"]').attr('content');
 
-            alert("host");
-
-            $.ajax({
-                url: host+'/api/emissora/buscarEmissoras',
-                type: 'GET',
-                beforeSend: function() {
-                    $('.content').loader('show');
-                },
-                success: function(data) {
-                    if(!data) {
-                        Swal.fire({
-                            text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
-                            type: "warning",
-                            icon: "warning",
-                        });
-                        return;
-                    }
-
-                    data.forEach(element => {
-                        let option = new Option(element.text, element.id);
-                        $('#emissora').append(option);
-                    });
-                },
-                complete: function(){
-                    $('.content').loader('hide');
-                }
-            });
-
-            new Chart(document.getElementById("chartjs-3"), {
-                "type": "radar",
-                "data": {
-                    "labels": ["Ensino", "Pesquisa", "Extensão", "Inovação"],
-                    "datasets": [ {
-                        "label": "Dimensões",
-                        "data": [ 48, 40, 35, 100],
-                        "fill": false,
-                        "backgroundColor": "rgba(54, 162, 235, 0.2)",
-                        "borderColor": "rgb(54, 162, 235)",
-                        "pointBackgroundColor": "rgb(54, 162, 235)",
-                        "pointBorderColor": "#fff",
-                        "pointHoverBackgroundColor": "#fff",
-                        "pointHoverBorderColor": "rgb(54, 162, 235)"
-                    }]
-                },
-                "options": {
-                    "elements": {
-                        "line": {
-                            "tension": 0,
-                            "borderWidth": 3
-                        }
-                    }
-                }
-            });
-
-                               
         });
     </script>
 @endsection

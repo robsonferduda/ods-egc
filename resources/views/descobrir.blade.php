@@ -4,14 +4,31 @@
     <div class="col-md-12">
        <div class="header-text">
           <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Descobrir</h3>
-          <div class="cabecalho">
-            <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
-            <p>Informe seu texto para classificação automática</p>
-          </div>
        </div>
     </div>  
-
+    @if(Auth::user())
+      <div class="col-md-12 mb-3">
+           <div class="pull-left">
+               <a href="{{ url('analisar') }}">
+                   <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
+               </a>
+               <a href="{{ url('classificar') }}">
+                   <span class="badge badge-pill badge-default">COLABORAR</span>
+               </a>
+               <a href="{{ url('minhas-avaliacoes') }}">
+                   <span class="badge badge-pill badge-default">Minhas Avaliações</span>
+               </a>
+               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                   <span class="badge badge-pill badge-danger">Sair</span>
+               </a>
+           </div>
+       </div>
+    @endif
     <div class="col-md-12">
+         <div class="cabecalho">
+            <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
+            <p>Informe seu texto para classificação automática</p>
+         </div>
        <form method="POST" action="{{ url('ods/discovery') }}">
         @csrf
          
@@ -36,6 +53,7 @@
             </div>
             <div class="center">
                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-cogs"></i> Classificar</button>
+               <button type="button" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
             </div>
             <div class="row ods-result d-none">
                <div class="col-md-12 col-sm-12">

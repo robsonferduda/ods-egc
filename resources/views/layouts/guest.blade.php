@@ -53,6 +53,13 @@
             <i class="fa fa-pie-chart mr-2"></i> Painel
             </a>
           </li>
+          @if(Auth::user())
+            <li class="nav-item ">
+              <a href="{{ url('meu-perfil') }}" class="nav-link">
+                <i class="fa fa-user"></i> MEU PERFIL
+              </a>
+            </li>
+          @endif
           <li class="nav-item ">
             <a href="{{ url('analisar') }}" class="nav-link">
               <i class="fa fa-files-o"></i> ANALISAR
