@@ -53,7 +53,9 @@
             </div>
             <div class="center">
                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-cogs"></i> Classificar</button>
-               <button type="button" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
+               @if(Auth::user())
+                  <button type="button" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
+               @endif
             </div>
             <div class="row ods-result d-none">
                <div class="col-md-12 col-sm-12">
