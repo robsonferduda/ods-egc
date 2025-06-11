@@ -63,7 +63,8 @@ class ODSController extends Controller
         }
 
         if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+            if($request->dimensao == 1)
+                $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         if($request->tipo and $request->tipo != "todos"){
@@ -122,20 +123,23 @@ class ODSController extends Controller
         }
 
         if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+
+            if($request->dimensao == 1)
+                $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+
         }
 
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND nm_subtipo_producao = '$request->tipo' ";
         }
 
-        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
-                FROM capes_teses_dissertacoes_ctd t0
-                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+        $sql = "SELECT t0.ods, t2.cor, count(*) as total 
+                FROM documento_ods t0
+                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                RIGHT JOIN ods t2 ON t2.cod = t0.ods 
                 $where
-                GROUP BY t1.ods, t2.cor 
-                ORDER BY t1.ods";
+                GROUP BY t0.ods, t2.cor 
+                ORDER BY t0.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
         
@@ -316,17 +320,18 @@ class ODSController extends Controller
         }
 
         if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+            if($request->dimensao == 1)
+                $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND nm_subtipo_producao = '$request->tipo' ";
         }
 
-        $sql = "SELECT t1.ods, objetivo, t2.cor, count(*) as total 
-                FROM capes_teses_dissertacoes_ctd t0
-                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                JOIN ods t2 ON t2.cod = t1.ods 
+        $sql = "SELECT t0.ods, objetivo, t2.cor, count(*) as total 
+                FROM documento_ods t0
+                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
+                JOIN ods t2 ON t2.cod = t0.ods 
                 $where
                	GROUP BY ods, objetivo, cor 
                	ORDER BY total DESC  
