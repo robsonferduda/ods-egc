@@ -45,7 +45,9 @@ class ColaboradorController extends Controller
             $request->merge(['password' => \Hash::make($request->password)]);
             $user = User::create($request->all());
 
-            return redirect('classificar');
+            Auth::loginUsingId($user->id);
+
+            return redirect('meu-perfil');
         }
     }
 }
