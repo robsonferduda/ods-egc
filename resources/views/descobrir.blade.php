@@ -17,9 +17,18 @@
          
          <div class="content">
             <h5 class="mb-0">Insira o texto para análise</h5>
+            
+            <div class="form-group mt-2">
+               <label class="mb-1"><strong>Selecione um Modelo de Classificação</strong></label>
+               <select class="form-control mt-0" name="modelo" id="modelo">
+                  <option value="ods-roberta" >ODS-RoBERTa</option>
+               </select>
+            </div>
+                                
             <div class="form-group mt-2 texto_ods">
                <textarea id="texto_ods" rows="10" style="height: 300px !important; max-height: 800px !important;" placeholder="Insira seu texto aqui. Ele deve ter no mínimo 50 palavras e no máximo 500. Para a classificação de documentos em lote, crie uma conta e utilize as ferramentas avançadas do sistema." class="form-control texto_ods"></textarea>
             </div>
+
             <div class="row">
                <div class="col-md-12 col-sm-12 resultado">
                   
