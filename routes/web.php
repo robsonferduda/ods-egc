@@ -7,13 +7,12 @@ Auth::routes();
 Route::get('/', 'HomeController@dashboard');
 Route::get('home', 'HomeController@dashboard');
 Route::get('ods', function () { return view('welcome'); });
-Route::get('perfil', function () { return view('perfil'); });
 Route::get('classificar', 'ODSController@classificar');
 Route::get('analisar', function () { return view('descobrir'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
+Route::post('ods/descobrir/salvar', 'ODSController@descobrirSalvar');
 
 Route::get('dashboard', 'HomeController@dashboard');
-Route::get('meu-perfil', 'HomeController@perfil');
 
 Route::get('repositorio', 'ODSController@repositorio');
 
@@ -49,8 +48,11 @@ Route::get('docentes/foto/{docente}', 'ODSController@getImagem');
 Route::get('sobre', 'HomeController@sobre');
 
 Route::get('minhas-avaliacoes', 'ODSController@avaliacoes');
+Route::get('minhas-analises', 'ODSController@analises');
 
 Route::get('ods/{ods}', 'ODSController@getDadosOds');
+
+Route::get('meu-perfil', 'UserController@perfil');
 
 Route::get('colaborar', 'ColaboradorController@colaborar');
 Route::resource('colaborador', 'ColaboradorController');

@@ -7,34 +7,23 @@
        </div>
     </div>  
     @if(Auth::user())
-      <div class="col-md-12 mb-3">
-           <div class="pull-left">
-               <a href="{{ url('analisar') }}">
-                   <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
-               </a>
-               <a href="{{ url('classificar') }}">
-                   <span class="badge badge-pill badge-default">COLABORAR</span>
-               </a>
-               <a href="{{ url('minhas-avaliacoes') }}">
-                   <span class="badge badge-pill badge-default">Minhas Avaliações</span>
-               </a>
-               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                   <span class="badge badge-pill badge-danger">Sair</span>
-               </a>
-           </div>
-       </div>
+         <div class="col-md-12 mb-3">
+            @include('layouts/menu-logado')
+         </div>
     @endif
     <div class="col-md-12">
          <div class="cabecalho">
             <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
             <p>Informe seu texto para classificação automática</p>
          </div>
-       <form method="POST" action="{{ url('ods/discovery') }}">
+       <form method="POST" action="{{ url('ods/descobrir/salvar') }}">
         @csrf
          
          <div class="content">
             <h5 class="mb-0">Insira o texto para análise</h5>
-            
+            @if(!Auth::user())
+               <p class="text-danger mb-0 mt-0">Faça seu cadastro <a href="{{ url('colaborar') }}" class="text-danger fw-bold" style="font-weight: bold;">aqui</a> para classificar e salvar suas classificações para uso posterior.</p>
+            @endif
             <div class="form-group mt-2">
                <label class="mb-1"><strong>Selecione um Modelo de Classificação</strong></label>
                <select class="form-control mt-0" name="modelo" id="modelo">
@@ -43,7 +32,7 @@
             </div>
                                 
             <div class="form-group mt-2 texto_ods">
-               <textarea id="texto_ods" rows="10" style="height: 300px !important; max-height: 800px !important;" placeholder="Insira seu texto aqui. Ele deve ter no mínimo 50 palavras e no máximo 500. Para a classificação de documentos em lote, crie uma conta e utilize as ferramentas avançadas do sistema." class="form-control texto_ods"></textarea>
+               <textarea name="texto" id="texto_ods" rows="10" style="height: 300px !important; max-height: 800px !important;" placeholder="Insira seu texto aqui. Ele deve ter no mínimo 50 palavras e no máximo 500. Para a classificação de documentos em lote, crie uma conta e utilize as ferramentas avançadas do sistema." class="form-control texto_ods"></textarea>
             </div>
 
             <div class="row">
@@ -54,7 +43,7 @@
             <div class="center">
                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-cogs"></i> Classificar</button>
                @if(Auth::user())
-                  <button type="button" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
+                  <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
                @endif
             </div>
             <div class="row ods-result d-none">

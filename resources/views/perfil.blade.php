@@ -10,24 +10,18 @@
         <p class="mb-2">Olá <strong>{{ Auth::user()->name }}</strong>! O que deseja fazer hoje?</p>
     </div>
     <div class="col-md-12 mb-3">
-        <div class="pull-left">
-            <a href="{{ url('analisar') }}">
-                <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
-            </a>
-            <a href="{{ url('classificar') }}">
-                <span class="badge badge-pill badge-default">COLABORAR</span>
-            </a>
-            <a href="{{ url('minhas-avaliacoes') }}">
-                <span class="badge badge-pill badge-default">Minhas Avaliações</span>
-            </a>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                <span class="badge badge-pill badge-danger">Sair</span>
-            </a>
-        </div>
+        @include('layouts/menu-logado')
     </div>
     <div class="col-md-12">
-       
-    </div>      
+        @if(count($avaliacoes))
+            <p><i class="fa fa-users mr-2"></i> Você colaborou na avaliação de <a href="{{ url('minhas-avaliacoes') }}">{{ count($avaliacoes) }}</a> documentos.</p>
+        @endif
+    </div>   
+    <div class="col-md-12">
+        @if(count($analises))
+            <p><i class="fa fa-files-o"></i> Você realizou {{ count($analises) }} análises de documentos.</p>
+        @endif
+    </div>    
  </div>
 @endsection
 @section('script')

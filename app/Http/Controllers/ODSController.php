@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\Ods;
+use App\Analise;
 use App\Avaliacao;
 use App\Documento;
 use Laracasts\Flash\Flash;
@@ -364,6 +365,13 @@ class ODSController extends Controller
         return view('avaliacoes', compact('dados'));
     }
 
+    public function analises()
+    {
+        $dados = Analise::where('cd_usuario', Auth::user()->id)->get();
+        
+        return view('analises', compact('dados'));
+    }
+
     public function classificarManual($id, $voto)
     {
         $valor = 0;
@@ -430,6 +438,57 @@ class ODSController extends Controller
         $resultado['resultado'] = $dados;
 
         return response()->json($resultado);
+    }
+
+    public function descobrirSalvar(Request $request)
+    {
+        $dados = array();
+        $distribuicao = array();
+
+        $item = array(
+            '--texto' => $request->texto
+        );
+
+        $args = "";
+        foreach ($item as $k=>$v) {
+            $args .= escapeshellarg(str_replace( array(' ', 'à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý'), array(' ', 'a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y'), $v));
+        }
+        $cmd = "python3 ".base_path()."/ods-leve.py $args";
+
+        $result = exec($cmd, $output, $return);
+
+        $output = str_replace("\r\n","", $output);
+
+        $probabilidades = explode (";", $output[0]);
+
+        for ($i=0; $i < count($probabilidades)-1; $i++) { 
+            if($probabilidades[$i] > 0.1){
+                $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
+            }
+            $distribuicao[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
+        }    
+        
+        usort($dados, function($a, $b) {
+            return $b['probabilidade'] <=> $a['probabilidade'];
+        });
+
+        $resultado['probabilidades'] = $distribuicao;
+        $resultado['resultado'] = $dados;
+
+        $probabilidade = ($dados[0]) ? round($dados[0]['probabilidade'] * 100, 2) : 0;
+        $ods = ($dados[0]) ? $dados[0]['ods'] : 0;
+
+        $analise = new Analise();
+        $analise->cd_usuario = Auth::user()->id;
+        $analise->texto = $request->texto;
+        $analise->ods = $ods;
+        $analise->probabilidade = $probabilidade;
+        $analise->id_modelo = 1;
+        $analise->save();
+
+
+        return redirect('analisar')->withInput();
+        
     }
 
     public function getPPG($instituicao){

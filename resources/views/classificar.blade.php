@@ -8,20 +8,7 @@
     </div>
     @if(Auth::user())
       <div class="col-md-12 mb-3">
-           <div class="pull-left">
-               <a href="{{ url('analisar') }}">
-                   <span class="badge badge-pill badge-default">Analisar DOcumentos</span>
-               </a>
-               <a href="{{ url('classificar') }}">
-                   <span class="badge badge-pill badge-default">COLABORAR</span>
-               </a>
-               <a href="{{ url('minhas-avaliacoes') }}">
-                   <span class="badge badge-pill badge-default">Minhas Avaliações</span>
-               </a>
-               <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                   <span class="badge badge-pill badge-danger">Sair</span>
-               </a>
-           </div>
+           @include('layouts/menu-logado')
        </div>
     @endif
     <div class="col-md-12">
