@@ -358,7 +358,7 @@ class ODSController extends Controller
             JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
             JOIN avaliacao t3 ON t3.id_documento = t1.id_producao_intelectual 
             JOIN ods t4 ON t4.id = t2.ods 
-            WHERE t3.usuario = ".Auth::user()->id;
+            WHERE t3.id_usuario = ".Auth::user()->id;
 
         $dados = DB::connection('pgsql')->select($sql);
         
