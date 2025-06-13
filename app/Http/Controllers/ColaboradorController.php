@@ -6,14 +6,18 @@ use Auth;
 use App\User;
 use App\Estado;
 use App\Colaborador;
+use Carbon\Carbon;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 
 class ColaboradorController extends Controller
 {
+    public $carbon;
+
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->carbon = new Carbon();
     }
 
     public function index()
