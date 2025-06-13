@@ -18,4 +18,9 @@ class Analise extends Model
     {
         return $this->hasOne('App\Ods', 'id', 'ods');
     }
+
+    public function modelo()
+    {
+        return $this->hasOne('App\Modelo', 'id', 'id_modelo');
+    }
 }

@@ -5,6 +5,8 @@
 footer { background-image: url('../img/ods-rodape.png'); padding: 8px 0 !important; }
 .box-ods > div > div > img:hover { cursor: pointer; }
 .cabecalho {border-left: 12px solid #00bcd4; padding-left: 10px;}
+.show-text { color: black !important; font-weight: 600; }
+.show-text:hover { text-decoration:none; }
 mark1{
     background: #e5243b;
     color: black;

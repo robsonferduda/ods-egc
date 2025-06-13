@@ -475,8 +475,8 @@ class ODSController extends Controller
         $resultado['probabilidades'] = $distribuicao;
         $resultado['resultado'] = $dados;
 
-        $probabilidade = ($dados[0]) ? round($dados[0]['probabilidade'] * 100, 2) : 0;
-        $ods = ($dados[0]) ? $dados[0]['ods'] : 0;
+        $probabilidade = ($dados and $dados[0]) ? round($dados[0]['probabilidade'] * 100, 2) : 0;
+        $ods = ($dados and $dados[0]) ? $dados[0]['ods'] : 0;
 
         $analise = new Analise();
         $analise->cd_usuario = Auth::user()->id;
@@ -486,6 +486,11 @@ class ODSController extends Controller
         $analise->id_modelo = 1;
         $analise->save();
 
+        if($ods){
+            Flash::success('Texto analisado com sucesso. A ODS vinculada a ele é a '.$ods.'. Para maiores detalhes, acesso a opção "Minhas Análises"');
+        }else{
+            Flash::error('Não foi possível determinar uma ODS relacionada ao texto informado.');
+        }
 
         return redirect('analisar')->withInput();
         

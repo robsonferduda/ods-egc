@@ -16,7 +16,8 @@
             <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
             <p>Informe seu texto para classificação automática</p>
          </div>
-       <form method="POST" action="{{ url('ods/descobrir/salvar') }}">
+         @include('layouts.mensagens')
+       <form method="POST" if="frmODS" action="{{ url('ods/descobrir/salvar') }}">
         @csrf
          
          <div class="content">
@@ -32,7 +33,7 @@
             </div>
                                 
             <div class="form-group mt-2 texto_ods">
-               <textarea name="texto" id="texto_ods" rows="10" style="height: 300px !important; max-height: 800px !important;" placeholder="Insira seu texto aqui. Ele deve ter no mínimo 50 palavras e no máximo 500. Para a classificação de documentos em lote, crie uma conta e utilize as ferramentas avançadas do sistema." class="form-control texto_ods"></textarea>
+               <textarea name="texto" id="texto_ods" rows="10" style="height: 300px !important; max-height: 800px !important;" placeholder="Insira seu texto aqui. Ele deve ter no mínimo 50 palavras e no máximo 500. Para a classificação de documentos em lote, crie uma conta e utilize as ferramentas avançadas do sistema." class="form-control texto_ods" required="required"></textarea>
             </div>
 
             <div class="row">
@@ -43,7 +44,7 @@
             <div class="center">
                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-cogs"></i> Classificar</button>
                @if(Auth::user())
-                  <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-save"></i> Salvar Classificação</button>
+                  <button type="submit" class="btn btn-fill btn-success btn-wd btn-salvar"><i class="fa fa-save"></i> Salvar Classificação</button>
                @endif
             </div>
             <div class="row ods-result d-none">
@@ -99,6 +100,10 @@
                ["lei","artigo","certo","político","corrupção","Este artigo","tribunal","público","governança","internacional","direito humano","justiça","humano","responsabilidade"],
                []
         ];
+
+         $(".btn-salvar").click(function() {
+            $('.texto_ods').loader('show');
+         })
 
             $(".btn-discovery").click(function(){
 
