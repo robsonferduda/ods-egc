@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-12">
         <h5>Minhas Colaborações</h5>
-        @foreach($dados as $key => $documento)
+        @forelse($dados as $key => $documento)
             <p class="mb-0">
                 <strong>Título</strong>: {{ $documento->nm_producao }}</p><p class="mt-1 mb-0">
                 <strong> {{ $documento->nm_programa }} </strong></p><p class="mt-0">
@@ -33,7 +33,9 @@
                 @endswitch
             </p>
             <hr/>
-        @endforeach
+        @empty
+            <p class="text-danger">Você não colaborou na revisão de nenhum documento</p>
+        @endforelse
     </div>
  </div>
 @endsection

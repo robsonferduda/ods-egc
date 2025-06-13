@@ -11,7 +11,7 @@
     </div>
     <div class="col-md-12 mb-5">
         <h5>Minhas Análises</h5>
-        @foreach($dados as $key => $documento)
+        @forelse($dados as $key => $documento)
             @if($documento->odsDetectado)
                 <span class="badge badge-pill" style="background: {{ $documento->odsDetectado->cor }}"> ODS {{ $documento->odsDetectado->cod }}</span>
                 <span> {{ $documento->odsDetectado->objetivo }} definido com probabilidade de <strong>{{ $documento->probabilidade }} %</strong></span>
@@ -35,7 +35,9 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <p class="text-danger">Você não realizou nenhuma análise de documento</p>
+        @endforelse
     </div>
  </div>
 @endsection
