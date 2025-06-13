@@ -47,6 +47,8 @@ Route::get('docentes/foto/{docente}', 'ODSController@getImagem');
 
 Route::get('sobre', 'HomeController@sobre');
 
+Route::get('avaliacoes', 'AvaliacaoController@avaliacoes');
+
 Route::get('minhas-avaliacoes', 'ODSController@avaliacoes');
 Route::get('minhas-analises', 'ODSController@analises');
 

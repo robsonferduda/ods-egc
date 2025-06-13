@@ -12,5 +12,10 @@ class Avaliacao extends Model
     protected $connection = 'pgsql';
     protected $table = 'avaliacao';
     protected $primaryKey = 'id';
-    protected $fillable = ["tipo","id_documento","usuario","voto"];
+    protected $fillable = ["tipo","id_documento","id_usuario","voto"];
+
+    public function usuario()
+    {
+        return $this->hasOne('App\User', 'id', 'id_usuario');
+    }
 }
