@@ -26,13 +26,8 @@ class AvaliacaoController extends Controller
 
     public function avaliacoes()
     {
-        $sql = "SELECT * 
-            FROM capes_teses_dissertacoes_ctd t1
-            JOIN documento_ods t2 ON t2.id_producao_intelectual = t1.id_producao_intelectual 
-            JOIN avaliacao t3 ON t3.id_documento = t1.id_producao_intelectual 
-            JOIN ods t4 ON t4.id = t2.ods";
 
-        $dados = DB::connection('pgsql')->select($sql);
+        $dados = Avaliacao::all();
         
         return view('avaliacao/avaliacoes', compact('dados'));
     }

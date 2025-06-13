@@ -32,7 +32,7 @@
                         
                 @endswitch
             </p>
-            <p>{{ $documento->usuario }}</p>
+            <p class="mb-1 text-muted">Documento avaliado por <strong>{{ ($documento->usuario) ? $documento->usuario->name : 'Não identificado' }}</strong> em <strong>{{ \Carbon\Carbon::parse($documento->created_at)->format('d/m/Y') }}</strong></p>
             <hr/>
         @endforeach
     </div>
