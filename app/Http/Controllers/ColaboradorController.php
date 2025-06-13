@@ -39,11 +39,13 @@ class ColaboradorController extends Controller
 
         }else{
 
-            $nome = 'usuario-'.str_pad(User::max('id'), 6, "0", STR_PAD_LEFT);
             $nome = $request->nome;
+            $dt_nascimento = ($request->dt_nascimento) ? $this->carbon->createFromFormat('d/m/Y', $request->dt_nascimento)->format('Y-m-d') : date("Y-m-d");
 
             $request->merge(['name' => $nome]);
+            $request->merge(['dt_nascimento' => $dt_nascimento]);
             $request->merge(['password' => \Hash::make($request->password)]);
+
             $user = User::create($request->all());
 
             Auth::loginUsingId($user->id);
