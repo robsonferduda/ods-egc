@@ -99,7 +99,7 @@
           
           @if(Auth::user())
             <li class="nav-item ">
-              <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link">
+              <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="nav-link text-danger">
                 <i class="fa fa-power-off"></i> Sair
               </a>
             </li>

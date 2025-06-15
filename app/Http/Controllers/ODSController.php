@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use App\Ods;
 use App\Analise;
+use App\Pontuacao;
 use App\Avaliacao;
 use App\Documento;
 use Laracasts\Flash\Flash;
@@ -16,9 +17,12 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 class ODSController extends Controller
 {
+    private $user;
+
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->user = Auth::user();
     }
 
     public function index()
@@ -391,6 +395,17 @@ class ODSController extends Controller
             break;
         }
         $documento->classificacao->save();
+
+        $user = Auth::user();
+
+        $dados = array('id_usuario' => $user->id,
+                            'acao' => 'colaboracao',
+                            'total_pts' => 15);
+
+            Pontuacao::create($dados);
+
+            $user->pts += 15;
+            $user->save(); 
 
         $dados = array("tipo" => 1,
                         "id_documento" => $id,     
