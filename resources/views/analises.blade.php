@@ -2,9 +2,12 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="header-text">
-            <h3>Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Classificar</h3>
-         </div>
+       <div class="header-text">
+            <h3 class="mb-0">
+                Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Minhas Análises
+                @include('layouts.nivel')
+            </h3>
+        </div>
     </div>
     <div class="col-md-12 mb-3">
         @include('layouts/menu-logado')
