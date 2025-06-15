@@ -55,6 +55,7 @@ Route::get('minhas-analises', 'ODSController@analises');
 Route::get('ods/{ods}', 'ODSController@getDadosOds');
 
 Route::get('meu-perfil', 'UserController@perfil');
+Route::get('perfil/atualizar', 'UserController@atualizarPerfil');
 
 Route::get('colaborar', 'ColaboradorController@colaborar');
 Route::resource('colaborador', 'ColaboradorController');

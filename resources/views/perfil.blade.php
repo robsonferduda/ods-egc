@@ -13,13 +13,22 @@
         @include('layouts/menu-logado')
     </div>
     <div class="col-md-12">
+        @if(Auth::user()->dt_nascimento == null or Auth::user()->sexo == null)
+            <p class="mb-2 mt-0"><strong class="text-danger">Perfil Incompleto</strong><a href="{{ url('perfil/atualizar') }}"> Clique aqui</a> para atualizar e subir de nível</p>
+        @endif
+    </div>
+    <div class="col-md-12">
         @if(count($avaliacoes))
             <p><i class="fa fa-users mr-2"></i> Você colaborou na avaliação de <a style="color: black; font-weight: bold;" href="{{ url('minhas-avaliacoes') }}">{{ count($avaliacoes) }}</a> documentos.</p>
+        @else
+            <p class="text-danger">Você não colaborou na revisão de nenhum documento</p>
         @endif
     </div>   
     <div class="col-md-12">
         @if(count($analises))
             <p><i class="fa fa-files-o"></i> Você realizou <a style="color: black; font-weight: bold;" href="{{ url('minhas-analises') }}">{{ count($analises) }}</a> análises de documentos.</p>
+        @else
+            <p class="text-danger">Você não realizou nenhuma análise de documento</p>
         @endif
     </div>    
  </div>

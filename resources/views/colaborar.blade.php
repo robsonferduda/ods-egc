@@ -16,41 +16,11 @@
             <div class="card card-plain">
                 <div class="content">
                     <h5 class="mb-0">Preencha seus dados</h5>
-                    <span>Os participantes não serão identificados *</span>
                     <div class="form-group mt-2">
                         <input type="nome" name="nome" placeholder="Nome" class="form-control" required>
                     </div>
                     <div class="form-group mt-2">
                         <input type="email" name="email" placeholder="Email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <select name="cd_estado" id="cd_estado" class="form-control" required>
-                            <option value="">Estado</option>
-                            @foreach($estados as $estado)
-                                <option value="{{ $estado->cd_estado }}">{{ $estado->nm_estado }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select name="cd_cidade" id="cd_cidade" class="form-control" required>
-                            <option value="">Cidade</option>
-                        </select>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <select name="sexo" class="form-control" required>
-                                    <option value="">Sexo</option>
-                                    <option value="F">Feminino</option>
-                                    <option value="M">Masculino</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <input type="text" name="dt_nascimento" id="dt_nascimento" class="form-control data" placeholder="__/__/____" required>
-                            </div>
-                        </div>
                     </div>
                     <div class="form-group">
                         <input type="password" name="password" id="password" placeholder="Senha" class="form-control" required>
@@ -63,9 +33,6 @@
                         <div class="view-eye">
                             <i class="fa fa-eye view-password" data-target="repeat_password"></i>  
                         </div> 
-                    </div>
-                    <div class="col-md-12">
-                        * Os dados serão utilizados somente para o acesso do participante e para a geração de estatísticas de distribuição por regiões, sexo e faixa etária
                     </div>
                     <div class="center">
                         <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-user"></i> Criar Conta</button>

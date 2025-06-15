@@ -394,7 +394,7 @@ class ODSController extends Controller
 
         $dados = array("tipo" => 1,
                         "id_documento" => $id,     
-                        "id_usuarios" => Auth::user()->id,
+                        "id_usuario" => Auth::user()->id,
                         "voto" => $valor);
 
         Avaliacao::create($dados);
