@@ -14,32 +14,22 @@ class User extends Authenticatable
 
     protected $connection = 'pgsql';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password','sexo','dt_nascimento','cd_estado','cd_cidade'
+        'name', 'email', 'password','sexo','dt_nascimento','cd_estado','cd_cidade','id_nivel','pts'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function nivel()
+    {
+        return $this->hasOne(Nivel::class, 'id', 'id_nivel');
+    }
 
     public function analise()
     {
