@@ -362,10 +362,10 @@ class ODSController extends Controller
         $paragrafos = array_values($paragrafos);
 
         // Escolhe um índice aleatório
-        $indiceAleatorio = array_rand($paragrafos);
+        //$indiceAleatorio = array_rand($paragrafos);
 
         // Mostra o parágrafo, adicionando o ponto final de volta
-        $texto_avaliacao = $paragrafos[$indiceAleatorio] . '.';
+        $texto_avaliacao = $paragrafos[0] . '.';
 
         $texto_avaliacao = ucfirst(mb_strtolower($texto_avaliacao, 'UTF-8'));
 
