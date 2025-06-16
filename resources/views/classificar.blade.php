@@ -28,10 +28,34 @@
             <div class="content">
                 <div class="row">
                     <div class="col-md-12">
-                        <h6>{{ $texto->nm_producao }}</h6>
+                        @include('layouts.mensagens')
+                    </div>
+                    <div class="col-md-12">
+                        <p class="text-info" style="padding: 3px 8px; background: #f3f3f3; border-radius: 5px;"><i class="fa fa-exclamation-circle"></i> Neste processo, fragmentos de textos de documentos classificados por modelos de IA são mostrados para análise e avaliação. Clique em <strong>Texto Completo</strong> caso queira entender melhor o contexto do texto.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <h6>Texto Para Análise</h6>
                         <p>
-                            {{ ucfirst(mb_strtolower($texto->ds_resumo, 'UTF-8')) }} 
+                            {{ $texto_avaliacao }} 
                         </p>
+                    </div>
+                    <div class="col-md-12">
+                        <div id="accordion" role="tablist" aria-multiselectable="true" class="card-collapsed">
+                            <div class="card card-plain">
+                                <div class="card-header" style="padding: 0px !important;" role="tab" id="heading">
+                                    <a class="collapsed show-text" data-toggle="collapse" data-parent="#accordion" href="#collapse" aria-expanded="false" aria-controls="collapse">
+                                    Texto Completo
+                                        <i class="nc-icon nc-minimal-down"></i>
+                                    </a>
+                                </div>
+                                <div id="collapse" class="collapse" role="tabpanel" aria-labelledby="heading}">
+                                <div class="card-body">
+                                    <h6>{{ $texto->nm_producao }}</h6>
+                                    {{ ucfirst(mb_strtolower($texto->ds_resumo, 'UTF-8')) }}
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-2 mt-1">
                         <img src="{{ asset('img/ods-icone/ods_'.$ods.'.png') }}" class="img-fluid" alt="Imagem ODS {{ $ods }}" style="border-radius: 0px;">

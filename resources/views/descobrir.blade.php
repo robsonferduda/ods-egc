@@ -46,10 +46,21 @@
                   
                </div>
             </div>
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  @if(Auth::user() and Auth::user()->nivel->id_nivel < 3)
+                     <p class="mb-1 text-center">Realize a avaliação de textos já classificados, na opção "<a href="{{ url('classificar') }}">Colaborar</a>" para ganhar pontos, subir de nível e ter permissão para salvar suas análises.</p>
+                  @endif
+               </div>
+            </div>
             <div class="center">
                <button type="button" class="btn btn-fill btn-primary btn-wd btn-discovery"><i class="fa fa-cogs"></i> Classificar</button>
                @if(Auth::user())
-                  <button type="submit" class="btn btn-fill btn-success btn-wd btn-salvar"><i class="fa fa-save"></i> Salvar Classificação</button>
+                  @if(Auth::user()->nivel->id_nivel >= 3)
+                     <button type="submit" class="btn btn-fill btn-success btn-wd btn-salvar"><i class="fa fa-save"></i> Salvar Classificação</button>
+                  @else
+                     <button type="button" class="btn btn-fill btn-success btn-wd" disabled="disabled"><i class="fa fa-save"></i> Salvar Classificação</button>
+                  @endif
                @endif
             </div>
             <div class="row ods-result d-none">
