@@ -28,6 +28,7 @@
                         <option value="todas">Todas</option>
                         <option value="pesquisa">Pesquisa</option>
                         <option value="extensao">Extensão</option>
+                        <option value="inovacao">Inovação</option>
                     </select>
                 </div>
             </div>
