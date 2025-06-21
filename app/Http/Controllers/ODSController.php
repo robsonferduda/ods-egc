@@ -56,6 +56,10 @@ class ODSController extends Controller
                 $where .= ' AND id_dimensao = 1 ';
                 break;
             
+            case 'inovacao':
+                $where .= ' AND id_dimensao = 4 ';
+                break;
+                
             default:
                 
                 break;
@@ -118,6 +122,10 @@ class ODSController extends Controller
                 $where .= ' AND id_dimensao = 1 ';
                 break;
             
+            case 'inovacao':
+                $where .= ' AND id_dimensao = 4 ';
+                break;
+
             default:
                 
                 break;
