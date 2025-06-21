@@ -352,7 +352,24 @@ class ODSController extends Controller
         $texto = Documento::find(rand(1681, 2681));
         $ods = $texto->classificacao->ods;
 
-        return view('classificar', compact('texto','ods'));
+        // Divide o texto em "parágrafos" com base nos pontos finais
+        $paragrafos = preg_split('/\.\s+/', $texto->ds_resumo);
+
+        // Remove espaços extras e filtra vazios
+        $paragrafos = array_filter(array_map('trim', $paragrafos));
+
+        // Transforma em array indexado novamente
+        $paragrafos = array_values($paragrafos);
+
+        // Escolhe um índice aleatório
+        //$indiceAleatorio = array_rand($paragrafos);
+
+        // Mostra o parágrafo, adicionando o ponto final de volta
+        $texto_avaliacao = $paragrafos[0] . '.';
+
+        $texto_avaliacao = ucfirst(mb_strtolower($texto_avaliacao, 'UTF-8'));
+
+        return view('classificar', compact('texto','ods','texto_avaliacao'));
     }
 
     public function avaliacoes()
@@ -407,6 +424,20 @@ class ODSController extends Controller
             $user->pts += 15;
             $user->save(); 
 
+        // Total de pontos para mudar de nível: 50 (Perfil completo + 5*15 (5 avaliações) = 125 pontos)
+
+        if($user->id_nivel == 1 and $user->pts >= 125){
+            $user->id_nivel = 2;
+            $user->save();
+            Flash::success('Parabéns! Você alcançou o nível Prata. Continue contribuindo para alcançar o nível Ouro!');
+        }
+
+        if($user->id_nivel == 2 and $user->pts >= 200){
+            $user->id_nivel = 3;
+            $user->save();
+            Flash::success('Parabéns! Você alcançou o nível Ouro. Continue contribuindo para alcançar o nível Diamante!');
+        }
+
         $dados = array("tipo" => 1,
                         "id_documento" => $id,     
                         "id_usuario" => Auth::user()->id,
@@ -414,7 +445,7 @@ class ODSController extends Controller
 
         Avaliacao::create($dados);
 
-        return redirect('classificar');
+        return redirect('classificar')->withInput();
     }
 
     public function descobrir(Request $request)

@@ -21,14 +21,14 @@
         @if(count($avaliacoes))
             <p><i class="fa fa-users mr-2"></i> Você colaborou na avaliação de <a style="color: black; font-weight: bold;" href="{{ url('minhas-avaliacoes') }}">{{ count($avaliacoes) }}</a> documentos.</p>
         @else
-            <p class="text-danger">Você não colaborou na revisão de nenhum documento</p>
+            <p class="text-danger"><i class="fas fa-handshake me-1"></i> Você não colaborou na revisão de nenhum documento. <a href="{{ url('classificar') }}">Clique aqui</a> para colaborar!</p>
         @endif
     </div>   
     <div class="col-md-12">
         @if(count($analises))
             <p><i class="fa fa-files-o"></i> Você realizou <a style="color: black; font-weight: bold;" href="{{ url('minhas-analises') }}">{{ count($analises) }}</a> análises de documentos.</p>
         @else
-            <p class="text-danger">Você não realizou nenhuma análise de documento</p>
+            <p class="text-danger"><i class="fas fa-file-alt me-1"></i> Você não realizou nenhuma análise de documento. <a href="{{ url('analisar') }}">Clique aqui</a> para analisar!</p>
         @endif
     </div>    
  </div>

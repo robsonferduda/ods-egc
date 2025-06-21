@@ -37,8 +37,8 @@
                     <div class="center">
                         <button type="submit" class="btn btn-fill btn-success btn-wd"><i class="fa fa-user"></i> Criar Conta</button>
                         <br/>
-                        <a class="btn-link mb-3 mt-5" href="{{ route('password.request') }}">
-                            <span class="forget-password">{{ __('esqueceu sua senha?') }}</span>
+                        <a class="btn-link mb-3 mt-5" href="{{ route('login') }}">
+                            <span class="forget-password">Já possui cadastro? Faça seu login</span>
                         </a>
                     </div>
                 </div>
