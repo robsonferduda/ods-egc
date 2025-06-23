@@ -621,9 +621,11 @@
                         });
 
                         $('.total_dimensao').each(function(index, element) {
+                            
                             if($(this).data("dimensao") == 5){
                                 $(this).text(soma_documentos);
                             }
+                            
                         });
 
                         let GraficoGeral = null;
