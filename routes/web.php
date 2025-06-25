@@ -39,6 +39,9 @@ Route::get('dados/extensao/participantes', 'ExtensaoController@mapParticipantes'
 Route::get('dados/extensao/grafo', 'ExtensaoController@grafo');
 Route::get('dados/extensao/relacoes', 'ExtensaoController@getRelacoes');
 
+Route::get('dados/inovacao/extracao', 'InovacaoController@extracao');
+Route::get('dados/extensao/extracao', 'ExtensaoController@extracao');
+
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');

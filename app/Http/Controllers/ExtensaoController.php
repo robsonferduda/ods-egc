@@ -29,6 +29,13 @@ class ExtensaoController extends Controller
         dd($rows);
     }
 
+    public function extracao()
+    {
+        $extensao = Extensao::all();
+
+        
+    }
+
     public function grafo()
     {
         return view('extensao/grafo');
