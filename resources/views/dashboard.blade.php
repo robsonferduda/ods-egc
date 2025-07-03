@@ -25,20 +25,18 @@
                 <div class="form-group">
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
-                        <option value="todas">Todas</option>
-                        <option value="pesquisa">Pesquisa</option>
-                        <option value="extensao">Extensão</option>
-                        <option value="inovacao">Inovação</option>
+                        <option value="0">Todas</option>
+                        @foreach($dimensoes_ies as $key => $dimensao)
+                            <option value="{{ $dimensao->apelido }}">{{ $dimensao->nome }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Tipo de Documento</label>
+                    <label>Documentos Analisados</label>
                     <select class="form-control" name="tipo" id="tipo" aria-label="Selecione o tipo">
-                        <option value="todos">Todas</option>
-                        <option value="DISSERTAÇÃO">Dissertações</option>
-                        <option value="TESE">Teses</option>
+                        <option value="todos">Todos</option>
                     </select>
                 </div>
             </div>
@@ -60,7 +58,7 @@
 
             <div class="col-md-12">       
                 <div class="form-group">
-                    <label>Unidade</label>
+                    <label>Unidade Administrativa</label>
                     <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
                         <option value="">Todos</option>
                     </select>
@@ -120,7 +118,7 @@
             </div>
 
             <div class="col-sm-6 col-md-3"> 
-                @foreach($dimensoes as $key => $dimensao)
+                @foreach($dimensoes_ies as $key => $dimensao)
                     <div class="row box-dimensao box-dimensao-{{ $dimensao->apelido }}">
                         <div class="col-md-4 px-0 py-0"> 
                             <img src="{{ asset('img/icones-dimensao/'.$dimensao->img) }}" class="img-fluid">
@@ -207,6 +205,32 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
+
+            $(document).on('change', '#dimensao', function() {
+                buscarTiposPorDimensao();
+            });
+
+            function buscarTiposPorDimensao() {
+
+                var apelido = $('#dimensao').val();
+                $.ajax({
+                    url: host+'/dimensao/' + apelido + '/tipos',
+                    type: 'GET',
+                    beforeSend: function() {
+                        $('#tipo').html('<option>Carregando...</option>');
+                    },
+                    success: function(data) {
+                        let html = '<option value="todos">Todos</option>';
+                        $.each(data, function(codigo, nome) {
+                            html += `<option value="${codigo}">${nome}</option>`;
+                        });
+                        $('#tipo').html(html);
+                    },
+                    error: function() {
+                        $('#tipo').html('<option value="todos">Todos</option>');
+                    }
+                });
+            }
 
             //Carrega combo Período
 

@@ -205,27 +205,27 @@ class ODSController extends Controller
         switch ($request->dimensao) {
 
             case 'pesquisa':
-                $where .= ' AND id_dimensao = 1 ';
+                $where .= ' AND t0.id_dimensao = 1 ';
                 break;
 
             case 'extensao':
-                $where .= ' AND id_dimensao = 2 '; 
+                $where .= ' AND t0.id_dimensao = 2 '; 
                 break;            
             
             case 'gestao':
-                $where .= ' AND id_dimensao = 3 ';
+                $where .= ' AND t0.id_dimensao = 3 ';
                 break;
 
             case 'inovacao':
-                $where .= ' AND id_dimensao = 4 ';
+                $where .= ' AND t0.id_dimensao = 4 ';
                 break;
 
             case 'ensino':
-                $where .= ' AND id_dimensao = 5 ';
+                $where .= ' AND t0.id_dimensao = 5 ';
                 break;
             
             default:
-                
+                $where .= ' AND t0.id_dimensao IN(1,2,3,4, 5) ';
                 break;
         }
 
@@ -233,13 +233,14 @@ class ODSController extends Controller
             $where .= " AND nm_programa = '$request->ppg'";
         }
 
+        /*
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND nm_subtipo_producao = '$request->tipo' ";
-        }
+        }*/
 
         if($request->docente){
             $where .= " AND nm_orientador = '$request->docente'";
@@ -250,13 +251,13 @@ class ODSController extends Controller
 
         */
 
-        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
-                FROM capes_teses_dissertacoes_ctd t0
-                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+        $sql = "SELECT t0.ods, t1.cor, count(*) as total 
+                FROM documento_ods t0
+                RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                LEFT JOIN documento_ods t3 ON t3.id_producao_intelectual = t0.id_producao_intelectual 
                 $where
-                GROUP BY t1.ods, t2.cor 
-                ORDER BY t1.ods";
+                GROUP BY t0.ods, t1.cor 
+                ORDER BY t0.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
         
@@ -281,15 +282,14 @@ class ODSController extends Controller
 
                 for ($i=0; $i < count($anos); $i++) { 
 
-                    $complemento = ' AND an_base = '.$anos[$i].'
-                                AND ods = '.$ods->cod.'
-                                GROUP BY t1.ods, an_base, t2.cor 
-                                ORDER BY t1.ods, an_base';
+                    $complemento = ' AND ano = '.$anos[$i].'
+                                AND t0.ods = '.$ods->cod.'
+                                GROUP BY t0.ods, ano, t1.cor 
+                                ORDER BY t0.ods, ano';
 
-                    $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
-                            FROM capes_teses_dissertacoes_ctd t0
-                            JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                            RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+                    $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
+                            FROM documento_ods t0
+                            RIGHT JOIN ods t1 ON t1.cod = t0.ods 
                             $where
                             $complemento";
 

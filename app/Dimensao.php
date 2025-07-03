@@ -13,4 +13,9 @@ class Dimensao extends Model
     protected $table = 'dimensao_ies';
     protected $primaryKey = 'id';
     protected $fillable = [""];
+
+    public function tiposDocumentos()
+    {
+        return $this->hasMany('App\TipoDocumento', 'id_dimensao_ies', 'id');
+    }
 }

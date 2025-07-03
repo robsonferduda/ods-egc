@@ -27,17 +27,17 @@ class HomeController extends Controller
     public function dashboard(Request $request)
     {
         $ods = Ods::orderBy('cod')->get();
-        $dimensoes = Dimensao::all();
-
         $data = \Location::get($request->ip());    
 
         $acesso = array("ip" => $request->ip(),
                         "cidade" => ($data) ? $data->cityName : "Não Definido",
                         "uf" => ($data) ? $data->areaCode : "Não Definido");
 
+        $dimensoes_ies = Dimensao::orderBy('nome')->get();
+
         Log::create($acesso);
 
-        return view('dashboard', compact('ods','dimensoes'));
+        return view('dashboard', compact('ods','dimensoes_ies'));
     }
 
     public function sobre()
