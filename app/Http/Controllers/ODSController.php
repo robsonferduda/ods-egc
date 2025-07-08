@@ -149,10 +149,6 @@ class ODSController extends Controller
                 break;
         }
 
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }
-
         if($request->ano_inicial and $request->ano_fim){
 
             if($request->dimensao == 1)
@@ -160,13 +156,16 @@ class ODSController extends Controller
 
         }
 
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
+
         if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+            $where .= " AND id_tipo_documento = '$request->tipo' ";
         }
 
         $sql = "SELECT t0.ods, t2.cor, count(*) as total 
                 FROM documento_ods t0
-                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
                 RIGHT JOIN ods t2 ON t2.cod = t0.ods 
                 $where
                 GROUP BY t0.ods, t2.cor 
@@ -229,32 +228,29 @@ class ODSController extends Controller
                 break;
         }
 
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }
-
-        /*
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
-        if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
-        }*/
+        /*
+
+        if($request->ppg){
+            $where .= " AND nm_programa = '$request->ppg'";
+        }
 
         if($request->docente){
             $where .= " AND nm_orientador = '$request->docente'";
         }
 
-        /*
-            Definição dos ODS existentes
-
         */
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND id_tipo_documento = '$request->tipo' ";
+        }
 
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
                 FROM documento_ods t0
                 RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                LEFT JOIN documento_ods t3 ON t3.id_producao_intelectual = t0.id_producao_intelectual 
                 $where
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
@@ -372,9 +368,11 @@ class ODSController extends Controller
                 break;
         }
 
+        /*
+
         if($request->ppg){
             $where .= " AND nm_programa = '$request->ppg'";
-        }
+        }*/
 
         if($request->ano_inicial and $request->ano_fim){
             if($request->dimensao == 1)
@@ -382,12 +380,11 @@ class ODSController extends Controller
         }
 
         if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+            $where .= " AND id_tipo_documento = '$request->tipo' ";
         }
 
         $sql = "SELECT t0.ods, objetivo, t2.cor, count(*) as total 
                 FROM documento_ods t0
-                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
                 JOIN ods t2 ON t2.cod = t0.ods 
                 $where
                	GROUP BY ods, objetivo, cor 
