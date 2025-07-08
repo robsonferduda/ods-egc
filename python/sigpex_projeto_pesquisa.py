@@ -32,14 +32,14 @@ def extrair_nomes(campo):
     texto = str(campo).strip().strip("[]")
     return [nome.strip().upper() for nome in texto.split(",") if nome.strip()]
 
-def inserir_pessoa(nome):
+def inserir_pessoa(nome, id_vinculo=None):
     cur.execute("SELECT 1 FROM pessoa_pes WHERE ds_nome_pessoa = %s", (nome,))
     if not cur.fetchone():
         cur.execute(
-            "INSERT INTO pessoa_pes (ds_nome_pessoa) VALUES (%s)",
-            (nome,)
+            "INSERT INTO pessoa_pes (ds_nome_pessoa, id_vinculo_vin) VALUES (%s, %s)",
+            (nome, id_vinculo)
         )
-        print(f"[+] Pessoa inserida: {nome}")
+        print(f"[+] Pessoa inserida: {nome} (vínculo: {id_vinculo})")
     else:
         print(f"[=] Pessoa já existe: {nome}")
 
@@ -62,13 +62,24 @@ for i, row in df.iterrows():
     tipo = row.get("Tipo", "").strip() if not pd.isnull(row.get("Tipo")) else None
     ano = extrair_ano(row.get("Início"))
 
+    # Obtém ID do vínculo "DOCENTE"
+    cur.execute("SELECT id_vinculo_vin FROM perfil.vinculo_vin WHERE ds_vinculo_vin = 'Docente'")
+    res = cur.fetchone()
+    id_vinculo_docente = res[0] if res else None
+
     try:
         inserir_documento(resumo, tipo, ano)
 
         coordenadores = extrair_nomes(row.get("Coordenador", ""))
         participantes = extrair_nomes(row.get("Participantes", ""))
-        for nome in coordenadores + participantes:
-            inserir_pessoa(nome)
+
+        # Inserção de coordenadores
+        for nome in coordenadores:
+            inserir_pessoa(nome, id_vinculo_docente)
+
+        # Inserção de participantes (sem vínculo definido)
+        for nome in participantes:
+            inserir_pessoa(nome, None)
 
         conn.commit()
         print("[💾] Transação confirmada.")
