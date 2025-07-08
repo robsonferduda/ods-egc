@@ -206,8 +206,6 @@
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
 
-            alert(host);
-
             $(document).on('change', '#dimensao', function() {
                 buscarTiposPorDimensao();
             });
