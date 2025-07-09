@@ -22,7 +22,6 @@ class GrafoController extends Controller
         
     }
 
-
     public function ods()
     {
         $relacoes = DB::select('
@@ -57,6 +56,6 @@ class GrafoController extends Controller
 
         dd($nodes);
 
-        return view('grafo', compact('nodes', 'edges', /* outros dados... */));
+        return view('grafo', compact('nodes', 'edges'));
     }
 }
