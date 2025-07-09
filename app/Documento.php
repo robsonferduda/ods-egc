@@ -16,6 +16,11 @@ class Documento extends Model
 
     public function probabilidades()
     {
-        return $this->hasOne(Probabilidade::class, 'id', 'id_documento_ods');
+        return $this->hasOne(Probabilidade::class, 'id_documento_ods', 'id');
+    }
+
+    public function tipo()
+    {
+        return $this->hasOne('App\TipoDocumento', 'id_tipo_documento', 'id_tipo_documento');
     }
 }

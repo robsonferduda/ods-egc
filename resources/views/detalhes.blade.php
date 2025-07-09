@@ -15,7 +15,7 @@
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
 
             <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->nome }} </p>
-            <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->ds_tipo_documento }} </p>            
+            <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
