@@ -15,11 +15,12 @@
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
 
             <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->dimensao }} </p>
-            <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo }} </p>            
+            <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            {{ dd($documento->probabilidades) }}
+            <p class="mb-1"><strong>Índice de Shannon</strong>{{ $documento->probabilidades->shannon }}</p>
+            <p class="mb-1"><strong>Índice de Gini</strong>{{ $documento->probabilidades->gini }}</p>
             <div class="row ods-result d-none mt-5">
                 <div class="col-md-12 col-sm-12">
                    <h6>ODS Identificados</h6>
