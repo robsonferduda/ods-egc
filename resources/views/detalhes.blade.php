@@ -31,7 +31,7 @@
               </thead>
               <tbody>
                 <tr>
-                 @for ($i = 1; $i <= 17; $i++)
+                 @for ($i = 1; $i <= 16; $i++)
                   @php
                      $valor = $documento->probabilidades->{'probabilidade_ods_' . $i};
                   @endphp
@@ -88,24 +88,31 @@
                []
         ];
 
-         document.addEventListener("DOMContentLoaded", function () {
-            const cells = document.querySelectorAll("#tabela-ods tbody td");
+          document.addEventListener("DOMContentLoaded", function () {
+               const cells = document.querySelectorAll("#tabela-ods tbody td");
 
-            cells.forEach(cell => {
-               const valor = parseFloat(cell.getAttribute("data-valor"));
-               const cor = calcularCor(valor); // valor de 0 a 1
-               cell.style.backgroundColor = cor;
-               cell.style.color = valor > 0.1 ? "white" : "black"; // contraste
+               const min = 0.026;
+               const max = 0.24;
+
+               cells.forEach(cell => {
+                  const valor = parseFloat(cell.getAttribute("data-valor"));
+
+                  // normaliza o valor para [0, 1]
+                  const peso = (valor - min) / (max - min);
+                  const cor = calcularCor(peso);
+                  
+                  cell.style.backgroundColor = cor;
+                  cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
+               });
+
+               function calcularCor(peso) {
+                  // verde claro → verde escuro
+                  const r = Math.round(224 - peso * 150);
+                  const g = Math.round(248 - peso * 200);
+                  const b = Math.round(224 - peso * 150);
+                  return `rgb(${r}, ${g}, ${b})`;
+               }
             });
-
-            function calcularCor(valor) {
-               // verde: de #e0f8e0 (valor baixo) a #007a00 (valor alto)
-               const r = Math.round(224 - (valor * 150));
-               const g = Math.round(248 - (valor * 200));
-               const b = Math.round(224 - (valor * 150));
-               return `rgb(${r}, ${g}, ${b})`;
-            }
-         });
 
         jQuery(document).ready(function(){
 
