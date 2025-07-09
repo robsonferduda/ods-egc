@@ -16,6 +16,6 @@ class Documento extends Model
 
     public function probabilidades()
     {
-        return $this->hasOne(Probabilidade::class, 'id_documento_ods', 'id');
+        return $this->hasOne(Probabilidade::class, 'id', 'id_documento_ods');
     }
 }
