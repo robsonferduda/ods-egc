@@ -588,37 +588,55 @@
 
             }
 
-            function documentosAnalisados(elemento_pai, dimensao, tipo, ppg, ano_inicial, ano_fim, docente){
+            function documentosAnalisados(elementoPai, dimensao, tipo, ppg, anoInicial, anoFim, docente) {
+              const url = `${host}/dados/documentos`;
 
-                $.ajax({
-                    url: host+'/dados/documentos',
-                    type: 'POST',
-                    data: {
-                            "_token": token,
-                            "dimensao": dimensao,
-                            "ppg": ppg,
-                            "ano_inicial": ano_inicial,
-                            "ano_fim": ano_fim,
-                            "tipo": tipo,
-                            "docente": docente
-                    },
-                    beforeSend: function() {
-                        
-                    },
-                    success: function(data) {
+              const payload = {
+                "_token": token,
+                "dimensao": dimensao,
+                "ppg": ppg,
+                "ano_inicial": anoInicial,
+                "ano_fim": anoFim,
+                "tipo": tipo,
+                "docente": docente
+              };
 
-                        $(elemento_pai).empty();
-            
-                        data.forEach(element => {
-                            
-                            $(elemento_pai).append('<div class="box-documento"><p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span><a href="'+host+'/documentos/dimensao/'+element.dimensao+'/detalhes/'+element.id+'" target="BLANK"><span class="badge badge-pill detalhes-documento_off" data-dimensao="'+element.dimensao+'" data-id="'+element.id+'" style="background: #adadad;"><i class="fa fa-bar-chart"></i> Detalhes</span></a></p></div>');
-                        });
-                    },
-                    complete: function(){
-                        
-                    }
-                });
+              $.ajax({
+                url: url,
+                type: 'POST',
+                data: payload,
 
+                beforeSend: function () {
+                  // Pode exibir loader aqui, se desejar
+                },
+
+                success: function (data) {
+                  const container = $(elementoPai);
+                  container.empty();
+
+                  data.forEach(doc => {
+                    const html = `
+                      <div class="box-documento">
+                        <p class="mb-0"><strong>Título</strong>: ${doc.titulo}</p>
+                        <p class="mt-1 mb-0"><strong>${doc.complemento}</strong></p>
+                        <p class="mt-0">
+                          <span class="badge badge-pill" style="background: ${doc.cor}">ODS ${doc.ods}</span>
+                          <a href="${host}/documentos/dimensao/${doc.dimensao}/detalhes/${doc.id}" target="_blank">
+                            <span class="badge badge-pill detalhes-documento_off" data-dimensao="${doc.dimensao}" data-id="${doc.id}" style="background: #adadad;">
+                              <i class="fa fa-bar-chart"></i> Detalhes
+                            </span>
+                          </a>
+                        </p>
+                      </div>
+                    `;
+                    container.append(html);
+                  });
+                },
+
+                complete: function () {
+                  // Pode remover loader aqui
+                }
+              });
             }
 
             function graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim){
