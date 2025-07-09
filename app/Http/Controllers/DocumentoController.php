@@ -28,32 +28,18 @@ class DocumentoController extends Controller
     public function detalhes($dimensao, $id)
     {
         $sql = "SELECT t0.ods, 
-	            t3.cor, 
-	            t1.nm_programa,
-                t1.nm_discente,
-                t1.nm_orientador,
+                t1.cor, 
                 t0.id,
-                t2.coordenador,
-                t0.id_dimensao as dimensao,
-                CASE 
-                    WHEN t1.nm_subtipo_producao IS NOT NULL THEN t1.nm_subtipo_producao
-                    WHEN t1.nm_subtipo_producao IS NULL THEN 'Projeto de Extensão'
-                END AS complemento,
-                CASE 
-                    WHEN t1.nm_producao IS NOT NULL THEN t1.nm_producao
-                    WHEN t2.titulo IS NOT NULL THEN t2.titulo
-                END AS titulo,
-                CASE 
-                    WHEN t1.ds_resumo IS NOT NULL THEN t1.ds_resumo
-                    WHEN t2.resumo IS NOT NULL THEN t2.resumo
-                END AS resumo
+                t0.id_dimensao,
+                titulo,
+                t2.nome,
+                t3.ds_tipo_documento,
+                t0.texto  
                 FROM documento_ods t0
-                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                LEFT JOIN extensao t2 ON t2.id = t0.id_producao_intelectual 
-                JOIN ods t3 ON t3.cod = t0.ods    
-               	WHERE t0.id = $id
-               	AND t0.id_dimensao = $dimensao";
-
+                JOIN ods t1 ON t1.cod = t0.ods 
+                JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
+                JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
+               	AND t0.id = $id";
 
         $documento = DB::connection('pgsql')->select($sql)[0];
 
