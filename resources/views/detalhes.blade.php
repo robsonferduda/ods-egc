@@ -101,6 +101,8 @@
                   const peso = (valor - min) / (max - min);
                   const cor = calcularCor(peso);
 
+                  console.log(`Valor: ${valor}, Peso: ${peso}, Cor: ${cor}`);
+
                   // aplica a cor ao fundo da célula                  
                   cell.style.backgroundColor = cor;
                   //cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
@@ -117,6 +119,7 @@
 
         jQuery(document).ready(function(){
 
+         /*
                $.ajax({
                   url: host+'/ods/descobrir',
                   type: 'POST',
@@ -213,7 +216,7 @@
                   }
                }); 
 
-            });
+            });*/
 
         });
     </script>
