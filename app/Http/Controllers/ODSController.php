@@ -608,9 +608,9 @@ class ODSController extends Controller
 
     public function getAno(){
 
-        $sql = "SELECT DISTINCT an_base 
-                FROM capes_teses_dissertacoes_ctd
-                ORDER BY an_base";
+        $sql = "SELECT DISTINCT ano 
+                FROM documento_ods
+                ORDER BY ano";
 
         $dados = DB::connection('pgsql')->select($sql);
         return response()->json($dados);
