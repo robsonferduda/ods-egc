@@ -103,7 +103,7 @@ class ODSController extends Controller
                 FROM documento_ods t0
                 JOIN ods t1 ON t1.cod = t0.ods 
                 JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
-                JOIN tipo_documento t3 ON t3.id_dimensao_ies = t0.id_tipo_documento 
+                JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
                 $where
                 LIMIT 5";
 
