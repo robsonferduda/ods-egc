@@ -19,8 +19,24 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            <p class="mb-1"><strong>Índice de Shannon</strong>{{ $documento->probabilidades->shannon }}</p>
-            <p class="mb-1"><strong>Índice de Gini</strong>{{ $documento->probabilidades->gini }}</p>
+            <p class="mb-1"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
+            <p class="mb-1"><strong>Índice de Gini</strong>: {{ $documento->probabilidades->gini }}</p>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  @for ($i = 1; $i <= 17; $i++)
+                    <th>ODS {{ $i }}</th>
+                  @endfor
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  @for ($i = 1; $i <= 17; $i++)
+                    <td>{{ $documento->probabilidades->{'probabilidade_ods_' . $i} }}</td>
+                  @endfor
+                </tr>
+              </tbody>
+            </table>
             <div class="row ods-result d-none mt-5">
                 <div class="col-md-12 col-sm-12">
                    <h6>ODS Identificados</h6>
