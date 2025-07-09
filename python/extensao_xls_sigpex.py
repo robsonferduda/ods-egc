@@ -11,7 +11,7 @@ DB_USER = 'postgres'
 DB_PASS = 'DMK@rr19'
 
 # Caminho da planilha
-file_path = 'projetos_.xlsx'
+file_path = 'projetos_extensao.xlsx'
 
 # Conecta ao banco
 conn = psycopg2.connect(
@@ -45,8 +45,8 @@ def inserir_pessoa(nome, id_vinculo=None):
 
 def inserir_documento(texto, titulo, ano):
 
-    id_tipo_documento = 3
-    id_dimensao = 5
+    id_tipo_documento = 4
+    id_dimensao = 2
 
     cur.execute("""
         INSERT INTO documento_ods (texto, titulo, ano, id_tipo_documento, id_dimensao)
