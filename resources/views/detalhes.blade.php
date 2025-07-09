@@ -19,7 +19,7 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            <p class="mb-1"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
+            <p class="mb-1 mt-3"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
             <p class="mb-1"><strong>Índice de Gini</strong>: {{ $documento->probabilidades->gini }}</p>
             <table class="table table-bordered" id="tabela-ods">
               <thead>
