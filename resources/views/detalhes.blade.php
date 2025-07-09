@@ -24,15 +24,15 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  @for ($i = 1; $i <= 17; $i++)
+                  @for ($i = 1; $i <= 16; $i++)
                     <th>ODS {{ $i }}</th>
                   @endfor
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  @for ($i = 1; $i <= 17; $i++)
-                    <td>{{ $documento->probabilidades->{'probabilidade_ods_' . $i} }}</td>
+                  @for ($i = 1; $i <= 16; $i++)
+                    <td>{{ number_format($documento->probabilidades->{'probabilidade_ods_' . $i} * 100, 2, ',', '.') }}%</td>
                   @endfor
                 </tr>
               </tbody>
