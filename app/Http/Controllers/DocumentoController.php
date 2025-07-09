@@ -29,9 +29,12 @@ class DocumentoController extends Controller
     {
         $documento = Documento::with('probabilidades')->find($id);
 
-        dd($documento->probabilidades);
+        $resultado = collect((array) $documento->probabilidades)
+                        ->filter(fn($v, $k) => str_starts_with($k, 'probabilidade_ods_'))
+                        ->sortDesc()
+                        ->take(2);
 
-        return view('detalhes', compact('documento'));
+        return view('detalhes', compact('documento','resultado'));
     }
 
 }
