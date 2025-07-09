@@ -62,9 +62,9 @@
                     </div>
                     <div class="col-md-10">
                         <p class="mb-0">Você concorda com a classificação deste texto como <strong class="ods-classificacao" data-ods="{{ $ods }}">ODS {{ $ods }}</strong>?</p>
-                        <a href="{{ url('documento/'.$texto->id_producao_intelectual.'/classificar/negativo') }}" class="btn btn-fill btn-danger btn-wd"><i class="fa fa-ban"></i> Discordo</a>
-                        <a href="{{ url('documento/'.$texto->id_producao_intelectual.'/classificar/neutro') }}" class="btn btn-fill btn-warning btn-wd"><i class="fa fa-question-circle"></i> Não sei</a>
-                        <a href="{{ url('documento/'.$texto->id_producao_intelectual.'/classificar/positivo') }}" class="btn btn-fill btn-success btn-wd"><i class="fa fa-check"></i> Concordo</a>
+                        <a href="{{ url('documento/'.$texto->id.'/classificar/negativo') }}" class="btn btn-fill btn-danger btn-wd"><i class="fa fa-ban"></i> Discordo</a>
+                        <a href="{{ url('documento/'.$texto->id.'/classificar/neutro') }}" class="btn btn-fill btn-warning btn-wd"><i class="fa fa-question-circle"></i> Não sei</a>
+                        <a href="{{ url('documento/'.$texto->id.'/classificar/positivo') }}" class="btn btn-fill btn-success btn-wd"><i class="fa fa-check"></i> Concordo</a>
                     </div>
                 </div>
                 <div class="row">
