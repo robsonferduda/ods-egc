@@ -100,9 +100,10 @@
                   // normaliza o valor para [0, 1]
                   const peso = (valor - min) / (max - min);
                   const cor = calcularCor(peso);
-                  
+
+                  // aplica a cor ao fundo da célula                  
                   cell.style.backgroundColor = cor;
-                  cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
+                  //cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
                });
 
                function calcularCor(peso) {
