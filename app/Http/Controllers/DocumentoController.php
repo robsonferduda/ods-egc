@@ -36,7 +36,6 @@ class DocumentoController extends Controller
                 ->sortDesc()
                 ->take(2);
 
-
         return view('detalhes', compact('documento','resultado'));
     }
 

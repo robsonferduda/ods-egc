@@ -52,7 +52,7 @@
                @foreach($resultado as $ods => $valor)
                   <p><strong>{{ strtoupper($ods) }}</strong>: {{ number_format($valor * 100, 2, ',', '.') }}%</p>
                   <div class="col-md-2 col-sm-12">
-                     <img src="'+host+'/img/ods-icone/ods_'+item.ods+'.png" class="img-fluid img-ods" alt="ODS '+item.ods+'">
+                     <img src="{{ assets('img/ods-icone/ods_1.png') }}" class="img-fluid img-ods" alt="ODS {{ $ods }}">
                      <p class="result-proba">{{ number_format($valor * 100, 2, ',', '.') }}%</p>
                   </div>
                @endforeach
