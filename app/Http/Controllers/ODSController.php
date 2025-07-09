@@ -94,22 +94,16 @@ class ODSController extends Controller
         }
 
         $sql = "SELECT t0.ods, 
-	            t3.cor, 
-	            t1.nm_programa,
+                t1.cor, 
                 t0.id,
-                t0.id_dimensao as dimensao,
-                CASE 
-                    WHEN t1.nm_subtipo_producao IS NOT NULL THEN t1.nm_subtipo_producao
-                    WHEN t1.nm_subtipo_producao IS NULL THEN 'Projeto de Extensão'
-                END AS complemento,
-                CASE 
-                    WHEN t1.nm_producao IS NOT NULL THEN t1.nm_producao
-                    WHEN t2.titulo IS NOT NULL THEN t2.titulo
-                END AS titulo
+                t0.id_dimensao,
+                titulo,
+                t2.nome,
+                t3.ds_tipo_documento 
                 FROM documento_ods t0
-                LEFT JOIN capes_teses_dissertacoes_ctd t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                LEFT JOIN extensao t2 ON t2.id = t0.id_producao_intelectual 
-                JOIN ods t3 ON t3.cod = t0.ods    
+                JOIN ods t1 ON t1.cod = t0.ods 
+                JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
+                JOIN tipo_documento t3 ON t3.id_dimensao_ies = t0.id_tipo_documento 
                 $where
                 LIMIT 5";
 
