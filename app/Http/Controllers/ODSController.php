@@ -407,7 +407,7 @@ class ODSController extends Controller
         $ods = $texto->ods;
 
         // Divide o texto em "parágrafos" com base nos pontos finais
-        $paragrafos = preg_split('/\.\s+/', $texto->ds_resumo);
+        $paragrafos = preg_split('/\.\s+/', $texto->resumo);
 
         // Remove espaços extras e filtra vazios
         $paragrafos = array_filter(array_map('trim', $paragrafos));
