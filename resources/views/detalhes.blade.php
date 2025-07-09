@@ -21,7 +21,7 @@
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
             <p class="mb-1"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
             <p class="mb-1"><strong>Índice de Gini</strong>: {{ $documento->probabilidades->gini }}</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="tabela-ods">
               <thead>
                 <tr>
                   @for ($i = 1; $i <= 16; $i++)
@@ -82,6 +82,25 @@
                ["lei","artigo","certo","político","corrupção","Este artigo","tribunal","público","governança","internacional","direito humano","justiça","humano","responsabilidade"],
                []
         ];
+
+         document.addEventListener("DOMContentLoaded", function () {
+            const cells = document.querySelectorAll("#tabela-ods tbody td");
+
+            cells.forEach(cell => {
+               const valor = parseFloat(cell.getAttribute("data-valor"));
+               const cor = calcularCor(valor); // valor de 0 a 1
+               cell.style.backgroundColor = cor;
+               cell.style.color = valor > 0.5 ? "white" : "black"; // contraste
+            });
+
+            function calcularCor(valor) {
+               // verde: de #e0f8e0 (valor baixo) a #007a00 (valor alto)
+               const r = Math.round(224 - (valor * 150));
+               const g = Math.round(248 - (valor * 200));
+               const b = Math.round(224 - (valor * 150));
+               return `rgb(${r}, ${g}, ${b})`;
+            }
+         });
 
         jQuery(document).ready(function(){
 
