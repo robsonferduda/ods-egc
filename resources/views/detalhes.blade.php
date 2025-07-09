@@ -95,7 +95,7 @@
                const valor = parseFloat(cell.getAttribute("data-valor"));
                const cor = calcularCor(valor); // valor de 0 a 1
                cell.style.backgroundColor = cor;
-               cell.style.color = valor > 0.5 ? "white" : "black"; // contraste
+               cell.style.color = valor > 0.1 ? "white" : "black"; // contraste
             });
 
             function calcularCor(valor) {
