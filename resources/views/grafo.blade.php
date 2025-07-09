@@ -25,22 +25,31 @@
     </div>     
 </div>
 @endsection
-<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
-<script>
-  const nodes = @json($nodes);
-  const edges = @json($edges);
+@section('script')
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const nodes = @json($nodes);
+          const edges = @json($edges);
 
-  const container = document.getElementById('network');
-  const data = {
-    nodes: new vis.DataSet(nodes),
-    edges: new vis.DataSet(edges)
-  };
+          const container = document.getElementById('network');
+          if (!container) {
+            console.error("Elemento #network não encontrado!");
+            return;
+          }
 
-  const options = {
-    nodes: { shape: 'dot', size: 10, font: { size: 14 } },
-    edges: { arrows: 'none', smooth: true },
-    physics: { stabilization: false }
-  };
+          const data = {
+            nodes: new vis.DataSet(nodes),
+            edges: new vis.DataSet(edges)
+          };
 
-  new vis.Network(container, data, options);
-</script>
+          const options = {
+            nodes: { shape: 'dot', size: 10, font: { size: 14 } },
+            edges: { arrows: 'none', smooth: true },
+            physics: { stabilization: false }
+          };
+
+          new vis.Network(container, data, options);
+        });
+    </script>
+@endsection
