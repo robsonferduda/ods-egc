@@ -41,7 +41,9 @@ class DocumentoController extends Controller
                 JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
                	AND t0.id = $id";
 
-        $documento = DB::connection('pgsql')->select($sql)[0];
+
+
+        $documento = Documento::find($id);
 
         return view('detalhes', compact('documento'));
     }
