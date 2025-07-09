@@ -81,8 +81,7 @@ class ODSController extends Controller
         }
 
         if($request->ano_inicial and $request->ano_fim){
-            if($request->dimensao == 1)
-                $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         if($request->tipo and $request->tipo != "todos"){
