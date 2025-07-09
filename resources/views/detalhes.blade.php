@@ -31,8 +31,13 @@
               </thead>
               <tbody>
                 <tr>
-                  @for ($i = 1; $i <= 16; $i++)
-                    <td>{{ number_format($documento->probabilidades->{'probabilidade_ods_' . $i} * 100, 2, ',', '.') }}%</td>
+                 @for ($i = 1; $i <= 17; $i++)
+                  @php
+                     $valor = $documento->probabilidades->{'probabilidade_ods_' . $i};
+                  @endphp
+                  <td data-valor="{{ $valor }}">
+                     {{ number_format($valor * 100, 2, ',', '.') }}%
+                  </td>
                   @endfor
                 </tr>
               </tbody>
