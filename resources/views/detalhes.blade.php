@@ -19,7 +19,7 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-
+            {{ dd($documento->probabilidades) }}
             <div class="row ods-result d-none mt-5">
                 <div class="col-md-12 col-sm-12">
                    <h6>ODS Identificados</h6>
