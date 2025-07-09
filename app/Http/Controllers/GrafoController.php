@@ -54,8 +54,6 @@ class GrafoController extends Controller
             $edges[] = ['from' => $r->p1, 'to' => $r->p2, 'value' => $r->peso];
         }
 
-        dd($nodes);
-
         return view('grafo', compact('nodes', 'edges'));
     }
 }
