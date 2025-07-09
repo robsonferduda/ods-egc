@@ -14,7 +14,7 @@
         <div class="col-md-12 col-sm-12 mt-3">
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
 
-            <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->dimensao->nome }} </p>
+            <p class="mb-1"><strong>Dimensão</strong>: {{ $documento->dimensao }} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
