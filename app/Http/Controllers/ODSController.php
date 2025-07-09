@@ -49,6 +49,10 @@ class ODSController extends Controller
 
         switch ($request->dimensao) {
             
+            case 'pos-graduacao':
+                $where .= ' AND t0.id_dimensao = 6 ';
+                break;
+
             case 'pesquisa':
                 $where .= ' AND t0.id_dimensao = 5 ';
                 break;
@@ -117,6 +121,10 @@ class ODSController extends Controller
 
         switch ($request->dimensao) {
             
+            case 'pos-graduacao':
+                $where .= ' AND t0.id_dimensao = 6 ';
+                break;
+
             case 'pesquisa':
                 $where .= ' AND id_dimensao = 5 ';
                 break;
@@ -192,6 +200,10 @@ class ODSController extends Controller
         $where = "WHERE 1=1";
 
         switch ($request->dimensao) {
+
+            case 'pos-graduacao':
+                $where .= ' AND t0.id_dimensao = 6 ';
+                break;
 
             case 'pesquisa':
                 $where .= ' AND id_dimensao = 5 ';
@@ -333,6 +345,10 @@ class ODSController extends Controller
 
         switch ($request->dimensao) {
             
+            case 'pos-graduacao':
+                $where .= ' AND t0.id_dimensao = 6 ';
+                break;
+                
             case 'pesquisa':
                 $where .= ' AND id_dimensao = 5 ';
                 break;

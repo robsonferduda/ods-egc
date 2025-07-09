@@ -19,20 +19,25 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            <p class="mb-1"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
+            <p class="mb-1 mt-2"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
             <p class="mb-1"><strong>Índice de Gini</strong>: {{ $documento->probabilidades->gini }}</p>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="tabela-ods">
               <thead>
                 <tr>
-                  @for ($i = 1; $i <= 17; $i++)
-                    <th>ODS {{ $i }}</th>
+                  @for ($i = 1; $i <= 16; $i++)
+                    <th class="center">ODS {{ $i }}</th>
                   @endfor
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  @for ($i = 1; $i <= 17; $i++)
-                    <td>{{ $documento->probabilidades->{'probabilidade_ods_' . $i} }}</td>
+                 @for ($i = 1; $i <= 16; $i++)
+                  @php
+                     $valor = $documento->probabilidades->{'probabilidade_ods_' . $i};
+                  @endphp
+                  <td class="center" data-valor="{{ $valor }}">
+                     {{ number_format($valor * 100, 2, ',', '.') }}%
+                  </td>
                   @endfor
                 </tr>
               </tbody>
@@ -43,7 +48,15 @@
                 </div>
              </div>
              <div class="row img-ods">
- 
+
+               @foreach($resultado as $ods => $valor)
+                  <p><strong>{{ strtoupper($ods) }}</strong>: {{ number_format($valor * 100, 2, ',', '.') }}%</p>
+                  <div class="col-md-2 col-sm-12">
+                     <img src="{{ assets('img/ods-icone/ods_1.png') }}" class="img-fluid img-ods" alt="ODS {{ $ods }}">
+                     <p class="result-proba">{{ number_format($valor * 100, 2, ',', '.') }}%</p>
+                  </div>
+               @endforeach
+                  
              </div>
              <div class="row">
                 <div class="col-md-12 mt-3 mb-5">
@@ -83,8 +96,38 @@
                []
         ];
 
-        jQuery(document).ready(function(){
+          document.addEventListener("DOMContentLoaded", function () {
+               const cells = document.querySelectorAll("#tabela-ods tbody tr td");
 
+               const min = 0.026;
+               const max = 0.24;
+
+               cells.forEach(cell => {
+                  const valor = parseFloat(cell.getAttribute("data-valor"));
+
+                  // normaliza o valor para [0, 1]
+                  const peso = (valor - min) / (max - min);
+                  const cor = calcularCor(peso);
+
+                  console.log(`Valor: ${valor}, Peso: ${peso}, Cor: ${cor}`);
+
+                  // aplica a cor ao fundo da célula                  
+                  cell.style.backgroundColor = cor;
+                  //cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
+               });
+
+               function calcularCor(peso) {
+                  // verde claro → verde escuro
+                  const r = Math.round(224 - peso * 150);
+                  const g = Math.round(248 - peso * 200);
+                  const b = Math.round(224 - peso * 150);
+                  return `rgb(${r}, ${g}, ${b})`;
+               }
+            });
+
+        
+
+         /*
                $.ajax({
                   url: host+'/ods/descobrir',
                   type: 'POST',
@@ -181,7 +224,7 @@
                   }
                }); 
 
-            });
+            });*/
 
         });
     </script>

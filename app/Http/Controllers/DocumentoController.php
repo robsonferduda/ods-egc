@@ -29,7 +29,14 @@ class DocumentoController extends Controller
     {
         $documento = Documento::with('probabilidades')->find($id);
 
-        return view('detalhes', compact('documento'));
+        $resultado = collect((array) $documento->probabilidades)
+                ->filter(function($v, $k) {
+                    return strpos($k, 'probabilidade_ods_') === 0;
+                })
+                ->sortDesc()
+                ->take(2);
+
+        return view('detalhes', compact('documento','resultado'));
     }
 
 }
