@@ -404,7 +404,7 @@ class ODSController extends Controller
     public function classificar()
     {
         $texto = Documento::find(rand(1681, 2681));
-        $ods = $texto->classificacao->ods;
+        $ods = $texto->ods;
 
         // Divide o texto em "parágrafos" com base nos pontos finais
         $paragrafos = preg_split('/\.\s+/', $texto->ds_resumo);
