@@ -19,6 +19,11 @@ class Documento extends Model
         return $this->hasOne(Probabilidade::class, 'id_documento_ods', 'id');
     }
 
+    public function dimensao()
+    {
+        return $this->hasOne('App\Dimensao', 'id_dimensao_ies', 'id_dimensao_ies');
+    }
+
     public function tipo()
     {
         return $this->hasOne('App\TipoDocumento', 'id_tipo_documento', 'id_tipo_documento');
