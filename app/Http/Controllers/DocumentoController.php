@@ -29,6 +29,8 @@ class DocumentoController extends Controller
     {
         $documento = Documento::with('probabilidades')->find($id);
 
+        dd($documento->probabilidades);
+
         return view('detalhes', compact('documento'));
     }
 
