@@ -10,17 +10,14 @@
             <h6 class="mb-0 mt-1">Programa de Pós-graduação em Engenharia, Gestão e Mídia do Conhecimento (PPGEGC)</h6>
             <h6 class="mb-0 mt-1">Engenharia do Conhecimento/Teoria e prática em Engenharia do Conhecimento</h6>
         </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-     
-            <h4 class="card-title">Rede de Relacionamentos</h4>
-     <div id="cy" style="width: 100%; height: 800px;"></div>
-          
-        
-      </div>
-    </div>     
+    </div>    
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <h6><i class="fa fa-yelp" aria-hidden="true"></i>Rede de Relacionamentos</h6>
+        <div id="cy" style="width: 100%; height: 800px;"></div>
+    </div>
+</div> 
 @endsection
 @section('script')
 <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
