@@ -68,15 +68,22 @@ class GrafoController extends Controller
         foreach ($relacoes as $r) {
             foreach ([$r->p1, $r->p2] as $id) {
                 if (!in_array($id, $idsAdicionados)) {
+
+                    $funcao = $funcoes[$id] ?? 'Outro';
+                    $cor = '#6c757d'; // cor padrão
+
+                    if ($funcao === 'Orientador') {
+                        $cor = '#007bff';
+                    } elseif ($funcao === 'Participante') {
+                        $cor = '#ffc107';
+                    } elseif ($funcao === 'Inventor') {
+                        $cor = '#28a745';
+                    }
+
                     $nodes[] = [
                         'id' => $id,
                         'label' => $pessoas[$id]->ds_nome_pessoa ?? "ID:$id",
-                        'color' => match($funcoes[$id] ?? 'Outro') {
-                            'Orientador' => '#007bff',
-                            'Participante' => '#ffc107',
-                            'Inventor' => '#28a745',
-                            default => '#6c757d'
-                        }
+                        'color' => $cor
                     ];
                     $idsAdicionados[] = $id;
                 }
