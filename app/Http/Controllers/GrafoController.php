@@ -71,7 +71,12 @@ class GrafoController extends Controller
                     $nodes[] = [
                         'id' => $id,
                         'label' => $pessoas[$id]->ds_nome_pessoa ?? "ID:$id",
-                        'tipo' => $funcoes[$id] ?? 'Desconhecido'
+                        'color' => match($funcoes[$id] ?? 'Outro') {
+                            'Orientador' => '#007bff',
+                            'Participante' => '#ffc107',
+                            'Inventor' => '#28a745',
+                            default => '#6c757d'
+                        }
                     ];
                     $idsAdicionados[] = $id;
                 }
