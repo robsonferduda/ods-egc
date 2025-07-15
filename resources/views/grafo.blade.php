@@ -18,7 +18,7 @@
             <h4 class="card-title">Rede de Relacionamentos</h4>
           </div>
           <div class="card-body">
-            <div id="network" style="height: 600px; border: 1px solid #ccc;"></div>
+              <div id="cy" style="width: 100%; height: 600px;"></div>
           </div>
         </div>
       </div>
@@ -26,30 +26,63 @@
 </div>
 @endsection
 @section('script')
-    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          const nodes = @json($nodes);
-          const edges = @json($edges);
+    document.addEventListener("DOMContentLoaded", function () {
+      const rawNodes = @json($nodes);
+      const rawEdges = @json($edges);
 
-          const container = document.getElementById('network');
-          if (!container) {
-            console.error("Elemento #network não encontrado!");
-            return;
+      const container = document.getElementById("cy");
+      if (!container) {
+        console.error("Elemento #cy não encontrado!");
+        return;
+      }
+
+      const cy = cytoscape({
+        container: container,
+        elements: [
+          // Nodes
+          ...rawNodes.map(n => ({
+            data: { id: n.id.toString(), label: n.label }
+          })),
+
+          // Edges
+          ...rawEdges.map(e => ({
+            data: {
+              id: `${e.from}-${e.to}`,
+              source: e.from.toString(),
+              target: e.to.toString()
+            }
+          }))
+        ],
+        style: [
+          {
+            selector: "node",
+            style: {
+              "background-color": "#007bff",
+              label: "data(label)",
+              color: "#fff",
+              "text-valign": "center",
+              "text-halign": "center",
+              "font-size": "12px"
+            }
+          },
+          {
+            selector: "edge",
+            style: {
+              width: 2,
+              "line-color": "#ccc",
+              "target-arrow-color": "#ccc",
+              "target-arrow-shape": "triangle",
+              "curve-style": "bezier"
+            }
           }
-
-          const data = {
-            nodes: new vis.DataSet(nodes),
-            edges: new vis.DataSet(edges)
-          };
-
-          const options = {
-            nodes: { shape: 'dot', size: 10, font: { size: 14 } },
-            edges: { arrows: 'to', smooth: true },
-            physics: { stabilization: false }
-          };
-
-          new vis.Network(container, data, options);
-        });
-    </script>
+        ],
+        layout: {
+          name: "cose", // outros: grid, circle, concentric
+          animate: true
+        }
+      });
+    });
+  </script>
 @endsection
