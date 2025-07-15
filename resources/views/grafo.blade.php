@@ -14,7 +14,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <h6><i class="fa fa-yelp" aria-hidden="true"></i>Rede de Relacionamentos</h6>
+        <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
         <div id="cy" style="width: 100%; height: 800px;"></div>
     </div>
 </div> 
