@@ -48,17 +48,17 @@ class GrafoController extends Controller
 
         // 4. Funções (uma por pessoa, com prioridade pela menor id_funcao_fun)
         $funcoes = DB::table('documento_pessoa_dop as dop')
-            ->join('funcao_fun as f', 'f.id_funcao_fun', '=', 'dop.id_funcao_fun')
-            ->select('dop.id_pessoa_pes', 'f.ds_funcao_fun')
-            ->whereIn('dop.id_pessoa_pes', $ids)
-            ->groupBy('dop.id_pessoa_pes', 'f.ds_funcao_fun')
-            ->orderBy('dop.id_pessoa_pes')
-            ->orderBy('dop.id_funcao_fun') // pega a menor função (Orientador antes de Participante etc.)
-            ->get()
-            ->groupBy('id_pessoa_pes')
-            ->map(function($grupo) {
-                return $grupo->first()->ds_funcao_fun;
-            });
+                    ->join('funcao_fun as f', 'f.id_funcao_fun', '=', 'dop.id_funcao_fun')
+                    ->select('dop.id_pessoa_pes', 'f.ds_funcao_fun')
+                    ->whereIn('dop.id_pessoa_pes', $ids)
+                    ->groupBy('dop.id_pessoa_pes', 'f.ds_funcao_fun', 'dop.id_funcao_fun') // adicionado aqui
+                    ->orderBy('dop.id_pessoa_pes')
+                    ->orderBy('dop.id_funcao_fun') // agora está OK
+                    ->get()
+                    ->groupBy('id_pessoa_pes')
+                    ->map(function($grupo) {
+                        return $grupo->first()->ds_funcao_fun;
+                    });
 
         // 5. Montar nodes e edges
         $nodes = [];
