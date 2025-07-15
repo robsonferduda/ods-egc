@@ -13,27 +13,16 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">
+     
             <h4 class="card-title">Rede de Relacionamentos</h4>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="col-md-12">
-                <div id="cy" style="width: 100%; height: 800px;"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+     <div id="cy" style="width: 100%; height: 800px;"></div>
+          
+        
       </div>
     </div>     
 </div>
 @endsection
 @section('script')
-    <!-- HTML -->
-<div id="cy" style="width: 100%; height: 600px;"></div>
-
-<!-- Script -->
 <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
 <script src="https://unpkg.com/cytoscape-qtip@2.7.0/cytoscape-qtip.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
