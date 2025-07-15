@@ -54,7 +54,9 @@ class GrafoController extends Controller
             ->orderBy('dop.id_funcao_fun') // pega a menor função (Orientador antes de Participante etc.)
             ->get()
             ->groupBy('id_pessoa_pes')
-            ->map(fn($grupo) => $grupo->first()->ds_funcao_fun);
+            ->map(function($grupo) {
+                return $grupo->first()->ds_funcao_fun;
+            });
 
         // 5. Montar nodes e edges
         $nodes = [];
