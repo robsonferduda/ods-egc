@@ -23,61 +23,79 @@ class GrafoController extends Controller
     }
 
     public function ods()
-{
-    $relacoes = DB::select('
-        SELECT dp1.id_pessoa_pes as p1, dp2.id_pessoa_pes as p2, COUNT(*) as peso
-        FROM documento_pessoa_dop dp1
-        JOIN documento_pessoa_dop dp2
-          ON dp1.id_documento_ods = dp2.id_documento_ods
-         AND dp1.id_pessoa_pes < dp2.id_pessoa_pes
-          WHERE dp1.id_pessoa_pes = 5532
-        GROUP BY dp1.id_pessoa_pes, dp2.id_pessoa_pes
-    ');
+    {
+        // 1. Relações de coautoria (mesmo documento)
+        $relacoes = DB::select('
+            SELECT dp1.id_pessoa_pes as p1, dp2.id_pessoa_pes as p2, COUNT(*) as peso
+            FROM documento_pessoa_dop dp1
+            JOIN documento_pessoa_dop dp2
+              ON dp1.id_documento_ods = dp2.id_documento_ods
+             AND dp1.id_pessoa_pes < dp2.id_pessoa_pes
+             WHERE dp1.id_pessoa_pes = ?
+            GROUP BY dp1.id_pessoa_pes, dp2.id_pessoa_pes
+        ', [5532]);
 
-    // Calcula o grau (número de conexões) para cada pessoa
-    $graus = [];
-    foreach ($relacoes as $r) {
-        if (!isset($graus[$r->p1])) $graus[$r->p1] = 0;
-        if (!isset($graus[$r->p2])) $graus[$r->p2] = 0;
-        $graus[$r->p1]++;
-        $graus[$r->p2]++;
-    }
+        // 2. Todas as pessoas com ID envolvido nas relações
+        $ids = collect($relacoes)->flatMap(function($r) {
+            return [$r->p1, $r->p2];
+        })->unique()->values();
 
-    // Pega os nomes
-    $ids = array_unique(array_merge(
-        array_map(function ($r) { return $r->p1; }, $relacoes),
-        array_map(function ($r) { return $r->p2; }, $relacoes)
-    ));
+        // 3. Nomes das pessoas
+        $pessoas = DB::table('pessoa_pes')
+            ->whereIn('id_pessoa_pes', $ids)
+            ->get()
+            ->keyBy('id_pessoa_pes');
 
-    $pessoas = DB::table('pessoa_pes')
-        ->whereIn('id_pessoa_pes', $ids)
-        ->get()
-        ->keyBy('id_pessoa_pes');
+        // 4. Funções (uma por pessoa, com prioridade pela menor id_funcao_fun)
+        $funcoes = DB::table('documento_pessoa_dop as dop')
+                    ->join('funcao_fun as f', 'f.id_funcao_fun', '=', 'dop.id_funcao_fun')
+                    ->select('dop.id_pessoa_pes', 'f.ds_funcao_fun')
+                    ->whereIn('dop.id_pessoa_pes', $ids)
+                    ->groupBy('dop.id_pessoa_pes', 'f.ds_funcao_fun', 'dop.id_funcao_fun') // adicionado aqui
+                    ->orderBy('dop.id_pessoa_pes')
+                    ->orderBy('dop.id_funcao_fun') // agora está OK
+                    ->get()
+                    ->groupBy('id_pessoa_pes')
+                    ->map(function($grupo) {
+                        return $grupo->first()->ds_funcao_fun;
+                    });
 
-    $nodes = [];
-    $edges = [];
+        // 5. Montar nodes e edges
+        $nodes = [];
+        $edges = [];
+        $idsAdicionados = [];
 
-    foreach ($ids as $id) {
-        $nodes[] = [
-            'data' => [
-                'id' => $id,
-                'label' => $pessoas[$id]->ds_nome_pessoa ?? "ID:{$id}",
-                'grau' => $graus[$id] ?? 1
-            ]
-        ];
-    }
+        foreach ($relacoes as $r) {
+            foreach ([$r->p1, $r->p2] as $id) {
+                if (!in_array($id, $idsAdicionados)) {
 
-    foreach ($relacoes as $r) {
-        $edges[] = [
-            'data' => [
-                'source' => $r->p1,
-                'target' => $r->p2,
+                    $funcao = $funcoes[$id] ?? 'Outro';
+                    $cor = '#6c757d'; // cor padrão
+
+                    if ($funcao === 'Orientador') {
+                        $cor = '#007bff';
+                    } elseif ($funcao === 'Participante') {
+                        $cor = '#ffc107';
+                    } elseif ($funcao === 'Inventor') {
+                        $cor = '#28a745';
+                    }
+
+                    $nodes[] = [
+                        'id' => $id,
+                        'label' => $pessoas[$id]->ds_nome_pessoa ?? "ID:$id",
+                        'color' => $cor
+                    ];
+                    $idsAdicionados[] = $id;
+                }
+            }
+
+            $edges[] = [
+                'from' => $r->p1,
+                'to' => $r->p2,
                 'value' => $r->peso
-            ]
-        ];
+            ];
+        }
+
+        return view('grafo', compact('nodes', 'edges'));
     }
-
-    return view('grafo', compact('nodes', 'edges'));
-}
-
 }

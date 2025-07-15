@@ -10,56 +10,74 @@
             <h6 class="mb-0 mt-1">Programa de Pós-graduação em Engenharia, Gestão e Mídia do Conhecimento (PPGEGC)</h6>
             <h6 class="mb-0 mt-1">Engenharia do Conhecimento/Teoria e prática em Engenharia do Conhecimento</h6>
         </div>
-    </div>   
-</div>
-<div class="row">
-    <div class="col-md-12">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
      
-            <div class="mb-2 text-center">
-  <button onclick="cy.zoom(cy.zoom() + 0.1)">🔍 +</button>
-  <button onclick="cy.zoom(cy.zoom() - 0.1)">🔍 -</button>
-  <button onclick="cy.fit()">🔄 Centralizar</button>
-</div>
-
-<div id="network" style="height: 600px; border: 1px solid #ccc;"></div>
+            <h4 class="card-title">Rede de Relacionamentos</h4>
+     <div id="cy" style="width: 100%; height: 800px;"></div>
           
         
-    </div>
-</div>  
+      </div>
+    </div>     
+</div>
 @endsection
 @section('script')
-<script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
+<script src="https://unpkg.com/cytoscape-qtip@2.7.0/cytoscape-qtip.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qtip2/3.0.3/jquery.qtip.min.js"></script>
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const nodes = @json($nodes);
-    const edges = @json($edges);
+    const rawNodes = @json($nodes);
+    const rawEdges = @json($edges);
+
+    // Cores por tipo
+    const tipoCores = {
+      'Orientador': '#007bff',
+      'Participante': '#28a745',
+      'Inventor': '#ffc107',
+      'Aluno': '#17a2b8',
+      'Coordenador': '#6610f2',
+      'Desconhecido': '#6c757d'
+    };
 
     const cy = cytoscape({
-      container: document.getElementById('network'),
-      elements: {
-        nodes: nodes,
-        edges: edges
-      },
+      container: document.getElementById('cy'),
+      elements: [
+        ...rawNodes.map(n => ({
+          data: {
+            id: n.id.toString(),
+            label: n.label,
+            tipo: n.tipo || 'Desconhecido'
+          }
+        })),
+        ...rawEdges.map(e => ({
+          data: {
+            id: `${e.from}-${e.to}`,
+            source: e.from.toString(),
+            target: e.to.toString()
+          }
+        }))
+      ],
       style: [
         {
           selector: 'node',
           style: {
-            'background-color': '#1f77b4',
+            'background-color': ele => tipoCores[ele.data('tipo')] || '#999',
             'label': 'data(label)',
-            'width': 'mapData(grau, 1, 20, 25, 60)',
-            'height': 'mapData(grau, 1, 20, 25, 60)',
-            'font-size': 12,
-            'color': '#fff',
             'text-valign': 'center',
-            'text-halign': 'center',
-            'text-wrap': 'wrap',
-            'text-max-width': 100
+            'color': '#fff',
+            'font-size': '12px',
+            'width': ele => 20 + ele.degree() * 2,
+            'height': ele => 20 + ele.degree() * 2
           }
         },
         {
           selector: 'edge',
           style: {
-            'width': 'mapData(value, 1, 10, 1, 5)',
+            'width': 2,
             'line-color': '#ccc',
             'target-arrow-color': '#ccc',
             'target-arrow-shape': 'triangle',
@@ -67,21 +85,23 @@
           }
         }
       ],
-      layout: {
-        name: 'cose',
-        animate: true,
-        padding: 30
-      },
-      wheelSensitivity: 0.2,
-      minZoom: 0.3,
-      maxZoom: 3
+      layout: { name: 'cose', animate: true }
     });
 
-    // Simples tooltip ao passar o mouse (usando title padrão)
-    cy.nodes().forEach(function (node) {
-      node.qtip = node.data('label');
-      node.on('mouseover', function () {
-        node.style('label', node.qtip);
+    // Tooltips com qTip2
+    cy.nodes().forEach(function (ele) {
+      ele.qtip({
+        content: {
+          title: ele.data('label'),
+          text: 'Função: ' + ele.data('tipo')
+        },
+        position: {
+          my: 'top center',
+          at: 'bottom center'
+        },
+        style: {
+          classes: 'qtip-bootstrap'
+        }
       });
     });
   });
