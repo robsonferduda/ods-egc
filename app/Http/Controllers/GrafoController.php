@@ -30,6 +30,7 @@ class GrafoController extends Controller
             JOIN documento_pessoa_dop dp2
               ON dp1.id_documento_ods = dp2.id_documento_ods
              AND dp1.id_pessoa_pes < dp2.id_pessoa_pes
+             WHERE dp1.id_pessoa_pes = 5532
             GROUP BY dp1.id_pessoa_pes, dp2.id_pessoa_pes
         ');
 
