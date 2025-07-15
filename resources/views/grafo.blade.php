@@ -18,7 +18,9 @@
             <h4 class="card-title">Rede de Relacionamentos</h4>
           </div>
           <div class="card-body">
-              <div id="cy" style="width: 100%; height: 600px;"></div>
+            <div class="col-md-12">
+              <div id="cy" style="width: 100%; height: 800px;"></div>
+            </div>
           </div>
         </div>
       </div>
