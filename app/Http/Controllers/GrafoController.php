@@ -36,7 +36,9 @@ class GrafoController extends Controller
         ', [5532]);
 
         // 2. Todas as pessoas com ID envolvido nas relações
-        $ids = collect($relacoes)->flatMap(fn($r) => [$r->p1, $r->p2])->unique()->values();
+        $ids = collect($relacoes)->flatMap(function($r) {
+            return [$r->p1, $r->p2];
+        })->unique()->values();
 
         // 3. Nomes das pessoas
         $pessoas = DB::table('pessoa_pes')
