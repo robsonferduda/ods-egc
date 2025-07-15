@@ -15,90 +15,98 @@
 <div class="row">
     <div class="col-md-12">
     <h4 class="card-title">Rede de Relacionamentos</h4>
-     <div id="cy" style="width: 100%; height: 800px;"></div>
+     <!-- Botões de controle -->
+<div class="mb-2 text-center">
+  <button onclick="cy.zoom(cy.zoom() + 0.1)">🔍 +</button>
+  <button onclick="cy.zoom(cy.zoom() - 0.1)">🔍 -</button>
+  <button onclick="cy.fit()">🔄 Centralizar</button>
+</div>
+
+<!-- Div para o grafo -->
+<div id="network" style="height: 600px; border: 1px solid #ccc;"></div>
           
         
     </div>
 </div>  
 @endsection
 @section('script')
-<script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
-
+<!-- Script Cytoscape -->
+<script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const nodes = @json($nodes);
     const edges = @json($edges);
 
     const cy = cytoscape({
-      container: document.getElementById('cy'),
+      container: document.getElementById('network'),
+
       elements: {
-        nodes: nodes.map(n => ({
-          data: {
-            id: n.id,
-            label: n.label,
-            color: n.color ?? '#007bff', // azul padrão
-            title: n.label // tooltip
-          }
-        })),
-        edges: edges.map(e => ({
-          data: {
-            id: `edge-${e.from}-${e.to}`,
-            source: e.from,
-            target: e.to,
-            value: e.value
-          }
-        }))
+        nodes: nodes,
+        edges: edges
       },
+
       style: [
         {
           selector: 'node',
           style: {
-            'shape': 'round-rectangle',
-            'label': 'data(label)',
-            'width': 'label',
-            'padding': '6px',
-            'height': 'label',
-            'font-size': '11px',
             'background-color': 'data(color)',
+            'label': 'data(label)',
+            'width': 'mapData(grau, 1, 20, 20, 60)',
+            'height': 'mapData(grau, 1, 20, 20, 60)',
+            'font-size': '12px',
+            'color': '#fff',
             'text-valign': 'center',
             'text-halign': 'center',
-            'color': '#fff',
-            'text-outline-color': '#444',
-            'text-outline-width': 2
+            'text-wrap': 'wrap',
+            'text-max-width': 100
           }
         },
         {
           selector: 'edge',
           style: {
-            'width': 'mapData(value, 1, 10, 1, 5)',
-            'line-color': '#bbb',
-            'target-arrow-color': '#999',
+            'width': 'mapData(value, 1, 10, 1, 6)',
+            'line-color': '#ccc',
+            'target-arrow-color': '#ccc',
             'target-arrow-shape': 'triangle',
             'curve-style': 'bezier'
           }
         }
       ],
+
       layout: {
         name: 'cose',
         animate: true,
-        fit: true,
         padding: 30
-      }
+      },
+
+      // Melhoria no zoom e pan
+      zoomingEnabled: true,
+      userZoomingEnabled: true,
+      wheelSensitivity: 0.1,
+      minZoom: 0.2,
+      maxZoom: 3,
+      panningEnabled: true,
+      userPanningEnabled: true
     });
 
-    // Tooltip nativo
-    cy.nodes().forEach(node => {
-      node.qtip({
-        content: node.data('title'),
-        show: { event: 'mouseover' },
-        hide: { event: 'mouseout' },
+    // Tooltip simples
+    cy.nodes().on('mouseover', function (evt) {
+      this.qtip({
+        content: this.data('label'),
+        show: { ready: true },
+        hide: { event: 'mouseout unfocus' },
         position: { my: 'top center', at: 'bottom center' },
         style: {
           classes: 'qtip-bootstrap',
           tip: { width: 16, height: 8 }
         }
-      });
+      }, evt);
     });
   });
 </script>
+
+<!-- Tooltip lib opcional -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/qtip2@3.0.3/dist/jquery.qtip.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qtip2@3.0.3/dist/jquery.qtip.min.js"></script>
 @endsection
