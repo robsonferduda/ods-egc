@@ -98,7 +98,6 @@
 
           
                const cells = document.querySelectorAll("#tabela-ods tbody tr td");
-
                const min = 0.026;
                const max = 0.9;
 
@@ -117,11 +116,21 @@
                });
 
                function calcularCor(peso) {
-                  // verde claro → verde escuro
-                  const r = Math.round(224 - peso * 150);
-                  const g = Math.round(248 - peso * 200);
-                  const b = Math.round(224 - peso * 150);
-                  return `rgb(${r}, ${g}, ${b})`;
+                 let r, g, b;
+
+                 if (peso < 0.5) {
+                   // vermelho → amarelo
+                   r = 255;
+                   g = Math.round(255 * peso * 2); // 0 → 255
+                   b = 0;
+                 } else {
+                   // amarelo → verde
+                   r = Math.round(255 * (1 - (peso - 0.5) * 2)); // 255 → 0
+                   g = 255;
+                   b = 0;
+                 }
+
+                 return `rgb(${r}, ${g}, ${b})`;
                }
             
 
