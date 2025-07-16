@@ -112,16 +112,19 @@
 
                   // aplica a cor ao fundo da célula                  
                   cell.style.backgroundColor = cor;
-                  cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
+                  cell.style.color = peso > 0.5 ? "white" : "black"; // contraste dinâmico
                });
 
                function calcularCor(peso) {
-  // verde limão (#ADFF2F) até verde escuro (#006400)
-  const r = Math.round(173 - peso * (173 - 0));   // 173 → 0
-  const g = Math.round(255 - peso * (255 - 100)); // 255 → 100
-  const b = Math.round(47 - peso * (47 - 0));     // 47 → 0
-  return `rgb(${r}, ${g}, ${b})`;
-}
+                 // de azul claro (#B2EBF2 → rgb(178, 235, 242))
+                 // até azul petróleo (#004D40 → rgb(0, 77, 64))
+
+                 const r = Math.round(178 - peso * (178 - 0));   // 178 → 0
+                 const g = Math.round(235 - peso * (235 - 77));  // 235 → 77
+                 const b = Math.round(242 - peso * (242 - 64));  // 242 → 64
+
+                 return `rgb(${r}, ${g}, ${b})`;
+               }
             
 
         
