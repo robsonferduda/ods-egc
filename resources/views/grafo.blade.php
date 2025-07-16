@@ -77,10 +77,10 @@
         }
       ],
       layout: {
-         name: 'breadthfirst',
-          directed: true,
-          padding: 30,
-          spacingFactor: 1.5
+         name: 'grid',
+          rows: 5,
+          cols: 5,
+          padding: 30
       }
     });
 
