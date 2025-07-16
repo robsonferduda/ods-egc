@@ -100,7 +100,7 @@
                const cells = document.querySelectorAll("#tabela-ods tbody tr td");
 
                const min = 0.026;
-               const max = 0.24;
+               const max = 0.9;
 
                cells.forEach(cell => {
                   const valor = parseFloat(cell.getAttribute("data-valor"));
@@ -113,7 +113,7 @@
 
                   // aplica a cor ao fundo da célula                  
                   cell.style.backgroundColor = cor;
-                  //cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
+                  cell.style.color = peso > 0.6 ? "white" : "black"; // contraste dinâmico
                });
 
                function calcularCor(peso) {
