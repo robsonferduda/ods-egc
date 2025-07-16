@@ -80,7 +80,12 @@
         name: 'cose',
         animate: true,
         fit: true,
-        padding: 30
+        padding: 30,
+        randomize: false,
+        nodeRepulsion: 100000,
+        edgeElasticity: 100,
+        gravity: 80,
+        numIter: 1000
       }
     });
 
