@@ -96,7 +96,7 @@
                []
         ];
 
-          document.addEventListener("DOMContentLoaded", function () {
+          
                const cells = document.querySelectorAll("#tabela-ods tbody tr td");
 
                const min = 0.026;
@@ -123,7 +123,7 @@
                   const b = Math.round(224 - peso * 150);
                   return `rgb(${r}, ${g}, ${b})`;
                }
-            });
+            
 
         
 
