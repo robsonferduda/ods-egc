@@ -81,7 +81,7 @@
         animate: true,
         fit: true,
         padding: 30,
-        idealEdgeLength: 120,
+        idealEdgeLength: 180,
         nodeRepulsion: 10000,
         edgeElasticity: 0.45, // ajuste fino da "mola"
         gravity: 0.25
