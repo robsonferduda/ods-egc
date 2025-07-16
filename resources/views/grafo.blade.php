@@ -21,7 +21,7 @@
 @endsection
 @section('script')
 <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.0.0/cytoscape-cose-bilkent.min.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const nodes = @json($nodes);
@@ -77,10 +77,8 @@
         }
       ],
       layout: {
-         name: 'grid',
-          rows: 5,
-          cols: 5,
-          padding: 30
+          name: 'cose-bilkent',
+          animate: true
       }
     });
 
