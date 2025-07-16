@@ -116,22 +116,12 @@
                });
 
                function calcularCor(peso) {
-                 let r, g, b;
-
-                 if (peso < 0.5) {
-                   // vermelho → amarelo
-                   r = 255;
-                   g = Math.round(255 * peso * 2); // 0 → 255
-                   b = 0;
-                 } else {
-                   // amarelo → verde
-                   r = Math.round(255 * (1 - (peso - 0.5) * 2)); // 255 → 0
-                   g = 255;
-                   b = 0;
-                 }
-
-                 return `rgb(${r}, ${g}, ${b})`;
-               }
+  // verde limão (#ADFF2F) até verde escuro (#006400)
+  const r = Math.round(173 - peso * (173 - 0));   // 173 → 0
+  const g = Math.round(255 - peso * (255 - 100)); // 255 → 100
+  const b = Math.round(47 - peso * (47 - 0));     // 47 → 0
+  return `rgb(${r}, ${g}, ${b})`;
+}
             
 
         
