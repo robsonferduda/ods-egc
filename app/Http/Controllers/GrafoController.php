@@ -33,7 +33,7 @@ class GrafoController extends Controller
              AND dp1.id_pessoa_pes < dp2.id_pessoa_pes
              WHERE dp1.id_pessoa_pes = ?
             GROUP BY dp1.id_pessoa_pes, dp2.id_pessoa_pes
-        ', [6068]);
+        ', [3579]);
 
         // 2. Todas as pessoas com ID envolvido nas relações
         $ids = collect($relacoes)->flatMap(function($r) {
