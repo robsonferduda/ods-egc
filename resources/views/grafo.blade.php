@@ -80,7 +80,7 @@
         name: 'cose-bilkent',
         animate: true,
         fit: true,
-        padding: 30,
+        padding: 3,
         idealEdgeLength: 180,
         nodeRepulsion: 10000,
         edgeElasticity: 0.45, // ajuste fino da "mola"
