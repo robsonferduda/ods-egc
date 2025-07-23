@@ -58,7 +58,25 @@
 
             <div class="col-md-12">       
                 <div class="form-group">
-                    <label>Unidade Administrativa</label>
+                    <label>Centro</label>
+                    <select class="form-control" name="centro" id="centro" aria-label="Default select example">
+                        <option value="">Todos</option>
+                    </select>
+                </div> 
+            </div> 
+
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <select class="form-control" name="departamento" id="departamento" aria-label="Default select example">
+                        <option value="">Todos</option>
+                    </select>
+                </div> 
+            </div> 
+
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Programa de Pós-Graduação</label>
                     <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
                         <option value="">Todos</option>
                     </select>
@@ -67,7 +85,7 @@
             
             <div class="col-md-12">       
                 <div class="form-group">
-                    <label>Responsável</label>
+                    <label>Docente</label>
                     <select class="form-control" name="docente" id="docente" aria-label="Default select example">
                         <option value="">Selecione um docente</option>
                     </select>
@@ -205,6 +223,104 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
+
+            //Carregar Centros
+            $.ajax({
+                url: host+'/dados/centros',
+                type: 'GET',
+                success: function(data) {
+                    $('#centro').empty().append('<option value="">Todos</option>');
+                    data.forEach(function(centro) {
+                        $('#centro').append(`<option value="${centro.ds_sigla_cen}">${centro.ds_sigla_cen} - ${centro.ds_nome_cen}</option>`);
+                    });
+                }
+            });
+
+            // Departamentos
+            $.ajax({
+                url: host + '/dados/departamentos',
+                type: 'GET',
+                success: function(data) {
+                    $('#departamento').empty().append('<option value="">Todos</option>');
+                    data.forEach(function(dep) {
+                        $('#departamento').append(`<option value="${dep.ds_sigla_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
+                    });
+                }
+            });
+
+            // PPGs
+            $.ajax({
+                url: host + '/dados/ppgs',
+                type: 'GET',
+                success: function(data) {
+                    $('#ppg').empty().append('<option value="">Todos</option>');
+                    data.forEach(function(ppg) {
+                        $('#ppg').append(`<option value="${ppg.id}">${ppg.nm_curso_cur}</option>`);
+                    });
+                }
+            });
+
+            // Docentes
+            $.ajax({
+                url: host + '/dados/docentes',
+                type: 'GET',
+                success: function(data) {
+                    $('#docente').empty().append('<option value="">Selecione um docente</option>');
+                    data.forEach(function(docente) {
+                        $('#docente').append(`<option value="${docente.id}">${docente.nome}</option>`);
+                    });
+                }
+            });
+
+            $('#centro').change(function() {
+                var centroId = $(this).val();
+                $.ajax({
+                    url: host + '/dados/departamentos/centro/'+centroId,
+                    type: 'GET',
+                    data: { centro: centroId },
+                    success: function(data) {
+                        $('#departamento').empty().append('<option value="">Todos</option>');
+                        data.forEach(function(dep) {
+                            $('#departamento').append(`<option value="${dep.ds_sigla_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
+                        });
+                    }
+                });
+
+                // Limpa PPG e Docente ao trocar centro
+                $('#ppg').empty().append('<option value="">Todos</option>');
+                $('#docente').empty().append('<option value="">Selecione um docente</option>');
+            });
+
+            $('#centro').change(function() {
+                var centroId = $(this).val();
+                $.ajax({
+                    url: host + '/dados/ppgs',
+                    type: 'GET',
+                    data: { centro: centroId },
+                    success: function(data) {
+                        $('#ppg').empty().append('<option value="">Todos</option>');
+                        data.forEach(function(ppg) {
+                            $('#ppg').append(`<option value="${ppg.id}">${ppg.nome}</option>`);
+                        });
+                    }
+                });
+            });
+
+            $('#departamento').change(function() {
+                var departamentoId = $(this).val();
+                $.ajax({
+                    url: host + '/dados/docentes',
+                    type: 'GET',
+                    data: { departamento: departamentoId },
+                    success: function(data) {
+                        $('#docente').empty().append('<option value="">Selecione um docente</option>');
+                        data.forEach(function(docente) {
+                            $('#docente').append(`<option value="${docente.id}">${docente.nome}</option>`);
+                        });
+                    }
+                });
+            });
+
 
             $(document).on('change', '#dimensao', function() {
                 buscarTiposPorDimensao();
@@ -346,31 +462,7 @@
                 }
             });
 
-            $.ajax({
-                url: host+'/dados/ppg/ufsc',
-                type: 'GET',
-                beforeSend: function() {
-                    $('.painel').loader('show');
-                },
-                success: function(data) {
-                    if(!data) {
-                        Swal.fire({
-                            text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
-                            type: "warning",
-                            icon: "warning",
-                        });
-                        return;
-                    }
-
-                    data.forEach(element => {
-                        let option = new Option(element.nm_programa, element.nm_programa);
-                        $('#ppg').append(option);
-                    });
-                },
-                complete: function(){
-                    $('.painel').loader('hide');
-                }
-            });
+           
 
             $(document).on('click', '.perfil-docente-mostrar', function() {
                 

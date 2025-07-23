@@ -27,6 +27,11 @@ Route::get('dados/ppg/{ies}', 'ODSController@getPPG');
 Route::get('dados/ppg/docentes/{ppg}', 'ODSController@getDocente');
 Route::get('dados/ppg/{ppg}/docente/{docente}/ods', 'ODSController@getODS');
 
+Route::get('dados/centros', 'DashboardController@centros');
+Route::get('dados/departamentos', 'DashboardController@departamentos');
+Route::get('dados/departamentos/centro/{id}', 'DashboardController@departamentosPorCentro');
+Route::get('dados/ppgs', 'DashboardController@ppgs');
+
 Route::get('dimensao/{apelido}/tipos', 'DimensaoController@tiposPorDimensao');
 
 Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
