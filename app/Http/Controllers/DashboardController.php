@@ -39,7 +39,9 @@ class DashboardController extends Controller
         return response()->json($departamentos);
     }
 
-    
-
-   
+    public function docentes()
+    {
+        $docentes = \App\Pessoa::where('id_vinculo_vin', 2)->orderBy('ds_nome_pessoa')->get(['id_pessoa_pes', 'ds_nome_pessoa']);
+        return response()->json($docentes);
+    }    
 }

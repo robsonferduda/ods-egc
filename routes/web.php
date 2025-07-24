@@ -31,6 +31,7 @@ Route::get('dados/centros', 'DashboardController@centros');
 Route::get('dados/departamentos', 'DashboardController@departamentos');
 Route::get('dados/departamentos/centro/{id}', 'DashboardController@departamentosPorCentro');
 Route::get('dados/ppgs', 'DashboardController@ppgs');
+Route::get('dados/docentes', 'DashboardController@docentes');
 
 Route::get('dimensao/{apelido}/tipos', 'DimensaoController@tiposPorDimensao');
 
