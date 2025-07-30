@@ -93,7 +93,11 @@ class DadosController extends Controller
                     } elseif ($funcao === 'Participante') {
                         $cor = '#ffc107';
                     } elseif ($funcao === 'Inventor') {
+                        $cor = '#FD6925';
+                    }elseif ($funcao === 'Aluno') {
                         $cor = '#28a745';
+                    }elseif ($funcao === 'Coordenador') {
+                        $cor = '#C5192D';
                     }
 
                     $nodes[] = [
