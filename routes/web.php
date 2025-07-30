@@ -51,13 +51,15 @@ Route::get('dados/inovacao/extracao', 'InovacaoController@extracao');
 Route::get('dados/extensao/extracao', 'ExtensaoController@extracao');
 
 Route::get('docente/grafo/{id}', 'DadosController@grafo');
+Route::get('docentes/foto/{docente}', 'DocenteController@getImagem');
+Route::get('docentes/ods/{id}', 'DocenteController@getODS');
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
 Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
 
-Route::get('docentes/foto/{docente}', 'DocenteController@getImagem');
+
 
 Route::get('sobre', 'HomeController@sobre');
 
