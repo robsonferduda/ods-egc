@@ -50,6 +50,8 @@ Route::get('dados/extensao/relacoes', 'ExtensaoController@getRelacoes');
 Route::get('dados/inovacao/extracao', 'InovacaoController@extracao');
 Route::get('dados/extensao/extracao', 'ExtensaoController@extracao');
 
+Route::get('docente/grafo/{id}', 'DadosController@grafo');
+
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
