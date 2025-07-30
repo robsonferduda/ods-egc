@@ -235,7 +235,7 @@ class ODSController extends Controller
         }
 
         if($request->docente){
-            $where .= " t2.id_pessoa_pes = $request->docente";
+            $where .= " AND t2.id_pessoa_pes = $request->docente";
         }
 
         /*
