@@ -234,15 +234,17 @@ class ODSController extends Controller
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
+        if($request->docente){
+            $where .= " t2.id_pessoa_pes = $request->docente";
+        }
+
         /*
 
         if($request->ppg){
             $where .= " AND nm_programa = '$request->ppg'";
         }
 
-        if($request->docente){
-            $where .= " AND nm_orientador = '$request->docente'";
-        }
+       
 
         */
 
@@ -253,6 +255,8 @@ class ODSController extends Controller
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
                 FROM documento_ods t0
                 RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
                 $where
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
