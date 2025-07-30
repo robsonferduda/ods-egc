@@ -238,8 +238,8 @@
                     type: 'GET',
                     success: function(data) {
 
-                        const nodes = @json($nodes);
-        const edges = @json($edges);
+                        const nodes = data.nodes;
+        const edges = data.edges;
 
         const cy = cytoscape({
           container: document.getElementById('cy'),
