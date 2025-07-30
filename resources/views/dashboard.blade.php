@@ -239,84 +239,82 @@
                     success: function(data) {
 
                         const nodes = data.nodes;
-        const edges = data.edges;
+                        const edges = data.edges;
 
-        const cy = cytoscape({
-          container: document.getElementById('cy'),
-          elements: {
-            nodes: nodes.map(n => ({
-              data: {
-                id: n.id,
-                label: n.label,
-                color: n.color ?? '#007bff', // azul padrão
-                title: n.label // tooltip
-              }
-            })),
-            edges: edges.map(e => ({
-              data: {
-                id: `edge-${e.from}-${e.to}`,
-                source: e.from,
-                target: e.to,
-                value: e.value
-              }
-            }))
-          },
-          style: [
-            {
-              selector: 'node',
-              style: {
-                'shape': 'round-rectangle',
-                'label': 'data(label)',
-                'width': 'label',
-                'padding': '6px',
-                'height': 'label',
-                'font-size': '11px',
-                'background-color': 'data(color)',
-                'text-valign': 'center',
-                'text-halign': 'center',
-                'color': '#fff',
-                'text-outline-color': '#444',
-                'text-outline-width': 2
-              }
-            },
-            {
-              selector: 'edge',
-              style: {
-                'width': 'mapData(value, 1, 10, 1, 5)',
-                'line-color': '#bbb',
-                'target-arrow-color': '#999',
-                'target-arrow-shape': 'triangle',
-                'curve-style': 'bezier'
-              }
-            }
-          ],
-          layout: {
-            name: 'cose-bilkent',
-            animate: true,
-            fit: true,
-            padding: 3,
-            idealEdgeLength: 180,
-            nodeRepulsion: 10000,
-            edgeElasticity: 0.45, // ajuste fino da "mola"
-            gravity: 0.25
-          }
-        });
+                        const cy = cytoscape({
+                          container: document.getElementById('cy'),
+                          elements: {
+                            nodes: nodes.map(n => ({
+                              data: {
+                                id: n.id,
+                                label: n.label,
+                                color: n.color ?? '#007bff', // azul padrão
+                                title: n.label // tooltip
+                              }
+                            })),
+                            edges: edges.map(e => ({
+                              data: {
+                                id: `edge-${e.from}-${e.to}`,
+                                source: e.from,
+                                target: e.to,
+                                value: e.value
+                              }
+                            }))
+                          },
+                          style: [
+                            {
+                              selector: 'node',
+                              style: {
+                                'shape': 'round-rectangle',
+                                'label': 'data(label)',
+                                'width': 'label',
+                                'padding': '6px',
+                                'height': 'label',
+                                'font-size': '11px',
+                                'background-color': 'data(color)',
+                                'text-valign': 'center',
+                                'text-halign': 'center',
+                                'color': '#fff',
+                                'text-outline-color': '#444',
+                                'text-outline-width': 2
+                              }
+                            },
+                            {
+                              selector: 'edge',
+                              style: {
+                                'width': 'mapData(value, 1, 10, 1, 5)',
+                                'line-color': '#bbb',
+                                'target-arrow-color': '#999',
+                                'target-arrow-shape': 'triangle',
+                                'curve-style': 'bezier'
+                              }
+                            }
+                          ],
+                          layout: {
+                            name: 'cose-bilkent',
+                            animate: true,
+                            fit: true,
+                            padding: 3,
+                            idealEdgeLength: 180,
+                            nodeRepulsion: 10000,
+                            edgeElasticity: 0.45, // ajuste fino da "mola"
+                            gravity: 0.25
+                          }
+                        });
 
-        // Tooltip nativo
-        cy.nodes().forEach(node => {
-          node.qtip({
-            content: node.data('title'),
-            show: { event: 'mouseover' },
-            hide: { event: 'mouseout' },
-            position: { my: 'top center', at: 'bottom center' },
-            style: {
-              classes: 'qtip-bootstrap',
-              tip: { width: 16, height: 8 }
-            }
-          });
-        });
-                        
-
+                        // Tooltip nativo
+                        cy.nodes().forEach(node => {
+                          node.qtip({
+                            content: node.data('title'),
+                            show: { event: 'mouseover' },
+                            hide: { event: 'mouseout' },
+                            position: { my: 'top center', at: 'bottom center' },
+                            style: {
+                              classes: 'qtip-bootstrap',
+                              tip: { width: 16, height: 8 }
+                            }
+                          });
+                        });                       
                     }
                 });
             });
@@ -658,13 +656,13 @@
 
             $("#docente").change(function(){
 
-                /*
+                
                 var ppg = $("#ppg").val();
                 var docente = $(this).val();
 
                 if(docente){
                     carregaDocente(ppg, docente); 
-                }  */          
+                }         
 
             });
 
