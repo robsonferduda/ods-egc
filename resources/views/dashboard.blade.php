@@ -926,7 +926,9 @@
                     url: host+'/docentes/ods/'+docente,
                     type: 'GET',
                     beforeSend: function() {
-                        
+                        $('.painel').loader('show');
+                        $(".perfil-ods").empty();
+                        $(".lista-ods").empty();
                     },
                     success: function(data) {
 
