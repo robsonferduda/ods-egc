@@ -261,6 +261,8 @@ class ODSController extends Controller
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
 
+                dd($sql);
+
         $dados = DB::connection('pgsql')->select($sql);
         
         $ods_encontrados = array_column($dados, 'ods');
