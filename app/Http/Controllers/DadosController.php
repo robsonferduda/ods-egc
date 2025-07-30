@@ -38,7 +38,7 @@ class DadosController extends Controller
         return response()->json($cidades);
     }
 
-    public function grafo()
+    public function grafo($id)
     {
         // 1. Relações de coautoria (mesmo documento)
         $relacoes = DB::select('
