@@ -643,7 +643,7 @@
                 var docente = $(this).val();
 
                 if(docente){
-                    carregaDocente(ppg, docente); 
+                    //carregaDocente(ppg, docente); 
                 }         
 
             });
