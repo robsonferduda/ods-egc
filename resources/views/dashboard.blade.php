@@ -176,11 +176,6 @@
                 </div>
             -->
             <div class="col-md-12"><hr/></div>
-
-            <div class="col-md-12">
-                <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
-                <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
-            </div>
            
             <div class="col-md-8 mt-3 mb-5 box-evolucao">
                 <h6>EVOLUÇÃO POR ODS</h6>
@@ -191,6 +186,11 @@
             <div class="col-md-4 painel-icones mt-8 mb-0">
                 <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
                 <div class="row perfil-ods"></div>                    
+            </div>
+
+            <div class="col-md-12">
+                <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
+                <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
             </div>
 
             <div class="col-sm-12 col-md-6 painel mb-5">        
