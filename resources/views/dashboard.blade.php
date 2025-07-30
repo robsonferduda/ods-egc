@@ -97,7 +97,9 @@
         </div>  
     </div>
     <div class="col-md-9">
-        <div class="row mt-3" id="dados-geral">
+
+        <!-- Visualização de docente -->
+        <div class="row mt-3" id="dados-geral">            
             
             <div class="col-md-8 painel">            
                 <div class="col-md-12">
@@ -110,11 +112,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 top-ods"> 
                 <h6 class="">ODS MAIS FREQUENTES</h6>
-                <div class="lista-ods">           
-                        
-                </div>
+                <div class="lista-ods"></div>
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
@@ -125,9 +126,7 @@
 
             <div class="col-md-4 painel-icones mt-8 mb-0">
                 <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
-                <div class="row perfil-ods mt-8"> 
-        
-                </div>
+                <div class="row perfil-ods mt-8"></div>
             </div>
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
@@ -151,20 +150,17 @@
         </div>
 
         <!-- Visualização de docente -->
-        
-            <div class="row mt-3 d-none" id="perfil-docente">
+        <div class="row mt-3 d-none" id="perfil-docente">
                
-                <div class="col-md-4 center">
-                    <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
-                    <h5 class="mb-0 mt-3" id="nm_docente"></h5>
-                    <span id="nm_ppg"></span>
-                </div>
-
+            <div class="col-md-4 center">
+                <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
+                <h5 class="mb-0 mt-3" id="nm_docente"></h5>
+                <span id="nm_ppg"></span>
+            </div>
                 
-
-                <div class="col-md-8">
-                    <canvas id="chartjs-3" class="chartjs"></canvas>
-                </div>
+            <div class="col-md-8">
+                <canvas id="chartjs-3" class="chartjs"></canvas>
+            </div>
                 <!--
                 <div class="col-md-2 center">
                     <div class="row">
@@ -180,44 +176,30 @@
                 </div>
             -->
             <div class="col-md-12"><hr/></div>
-           
-               <div class="col-md-8 mt-3 mb-5 box-evolucao">
-                    <h6>EVOLUÇÃO POR ODS</h6>
-                    <canvas id="evolucaoDocente" width="400" height="380"></canvas>
-                    <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
-                </div>
 
-                <div class="col-md-4 painel-icones mt-8 mb-0">
-                    <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
-                    <div class="row perfil-ods"> 
-
-                    </div>                    
-                </div>
-
-
-                <!--
-                <div class="col-md-8">
-                    <canvas id="chartjs-3" class="chartjs"></canvas>
-                </div>
-    
-            -->
-
-                <div class="col-sm-12 col-md-6 painel mb-5">        
-                    <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                    <div class="mb-1" id="lista_documentos_docente"></div>
-                </div>
-
-                <div class="col-md-6 lista-ods mb-5">
-                    
-                </div>            
-            </div>  
-
-        <div class="row" style="margin-bottom: 30px;">
             <div class="col-md-12">
                 <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
             </div>
-        </div> 
+           
+            <div class="col-md-8 mt-3 mb-5 box-evolucao">
+                <h6>EVOLUÇÃO POR ODS</h6>
+                <canvas id="evolucaoDocente" width="400" height="380"></canvas>
+                <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
+            </div>
+
+            <div class="col-md-4 painel-icones mt-8 mb-0">
+                <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
+                <div class="row perfil-ods"></div>                    
+            </div>
+
+            <div class="col-sm-12 col-md-6 painel mb-5">        
+                <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
+                <div class="mb-1" id="lista_documentos_docente"></div>
+            </div>
+
+            <div class="col-md-6 lista-ods mb-5"> </div>            
+        </div>  
     </div>
 </div>
 @endsection
@@ -914,7 +896,34 @@
             }
 
             function carregaDocente(ppg, docente){
+                
+                $("#dados-geral").addClass("d-none");
+                $("#perfil-docente").removeClass("d-none");
 
+                $.ajax({
+                    url: host+'/docentes/foto/'+docente,
+                    type: 'GET',
+                    beforeSend: function() {
+                        $('.foto-perfil').loader('show');
+                    },
+                    success: function(data) {
+
+                        foto = host+'/img/docentes/user.png';
+                        $("#nm_docente").text(data.nome);
+                                
+                        if(data.chave){
+                            foto = host+'/img/docentes/'+data.chave+'.jpg';
+                        }
+
+                        $(".foto-perfil").attr('src', foto);
+                    },
+                    complete: function(){
+                        $('.foto-perfil').loader('hide');
+                    }
+                });
+                
+
+                /*
                 $.ajax({
                     url: host+'/dados/ppg/'+ppg+'/docente/'+docente+'/ods',
                     type: 'GET',
@@ -1191,7 +1200,7 @@
                     complete: function(){
                         $('.painel').loader('hide');
                     }
-                });
+                });*/
 
             }
 

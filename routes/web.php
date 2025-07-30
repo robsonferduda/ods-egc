@@ -56,7 +56,8 @@ Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
 Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
-Route::get('docentes/foto/{docente}', 'ODSController@getImagem');
+
+Route::get('docentes/foto/{docente}', 'DocenteController@getImagem');
 
 Route::get('sobre', 'HomeController@sobre');
 
