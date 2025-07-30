@@ -226,7 +226,7 @@ class ODSController extends Controller
                 break;
             
             default:
-                $where .= ' AND t0.id_dimensao IN(1,2,3,4, 5) ';
+                $where .= ' AND t0.id_dimensao IN(1,2,3,4,5,6) ';
                 break;
         }
 
@@ -260,8 +260,6 @@ class ODSController extends Controller
                 $where
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
-
-                dd($sql);
 
         $dados = DB::connection('pgsql')->select($sql);
         
