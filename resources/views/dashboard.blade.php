@@ -212,7 +212,7 @@
                 </div>            
             </div>  
 
-        <div class="row">
+        <div class="row" style="margin-bottom: 30px;">
             <div class="col-md-12">
                 <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
