@@ -213,9 +213,9 @@
             </div>  
 
        <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
-                <div id="cy" style="width: 100%; height: 600px;"></div>
+                <div id="cy" style="width: 100%; height: 400px;"></div>
             </div>
         </div> 
     </div>
