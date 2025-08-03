@@ -503,6 +503,7 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
+                var host =  $('meta[name="base-url"]').attr('content');
 
                 if(docente){
 
@@ -522,8 +523,8 @@
 
             
                         const ctxDim = document.getElementById('chartDimensao').getContext('2d');
-                        var host =  $('meta[name="base-url"]').attr('content');
-                        var docente = $("#docente").val();
+                        
+                       
                         var url = host+'/docentes/dimensao/'+docente;
 
                         fetch(url)
