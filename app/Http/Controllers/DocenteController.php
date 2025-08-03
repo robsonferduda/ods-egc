@@ -39,7 +39,7 @@ class DocenteController extends Controller
                 JOIN dimensao_ies d ON d.id = doc.id_dimensao
                 JOIN ods o ON o.cod = doc.ods
                 JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
-                WHERE dop.id_pessoa_pes = :docente_id
+                WHERE dop.id_pessoa_pes = $id
                 GROUP BY d.nome, o.objetivo, o.cor
                 ORDER BY d.nome, o.cod";
 
