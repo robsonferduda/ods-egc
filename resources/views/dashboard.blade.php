@@ -1454,6 +1454,7 @@
                 var host =  $('meta[name="base-url"]').attr('content');          
                 var url = host+'/docentes/dimensao/'+docente;
 
+                let chx = document.getElementById('#chartDimensao').getContext('2d');
 
                         fetch(url)
                             .then(response => response.json())
@@ -1469,7 +1470,7 @@
                                     chartStatusEvolucao.destroy();
                                 }
 
-                                chartDimensao = new Chart(ctxDim, {
+                                chartDimensao = new Chart(chx, {
                                     type: 'bar',
                                     data: {
                                         labels: labels,
