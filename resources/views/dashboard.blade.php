@@ -1450,8 +1450,7 @@
             }
 
             function carregarGraficoDimensao(docente) {
-
-                let chx = document.getElementById('#chartDimensao').getContext('2d');  
+ 
                 var host =  $('meta[name="base-url"]').attr('content');          
                 var url = host+'/docentes/dimensao/'+docente;
 
