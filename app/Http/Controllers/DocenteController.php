@@ -57,7 +57,7 @@ class DocenteController extends Controller
                   COALESCE(dp.total, 0) AS total
                 FROM todas_dimensoes td
                 LEFT JOIN dados_por_docente dp ON dp.id_dimensao = td.id_dimensao
-                ORDER BY td.nome, dp.ods;";
+                ORDER BY td.nome, dp.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
 
