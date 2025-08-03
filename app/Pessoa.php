@@ -12,5 +12,5 @@ class Pessoa extends Model
     protected $connection = 'pgsql';
     protected $table = 'pessoa_pes';
     protected $primaryKey = 'id_pessoa_pes';
-    protected $fillable = [];
+    protected $fillable = ['ds_image_pes'];
 }

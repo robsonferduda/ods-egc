@@ -226,12 +226,16 @@ class ODSController extends Controller
                 break;
             
             default:
-                $where .= ' AND t0.id_dimensao IN(1,2,3,4, 5) ';
+                $where .= ' AND t0.id_dimensao IN(1,2,3,4,5,6) ';
                 break;
         }
 
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        if($request->docente){
+            $where .= " AND t2.id_pessoa_pes = $request->docente";
         }
 
         /*
@@ -240,9 +244,7 @@ class ODSController extends Controller
             $where .= " AND nm_programa = '$request->ppg'";
         }
 
-        if($request->docente){
-            $where .= " AND nm_orientador = '$request->docente'";
-        }
+       
 
         */
 
@@ -253,6 +255,8 @@ class ODSController extends Controller
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
                 FROM documento_ods t0
                 RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
                 $where
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
@@ -288,6 +292,7 @@ class ODSController extends Controller
                     $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
                             FROM documento_ods t0
                             RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                            JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             $where
                             $complemento";
 

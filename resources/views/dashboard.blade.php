@@ -97,7 +97,9 @@
         </div>  
     </div>
     <div class="col-md-9">
-        <div class="row mt-3" id="dados-geral">
+
+        <!-- Visualização de docente -->
+        <div class="row mt-3" id="dados-geral">            
             
             <div class="col-md-8 painel">            
                 <div class="col-md-12">
@@ -110,11 +112,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 top-ods"> 
                 <h6 class="">ODS MAIS FREQUENTES</h6>
-                <div class="lista-ods">           
-                        
-                </div>
+                <div class="lista-ods"></div>
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
@@ -125,9 +126,7 @@
 
             <div class="col-md-4 painel-icones mt-8 mb-0">
                 <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
-                <div class="row perfil-ods mt-8"> 
-        
-                </div>
+                <div class="row perfil-ods mt-8"></div>
             </div>
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
@@ -151,22 +150,19 @@
         </div>
 
         <!-- Visualização de docente -->
-        
-            <div class="row mt-3 d-none" id="perfil-docente">
+        <div class="row mt-3 d-none" id="perfil-docente">
                
-                <div class="col-md-4 center">
-                    <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
-                    <h5 class="mb-0 mt-3" id="nm_docente"></h5>
-                    <span id="nm_ppg"></span>
-                </div>
-
+            <div class="col-md-4 center">
+                <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
+                <h5 class="mb-0 mt-3" id="nm_docente"></h5>
+                <span id="nm_ppg"></span>
+            </div>
                 
+            <div class="col-md-8">
+                <canvas id="chartjs-3" class="chartjs"></canvas>
+            </div>
 
-                <div class="col-md-8">
-                    <canvas id="chartjs-3" class="chartjs"></canvas>
-                </div>
-
-                <div class="row">
+             <div class="row">
                   <div class="col-md-6">
                     <div class="card card-chart">
                       <div class="card-header">
@@ -196,43 +192,29 @@
             -->
             <div class="col-md-12"><hr/></div>
            
-               <div class="col-md-8 mt-3 mb-5 box-evolucao">
-                    <h6>EVOLUÇÃO POR ODS</h6>
-                    <canvas id="evolucaoDocente" width="400" height="380"></canvas>
-                    <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
-                </div>
+            <div class="col-md-8 mt-3 mb-5 box-evolucao">
+                <h6>EVOLUÇÃO POR ODS</h6>
+                <canvas id="evolucaoDocente" width="400" height="380"></canvas>
+                <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
+            </div>
 
-                <div class="col-md-4 painel-icones mt-8 mb-0">
-                    <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
-                    <div class="row perfil-ods"> 
+            <div class="col-md-4 painel-icones mt-8 mb-0">
+                <h6 class="mt-8" style="margin-top: 50px;">ODS IDENTIFICADOS</h6>
+                <div class="row perfil-ods"></div>                    
+            </div>
 
-                    </div>                    
-                </div>
-
-
-                <!--
-                <div class="col-md-8">
-                    <canvas id="chartjs-3" class="chartjs"></canvas>
-                </div>
-    
-            -->
-
-                <div class="col-sm-12 col-md-6 painel mb-5">        
-                    <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                    <div class="mb-1" id="lista_documentos_docente"></div>
-                </div>
-
-                <div class="col-md-6 lista-ods mb-5">
-                    
-                </div>            
-            </div>  
-
-        <div class="row" style="margin-bottom: 30px;">
-            <div class="col-md-12">
+            <div class="col-md-12 mb-5">
                 <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
             </div>
-        </div> 
+
+            <div class="col-sm-12 col-md-6 painel mb-5">        
+                <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
+                <div class="mb-1" id="lista_documentos_docente"></div>
+            </div>
+
+            <div class="col-md-6 lista-ods mb-5"> </div>            
+        </div>  
     </div>
 </div>
 @endsection
@@ -676,7 +658,7 @@
                 var docente = $(this).val();
 
                 if(docente){
-                    carregaDocente(ppg, docente); 
+                    //carregaDocente(ppg, docente); 
                 }         
 
             });
@@ -929,7 +911,245 @@
             }
 
             function carregaDocente(ppg, docente){
+                
+                $("#dados-geral").addClass("d-none");
+                $("#perfil-docente").removeClass("d-none");
 
+                $.ajax({
+                    url: host+'/docentes/foto/'+docente,
+                    type: 'GET',
+                    beforeSend: function() {
+                        $('.foto-perfil').loader('show');
+                    },
+                    success: function(data) {
+
+                        foto = host+'/img/docentes/user.png';
+                        $("#nm_docente").text(data.nome);
+                                
+                        if(data.chave){
+                            foto = host+'/img/docentes/'+data.chave+'.jpg';
+                        }
+
+                        $(".foto-perfil").attr('src', foto);
+                    },
+                    complete: function(){
+                        $('.foto-perfil').loader('hide');
+                    }
+                });
+                
+                $.ajax({
+                    url: host+'/docentes/ods/'+docente,
+                    type: 'GET',
+                    beforeSend: function() {
+                        $('.painel').loader('show');
+                        $(".perfil-ods").empty();
+                        $(".lista-ods").empty();
+                    },
+                    success: function(data) {
+
+                        ods = [];
+                        totais = [];
+                        cores = [];
+                        total = 0;
+                        totalExtensao = 4;
+                        data.forEach(element => {    
+                            ods.push(element.ods);
+                            totais[element.ods] = element.total;
+                            cores[element.ods] = element.cor;
+                            total += element.total;
+                        });
+
+                        for (let i=1; i<=17; i++)  {
+                            if(ods.includes(i)){
+
+                                var percentual = (totais[i]*100)/total;
+                                var float = percentual + 30;
+                                var label = (totais[i] > 1) ? 'Documentos' : 'Documento';
+
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+
+                                $(".lista-ods").append('<div class="row mb-2 ml-1 mr-1"><div class="col-md-3"><img src="'+host+'/img/ods-icone/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>'+
+                                                        '<div class="col-md-9"><h6 class="progresso-title mb-0">ODS '+i+'</h6><p>'+totais[i]+' '+label+'</p>'+
+                                                        '<div class="progresso ods-'+i+'"><div class="progresso-bar" style="width:'+percentual.toFixed(1)+'%; background:'+cores[i]+';"><div class="progresso-value" style="left: '+float.toFixed(1)+'%;">'+percentual.toFixed(1)+'%</div></div></div></div></div>');
+
+                            }else{
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+i+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                            }
+                            
+                        }
+
+                        $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2"><img src="'+host+'/img/ods-icone/ods.png" class="img-fluid img-ods" alt="ODS"></div>');
+
+                          let myChart = null;
+                        let grapharea = document.getElementById("chartjs-3").getContext("2d");
+
+                        let chartStatus = Chart.getChart("chartjs-3"); // <canvas> id
+                        if (chartStatus != undefined) {
+                        chartStatus.destroy();
+                        }
+
+                        myChart = new Chart(grapharea, {
+                            "type": "bar",
+                            showTooltips: false,
+                            data: { 
+                                labels: ["Ensino", "Pesquisa", "Extensão","Inovação", "Gestão"], 
+                                datasets: [
+                                    { 
+                                        label: 'ODS 1', 
+                                        backgroundColor: cores[1], 
+                                        data: [0, ((totais[1]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 2', 
+                                        backgroundColor: cores[2], 
+                                        data: [0, ((totais[2]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 3', 
+                                        backgroundColor: cores[3], 
+                                        data: [0, ((totais[3]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 4', 
+                                        backgroundColor: cores[4], 
+                                        data: [0, ((totais[4]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 5', 
+                                        backgroundColor: cores[5], 
+                                        data: [0, ((totais[5]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 6', 
+                                        backgroundColor: cores[6], 
+                                        data: [0, ((totais[6]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 7', 
+                                        backgroundColor: cores[7], 
+                                        data: [0, ((totais[7]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 8', 
+                                        backgroundColor: cores[8], 
+                                        data: [0, ((totais[8]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 9', 
+                                        backgroundColor: cores[9], 
+                                        data: [0, ((totais[9]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 10', 
+                                        backgroundColor: cores[10], 
+                                        data: [0, ((totais[10]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 11', 
+                                        backgroundColor: cores[11], 
+                                        data: [0, ((totais[11]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 12', 
+                                        backgroundColor: cores[12], 
+                                        data: [0, ((totais[12]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 13', 
+                                        backgroundColor: cores[13], 
+                                        data: [0, ((totais[13]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 14', 
+                                        backgroundColor: cores[14], 
+                                        data: [0, ((totais[14]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 15', 
+                                        backgroundColor: cores[15], 
+                                        data: [0, ((totais[15]*100)/total).toFixed(12), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 16', 
+                                        backgroundColor: cores[16], 
+                                        data: [0, ((totais[16]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    }, 
+                                    { 
+                                        label: 'ODS 17', 
+                                        backgroundColor: cores[17], 
+                                        data: [0, ((totais[17]*100)/total).toFixed(2), 0, 0, 0], 
+                                        stack: 'Stack 1',
+                                    },                                     
+                                ], 
+                            }, 
+
+                            options: { 
+                                tooltips: {
+                                callbacks: {
+                                    title: function(chart, data) {
+                                        return data.labels[chart[0].datasetIndex];
+                                        }
+                                    }
+                                },
+                                plugins: { 
+                                    title: { 
+                                        display: false, 
+                                        text: 'Distribuição de total por dimensão' 
+                                    }, 
+                                    legend: {
+                                        display: false,
+                                        labels: {
+                                            color: 'rgb(255, 99, 132)'
+                                        }
+                                    },
+                                    datalabels: {
+                                        color: 'black',
+                                        anchor: 'end',
+                                        align: 'end',
+                                        offset: 15,
+                                        formatter: (val, ctx) => (ctx.chart.data.labels[ctx.dataIndex])
+                                    }
+                                }, 
+                                
+                                scales: { 
+                                    x: { 
+                                        stacked: true
+                                    }, 
+                                    y: { 
+                                        stacked: true,
+                                        title: {
+                                            display: true
+                                        },
+                                        ticks: {
+                                            beginAtZero: true,
+                                            min: 0,
+                                            max: 100,
+                                            stepSize: 5
+                                        } 
+                                    } 
+                                } 
+                            } 
+                        });
+                    }
+                });
+
+                /*
                 $.ajax({
                     url: host+'/dados/ppg/'+ppg+'/docente/'+docente+'/ods',
                     type: 'GET',
@@ -1206,7 +1426,7 @@
                     complete: function(){
                         $('.painel').loader('hide');
                     }
-                });
+                });*/
 
             }
 
