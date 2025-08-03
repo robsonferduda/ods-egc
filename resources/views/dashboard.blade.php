@@ -170,10 +170,10 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <div class="card">
                 <div class="card-header">
-                  <h5 class="card-category" style="margin-bottom: 0px; color: black;">Produção Acadêmica</h5>
+                  <h5 class="card-category" style="margin-bottom: 0px; color: black; font-weight: bold;">Produção Acadêmica</h5>
                   <p style="text-transform: uppercase; margin-top: 3px;" class="card-title">Distribuição por Dimensão</p>
                 </div>
                 <div class="card-body">
