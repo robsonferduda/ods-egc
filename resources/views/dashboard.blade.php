@@ -519,7 +519,7 @@
                         }
                     });
 
-                    document.addEventListener('DOMContentLoaded', function () {
+
             
                         const ctxDim = document.getElementById('chartDimensao').getContext('2d');
                         var host =  $('meta[name="base-url"]').attr('content');
@@ -564,7 +564,7 @@
                                 });
                             })
                             .catch(error => console.error('Erro ao carregar gráfico de dimensão:', error));
-                    });
+                    
                     
                 }else{
 
