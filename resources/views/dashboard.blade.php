@@ -1454,7 +1454,7 @@
                 var host =  $('meta[name="base-url"]').attr('content');          
                 var url = host+'/docentes/dimensao/'+docente;
 
-                let chx = document.getElementById('#chartDimensao').getContext('2d');
+                let chx = document.getElementById('chartDimensao').getContext('2d');
 
                         fetch(url)
                             .then(response => response.json())
@@ -1464,7 +1464,7 @@
                                 const valores = data.map(item => item.total);
 
                                 
-                                let chartStatusEvolucao = Chart.getChart('#chartDimensao'); // <canvas> id
+                                let chartStatusEvolucao = Chart.getChart('chartDimensao'); // <canvas> id
                                             
                                 if (chartStatusEvolucao != undefined) {
                                     chartStatusEvolucao.destroy();
