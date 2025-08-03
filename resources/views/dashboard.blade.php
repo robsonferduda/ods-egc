@@ -167,7 +167,7 @@
                     <div class="card card-chart">
                       <div class="card-header">
                         <h5 class="card-category">Total de Produções Associadas aos ODS</h5>
-                        <h4 class="card-title">{{ $totalODS }} Documentos</h4>
+                        <h4 class="card-title"><span id="total_documentos_docente"></span> Documentos</h4>
                       </div>
                       <div class="card-body">
                         <canvas id="graficoTotalODS"></canvas>
