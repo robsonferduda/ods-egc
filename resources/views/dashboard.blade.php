@@ -523,9 +523,13 @@
 
             
                         const ctxDim = document.getElementById('chartDimensao').getContext('2d');
-                        
-                       
-                        var url = host+'/docentes/dimensao/'+docente;
+                        let chartDimensao = null;
+
+                        function carregarGraficoDimensao() {
+
+                            var host =  $('meta[name="base-url"]').attr('content');
+                            var docente = $("#docente").val();
+                            var url = host+'/docentes/dimensao/'+docente;
 
                         fetch(url)
                             .then(response => response.json())
@@ -533,7 +537,12 @@
                                 const labels = data.map(item => item.nome);
                                 const valores = data.map(item => item.total);
 
-                                new Chart(ctxDim, {
+                                // Se já existir um gráfico, destrói antes de criar outro
+                                if (chartDimensao) {
+                                    chartDimensao.destroy();
+                                }
+
+                                chartDimensao = new Chart(ctxDim, {
                                     type: 'bar',
                                     data: {
                                         labels: labels,
@@ -565,7 +574,10 @@
                                 });
                             })
                             .catch(error => console.error('Erro ao carregar gráfico de dimensão:', error));
-                    
+                    }
+                       
+                       
+                    carregarGraficoDimensao();
                     
                 }else{
 
