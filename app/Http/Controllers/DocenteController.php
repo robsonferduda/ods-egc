@@ -41,7 +41,7 @@ class DocenteController extends Controller
                 JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
                 WHERE dop.id_pessoa_pes = $id
                 GROUP BY d.nome, o.objetivo, o.cor
-                ORDER BY d.nome, o.cod";
+                ORDER BY d.nome, o.objetivo";
 
         $dados = DB::connection('pgsql')->select($sql);
 
