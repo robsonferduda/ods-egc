@@ -999,7 +999,7 @@
 
                         $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2"><img src="'+host+'/img/ods-icone/ods.png" class="img-fluid img-ods" alt="ODS"></div>');
 
-                          let myChart = null;
+                        let myChart = null;
                         let grapharea = document.getElementById("chartjs-3").getContext("2d");
 
                         let chartStatus = Chart.getChart("chartjs-3"); // <canvas> id
@@ -1459,49 +1459,52 @@
                         fetch(url)
                             .then(response => response.json())
                             .then(data => {
-                                
-                                const labels = data.map(item => item.nome);
-                                const valores = data.map(item => item.total);
+                                const dimensoes = [...new Set(data.map(d => d.dimensao))]; // Eixo Y
+                                const odsList = [...new Set(data.map(d => d.ods))];
 
-                                
-                                let chartStatusEvolucao = Chart.getChart('chartDimensao'); // <canvas> id
-                                            
-                                if (chartStatusEvolucao != undefined) {
-                                    chartStatusEvolucao.destroy();
+                                const cores = {};
+                                data.forEach(item => {
+                                    cores[item.ods] = item.cor;
+                                });
+
+                                // Montar datasets por ODS
+                                const datasets = odsList.map(ods => {
+                                    return {
+                                        label: ods,
+                                        data: dimensoes.map(dim => {
+                                            const found = data.find(d => d.ods === ods && d.dimensao === dim);
+                                            return found ? found.total : 0;
+                                        }),
+                                        backgroundColor: cores[ods]
+                                    };
+                                });
+
+                                // Se já houver gráfico, destruir
+                                if (chartDimensaoOds) {
+                                    chartDimensaoOds.destroy();
                                 }
 
-                                chartDimensao = new Chart(chx, {
+                                chartDimensaoOds = new Chart(ctx, {
                                     type: 'bar',
                                     data: {
-                                        labels: labels,
-                                        datasets: [{
-                                            label: 'Total de Documentos',
-                                            data: valores,
-                                            backgroundColor: '#4acccd'
-                                        }]
+                                        labels: dimensoes,
+                                        datasets: datasets
                                     },
                                     options: {
                                         responsive: true,
                                         indexAxis: 'y',
-                                        scales: {
-                                            x: {
-                                                beginAtZero: true
-                                            }
-                                        },
                                         plugins: {
-                                            legend: { display: false },
-                                            tooltip: {
-                                                callbacks: {
-                                                    label: function (context) {
-                                                        return context.parsed.x + ' documentos';
-                                                    }
-                                                }
-                                            }
+                                            tooltip: { mode: 'index', intersect: false },
+                                            legend: { position: 'top' }
+                                        },
+                                        scales: {
+                                            x: { stacked: true },
+                                            y: { stacked: true }
                                         }
                                     }
                                 });
                             })
-                            .catch(error => console.error('Erro ao carregar gráfico de dimensão:', error));
+                            .catch(error => console.error('Erro ao carregar gráfico:', error));
                     }
 
             function getFrequencia(elemento, dimensao, tipo, ppg, ano_inicial, ano_fim, docente){
