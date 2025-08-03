@@ -165,6 +165,21 @@
                 <div class="col-md-8">
                     <canvas id="chartjs-3" class="chartjs"></canvas>
                 </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="card card-chart">
+                      <div class="card-header">
+                        <h5 class="card-category">Total de Produções Associadas aos ODS</h5>
+                        <h4 class="card-title">{{ $totalODS }} Documentos</h4>
+                      </div>
+                      <div class="card-body">
+                        <canvas id="graficoTotalODS"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <!--
                 <div class="col-md-2 center">
                     <div class="row">
