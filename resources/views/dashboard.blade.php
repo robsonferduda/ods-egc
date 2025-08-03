@@ -163,7 +163,7 @@
             </div>
 
              <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     <div class="card card-chart">
                       <div class="card-header">
                         <h5 class="card-category">Total de Produções Associadas aos ODS</h5>
