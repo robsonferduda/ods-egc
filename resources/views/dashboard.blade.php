@@ -162,17 +162,13 @@
                 <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
 
-             
-                  <div class="col-md-12">
-                    <div class="card card-chart">
-                      <div class="card-header">
+            <div class="col-md-12">
+                <div class="card card-chart">
+                    <div class="card-header">
                         <h5 class="card-category">Total de Produções Associadas aos ODS: <span id="total_documentos_docente"></span></h5>
-                      </div>
-                      <div class="card-body">
-                        <canvas id="graficoTotalODS"></canvas>
-                      </div>
                     </div>
-                  </div>
+                </div>
+            </div>
                
 
                 <!--
@@ -506,7 +502,7 @@
                         url: host + '/docentes/total-documentos/'+docente,
                         type: 'GET',
                         success: function(data) {
-                            
+                            $("#total_documentos_docente").text(data.total);
                         }
                     });
                     
