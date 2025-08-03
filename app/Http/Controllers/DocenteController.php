@@ -39,16 +39,16 @@ class DocenteController extends Controller
                 ),
                 dados_por_docente AS (
                   SELECT 
-                    d.id_dimensao,
-                    o.objetivo AS ods,
+                    d.id,
+                    o.cod AS ods,
                     o.cor,
                     COUNT(*) AS total
                   FROM documento_ods doc
                   JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
                   JOIN ods o ON o.cod = doc.ods
                   JOIN dimensao_ies d ON d.id = doc.id_dimensao
-                  WHERE dop.id_pessoa_pes = :docente_id
-                  GROUP BY d.id_dimensao, o.objetivo, o.cor
+                  WHERE dop.id_pessoa_pes = 5532
+                  GROUP BY d.id, o.cod, o.cor
                 )
                 SELECT 
                   td.nome AS dimensao,
@@ -56,7 +56,7 @@ class DocenteController extends Controller
                   dp.cor,
                   COALESCE(dp.total, 0) AS total
                 FROM todas_dimensoes td
-                LEFT JOIN dados_por_docente dp ON dp.id_dimensao = td.id_dimensao
+                LEFT JOIN dados_por_docente dp ON dp.id = td.id_dimensao
                 ORDER BY td.nome, dp.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
