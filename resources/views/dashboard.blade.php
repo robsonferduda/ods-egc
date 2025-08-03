@@ -174,7 +174,7 @@
               <div class="card">
                 <div class="card-header">
                   <h5 class="card-category">Produção Acadêmica</h5>
-                  <h4 class="card-title">Distribuição por Dimensão</h4>
+                  <p style="text-transform: uppercase;" class="card-title">Distribuição por Dimensão</p>
                 </div>
                 <div class="card-body">
                   <canvas id="chartDimensao"></canvas>
