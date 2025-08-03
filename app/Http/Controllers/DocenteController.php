@@ -47,7 +47,7 @@ class DocenteController extends Controller
                   JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
                   JOIN ods o ON o.cod = doc.ods
                   JOIN dimensao_ies d ON d.id = doc.id_dimensao
-                  WHERE dop.id_pessoa_pes = 5532
+                  WHERE dop.id_pessoa_pes = $id
                   GROUP BY d.id, o.cod, o.cor
                 )
                 SELECT 
