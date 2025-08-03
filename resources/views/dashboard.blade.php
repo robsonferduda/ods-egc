@@ -503,7 +503,7 @@
 
                     // Total de Documentos ODS por docente
                     $.ajax({
-                        url: host + '/total_documentos_docente/'+docente,
+                        url: host + '/docentes/total_documentos_docente/'+docente,
                         type: 'GET',
                         success: function(data) {
                             
