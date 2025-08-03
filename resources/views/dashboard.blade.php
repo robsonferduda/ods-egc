@@ -166,8 +166,7 @@
                   <div class="col-md-12">
                     <div class="card card-chart">
                       <div class="card-header">
-                        <h5 class="card-category">Total de Produções Associadas aos ODS</h5>
-                        <h4 class="card-title"><span id="total_documentos_docente"></span> Documentos</h4>
+                        <h5 class="card-category">Total de Produções Associadas aos ODS: <span id="total_documentos_docente"></span></h5>
                       </div>
                       <div class="card-body">
                         <canvas id="graficoTotalODS"></canvas>
@@ -501,6 +500,15 @@
                     carregaDocente(ppg, docente); 
                     getFrequencia("evolucaoDocente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
+
+                    // Total de Documentos ODS por docente
+                    $.ajax({
+                        url: host + '/total_documentos_docente/'+docente,
+                        type: 'GET',
+                        success: function(data) {
+                            
+                        }
+                    });
                     
                 }else{
 

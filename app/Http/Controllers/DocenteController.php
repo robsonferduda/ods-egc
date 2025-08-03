@@ -32,7 +32,29 @@ class DocenteController extends Controller
         return response()->json($dados);
     }
 
-    public function getODS($id){
+    public function getTotalDocumentos($id)
+    {
+
+        $documentos = DB::table('documento_pessoa_dop as dop')
+            ->join('documento_ods as doc', 'doc.id', '=', 'dop.id_documento_ods')
+            ->join('ods', 'ods.cod', '=', 'doc.ods')
+            ->select('ods.cod', 'ods.nome', DB::raw('count(*) as total'))
+            ->where('dop.id_pessoa_pes', $id)
+            ->groupBy('ods.cod', 'ods.nome')
+            ->orderBy('ods.cod')
+            ->get();
+
+        $labelsODS = $documentos->pluck('nome');
+        $valoresODS = $documentos->pluck('total');
+        $totalODS = $valoresODS->sum();
+
+        $dados = array('total' => $totalODS);
+       
+        return response()->json($dados);
+    }
+
+    public function getODS($id)
+    {
 
         $sql = "SELECT 
                     t2.ods, 
