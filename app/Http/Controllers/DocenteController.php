@@ -34,14 +34,16 @@ class DocenteController extends Controller
 
     public function getTotalDimensao($id)
     {
-        $dados = DB::table('documento_pessoa_dop as dop')
-                    ->join('documento_ods as d', 'd.id', '=', 'dop.id_documento_ods')
-                    ->join('dimensao_ies as di', 'di.id', '=', 'd.id_dimensao')
-                    ->where('dop.id_pessoa_pes', $id)
-                    ->groupBy('d.id_dimensao', 'di.nome')
-                    ->orderByDesc(DB::raw('COUNT(*)'))
-                    ->select('di.nome', DB::raw('COUNT(*) as total'))
-                    ->get();
+        $sql = "SELECT d.nome AS dimensao, o.objetivo AS ods, COUNT(*) AS total, o.cor
+                FROM documento_ods doc
+                JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                JOIN ods o ON o.cod = doc.ods
+                JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
+                WHERE dop.id_pessoa_pes = :docente_id
+                GROUP BY d.nome, o.objetivo, o.cor
+                ORDER BY d.nome, o.cod";
+
+        $dados = DB::connection('pgsql')->select($sql);
 
         return response()->json($dados);
     }
