@@ -1479,9 +1479,10 @@
                                     };
                                 });
 
-                                // Se já houver gráfico, destruir
-                                if (chartDimensaoOds) {
-                                    chartDimensaoOds.destroy();
+                                let chartStatusEvolucao = Chart.getChart('chartDimensao'); // <canvas> id
+                                            
+                                if (chartStatusEvolucao != undefined) {
+                                    chartStatusEvolucao.destroy();
                                 }
 
                                 chartDimensaoOds = new Chart(ctx, {

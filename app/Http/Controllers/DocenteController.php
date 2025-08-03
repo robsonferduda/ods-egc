@@ -34,14 +34,14 @@ class DocenteController extends Controller
 
     public function getTotalDimensao($id)
     {
-        $sql = "SELECT d.nome AS dimensao, o.objetivo AS ods, COUNT(*) AS total, o.cor
+        $sql = "SELECT d.nome AS dimensao, o.cod AS ods, COUNT(*) AS total, o.cor
                 FROM documento_ods doc
                 JOIN dimensao_ies d ON d.id = doc.id_dimensao
                 JOIN ods o ON o.cod = doc.ods
                 JOIN documento_pessoa_dop dop ON dop.id_documento_ods = doc.id
                 WHERE dop.id_pessoa_pes = $id
-                GROUP BY d.nome, o.objetivo, o.cor
-                ORDER BY d.nome, o.objetivo";
+                GROUP BY d.nome, o.cod, o.cor
+                ORDER BY d.nome, o.cod";
 
         $dados = DB::connection('pgsql')->select($sql);
 
