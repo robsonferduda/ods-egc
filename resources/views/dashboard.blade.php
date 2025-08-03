@@ -162,7 +162,7 @@
                 <canvas id="chartjs-3" class="chartjs"></canvas>
             </div>
 
-             <div class="row">
+             
                   <div class="col-md-12">
                     <div class="card card-chart">
                       <div class="card-header">
@@ -174,7 +174,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+               
 
                 <!--
                 <div class="col-md-2 center">
