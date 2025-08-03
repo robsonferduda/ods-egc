@@ -165,10 +165,23 @@
             <div class="col-md-12">
                 <div class="card card-chart">
                     <div class="card-header">
-                        <h5 class="card-category">Total de Produções Associadas aos ODS: <span id="total_documentos_docente"></span></h5>
+                        <h5 class="card-category" style="text-transform: uppercase;">Total de Produções Associadas aos ODS: <span id="total_documentos_docente"></span></h5>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-category">Produção Acadêmica</h5>
+                  <h4 class="card-title">Distribuição por Dimensão</h4>
+                </div>
+                <div class="card-body">
+                  <canvas id="chartDimensao"></canvas>
+                </div>
+              </div>
+            </div>
+
                
 
                 <!--
@@ -504,6 +517,53 @@
                         success: function(data) {
                             $("#total_documentos_docente").text(data.total);
                         }
+                    });
+
+                    document.addEventListener('DOMContentLoaded', function () {
+            
+                        const ctxDim = document.getElementById('chartDimensao').getContext('2d');
+                        var host =  $('meta[name="base-url"]').attr('content');
+                        var docente = $("#docente").val();
+                        var url = host+'/docentes/dimensao/'+docente;
+
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                const labels = data.map(item => item.nome);
+                                const valores = data.map(item => item.total);
+
+                                new Chart(ctxDim, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: labels,
+                                        datasets: [{
+                                            label: 'Total de Documentos',
+                                            data: valores,
+                                            backgroundColor: '#4acccd'
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        indexAxis: 'y',
+                                        scales: {
+                                            x: {
+                                                beginAtZero: true
+                                            }
+                                        },
+                                        plugins: {
+                                            legend: { display: false },
+                                            tooltip: {
+                                                callbacks: {
+                                                    label: function (context) {
+                                                        return context.parsed.x + ' documentos';
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            })
+                            .catch(error => console.error('Erro ao carregar gráfico de dimensão:', error));
                     });
                     
                 }else{

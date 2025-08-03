@@ -32,6 +32,20 @@ class DocenteController extends Controller
         return response()->json($dados);
     }
 
+    public function getTotalDimensao($id)
+    {
+        $dados = DB::table('documento_pessoa_dop as dop')
+                    ->join('documento_ods as d', 'd.id', '=', 'dop.id_documento_ods')
+                    ->join('dimensao_ies as di', 'di.id', '=', 'd.id_dimensao')
+                    ->where('dop.id_pessoa_pes', $id)
+                    ->groupBy('d.id_dimensao', 'di.nome')
+                    ->orderByDesc(DB::raw('COUNT(*)'))
+                    ->select('di.nome', DB::raw('COUNT(*) as total'))
+                    ->get();
+
+        return response()->json($dados);
+    }
+
     public function getTotalDocumentos($id)
     {
 

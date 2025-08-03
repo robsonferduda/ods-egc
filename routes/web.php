@@ -53,6 +53,7 @@ Route::get('dados/extensao/extracao', 'ExtensaoController@extracao');
 Route::get('docente/grafo/{id}', 'DadosController@grafo');
 Route::get('docentes/foto/{docente}', 'DocenteController@getImagem');
 Route::get('docentes/ods/{id}', 'DocenteController@getODS');
+Route::get('docentes/dimensao/{id}', 'DocenteController@getTotalDimensao');
 Route::get('docentes/total-documentos/{id}', 'DocenteController@getTotalDocumentos');
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
