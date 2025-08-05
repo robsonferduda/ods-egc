@@ -106,7 +106,7 @@
                     <h6 class="center">Totais de documentos por ODS</h6>
                     <canvas id="myChart" width="400" height="365"></canvas>  
                     <h6 class="center mb-0">ODS</h6>
-                    <p class="mb-0 mt-0">Filtros aplicados:</p>
+                    <p class="mb-0 mt-0">Total de <strong id="total_documentos"></strong> documentos. Filtros aplicados:</p>
                     <div class="filtros">
                         
                     </div>
@@ -890,9 +890,12 @@
                     success: function(data) {
 
                         var soma_documentos = 0;
+
                         data.total.forEach(element => {
                             soma_documentos += element;
                         });
+
+                        $("#total_documentos").text(soma_documentos);
 
                         $('.total_dimensao').each(function(index, element) {
                             
