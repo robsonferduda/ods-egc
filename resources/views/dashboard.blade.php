@@ -529,10 +529,7 @@
                         success: function(data) {
                             $(".impacto_multidimensional").text(data.indice);
                         }
-                    }); 
-
-
-                    impacto_multidimensional         
+                    });  
                     
                 }else{
 
