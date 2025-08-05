@@ -14,7 +14,7 @@
         <div class="col-md-12 col-sm-12 mt-3">
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
 
-            <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ $documento->dimensao }} </p>
+            <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ $documento->dimensao->nome }} </p>
             <p class="mb-1"><strong>Dimensão ODS</strong>: {{ $documento->dimensaoOds }} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
