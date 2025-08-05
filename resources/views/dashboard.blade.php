@@ -520,7 +520,19 @@
                         success: function(data) {
                             $("#total_documentos_docente").text(data.total);
                         }
-                    });            
+                    });   
+
+                    // Impacto Multidimensional
+                    $.ajax({
+                        url: host + '/docentes/impacto-multidimensional/'+docente,
+                        type: 'GET',
+                        success: function(data) {
+                            $(".impacto_multidimensional").text(data.indice);
+                        }
+                    }); 
+
+
+                    impacto_multidimensional         
                     
                 }else{
 
