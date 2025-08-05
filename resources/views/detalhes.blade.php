@@ -17,7 +17,56 @@
             <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ $documento->dimensao->nome }} </p>
             <p class="mb-1"><strong>Dimensão ODS</strong>: {{ $documento->dimensaoOds->ds_dimensao }} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
-            <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>           
+            <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>  
+
+            @php
+              // Mapeamento de funções (id => rótulo)
+              $rotulos = [
+                1 => 'Orientador',
+                2 => 'Aluno',
+                3 => 'Coordenador',
+                4 => 'Inventor',
+                5 => 'Participante',
+              ];
+
+              // Agrupa os participantes por função (id)
+              $porFuncao = $participantes->groupBy('id_funcao_fun');
+
+              // Helpers de impressão rápida
+              function listaPorFuncao($porFuncao, $idFuncao, $rotulos) {
+                  if (!isset($porFuncao[$idFuncao]) || $porFuncao[$idFuncao]->isEmpty()) return '';
+                  $html = '<h6 class="mt-3">'.e($rotulos[$idFuncao]).'</h6><ul>';
+                  foreach ($porFuncao[$idFuncao] as $p) {
+                      $html .= '<li>'.e($p->ds_nome_pessoa).'</li>';
+                  }
+                  $html .= '</ul>';
+                  return $html;
+              }
+            @endphp
+
+            @switch($documento->id_tipo_documento)
+              @case(1) {{-- Tese --}}
+              @case(3) {{-- Dissertação --}}
+                {!! listaPorFuncao($porFuncao, 1, $rotulos) !!} {{-- Orientador --}}
+                {!! listaPorFuncao($porFuncao, 2, $rotulos) !!} {{-- Aluno --}}
+                @break
+
+              @case(2) {{-- Projeto de Extensão --}}
+                {!! listaPorFuncao($porFuncao, 3, $rotulos) !!} {{-- Coordenador --}}
+                {!! listaPorFuncao($porFuncao, 5, $rotulos) !!} {{-- Participante --}}
+                @break
+
+              @case(5) {{-- Patente --}}
+                {!! listaPorFuncao($porFuncao, 4, $rotulos) !!} {{-- Inventor --}}
+                @break
+
+              @default
+                {{-- Fallback: lista tudo que vier --}}
+                @foreach($porFuncao as $idFuncao => $colecao)
+                  {!! listaPorFuncao($porFuncao, $idFuncao, $rotulos) !!}
+                @endforeach
+            @endswitch
+
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
             <p class="mb-1 mt-2"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>

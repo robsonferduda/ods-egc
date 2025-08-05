@@ -36,7 +36,22 @@ class DocumentoController extends Controller
                 ->sortDesc()
                 ->take(2);
 
-        return view('detalhes', compact('documento','resultado'));
+        // Participantes com nome da função
+        $participantes = DB::table('documento_pessoa_dop as dop')
+            ->join('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dop.id_pessoa_pes')
+            ->leftJoin('funcao_fun as f', 'f.id_funcao_fun', '=', 'dop.id_funcao_fun')
+            ->where('dop.id_documento_ods', $id)
+            ->select(
+                'p.id_pessoa_pes',
+                'p.ds_nome_pessoa',
+                'dop.id_funcao_fun',
+                'f.ds_funcao_fun'
+            )
+            ->orderBy('dop.id_funcao_fun')     // mantém uma ordem lógica das funções
+            ->orderBy('p.ds_nome_pessoa')
+            ->get();
+
+        return view('detalhes', compact('documento','resultado','participantes'));
     }
 
 }
