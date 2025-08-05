@@ -21,7 +21,12 @@ class Documento extends Model
 
     public function dimensao()
     {
-        return $this->hasOne('App\Dimensao', 'id', 'id_dimensao_ies');
+        return $this->hasOne('App\Dimensao', 'id', 'id_dimensao');
+    }
+
+    public function dimensaoOds()
+    {
+        return $this->hasOne('App\DimensaoODS', 'id', 'id_dimensao_ods');
     }
 
     public function tipo()

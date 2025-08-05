@@ -419,7 +419,9 @@
            
 
             $('#departamento').change(function() {
+
                 var departamentoId = $(this).val();
+                
                 $.ajax({
                     url: host + '/dados/docentes',
                     type: 'GET',
