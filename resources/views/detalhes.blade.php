@@ -35,7 +35,7 @@
               // Helpers de impressão rápida
               function listaPorFuncao($porFuncao, $idFuncao, $rotulos) {
                   if (!isset($porFuncao[$idFuncao]) || $porFuncao[$idFuncao]->isEmpty()) return '';
-                  $html = '<h6 class="mt-3">'.e($rotulos[$idFuncao]).'</h6><ul>';
+                  $html = '<h6 class="mt-1">'.e($rotulos[$idFuncao]).'</h6><ul class="mt-1 mb-1">';
                   foreach ($porFuncao[$idFuncao] as $p) {
                       $html .= '<li>'.e($p->ds_nome_pessoa).'</li>';
                   }
