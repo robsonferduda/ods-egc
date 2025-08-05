@@ -106,6 +106,27 @@ class DocenteController extends Controller
         ]);
     }
 
+    public function indiceColaboracao($idDocente)
+    {
+        $indice = DB::selectOne("
+            SELECT ROUND(AVG(sub.coautores), 2) AS indice_colaboracao
+            FROM (
+                SELECT d1.id AS id_documento,
+                       COUNT(DISTINCT dp2.id_pessoa_pes) AS coautores
+                FROM documento_ods d1
+                JOIN documento_pessoa_dop dp1 ON dp1.id_documento_ods = d1.id
+                JOIN documento_pessoa_dop dp2 ON dp2.id_documento_ods = d1.id
+                     AND dp2.id_pessoa_pes != dp1.id_pessoa_pes
+                     AND dp2.id_funcao_fun IN (1, 3, 4)
+                WHERE dp1.id_pessoa_pes = ?
+                  AND dp1.id_funcao_fun IN (1, 3, 4)
+                GROUP BY d1.id
+            ) sub
+        ", [$idDocente]);
+
+        return response()->json(['indice' => $indice->indice_colaboracao ?? 0]);
+    }
+
     public function getODS($id)
     {
 

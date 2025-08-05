@@ -56,7 +56,7 @@ Route::get('docentes/ods/{id}', 'DocenteController@getODS');
 Route::get('docentes/dimensao/{id}', 'DocenteController@getTotalDimensao');
 Route::get('docentes/total-documentos/{id}', 'DocenteController@getTotalDocumentos');
 Route::get('docentes/impacto-multidimensional/{id}', 'DocenteController@impactoMultidimensional');
-
+Route::get('docentes/colaboracao-academica/{id}', 'DocenteController@indiceColaboracao');
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');

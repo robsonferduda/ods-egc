@@ -157,10 +157,12 @@
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
             </div>
+
+            <!-- <canvas id="chartjs-3" class="chartjs"></canvas> -->
                 
             <div class="col-md-8">
-                <!-- <canvas id="chartjs-3" class="chartjs"></canvas> -->
                 <p>Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
+                <p>Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
             </div>
 
             <div class="col-md-12">
@@ -530,6 +532,15 @@
                             $(".impacto_multidimensional").text(data.indice);
                         }
                     });  
+
+                    // Colaboração Acadêmica
+                    $.ajax({
+                        url: host + '/docentes/colaboracao-academica/'+docente,
+                        type: 'GET',
+                        success: function(data) {
+                            $(".indice_colaboracao").text(data.indice);
+                        }
+                    }); 
                     
                 }else{
 
