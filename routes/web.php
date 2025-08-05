@@ -55,7 +55,7 @@ Route::get('docentes/foto/{docente}', 'DocenteController@getImagem');
 Route::get('docentes/ods/{id}', 'DocenteController@getODS');
 Route::get('docentes/dimensao/{id}', 'DocenteController@getTotalDimensao');
 Route::get('docentes/total-documentos/{id}', 'DocenteController@getTotalDocumentos');
-Route::get('docentes/impacto-multidimensional/{id}', 'PerfilDocenteController@impactoMultidimensional');
+Route::get('docentes/impacto-multidimensional/{id}', 'DocenteController@impactoMultidimensional');
 
 
 Route::get('docentes', 'ODSController@getTotalProfessores');
