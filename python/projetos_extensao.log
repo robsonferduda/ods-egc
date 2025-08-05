@@ -3729,3 +3729,986 @@
 2025-08-05 16:43:11,073 [INFO] Documento inserido (id=43749) — título='GELID - GRUPO DE ESTUDOS EM LINGUAGEM E DIALOGISMO'
 2025-08-05 16:43:12,188 [INFO] Departamento 'PSI' encontrado (id=101).
 2025-08-05 16:43:12,357 [INFO] Documento inserido (id=43750) — título='GRUPO DE ESTUDOS EM ANÁLISE DO COMPORTAMENTO'
+2025-08-05 16:43:14,934 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 16:43:15,147 [INFO] Documento inserido (id=43751) — título='MEU AMIGO LUSÓFONO IV - UNIVERSITY OF SAN FRANCISCO E UNIVERSIDADE FEDERAL DE SA'
+2025-08-05 16:43:19,186 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 16:43:19,367 [INFO] Documento inserido (id=43752) — título='PROJETO: INTERNACIONALIZAÇÃO: FORMAÇÃO DE PROFESSORES: ENSINO-APRENDIZAGEM DO FR'
+2025-08-05 16:43:25,695 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 16:43:26,001 [INFO] Documento inserido (id=43753) — título='FALADEIRAS: OFICINAS TEMÁTICAS DE FORMAÇÃO.'
+2025-08-05 16:43:31,531 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:43:31,736 [INFO] Documento inserido (id=43754) — título='DESENVOLVIMENTO E GESTÃO DE TECNOLOGIAS DIGITAIS  PARA EDUCAÇÃO BÁSICA, TÉCNICA '
+2025-08-05 16:43:45,249 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:43:45,457 [INFO] Documento inserido (id=43755) — título='BIOMAS, HISTORICIDADE E SUAS TEMPORALIDADES: UMA VISÃO HISTÓRICO-AMBIENTAL'
+2025-08-05 16:43:49,846 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 16:43:49,998 [INFO] Documento inserido (id=43756) — título='OFICINA DE PRODUÇÃO DE CURRÍCULO LATTES - REGISTRO, PREENCHIMENTO E ATUALIZAÇÃO'
+2025-08-05 16:44:00,814 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 16:44:01,021 [INFO] Documento inserido (id=43757) — título='CICLO DE DEBATES EM PSICOLOGIA, PSICANÁLISE E CULTURA'
+2025-08-05 16:44:02,426 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 16:44:02,613 [INFO] Documento inserido (id=43758) — título='BOTCEM 2020'
+2025-08-05 16:44:30,307 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 16:44:30,511 [INFO] Documento inserido (id=43759) — título='EQUIPES DE TREINAMENTO VOLEIBOL MASCULINO'
+2025-08-05 16:44:33,520 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 16:44:33,788 [INFO] Documento inserido (id=43760) — título='GRUPO DE ESTUDOS EM SUÍNOS E AVES - GESA'
+2025-08-05 16:44:35,621 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:44:35,836 [INFO] Documento inserido (id=43761) — título='MOSTRA DE PESQUISA DO XV CONGRESSO DE DIREITO UFSC'
+2025-08-05 16:44:45,156 [INFO] Departamento 'CAL' encontrado (id=17).
+2025-08-05 16:44:45,359 [INFO] Documento inserido (id=43762) — título='AVALIAÇÃO EDITORIAL E REVISÃO CIENTÍFICA EM ATIVIDADES DE CONSULTORIA AD HOC'
+2025-08-05 16:44:46,793 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 16:44:46,997 [INFO] Documento inserido (id=43763) — título='GRUPOS DE ESTUDOS SOBRE ATUAÇÃO FONOAUDIOLÓGICA NAS DISFUNÇÕES TEMPOROMANDIBULAR'
+2025-08-05 16:44:48,505 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 16:44:48,677 [INFO] Documento inserido (id=43764) — título='SEMANA DA LUTA ANTIMANICOMIAL 2021'
+2025-08-05 16:44:53,858 [INFO] Departamento 'HST' encontrado (id=74).
+2025-08-05 16:44:54,063 [INFO] Documento inserido (id=43765) — título='TEORIZANDO T2'
+2025-08-05 16:44:59,183 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:44:59,448 [INFO] Documento inserido (id=43766) — título='DOSES DE ECONOMIA FEMINISTA'
+2025-08-05 16:45:09,422 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:45:09,730 [INFO] Documento inserido (id=43767) — título='GRUPO DE CRIMINOLOGIA CRÍTICA VERA ANDRADE - 2020.2'
+2025-08-05 16:45:22,442 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 16:45:22,672 [INFO] Documento inserido (id=43768) — título='GRUPO DE ESTUDOS EM EQUINOS E BOVINOS (GEEB)'
+2025-08-05 16:45:30,209 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:45:30,516 [INFO] Documento inserido (id=43769) — título='EFEITOS DA COVID-19 NO TRABALHO - GRUPO DE ESTUDOS EM MEIO AMBIENTE, TRABALHO E '
+2025-08-05 16:45:37,684 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:45:37,994 [INFO] Documento inserido (id=43770) — título='PROJETO ENCONTROS 2021  NÚCLEO DE PESQUISA EM PROPRIEDADE INTELECTUAL – NUPPI: P'
+2025-08-05 16:45:52,635 [INFO] Departamento 'DTO' encontrado (id=45).
+2025-08-05 16:45:52,946 [INFO] Documento inserido (id=43771) — título='NOVOS CONTEÚDOS E MANUTENÇÃO DA PAGINA UFSC - SIMULADORES ARTESANAIS PARA ENSINO'
+2025-08-05 16:45:54,682 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 16:45:54,915 [INFO] Documento inserido (id=43772) — título='FORTALECIMENTO DA SAÚDE MENTAL DE ESTUDANTES DE PÓS-GRADUAÇÃO – SEGUNDA EDIÇÃO ('
+2025-08-05 16:45:59,620 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 16:45:59,905 [INFO] Documento inserido (id=43773) — título='CINE-DENTRO DAS SALAS DE AULA'
+2025-08-05 16:46:06,178 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 16:46:06,458 [INFO] Documento inserido (id=43774) — título='TREINAMENTO PROFISSIONAL EM ESTOMATOLOGIA E PRÓTESE BUCOMAXILOFACIAL'
+2025-08-05 16:46:26,528 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 16:46:26,835 [INFO] Documento inserido (id=43775) — título='MINHA VIDA NÃO VALE MENOS: REFLEXÕES E AÇÕES DE PESSOAS COM DEFICIÊNCIA NA PANDE'
+2025-08-05 16:46:42,509 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:46:42,886 [INFO] Documento inserido (id=43776) — título='REVISTA AVANT - SEMESTRE 2021.1'
+2025-08-05 16:46:57,963 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 16:46:58,271 [INFO] Documento inserido (id=43777) — título='PELO DIREITO À LITERATURA: ORGANIZAÇÃO DO ACERVO “BARCA DOS LIVROS” PARA AS BIBL'
+2025-08-05 16:47:03,175 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:47:03,390 [INFO] Documento inserido (id=43778) — título='PROJETO DE EXTENSÃO: CICLO WEBINAR DISCENTES DO PROGRAMA DE PÓS GRADUAÇÃO EM REL'
+2025-08-05 16:47:06,155 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:47:06,462 [INFO] Documento inserido (id=43779) — título='CURSO DE SINAIS INTERNACIONAIS - TURMA 1 - NOTURNO'
+2025-08-05 16:47:08,126 [INFO] Departamento 'EED' encontrado (id=50).
+2025-08-05 16:47:08,316 [INFO] Documento inserido (id=43780) — título='POR UMA ABORDAGEM DISCURSIVA DE ALFABETIZAÇÃO'
+2025-08-05 16:47:11,070 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 16:47:11,272 [INFO] Documento inserido (id=43781) — título='EXAME CITOLÓGICO COMO MÉTODO AUXILIAR NO DIAGNÓSTICO DE DOENÇAS DO COMPLEXO BUCO'
+2025-08-05 16:47:17,627 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 16:47:17,828 [INFO] Documento inserido (id=43782) — título='REVISTA KATÁLYSIS: FORMAÇÃO PROFISSIONAL NA PUBLICAÇÃO E SOCIALIZAÇÃO DO CONHECI'
+2025-08-05 16:47:20,491 [INFO] Departamento 'ECV' encontrado (id=46).
+2025-08-05 16:47:20,798 [INFO] Documento inserido (id=43783) — título='IMPLANTAÇÃO DE LABORATÓRIO DE DESEMPENHO PARA AVALIAÇÃO DA NBR 15.575'
+2025-08-05 16:47:30,321 [INFO] Departamento 'CLM' encontrado (id=26).
+2025-08-05 16:47:30,632 [INFO] Documento inserido (id=43784) — título='FRENTE DE CAPACITAÇÃO DA LIGA ACADÊMICA DE MEDICINA INTERNA (L.A.M.I.)'
+2025-08-05 16:47:35,441 [INFO] Departamento 'CLM' encontrado (id=26).
+2025-08-05 16:47:35,648 [INFO] Documento inserido (id=43785) — título='LIGA ACADÊMICA DE SEMIOLOGIA CLÍNICA 2019-2020'
+2025-08-05 16:47:40,031 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 16:47:40,253 [INFO] Documento inserido (id=43786) — título='OBSERVA EM DETALHES PARA TODOS'
+2025-08-05 16:47:44,247 [INFO] Departamento 'CIT' encontrado (id=117).
+2025-08-05 16:47:44,457 [INFO] Documento inserido (id=43787) — título='OFICINA DE QUADRINHOS EM ESCOLAS PÚBLICAS NO MUNICÍPIO DE MARACAJÁ.'
+2025-08-05 16:47:49,469 [INFO] Departamento 'EED' encontrado (id=50).
+2025-08-05 16:47:49,776 [INFO] Documento inserido (id=43788) — título='DOIS TEXTOS DE FREUD NA FILOSOFIA DA EDUCAÇÃO: LUTO, MELANCOLIA E O MAL-ESTAR NA'
+2025-08-05 16:47:59,402 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 16:47:59,710 [INFO] Documento inserido (id=43789) — título='APROVEITAMENTO DE RESÍDUOS DE CORTE A LASER COMO ESTRATÉGIA ECOLÓGICA NA PRODUÇÃ'
+2025-08-05 16:48:01,824 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:48:02,064 [INFO] Documento inserido (id=43790) — título='IUS COMMUNE - GRUPO INTERINSTITUCIONAL EM HISTÓRIA DA CULTURA JURÍDICA (EDIÇÃO 2'
+2025-08-05 16:48:12,201 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:48:12,399 [INFO] Documento inserido (id=43791) — título='IUS GENTIUM - TEÓRICOS INDISPENSÁVEIS DO DIREITO INTERNACIONAL'
+2025-08-05 16:48:15,273 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:48:15,585 [INFO] Documento inserido (id=43792) — título='CICLO DE MINICURSOS PARA PRÁTICA DE ESTÁGIO EM ENSINO DE LIBRAS COMO L1'
+2025-08-05 16:48:24,600 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 16:48:24,796 [INFO] Documento inserido (id=43793) — título='"ESTUDOS E BENCHMARKING SOBRE INTELIGÊNCIA DE DADOS SOBRE A COVID-19"'
+2025-08-05 16:48:26,202 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 16:48:26,435 [INFO] Documento inserido (id=43794) — título='PARTICIPAÇÃO NA COMISSÃO EXECUTIVA DA CRAD/RS (COMISSÃO REGIONAL DE ALTO DESEMPE'
+2025-08-05 16:48:27,868 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 16:48:28,073 [INFO] Documento inserido (id=43795) — título='CROWDFIGHT COVID-19'
+2025-08-05 16:48:29,510 [WARNING] Departamento 'DCEE' não encontrado.
+2025-08-05 16:48:29,814 [INFO] Documento inserido (id=43796) — título='CONSTRUÇÃO DE SISTEMA DE ESTIRAMENTO E BOBINAMENTO CONTROLADO PARA MINI-EXTRUSOR'
+2025-08-05 16:48:31,836 [INFO] Departamento 'SPO' encontrado (id=126).
+2025-08-05 16:48:32,022 [INFO] Documento inserido (id=43797) — título='GRUPO DE ESTUDOS - NÚCLEO DE SOCIOLOGIA ECONÔMICA - NUSEC'
+2025-08-05 16:48:40,156 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:48:40,463 [INFO] Documento inserido (id=43798) — título='INFOVÍRUS: OBSERVATÓRIO COVID-19 E PRISÕES'
+2025-08-05 16:48:43,944 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 16:48:44,149 [INFO] Documento inserido (id=43799) — título='AVALIAÇÃO E ORIENTAÇÃO NUTRICIONAL E DE ATIVIDADE FÍSICA PARA ESCOLARES DE 7 A 1'
+2025-08-05 16:48:49,883 [INFO] Departamento 'CLC' encontrado (id=25).
+2025-08-05 16:48:50,088 [INFO] Documento inserido (id=43800) — título='PROJETO DE EXTENSÃO LAPCIT - UFSC'
+2025-08-05 16:48:56,642 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:48:56,799 [INFO] Documento inserido (id=43801) — título='ESPAÇO DE CONVIVÊNCIA – ÁGORA/ARENA  - II'
+2025-08-05 16:49:01,352 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 16:49:01,557 [INFO] Documento inserido (id=43802) — título='CENTRO COLABORADOR EM ALIMENTAÇÃO E NUTRIÇÃO DO ESCOLAR DE SANTA CATARINA - CECA'
+2025-08-05 16:49:11,044 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 16:49:11,210 [INFO] Documento inserido (id=43803) — título='PROJETO EXPERIÊNCIAS EDUCATIVAS: INFÂNCIA, EDUCAÇÃO, CORPO NA OBRA DE PORTINARI'
+2025-08-05 16:49:16,114 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:49:16,302 [INFO] Documento inserido (id=43804) — título='ENCANTAÇÕES - MONTAGEM TEATRAL E APRESENTAÇÕES'
+2025-08-05 16:49:21,425 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 16:49:21,729 [INFO] Documento inserido (id=43805) — título='MAPEAMENTO E DIAGNÓSTICO PARA ORQUESTRAÇÃO DO ECOSSISTEMA DE INOVAÇÃO DE RIVERA '
+2025-08-05 16:49:23,163 [INFO] Departamento 'FIT' encontrado (id=69).
+2025-08-05 16:49:23,368 [INFO] Documento inserido (id=43806) — título='PROJETO AGROBIODIVERSIDADE - AGROBIO 2'
+2025-08-05 16:49:26,132 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:49:26,337 [INFO] Documento inserido (id=43807) — título='LITERATURA SURDA EM LIBRAS PARA ALUNOS SURDOS NO ENSINO INFANTIL E FUNDAMENTAL'
+2025-08-05 16:49:32,686 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 16:49:32,890 [INFO] Documento inserido (id=43808) — título='ELEIÇÕES ELETRÔNICAS MP/SC IMPLANTAÇÃO E AUDITORIAS - PROCURADOR DE JUSTIÇA/REPR'
+2025-08-05 16:49:42,311 [INFO] Commit parcial — 1900 linhas processadas.
+2025-08-05 16:49:42,685 [WARNING] Departamento 'CEM' não encontrado.
+2025-08-05 16:49:42,850 [INFO] Documento inserido (id=43809) — título='EXPOSIÇÃO VIRTUAL SOBRE MEMÓRIA E DIREITOS HUMANOS'
+2025-08-05 16:49:47,328 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:49:47,533 [INFO] Documento inserido (id=43810) — título='LABORATÓRIO DE PESQUISA: ARTE E CIDADE'
+2025-08-05 16:49:47,943 [INFO] Pessoa criada: JOSIAS RICARDO HACK, LUIZ FELIPE GUIMARAES SOARES (id=43897, vinculo=2)
+2025-08-05 16:49:52,243 [INFO] Departamento 'DPT' encontrado (id=42).
+2025-08-05 16:49:52,457 [INFO] Documento inserido (id=43811) — título='COORDENAÇÃO SOCIEDADE BRASILEIRA DE QUEIMADURAS - REGIONAL DE SANTA CATARINA'
+2025-08-05 16:49:55,315 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:49:55,521 [INFO] Documento inserido (id=43812) — título='ESPAÇO ESTÉTICO - COLÉGIO DE APLICAÇÃO  /  UFSC'
+2025-08-05 16:49:58,899 [WARNING] Departamento 'CECBA' não encontrado.
+2025-08-05 16:49:59,104 [INFO] Documento inserido (id=43813) — título='ASSESSORIA EM SEMEADURA E PULVERIZAÇÃO NAS PROPRIEDADES AGRÍCOLAS DE CURITIBANOS'
+2025-08-05 16:50:02,586 [INFO] Departamento 'ENR' encontrado (id=61).
+2025-08-05 16:50:02,790 [INFO] Documento inserido (id=43814) — título='TRANSIÇÃO AGROECOLÓGICA COMO METODOLOGIA DE CAPACITAÇÃO DE AGRICULTORES FAMILIAR'
+2025-08-05 16:50:13,133 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:50:13,337 [INFO] Documento inserido (id=43815) — título='A HORA E A VOZ DA MULHER NO CINEMA'
+2025-08-05 16:50:14,437 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 16:50:14,589 [INFO] Documento inserido (id=43816) — título='EDUCAÇÃO PERMANENTE DAS EQUIPES DE SAÚDE NO SISTEMA PRISIONAL'
+2025-08-05 16:50:50,950 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:50:51,138 [INFO] Documento inserido (id=43817) — título='APEX FOGUETEMODELISMO'
+2025-08-05 16:51:02,386 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:51:02,591 [INFO] Documento inserido (id=43818) — título='VOAR É PARA TODOS - OFICINAS DE DIVULGAÇÃO TÉCNICO-CIENTÍFICA NA ÁREA DE AVIAÇÃO'
+2025-08-05 16:51:18,935 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:51:19,117 [INFO] Documento inserido (id=43819) — título='DIFUSÃO DO IV FESTIVAL DE FOLCLORE SURDO - EDIÇÃO 2019 - 2020'
+2025-08-05 16:51:23,070 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 16:51:23,233 [INFO] Documento inserido (id=43820) — título='GRUPO STACCATO'
+2025-08-05 16:51:27,334 [INFO] Departamento 'ZOT' encontrado (id=129).
+2025-08-05 16:51:27,575 [INFO] Documento inserido (id=43821) — título='TECELAGEM ARTESANAL DE LÃ OVINA E VIVÊNCIAS  EM AGROECOLOGIA PARA JOVENS E ADULT'
+2025-08-05 16:51:31,569 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 16:51:31,738 [INFO] Documento inserido (id=43822) — título='CINESCOLA'
+2025-08-05 16:51:34,845 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 16:51:35,050 [INFO] Documento inserido (id=43823) — título='ACESSIBILIDADE CULTURAL EM EDIFICAÇÕES HISTÓRICAS DE SANTA CATARINA'
+2025-08-05 16:51:43,550 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 16:51:43,754 [INFO] Documento inserido (id=43824) — título='PET-SAÚDE INTERPROFISSIONALIDADE'
+2025-08-05 16:52:01,673 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 16:52:01,878 [INFO] Documento inserido (id=43825) — título='CENTRO DE DOCUMENTAÇÃO DO INSTITUTO DE ESTUDOS DE GÊNERO (CEDOC-IEG): MAPEAMENTO'
+2025-08-05 16:52:03,170 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:52:03,416 [INFO] Documento inserido (id=43826) — título='PROJETO UFSC BAJA SAE - EDIÇÃO 2020'
+2025-08-05 16:52:20,315 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:52:20,478 [INFO] Documento inserido (id=43827) — título='DESAFIOS ESTUDANTIS DE VEÍCULOS E EFICIÊNCIA ENERGÉTICA - CICLO 2020'
+2025-08-05 16:52:30,857 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:52:31,038 [INFO] Documento inserido (id=43828) — título='EQUIPE FÓRMULA UFSC 2020'
+2025-08-05 16:52:45,091 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 16:52:45,295 [INFO] Documento inserido (id=43829) — título='CÉU AZUL AERONAVES'
+2025-08-05 16:53:00,449 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 16:53:00,654 [INFO] Documento inserido (id=43830) — título='I CICLO DE DEBATES E ATIVIDADES  CULTURAIS SOBRE DIVERSIDADES, SEXUALIDADES, PRO'
+2025-08-05 16:53:02,805 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:53:03,011 [INFO] Documento inserido (id=43831) — título='10ª EDIÇÃO DA SIMULAÇÃO DE ORGANIZAÇÕES INTERNACIONAIS PARA ALUNOS DO ENSINO MÉD'
+2025-08-05 16:53:06,552 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 16:53:06,799 [INFO] Documento inserido (id=43832) — título='FORTALECIMENTO DA EDUCAÇÃO AMBIENTAL E DA EXTENSÃO UNIVERSITÁRIA PARA A SUSTENTA'
+2025-08-05 16:53:09,563 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:53:09,768 [INFO] Documento inserido (id=43833) — título='CINEDELAS'
+2025-08-05 16:53:14,030 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:53:14,211 [INFO] Documento inserido (id=43834) — título='PROJETO DE EXTENSÃO CAPOEIRA DA ILHA: NO JOGO DA CAPOEIRA A RESISTÊNCIA PARA A V'
+2025-08-05 16:53:17,345 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:53:17,550 [INFO] Documento inserido (id=43835) — título='MOBILIZAÇÃO ARTÍSTICA IUS POIESIS CCJ/UFSC'
+2025-08-05 16:53:21,544 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 16:53:21,748 [INFO] Documento inserido (id=43836) — título='CONTAROLANDO EM FORMAÇÃO E AÇÃO: CO(A)NTANDO A LITERATURA DE TEMÁTICA AFRO-BRASI'
+2025-08-05 16:53:26,766 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 16:53:26,944 [INFO] Documento inserido (id=43837) — título='TRADUÇÃO DE TEXTO SÉRIE DIDÁTICA DA ORGANIZAÇÃO MUNDIAL DE SAÚDE: "PROCUREMENT P'
+2025-08-05 16:53:28,302 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 16:53:28,467 [INFO] Documento inserido (id=43838) — título='GESTÃO PREDITIVA EM SISTEMAS DE SAÚDE UBÍQUA DE EQUIPAMENTOS MÉDICOS'
+2025-08-05 16:53:30,508 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 16:53:30,759 [INFO] Documento inserido (id=43839) — título='AVALIAÇÃO DE TECNOLOGIA DE GLICOSÍMETRO'
+2025-08-05 16:53:32,094 [INFO] Departamento 'ANT' encontrado (id=5).
+2025-08-05 16:53:32,255 [INFO] Documento inserido (id=43840) — título='CINE DDHH - DIREITOS HUMANOS DAS MULHERES E SUAS INTERSECCIONALIDADES'
+2025-08-05 16:53:34,445 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:53:34,605 [INFO] Documento inserido (id=43841) — título='PALHAÇARIA DISRUPTIVA: APRESENTAÇÃO DE NÚMEROS, CENAS E ESPETÁCULOS'
+2025-08-05 16:53:44,173 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 16:53:44,378 [INFO] Documento inserido (id=43842) — título='PROJETO MAPEAMENTO E DIFUSÃO DE ARTE ANTIRRACISTA - “LÉLIA GONZALES”.'
+2025-08-05 16:53:48,474 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 16:53:48,679 [INFO] Documento inserido (id=43843) — título='LEVANDO RITMO E PERCUSSÃO PARA AS ESCOLAS PÚBLICAS E COMUNIDADES DE JOINVILLE - '
+2025-08-05 16:53:57,080 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 16:53:57,280 [INFO] Documento inserido (id=43844) — título='CRIATIVIDADE, DIVERSIDADE E GÊNERO: ATIVIDADES DE EXTENSÃO'
+2025-08-05 16:54:01,273 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:54:01,478 [INFO] Documento inserido (id=43845) — título='LITERAR: GRUPO DE ESTUDOS EM DIREITO E LITERATURA'
+2025-08-05 16:54:03,834 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 16:54:03,992 [INFO] Documento inserido (id=43846) — título='CONEXÃO CULTURAL: MUSEUS, ARTES E MÍDIAS (BOLSA CULTURA EDITAL 01.2020)'
+2025-08-05 16:54:07,930 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:54:08,074 [INFO] Documento inserido (id=43847) — título='SIMULAÇÃO DE ORGANIZAÇÕES INTERNACIONAIS PARA ALUNOS DO ENSINO MÉDIO (SIEM)'
+2025-08-05 16:54:09,875 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 16:54:10,080 [INFO] Documento inserido (id=43848) — título='POESIA, MEMÓRIA E ARQUIVO III — 100 ANOS DE JOÃO CABRAL E CLARICE LISPECTOR'
+2025-08-05 16:54:11,665 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 16:54:11,822 [INFO] Documento inserido (id=43849) — título='SARAU BOCA DE CENA 2020/2021 - DIÁLOGOS ENTRE LITERATURA, MÚSICA E IMAGEM'
+2025-08-05 16:54:13,152 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 16:54:13,356 [INFO] Documento inserido (id=43850) — título='CINEMA UFSC EM FESTIVAIS E TELAS 2020'
+2025-08-05 16:54:15,660 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 16:54:15,916 [INFO] Documento inserido (id=43851) — título='BATERAAACA'
+2025-08-05 16:54:30,150 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:54:30,295 [INFO] Documento inserido (id=43852) — título='GRUPO DE ESTUDO EM DIREITO PENAL ECONÔMICO'
+2025-08-05 16:54:32,197 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 16:54:32,343 [INFO] Documento inserido (id=43853) — título='CENTRO DE INFORMAÇÃO E ASSISTÊNCIA TOXICOLÓGICA DE SANTA CATARINA – CIATOX/SC 20'
+2025-08-05 16:54:36,023 [INFO] Departamento 'QMC' encontrado (id=103).
+2025-08-05 16:54:36,162 [INFO] Documento inserido (id=43854) — título='DIVULGAÇÕES CIENTÍFICAS PARA SOCIEDADE POR MEIO DE MULTIMÍDIAS DIANTE DA PANDEMI'
+2025-08-05 16:54:38,030 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:54:38,176 [INFO] Documento inserido (id=43855) — título='UNIVERSIDADE FEDERAL DE SANTA CATARINA MODEL UNITED NATIONS'
+2025-08-05 16:54:52,033 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 16:54:52,267 [INFO] Documento inserido (id=43856) — título='PLATAFORMA DIGITAL GEORREFERENCIADA E COLABORATIVA PARA O MAPEAMENTO DE GRUPOS E'
+2025-08-05 16:55:08,086 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 16:55:08,242 [INFO] Documento inserido (id=43857) — título='DIRETRIZES PARA IMPLEMENTAÇÃO DA LEI DE ATHIS NOS MUNICÍPIOS CATARINENSES: UM ES'
+2025-08-05 16:55:17,100 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 16:55:17,355 [INFO] Documento inserido (id=43858) — título='PROJETO ESCOLA OLODUM SUL'
+2025-08-05 16:55:28,414 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 16:55:28,618 [INFO] Documento inserido (id=43859) — título='CONSULTORIA PARA IMPLANTAÇÃO DOS PROCESSOS DE PROSPECÇÃO, SELEÇÃO E MONITORAMENT'
+2025-08-05 16:55:30,054 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 16:55:30,257 [INFO] Documento inserido (id=43860) — título='FISIOTERAPIA DESPORTIVA UNIVERSITÁRIA – DESUFISIO'
+2025-08-05 16:55:43,876 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:55:44,080 [INFO] Documento inserido (id=43861) — título='REVISTA BRASILEIRA DE VÍDEO-REGISTROS EM LIBRAS'
+2025-08-05 16:55:46,743 [INFO] Departamento 'SPO' encontrado (id=126).
+2025-08-05 16:55:46,947 [INFO] Documento inserido (id=43862) — título='EDIÇÃO DA REVISTA POLÍTICA & SOCIEDADE - REVISTA DE SOCIOLOGIA POLÍTICA.'
+2025-08-05 16:55:51,386 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 16:55:51,595 [INFO] Documento inserido (id=43863) — título='"O LILITH 'TÁ ONLINE": ATIVIDADES DE INTERAÇÃO'
+2025-08-05 16:55:59,284 [INFO] Departamento 'FIL' encontrado (id=68).
+2025-08-05 16:55:59,490 [INFO] Documento inserido (id=43864) — título='GERMINA - GRUPO DE ESTUDOS EM REFLEXÃO MORAL INTERDISCIPLINAR E NARRATIVIDADE'
+2025-08-05 16:56:09,942 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 16:56:10,099 [INFO] Documento inserido (id=43865) — título='GRUPO DI-VER-SO: EDUCAÇÃO, SAÚDE E DIVERSIDADES'
+2025-08-05 16:56:16,120 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 16:56:16,269 [INFO] Documento inserido (id=43866) — título='OTIMIZANDO OS RESULTADOS DAS AULAS PRÁTICAS DE HISTOLOGIA - 2019'
+2025-08-05 16:56:18,090 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:56:18,293 [INFO] Documento inserido (id=43867) — título='ARTE NA ESCOLA POLO UFSC'
+2025-08-05 16:56:19,728 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 16:56:19,933 [INFO] Documento inserido (id=43868) — título='PROJETO SIRIUS - VISITAÇÃO TÉCNICA À PLANTA PILOTO BIOCLIMÁTICA PARA PROMOÇÃO DE'
+2025-08-05 16:56:24,645 [WARNING] Departamento 'DGG' não encontrado.
+2025-08-05 16:56:24,850 [INFO] Documento inserido (id=43869) — título='PESQUISA UFSC'
+2025-08-05 16:56:27,717 [WARNING] Departamento 'HU' não encontrado.
+2025-08-05 16:56:27,925 [INFO] Documento inserido (id=43870) — título='OPERACIONALIZAÇÃO DA TRANSMISSÃO DE PROCEDIMENTOS CIRÚRGICOS DIRETAMENTE DO CENT'
+2025-08-05 16:56:31,199 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 16:56:31,403 [INFO] Documento inserido (id=43871) — título='LABORATÓRIO DE GESTÃO SOCIAL E PÚBLICA - EDIÇÃO II'
+2025-08-05 16:56:34,885 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 16:56:35,077 [INFO] Documento inserido (id=43872) — título='PROJETO DISCIPLINAS BILÍNGUES PORTUGUÊS-FRANCÊS EM ESCOLAS BÁSICAS DA REDE PÚBLI'
+2025-08-05 16:56:36,838 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 16:56:37,044 [INFO] Documento inserido (id=43873) — título='ENSINO E SUPORTE DA FERRAMENTA LATEX'
+2025-08-05 16:56:42,567 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:56:42,750 [INFO] Documento inserido (id=43874) — título='CONTINUAÇÃO DA TRADUÇÃO DE LIVRO "LITERATURA EM LIBRAS DE PORTUGUÊS PARA LIBRAS"'
+2025-08-05 16:56:46,152 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 16:56:46,459 [INFO] Documento inserido (id=43875) — título='PROPOSTA EDITORIAL REVISTA DE CIÊNCIAS DA ADMINISTRAÇÃO'
+2025-08-05 16:56:52,913 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 16:56:53,220 [INFO] Documento inserido (id=43876) — título='GRUPO DE ESTUDOS SOBRE NEUROLOGIA VETERINÁRIA (GEN-VET) 2020'
+2025-08-05 16:57:00,800 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 16:57:01,036 [INFO] Documento inserido (id=43877) — título='CONSELHO EDITORIAL DA REVISTA RI'
+2025-08-05 16:57:02,965 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 16:57:03,197 [INFO] Documento inserido (id=43878) — título='DESENVOLVIMENTO DE ESTRATÉGIAS PARA A PREVENÇÃO DE AGRAVOS DECORRENTES DA MÁ ALI'
+2025-08-05 16:57:12,789 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 16:57:13,081 [INFO] Documento inserido (id=43879) — título='O USO CONSCIENTE DA ÁGUA NO AMBIENTE ESCOLAR'
+2025-08-05 16:57:18,135 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 16:57:18,370 [INFO] Documento inserido (id=43880) — título='EDIÇÃO DA REVISTA PAPIA'
+2025-08-05 16:57:21,391 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 16:57:21,699 [INFO] Documento inserido (id=43881) — título='CANTA ESPANHOL'
+2025-08-05 16:57:25,489 [WARNING] Departamento 'CFH' não encontrado.
+2025-08-05 16:57:25,722 [INFO] Documento inserido (id=43882) — título='YOGA EXTENSÃO'
+2025-08-05 16:57:29,166 [INFO] Departamento 'CLM' encontrado (id=26).
+2025-08-05 16:57:29,473 [INFO] Documento inserido (id=43883) — título='FRENTE CLÍNICA DA LIGA ACADÊMICA DE MEDICINA INTERNA (L.A.M.I.)'
+2025-08-05 16:57:38,674 [INFO] Departamento 'CLM' encontrado (id=26).
+2025-08-05 16:57:38,977 [INFO] Documento inserido (id=43884) — título='LIGA ACADÊMICA DE MEDICINA INTERNA (L.A.M.I.)'
+2025-08-05 16:57:46,341 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:57:46,546 [INFO] Documento inserido (id=43885) — título='I CICLO DE PALESTRAS: QUÍMICA E O COTIDIANO'
+2025-08-05 16:57:48,797 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 16:57:48,979 [INFO] Documento inserido (id=43886) — título='AMBULATÓRIO DE ESTOMATOLOGIA DO NÚCLEO DE ODONTOLOGIA HOSPITALAR DO HU-UFSC/ 202'
+2025-08-05 16:57:58,929 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:57:59,134 [INFO] Documento inserido (id=43887) — título='EMPREENDEDORISMO ECONÔMICO-SOCIAL: APROXIMAÇÃO DA OFERTA E DA DEMANDA'
+2025-08-05 16:58:05,686 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:58:05,890 [INFO] Documento inserido (id=43888) — título='GLOSSÁRIO PARA EDUCAÇÃO BÁSICA'
+2025-08-05 16:58:10,497 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 16:58:10,674 [INFO] Documento inserido (id=43889) — título='PRODUÇÃO DE MATERIAL PARA ENSINO DE MATEMÁTICA EM LIBRAS'
+2025-08-05 16:58:16,101 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 16:58:16,288 [INFO] Documento inserido (id=43890) — título='PESQUISADOR COLABORADOR NO PROGRAMA DE BIOENERGIA/FEA/ UNIVERSIDADE ESTADUAL DE '
+2025-08-05 16:58:17,869 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 16:58:18,075 [INFO] Documento inserido (id=43891) — título='ATIVIDADE PERMANENTE "PÉS NA ESTRADA DO CONHECIMENTO - INICIAÇÃO CIENTÍFICA NA E'
+2025-08-05 16:58:27,062 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 16:58:27,289 [INFO] Documento inserido (id=43892) — título='HOMEOPATIA EM ODONTOLOGIA 2020 - A HOMEOPATIA COMO TRATAMENTO COADJUVANTE NO ATE'
+2025-08-05 16:58:32,410 [WARNING] Departamento 'CEM' não encontrado.
+2025-08-05 16:58:32,616 [INFO] Documento inserido (id=43893) — título='ACERVO E DIVERSIDADE: MAPEAMENTO E POLÍTICA DE ACERVO EM MUSEUS'
+2025-08-05 16:58:41,018 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 16:58:41,223 [INFO] Documento inserido (id=43894) — título='OFICINAS DE LEITURA E ESCRITA DE TEXTO ACADÊMICO-CIENTÍFICO: SEGUNDA FASE'
+2025-08-05 16:58:43,272 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 16:58:43,453 [INFO] Documento inserido (id=43895) — título='LABORATÓRIO DE AVALIAÇÃO TÉCNICA - IEB-UFSC'
+2025-08-05 16:58:49,829 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 16:58:50,018 [INFO] Documento inserido (id=43896) — título='IEB-UFSC: CENTRO COLABORADOR EM GESTÃO DE TECNOLOGIA EM SAÚDE'
+2025-08-05 16:58:54,644 [WARNING] Departamento 'DCNS' não encontrado.
+2025-08-05 16:58:54,849 [INFO] Documento inserido (id=43897) — título='USO DE INOCULANTES MICROBIANOS NO CULTIVO DE ESPÉCIES AGRÍCOLAS E FLORESTAIS'
+2025-08-05 16:59:13,697 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 16:59:13,902 [INFO] Documento inserido (id=43898) — título='EDITOR-CHEFE DA REVISTA BRASILEIRA DE EPIDEMIOLOGIA'
+2025-08-05 16:59:15,438 [WARNING] Departamento 'HU' não encontrado.
+2025-08-05 16:59:15,643 [INFO] Documento inserido (id=43899) — título='CAPTAÇÃO DE RECURSOS PARA A MANUTENÇÃO DO TRABALHO DE AVALIAÇÃO NO NÚCLEO DESENV'
+2025-08-05 16:59:17,692 [INFO] Departamento 'CLC' encontrado (id=25).
+2025-08-05 16:59:17,896 [INFO] Documento inserido (id=43900) — título='INTEGRAÇÃO DOCENTE ASSISTENCIAL'
+2025-08-05 16:59:19,921 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 16:59:20,101 [INFO] Documento inserido (id=43901) — título='REVISTA TEMPORALIS: O TRABALHO DA COMISSÃO CIENTIFICA NA AVALIAÇÃO E PUBLICAÇÃO '
+2025-08-05 16:59:21,482 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 16:59:21,692 [INFO] Documento inserido (id=43902) — título='ENACTUS UFSC FLORIANÓPOLIS'
+2025-08-05 16:59:36,860 [INFO] Departamento 'HST' encontrado (id=74).
+2025-08-05 16:59:37,041 [INFO] Documento inserido (id=43903) — título='“FIOS ENTRELAÇADOS: IMAGENS DO MEDITERRÂNEO E  PATHOS SUL-AMERICANO”'
+2025-08-05 16:59:40,327 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 16:59:40,532 [INFO] Documento inserido (id=43904) — título='MENINAS NA CIÊNCIA'
+2025-08-05 16:59:46,472 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 16:59:46,678 [INFO] Documento inserido (id=43905) — título='PARQUE VIVA A CIÊNCIA - DIVULGAÇÃO CIENTÍFICA E A INFLUÊNCIA DAS  QUESTÕES DE GÊ'
+2025-08-05 16:59:49,581 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 16:59:49,852 [INFO] Documento inserido (id=43906) — título='AMBULATÓRIO DE ATENDIMENTO PARA DISTÚRBIOS NEUROPSICOMOTORES 2020'
+2025-08-05 16:59:54,768 [INFO] Departamento 'MTM' encontrado (id=90).
+2025-08-05 16:59:54,973 [INFO] Documento inserido (id=43907) — título='LABORATÓRIO DE ESTUDOS DE MATEMÁTICA E TECNOLOGIAS - LEMAT'
+2025-08-05 16:59:58,907 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 16:59:59,069 [INFO] Documento inserido (id=43908) — título='CLUBE DOS TELESCÓPIOS'
+2025-08-05 17:00:02,142 [INFO] Commit parcial — 2000 linhas processadas.
+2025-08-05 17:00:02,551 [INFO] Departamento 'EPS' encontrado (id=64).
+2025-08-05 17:00:02,760 [INFO] Documento inserido (id=43909) — título='MAPEAMENTO E ANÁLISE DOS PROCESSO DE UMA EMPRESA DE CARTÃO DE SAÚDE'
+2025-08-05 17:00:05,829 [INFO] Departamento 'AQI' encontrado (id=6).
+2025-08-05 17:00:06,034 [INFO] Documento inserido (id=43910) — título='ANÁLISE DE RISCOS E CAPACITAÇÃO EM PRÁTICAS DE SEGURANÇA DO TRABALHO NA ESTAÇÃO '
+2025-08-05 17:00:09,925 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:00:10,130 [INFO] Documento inserido (id=43911) — título='MUSEU DE ANATOMIA PATOLÓGICA – ANO 2020'
+2025-08-05 17:00:13,101 [WARNING] Departamento 'CEFQM' não encontrado.
+2025-08-05 17:00:13,305 [INFO] Documento inserido (id=43912) — título='PROJETO EDUCAÇÃO SOLIDÁRIA'
+2025-08-05 17:00:27,233 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 17:00:27,438 [INFO] Documento inserido (id=43913) — título='ORGANIZAÇÃO DE PUBLICAÇÃO POÉTICAS DA VOZ'
+2025-08-05 17:00:29,486 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:00:29,797 [INFO] Documento inserido (id=43914) — título='IUS COMMUNE - GRUPO INTERINSTITUCIONAL EM HISTÓRIA DA CULTURA JURÍDICA'
+2025-08-05 17:00:36,122 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:00:36,348 [INFO] Documento inserido (id=43915) — título='ARTCULAÇÃO ESPAÇO CULTURAL (FAZENDO)GÊNERO E DIVERSIDADES – GESTÃO 2020/2021'
+2025-08-05 17:00:37,782 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 17:00:37,987 [INFO] Documento inserido (id=43916) — título='UM REMÉDIO CHAMADO EXERCÍCIO: AÇÕES FISIOTERAPÊUTICAS EM PACIENTES SUBMETIDOS À '
+2025-08-05 17:00:53,550 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:00:53,758 [INFO] Documento inserido (id=43917) — título='REALIZAÇÃO INTERDISCIPLINAR DE EXAME DE VIDEONASOENDOSCOPIA DA OROFARINGOLARINGE'
+2025-08-05 17:00:55,150 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:00:55,394 [INFO] Documento inserido (id=43918) — título='PRÉ-CÁLCULO JOINVILLE'
+2025-08-05 17:00:59,796 [INFO] Departamento 'ACL' encontrado (id=1).
+2025-08-05 17:01:00,001 [INFO] Documento inserido (id=43919) — título='VERIFICAÇÃO DE MICROPIPETAS'
+2025-08-05 17:01:03,380 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:01:03,586 [INFO] Documento inserido (id=43920) — título='CONSULTORIA EM PATOLOGIA BUCAL 2019-2020'
+2025-08-05 17:01:06,247 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:01:06,452 [INFO] Documento inserido (id=43921) — título='CONSULTORIA EM EXAMES POR TOMOGRAFIA COMPUTADORIZADA PARA ODONTOLOGIA'
+2025-08-05 17:01:07,886 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:01:08,091 [INFO] Documento inserido (id=43922) — título='OFICINA DE ESTIMULAÇÃO DA MEMÓRIA E DA COMUNICAÇÃO DE IDOSOS'
+2025-08-05 17:01:15,516 [WARNING] Departamento 'SECARTE' não encontrado.
+2025-08-05 17:01:15,772 [INFO] Documento inserido (id=43923) — título='ASSESSORIA ÀS COMUNIDADES DE BASE AÇORIANA DE SANTA CATARINA'
+2025-08-05 17:01:17,613 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:01:17,818 [INFO] Documento inserido (id=43924) — título='NISUS - EQUIPE DE AERODESIGN'
+2025-08-05 17:01:32,257 [WARNING] Departamento 'CEM' não encontrado.
+2025-08-05 17:01:32,461 [INFO] Documento inserido (id=43925) — título='GESTÃO MUSEOLÓGICA: REVISÃO DO PLANO MUSEOLÓGICO DO MUSEU HISTÓRICO DE SANTA CAT'
+2025-08-05 17:01:41,985 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:01:42,190 [INFO] Documento inserido (id=43926) — título='ANÁLISE TÉCNICA ACERCA DO CRLVE'
+2025-08-05 17:01:44,647 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:01:44,852 [INFO] Documento inserido (id=43927) — título='REALIDADE AUMENTADA NO ENSINO DE CIÊNCIAS'
+2025-08-05 17:02:01,332 [INFO] Departamento 'MTM' encontrado (id=90).
+2025-08-05 17:02:01,468 [INFO] Documento inserido (id=43928) — título='XXII ESCOLA DE VERÃO DA PPGMTM'
+2025-08-05 17:02:04,965 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:02:05,169 [INFO] Documento inserido (id=43929) — título='CONSTRUÇÃO MULTIDISCIPLINAR PARA O CORREDOR BIOCEÂNICO'
+2025-08-05 17:02:06,604 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:02:06,808 [INFO] Documento inserido (id=43930) — título='ASSESSORIA E CONSULTORIA EM PERIODONTIA E IMPLANTODONTIA EM PARCERIA COM A EMPRE'
+2025-08-05 17:02:11,351 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:02:11,579 [INFO] Documento inserido (id=43931) — título='REVISÃO DE ARTIGOS CIENTÍFICOS EM PERIÓDICOS CIENTÍFICOS'
+2025-08-05 17:02:13,013 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:02:13,218 [INFO] Documento inserido (id=43932) — título='SISTEMA DE AVISO DE EXPOSIÇÃO À COVID-19 USANDO DISPOSITIVOS MÓVEIS PARA QUARENT'
+2025-08-05 17:02:18,031 [INFO] Departamento 'CAC' encontrado (id=110).
+2025-08-05 17:02:18,236 [INFO] Documento inserido (id=43933) — título='PRÁTICAS CURRICULARES DE INOVAÇÃO E DESENVOLVIMENTO REGIONAL E INTERAÇÃO SOCIAL '
+2025-08-05 17:02:20,079 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:02:20,228 [INFO] Documento inserido (id=43934) — título='PARTICIPAÇÃO NO CONSELHO EDITORIAL DA REVISTA CERÂMICA INDUSTRIAL'
+2025-08-05 17:02:21,621 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 17:02:21,755 [INFO] Documento inserido (id=43935) — título='RESFRIADORES DE SEMICONDUTORES DE CONVERSORES DE FREQUÊNCIA DE MÉDIA TENSÃO'
+2025-08-05 17:02:24,012 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:02:24,175 [INFO] Documento inserido (id=43936) — título='GRUPO DO LABDIMOV - LABORATÓRIO DE ENSINO EM PESQUISA DE DISFAGIA, MOTRICIDADE O'
+2025-08-05 17:02:26,633 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:02:26,940 [INFO] Documento inserido (id=43937) — título='PROJETO TRAVESSIAS'
+2025-08-05 17:02:29,327 [INFO] Departamento 'QMC' encontrado (id=103).
+2025-08-05 17:02:29,502 [INFO] Documento inserido (id=43938) — título='QUIMIDEX – OFICINAS PARA A DIVULGAÇÃO DA CIÊNCIA QUÍMICA NO COTIDIANO'
+2025-08-05 17:02:34,518 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:02:34,723 [INFO] Documento inserido (id=43939) — título='ESTUDO PARA O APERFEIÇOAMENTO DO PROCESSO DE EQUALIZAÇÃO DAS AVALIAÇÕES EM LARGA'
+2025-08-05 17:02:36,002 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:02:36,157 [INFO] Documento inserido (id=43940) — título='EDITORIA DO PERIODICO INFODESIGN'
+2025-08-05 17:02:37,530 [INFO] Departamento 'CIN' encontrado (id=24).
+2025-08-05 17:02:37,692 [INFO] Documento inserido (id=43941) — título='CULTURA POPULAR DA ILHA DE SANTA CATARINA E ARREDORES'
+2025-08-05 17:02:39,126 [WARNING] Departamento 'DCEE' não encontrado.
+2025-08-05 17:02:39,269 [INFO] Documento inserido (id=43942) — título='CURSINHO PREPARATÓRIO PARA EXAMES DE INGRESSO EM INSTITUIÇÕES DE ENSINO SUPERIOR'
+2025-08-05 17:02:41,789 [INFO] Departamento 'ACL' encontrado (id=1).
+2025-08-05 17:02:41,994 [INFO] Documento inserido (id=43943) — título='AÇÕES PREVENTIVAS INTERDISCIPLINARES PARA DOENÇAS DO CORAÇÃO (APRINDCOR) – AVALI'
+2025-08-05 17:02:48,343 [INFO] Departamento 'CAL' encontrado (id=17).
+2025-08-05 17:02:48,548 [INFO] Documento inserido (id=43944) — título='CONSULTORIA AD HOC PARA REVISÃO DE ARTIGOS CIENTÍFICOS'
+2025-08-05 17:02:50,026 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:02:50,186 [INFO] Documento inserido (id=43945) — título='ESTUDO DAS ALTERAÇÕES FONOAUDIOLÓGICAS EM PACIENTES ATENDIDOS NO AMBULATÓRIO DE '
+2025-08-05 17:02:51,245 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:02:51,390 [INFO] Documento inserido (id=43946) — título='MANUTENÇÃO E APRIMORAMENTO DA BIBLIOTECA DIGITAL DE LITERATURA BRASILEIRA'
+2025-08-05 17:02:53,873 [WARNING] Departamento 'CECBA' não encontrado.
+2025-08-05 17:02:54,078 [INFO] Documento inserido (id=43947) — título='CONFECÇÃO DE MODELOS RELACIONADOS À BIOLOGIA CELULAR COMO RECURSO DIDÁTICO PARA '
+2025-08-05 17:02:58,993 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:02:59,198 [INFO] Documento inserido (id=43948) — título='MONITORAMENTO DOS 4 CENTROS DE INOVAÇÃO'
+2025-08-05 17:03:00,631 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:03:00,837 [INFO] Documento inserido (id=43949) — título='ANÁLISES LABORATORIAIS PARA AVALIAÇÃO DA EXPOSIÇÃO A AGROTÓXICOS – 2020'
+2025-08-05 17:03:04,991 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:03:05,141 [INFO] Documento inserido (id=43950) — título='APRESENTAÇÃO EM FEIRAS DE CIÊNCIAS DE UM JOGO EMPRESARIAL COM FOCO NA CADEIA DE '
+2025-08-05 17:03:07,572 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:03:07,705 [INFO] Documento inserido (id=43951) — título='AMPLIAÇÃO DA ATUAÇÃO DOS EPIS E MONITORAMENTO DOS 4 CENTROS DE INOVAÇÃO CREDENCI'
+2025-08-05 17:03:09,029 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 17:03:09,234 [INFO] Documento inserido (id=43952) — título='PROFESSORES DO CURSO DE FÍSICA DA UFSC - CONHECENDO OS FÍSICOS'
+2025-08-05 17:03:11,180 [INFO] Departamento 'CAL' encontrado (id=17).
+2025-08-05 17:03:11,384 [INFO] Documento inserido (id=43953) — título='CAPÍTULO DE LIVRO, INTITULADO "CARACTERIZAÇÃO DE EXTRATOS ANTIOXIDANTES DE NOZ P'
+2025-08-05 17:03:16,300 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:03:16,510 [INFO] Documento inserido (id=43954) — título='OFICINA: DESAFIOS DE CAPTURA AUDIOVISUAL NO CONTEXTO DE ATIVIDADES PEDAGÓGICAS N'
+2025-08-05 17:03:20,191 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:03:20,396 [INFO] Documento inserido (id=43955) — título='ATENDIMENTO FONOAUDIOLÓGICO A CANTORES AMADORES E PROFISSIONAIS'
+2025-08-05 17:03:21,830 [WARNING] Departamento 'DCNS' não encontrado.
+2025-08-05 17:03:22,035 [INFO] Documento inserido (id=43956) — título='ESTRATÉGIAS DE MULTIPLICAÇÃO E DISTRIBUIÇÃO DE SEMENTES LIVRES'
+2025-08-05 17:03:26,745 [INFO] Departamento 'HST' encontrado (id=74).
+2025-08-05 17:03:26,951 [INFO] Documento inserido (id=43957) — título='PODCAST E MÍDIAS SOCIAIS DA REVISTA ESBOÇOS'
+2025-08-05 17:03:29,408 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:03:29,613 [INFO] Documento inserido (id=43958) — título='BENEFÍCIOS DA MÚSICA PARA O DESENVOLVIMENTO COGNITIVO, AUDITIVO,   E LINGUÍSTICO'
+2025-08-05 17:03:32,224 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:03:32,361 [INFO] Documento inserido (id=43959) — título='ACOMPANHAMENTO TERAPÊUTICO: CLÍNICA E CRIAÇÃO NA CIDADE (6A EDIÇÃO)'
+2025-08-05 17:03:35,040 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:03:35,245 [INFO] Documento inserido (id=43960) — título='CURSOS DA UFSC: MATERIAL DE APROXIMAÇÃO COM A COMUNIDADE'
+2025-08-05 17:03:37,133 [INFO] Departamento 'OCN' encontrado (id=96).
+2025-08-05 17:03:37,293 [INFO] Documento inserido (id=43961) — título='SERVIÇO DE ANÁLISE GRANULOMÉTRICA PARA A EMPRESA SLI COASTAL SOLUTIONS'
+2025-08-05 17:03:45,793 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:03:45,932 [INFO] Documento inserido (id=43962) — título='BANCO DE SANGUE HOSPITAL UNIVERSITÁRIO'
+2025-08-05 17:03:52,450 [INFO] Departamento 'CIF' encontrado (id=23).
+2025-08-05 17:03:52,655 [INFO] Documento inserido (id=43963) — título='INTERNATIONAL PHARMACISTS FOR ANTICOAGULATION CARE TASKFORCE (IPACT)'
+2025-08-05 17:03:59,106 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:03:59,312 [INFO] Documento inserido (id=43964) — título='GRUPO DE ESTUDOS EM ARBITRAGEM - GEARB'
+2025-08-05 17:04:08,528 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:04:08,732 [INFO] Documento inserido (id=43965) — título='ATENDIMENTO CLÍNICO, ORTOPÉDICO E CIRURGIAS ELETIVAS DE EQUINOS E BOVINOS'
+2025-08-05 17:04:11,744 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 17:04:11,907 [INFO] Documento inserido (id=43966) — título='VOLEIBOL MASTER PARA MAIORES DE 40 ANOS'
+2025-08-05 17:04:13,853 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:04:14,058 [INFO] Documento inserido (id=43967) — título='AVALIAÇÃO DA ATIVIDADE REATIVA DE ENZIMAS DIVERSAS'
+2025-08-05 17:04:16,720 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:04:16,925 [INFO] Documento inserido (id=43968) — título='GRUPO DE TRABALHO MEMÓRIA'
+2025-08-05 17:04:24,196 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:04:24,402 [INFO] Documento inserido (id=43969) — título='FORTALECENDO ESTRATÉGIAS PARA A PROMOÇÃO DA SAÚDE E CIDADANIA DE FAMÍLIAS DE CRI'
+2025-08-05 17:04:27,850 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:04:27,985 [INFO] Documento inserido (id=43970) — título='DA INCUBADORA AO “COLINHO”: CUIDANDO E EDUCANDO MÃES/FAMÍLIAS DE RECÉM-NASCIDOS '
+2025-08-05 17:04:34,027 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 17:04:34,232 [INFO] Documento inserido (id=43971) — título='A VIDA SECRETA NO SOLO'
+2025-08-05 17:04:39,455 [INFO] Departamento 'ANT' encontrado (id=5).
+2025-08-05 17:04:39,660 [INFO] Documento inserido (id=43972) — título='REUNIÕES DO GRUPO DE PESQUISA CANOA (CNPQ/PPGAS UFSC)'
+2025-08-05 17:04:50,416 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 17:04:50,561 [INFO] Documento inserido (id=43973) — título='ARARANGUÁ CONTINENTE: AVALIAÇÃO E TRATAMENTO FISIOTERAPÊUTICO PARA MULHERES COM '
+2025-08-05 17:04:53,690 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 17:04:53,895 [INFO] Documento inserido (id=43974) — título='TREINAMENTO DE FUTEBOL -  CLUBE UNIVERSITÁRIO - CONTINUAÇÃO DO NOTES NÚMERO - 20'
+2025-08-05 17:05:00,890 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:05:01,062 [INFO] Documento inserido (id=43975) — título='CURSO DE ATENÇÃO A SAÚDE DA MULHER'
+2025-08-05 17:05:49,802 [INFO] Departamento 'FIT' encontrado (id=69).
+2025-08-05 17:05:50,007 [INFO] Documento inserido (id=43976) — título='AGRICULTURA URBANA: INTERLIGANDO SABERES E PRÁTICAS AGROECOLÓGICOS E AGROFLOREST'
+2025-08-05 17:05:52,874 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:05:53,079 [INFO] Documento inserido (id=43977) — título='AMBULATÓRIO NUTRICIONAL DE DIETA CETOGÊNICA PARA PACIENTES COM EPILEPSIA REFRATÁ'
+2025-08-05 17:05:58,096 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 17:05:58,301 [INFO] Documento inserido (id=43978) — título='ESCOLA DE GINÁSTICA'
+2025-08-05 17:05:58,711 [INFO] Pessoa criada: JULIANA PIZANI, CINTIA DE LA ROCHA FREITAS (id=43898, vinculo=2)
+2025-08-05 17:06:00,554 [INFO] Departamento 'BEG' encontrado (id=10).
+2025-08-05 17:06:00,758 [INFO] Documento inserido (id=43979) — título='A INTERATIVIDADE NA DIVULGAÇÃO CIENTÍFICA'
+2025-08-05 17:06:03,217 [INFO] Departamento 'HST' encontrado (id=74).
+2025-08-05 17:06:03,421 [INFO] Documento inserido (id=43980) — título='REFORMULAÇÃO OU CONSTRUÇÃO DE VERBETES DA WIKIPÉDIA NA ÁREA DE TEORIA DA HISTÓRI'
+2025-08-05 17:06:07,341 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:06:07,517 [INFO] Documento inserido (id=43981) — título='O ESTADO ATUAL DO PLANEJAMENTO URBANO EM SANTA CATARINA: ANÁLISE DOS PLANOS URBA'
+2025-08-05 17:06:16,323 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:06:16,528 [INFO] Documento inserido (id=43982) — título='FORMAÇÃO DE CONSELHEIROS DE SAÚDE.'
+2025-08-05 17:06:20,931 [INFO] Departamento 'CFS' encontrado (id=22).
+2025-08-05 17:06:21,136 [INFO] Documento inserido (id=43983) — título='PRINCÍPIOS BÁSICOS DE UM VIVER SAUDÁVEL IV'
+2025-08-05 17:06:33,424 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:06:33,628 [INFO] Documento inserido (id=43984) — título='PRÁTICAS DE PSICOLOGIA SOCIAL JURÍDICA NO ESCRITÓRIO MODELO DE ASSISTÊNCIA JURÍD'
+2025-08-05 17:06:41,513 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:06:41,718 [INFO] Documento inserido (id=43985) — título='LIVRO - PRINCÍPIOS E PRÁTICAS DE ENGENHARIA DE REATORES QUÍMICOS CATALÍTICOS'
+2025-08-05 17:06:44,995 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 17:06:45,200 [INFO] Documento inserido (id=43986) — título='CONSULTORIA AD-HOC PARA REVISTAS CIENTÍFICAS'
+2025-08-05 17:06:46,736 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 17:06:46,946 [INFO] Documento inserido (id=43987) — título='CONSULTORIA AD-HOC PARA REVISTAS CIENTÍFICAS NACIONAIS E INTERNACIONAIS (PERÍODO'
+2025-08-05 17:06:48,317 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:06:48,476 [INFO] Documento inserido (id=43988) — título='REDE DE PESQUISA EM APS'
+2025-08-05 17:06:49,917 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:06:50,115 [INFO] Documento inserido (id=43989) — título='CSAPAIH: CLASSIFICAR CSAP NO PROGRAMA R'
+2025-08-05 17:06:51,446 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 17:06:51,651 [INFO] Documento inserido (id=43990) — título='ATIVIDADES FÍSICAS PARA A TERCEIRA IDADE'
+2025-08-05 17:06:54,620 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:06:54,825 [INFO] Documento inserido (id=43991) — título='CONEXÃO ESCOLA-MUNDO: ESPAÇOS INOVADORES PARA FORMAÇÃO CIDADÃ'
+2025-08-05 17:07:07,011 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:07:07,203 [INFO] Documento inserido (id=43992) — título='PROJETO DE EXTENSÃO DE EXAMES DE PROFICIÊNCIA EM LÍNGUA ESTRANGEIRA PARA O EXTER'
+2025-08-05 17:07:25,955 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 17:07:26,160 [INFO] Documento inserido (id=43993) — título='GESTÃO DE PATRIMÔNIO ARTÍSTICO E IMATERIAL - REMINISCÊNCIAS MIRA SCHENDEL'
+2025-08-05 17:07:27,594 [INFO] Departamento 'CIN' encontrado (id=24).
+2025-08-05 17:07:27,800 [INFO] Documento inserido (id=43994) — título='PROJETO HORIZONTE DIGITAL: CAPACITANDO PESSOAS, AMPLIANDO POSSIBILIDADES.'
+2025-08-05 17:07:29,916 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:07:30,068 [INFO] Documento inserido (id=43995) — título='PREPARAÇÃO PARA A MARATONA DE PROGRAMAÇÃO'
+2025-08-05 17:07:31,383 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 17:07:31,587 [INFO] Documento inserido (id=43996) — título='CAPACITAÇÃO DE PRODUTORES RURAIS E AUXÍLIO NA IMPLANTAÇÃO DE INCUBADORA DE NEGÓC'
+2025-08-05 17:07:37,220 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:07:37,424 [INFO] Documento inserido (id=43997) — título='AMBULATÓRIO DE NUTRIÇÃO PARA PACIENTES DIAGNOSTICADOS COM DISFAGIA ATENDIDOS NO '
+2025-08-05 17:07:41,828 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:07:42,032 [INFO] Documento inserido (id=43998) — título='PROJETO APICE ON - APRIMORAMENTO E INOVAÇÃO NO CUIDADO E ENSINO EM OBSTETRÍCIA E'
+2025-08-05 17:07:44,081 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:07:44,285 [INFO] Documento inserido (id=43999) — título='REVISTA KATÁLYSIS: O TRABALHO DA COMISSÃO EDITORIAL NA AVALIAÇÃO, EDITORAÇÃO E P'
+2025-08-05 17:07:49,406 [INFO] Departamento 'EPS' encontrado (id=64).
+2025-08-05 17:07:49,610 [INFO] Documento inserido (id=44000) — título='PARTICIPAÇÃO COMO PROFESSOR NO MESTRADO EM SISTEMAS DE GESTÃO DA UNIVERSIDADE FE'
+2025-08-05 17:07:51,044 [INFO] Departamento 'CIN' encontrado (id=24).
+2025-08-05 17:07:51,249 [INFO] Documento inserido (id=44001) — título='ORGANIZAÇÃO E DISPONIBILIZAÇÃO DE UM ACERVO SOBRE DIREITOS HUMANOS'
+2025-08-05 17:07:51,609 [INFO] Pessoa criada: ANGELA DELLA FLORA, CAMILA MONTEIRO DE BARROS (id=43899, vinculo=2)
+2025-08-05 17:08:01,591 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:08:01,798 [INFO] Documento inserido (id=44002) — título='PROJETO INCLUIR: ENSINO DE LÍNGUA ESPANHOLA NA COMUNIDADE SERRINHA - CASA SÃO JO'
+2025-08-05 17:08:04,459 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:08:04,663 [INFO] Documento inserido (id=44003) — título='PROMOÇÃO E FORTALECIMENTO DO ECOSSISTEMA DE INOVAÇÃO E OPERACIONALIZAÇÃO DO CENT'
+2025-08-05 17:08:21,355 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:08:21,560 [INFO] Documento inserido (id=44004) — título='CÁTEDRA SÉRGIO VIEIRA DE MELLO CSVM ACNUR ONU / NÚCLEO DE APOIO A IMIGRANTES E R'
+2025-08-05 17:08:28,921 [INFO] Departamento 'CIT' encontrado (id=117).
+2025-08-05 17:08:29,086 [INFO] Documento inserido (id=44005) — título='HISTÓRIA ILUSTRADA: RELATOS DA CULTURA E HISTÓRIA MBYA GUARANI SOB A ÓTICA INDÍG'
+2025-08-05 17:08:33,439 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:08:33,644 [INFO] Documento inserido (id=44006) — título='ATENDIMENTO ODONTOLÓGICO AO PACIENTE INFANTIL COM NECESSIDADES AVANÇADAS.'
+2025-08-05 17:08:38,943 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 17:08:39,110 [INFO] Documento inserido (id=44007) — título='CARTILHA DE EDUCAÇÃO PARA A SUSTENTABILIDADE PARA CLUBES DO PLANT FOR THE PLANET'
+2025-08-05 17:08:42,963 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:08:43,168 [INFO] Documento inserido (id=44008) — título='PLANO SIMPLIFICADO DE MELHORIAS DO SISTEMA DE ABASTECIMENTO DE ÁGUA E CONSCIENTI'
+2025-08-05 17:08:46,547 [INFO] Commit parcial — 2100 linhas processadas.
+2025-08-05 17:08:46,956 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:08:47,161 [INFO] Documento inserido (id=44009) — título='ORGANIZAÇÃO DE ANTOLOGIA: UM DEDO DE PROSA'
+2025-08-05 17:08:51,565 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:08:51,737 [INFO] Documento inserido (id=44010) — título='AÇÕES DE PROMOÇÃO DA SAÚDE E NUTRIÇÃO COM ESCOLARES DO NÚCLEO DE EDUCAÇÃO INFANT'
+2025-08-05 17:08:53,817 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 17:08:54,022 [INFO] Documento inserido (id=44011) — título='VIDEOAULAS DE PROBLEMAS RESOLVIDOS E COMENTADOS EM ELETROMAGNETISMO BÁSICO'
+2025-08-05 17:08:56,070 [WARNING] Departamento 'CFH' não encontrado.
+2025-08-05 17:08:56,275 [INFO] Documento inserido (id=44012) — título='BOSQUE DO CFH/UFSC: UM ESPAÇO SUSTENTÁVEL'
+2025-08-05 17:09:00,679 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:09:00,883 [INFO] Documento inserido (id=44013) — título='ENFERMAGEM DE REABILITAÇÃO SUBSIDIANDO O AUTOCUIDADO E EMPODERAMENTO NA TERCEIRA'
+2025-08-05 17:09:05,083 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 17:09:05,287 [INFO] Documento inserido (id=44014) — título='SAÚDE NA MELHOR IDADE: AÇÕES DE PROMOÇÃO E PREVENÇÃO EM IDOSOS'
+2025-08-05 17:09:09,159 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:09:09,297 [INFO] Documento inserido (id=44015) — título='CURSO DE FORMAÇÃO PERMANENTE: AÇÕES COLETIVAS, DEMOCRACIA PARTICIPATIVA E DIREIT'
+2025-08-05 17:09:09,570 [INFO] Pessoa criada: TANIA REGINA KRUGER, MARIA TERESA DOS SANTOS (id=43900, vinculo=2)
+2025-08-05 17:09:13,684 [INFO] Departamento 'DCS' encontrado (id=125).
+2025-08-05 17:09:13,889 [INFO] Documento inserido (id=44016) — título='OFICINAS DE ANATOMIA APLICADAS AO ENSINO FUNDAMENTAL EM ESCOLAS PÚBLICAS DA REGI'
+2025-08-05 17:09:27,510 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:09:27,717 [INFO] Documento inserido (id=44017) — título='PLANEJAMENTO DE CARDÁPIO, DESENVOLVIMENTO DE RECEITAS CULINÁRIAS E DEFINIÇÃO DE '
+2025-08-05 17:09:28,123 [INFO] Pessoa criada: GREYCE LUCI BERNARDO, ANA PAULA GINES GERALDO (id=43901, vinculo=2)
+2025-08-05 17:09:32,065 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:09:32,322 [INFO] Documento inserido (id=44018) — título='DO CAMPO À COZINHA: OFICINAS CULINÁRIAS PARA PROMOÇÃO DA ALIMENTAÇÃO SAUDÁVEL E '
+2025-08-05 17:09:38,944 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:09:39,088 [INFO] Documento inserido (id=44019) — título='ANÁLISE DA ATIVIDADE NO CONTEXTO DA EDUCAÇÃO'
+2025-08-05 17:09:41,026 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:09:41,231 [INFO] Documento inserido (id=44020) — título='LABORATÓRIO DE ESTUDOS EM DIREITO AQUAVIÁRIO E CIÊNCIA DA NAVEGAÇÃO'
+2025-08-05 17:09:43,646 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:09:43,808 [INFO] Documento inserido (id=44021) — título='O CONHECIMENTO COMEÇA NA ESCOLA- PALESTRA PARA A PREVENÇÃO AO CÂNCER DE PELE (20'
+2025-08-05 17:09:46,965 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 17:09:47,170 [INFO] Documento inserido (id=44022) — título='ESTRANGEIRANDO A LÍNGUA PORTUGUESA: ROMPENDO FRONTEIRAS E CONSTRUINDO DIÁLOGO'
+2025-08-05 17:09:51,782 [INFO] Departamento 'INE' encontrado (id=75).
+2025-08-05 17:09:51,983 [INFO] Documento inserido (id=44023) — título='PRODUÇÃO DE ESPECIFICAÇÃO DE REQUISITOS E PLANO DE PROJETO PARA MÓDULOS ADICIONA'
+2025-08-05 17:09:53,802 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:09:53,947 [INFO] Documento inserido (id=44024) — título='PROJETO BARCO SOLAR BABITONGA'
+2025-08-05 17:10:14,430 [WARNING] Departamento 'EAS' não encontrado.
+2025-08-05 17:10:14,565 [INFO] Documento inserido (id=44025) — título='PODCAST COMO MEIO PARA DIVULGAÇÃO DE CIÊNCIA E TECNOLOGIA'
+2025-08-05 17:10:15,814 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:10:15,951 [INFO] Documento inserido (id=44026) — título='DIÁLOGOS (IM)PERTINENTES EM EDUCAÇÃO: FORMAÇÃO E PROFISSÃO EM DEBATE'
+2025-08-05 17:10:17,877 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 17:10:18,097 [INFO] Documento inserido (id=44027) — título='MAPEANDO E PROMOVENDO AS ATIVIDADES E ESPAÇOS CULTURAIS NA REGIÃO DE ARARANGUÁ'
+2025-08-05 17:10:22,921 [WARNING] Departamento 'EDUFSC' não encontrado.
+2025-08-05 17:10:23,320 [INFO] Documento inserido (id=44028) — título='EXPOSIÇÕES SOBRE MEMÓRIA E DIREITOS HUMANOS'
+2025-08-05 17:10:26,807 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:10:27,006 [INFO] Documento inserido (id=44029) — título='DISSECAÇÃO DE CAVIDADES ABDOMINOPÉLVICAS PARA REALIZAÇÃO DE EXPOSIÇÕES ABERTAS À'
+2025-08-05 17:10:28,337 [INFO] Departamento 'ACL' encontrado (id=1).
+2025-08-05 17:10:28,499 [INFO] Documento inserido (id=44030) — título='MANUTENÇÃO, ATUALIZAÇÃO E PRODUÇÃO DE MATERIAL INSTRUCIONAL PARA A PLATAFORMA TE'
+2025-08-05 17:10:34,439 [WARNING] Departamento 'GR' não encontrado.
+2025-08-05 17:10:34,604 [INFO] Documento inserido (id=44031) — título='TRANSPOSIÇÃO DE CONTEÚDOS PARA MODALIDADE EAD – SENASP'
+2025-08-05 17:10:50,355 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:10:50,559 [INFO] Documento inserido (id=44032) — título='EDUCAÇÃO DO CAMPO: INICIAÇÃO À DOCÊNCIA E FORMAÇÃO DE PROFESSORES NAS ESCOLAS BÁ'
+2025-08-05 17:10:59,673 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:10:59,878 [INFO] Documento inserido (id=44033) — título='VIVER-BEM COM PICS'
+2025-08-05 17:11:09,447 [INFO] Departamento 'SPO' encontrado (id=126).
+2025-08-05 17:11:09,580 [INFO] Documento inserido (id=44034) — título='ORGANIZAÇÃO DO DOSSIÊ TEMÁTICO SOCIOLOGIA DO JORNALISMO'
+2025-08-05 17:11:11,436 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:11:11,584 [INFO] Documento inserido (id=44035) — título='DIGITALIZAÇÃO DE EDIFÍCIOS PÚBLICOS'
+2025-08-05 17:11:21,384 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:11:21,588 [INFO] Documento inserido (id=44036) — título='ENDODONTIA CLÍNICA'
+2025-08-05 17:11:31,920 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 17:11:32,056 [INFO] Documento inserido (id=44037) — título='SARAU SOCIOECONÔMICO'
+2025-08-05 17:11:34,491 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:11:34,696 [INFO] Documento inserido (id=44038) — título='MONITORAMENTO HIDROLÓGICO NA BACIA DO CAMPUS DA UFSC'
+2025-08-05 17:11:38,280 [WARNING] Departamento 'SETIC' não encontrado.
+2025-08-05 17:11:38,485 [INFO] Documento inserido (id=44039) — título='PROJETO MONIPÊ - PRESTAÇÃO DE SERVIÇOS ESPECIALIZADOS PARA MANUTENÇÃO, OPERAÇÃO '
+2025-08-05 17:11:41,865 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:11:42,002 [INFO] Documento inserido (id=44040) — título='ATENDIMENTO A PACIENTES COM ALTERAÇÕES DO COMPLEXO BUCOMAXILOFACIAL NO HOSPITAL '
+2025-08-05 17:11:43,750 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 17:11:44,091 [INFO] Documento inserido (id=44041) — título='QUANTUM TEAM - EQUIPE DE COMPETIÇÃO ROBÓTICA 2020'
+2025-08-05 17:11:53,949 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:11:54,153 [INFO] Documento inserido (id=44042) — título='VEÍCULOS PARA MARATONAS DE EFICIÊNCIA ENERGÉTICA - EQUIPE EFICEM 2020'
+2025-08-05 17:12:10,744 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:12:10,912 [INFO] Documento inserido (id=44043) — título='EQUIPE DE COMPETIÇÃO INFRATEC'
+2025-08-05 17:12:29,441 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:12:29,692 [INFO] Documento inserido (id=44044) — título='DEBATES TEMÁTICOS EM SEXUALIDADE E GÊNERO'
+2025-08-05 17:12:40,399 [WARNING] Departamento 'DCEE' não encontrado.
+2025-08-05 17:12:40,647 [INFO] Documento inserido (id=44045) — título='INSERÇÃO DA HISTÓRIA DA CIÊNCIA NA EDUCAÇÃO BÁSICA: UMA PROPOSTA DE CONSTRUÇÃO E'
+2025-08-05 17:12:43,616 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:12:43,820 [INFO] Documento inserido (id=44046) — título='MATERIOTECA SUSTENTÁVEL COM FOCO NO MOBILIÁRIO URBANO'
+2025-08-05 17:12:46,278 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:12:46,429 [INFO] Documento inserido (id=44047) — título='INTERVENÇÃO NEUROPSICOLÓGICA INFANTIL: GRUPOS DE ATENDIMENTO AOS TRANSTORNOS DO '
+2025-08-05 17:12:50,179 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:12:50,375 [INFO] Documento inserido (id=44048) — título='ESTIMULAÇÃO COGNITIVA NO HOSPITAL UNIVERSITÁRIO /UFSC-2020'
+2025-08-05 17:12:54,086 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:12:54,268 [INFO] Documento inserido (id=44049) — título='OLIMPÍADA MIRIM DE MATEMÁTICA'
+2025-08-05 17:12:56,928 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:12:57,086 [INFO] Documento inserido (id=44050) — título='DIAGNÓSTICO HISTOLÓGICO DE DOENÇAS DA BOCA: LABORATÓRIO DE PATOLOGIA BUCAL DA UF'
+2025-08-05 17:13:00,820 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:13:01,025 [INFO] Documento inserido (id=44051) — título='VELHO, EU? ENVELHECIMENTO HUMANO E PSICOLOGIA SOCIAL'
+2025-08-05 17:13:04,258 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:13:04,509 [INFO] Documento inserido (id=44052) — título='DESIGN APLICADO AOS PROCESSOS DE COMUNICAÇÃO DO MUSEU DE ARQUEOLOGIA E ETNOLOGIA'
+2025-08-05 17:13:07,170 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:13:07,374 [INFO] Documento inserido (id=44053) — título='PROGRAMA SAÚDE NA ESCOLA E A REDE DE ATENÇÃO À SAÚDE'
+2025-08-05 17:13:18,229 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:13:18,434 [INFO] Documento inserido (id=44054) — título='TREINAMENTOS PARA OLIMPÍADAS DE MATEMÁTICA'
+2025-08-05 17:13:25,295 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:13:25,604 [INFO] Documento inserido (id=44055) — título='DESENVOLVIMENTO DE MATERIAL DIDÁTICO DE PREPARAÇÃO PARA AS OLIMPÍADAS DE MATEMÁT'
+2025-08-05 17:13:29,903 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:13:30,129 [INFO] Documento inserido (id=44056) — título='PRODUÇÃO CONTÍNUA DE CONTEÚDO PARA O SITE DO OBSERVATÓRIO DA ÉTICA JORNALÍSTICA '
+2025-08-05 17:13:37,991 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 17:13:38,299 [INFO] Documento inserido (id=44057) — título='ESTUDO E IMPLEMENTAÇÃO DE MÉTODOS ÁGEIS E ANÁLISE DE RISCOS EM PROJETOS COMPLEXO'
+2025-08-05 17:13:40,346 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:13:40,569 [INFO] Documento inserido (id=44058) — título='CUIDADO À SAÚDE BUCAL DE IDOSOS COM CAPACIDADE FUNCIONAL LIMITADA'
+2025-08-05 17:13:48,333 [INFO] Departamento 'FSC' encontrado (id=72).
+2025-08-05 17:13:48,642 [INFO] Documento inserido (id=44059) — título='LABIDEX - LABORATÓRIO DE INSTRUMENTAÇÃO, DEMONSTRAÇÃO E EXPLORAÇÃO'
+2025-08-05 17:13:52,634 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:13:52,940 [INFO] Documento inserido (id=44060) — título='JOVENS E EDUCAÇÃO COM/NA A CIDADE'
+2025-08-05 17:13:58,572 [INFO] Departamento 'PTL' encontrado (id=102).
+2025-08-05 17:13:58,878 [INFO] Documento inserido (id=44061) — título='PROGRAMA DE EDUCAÇÃO E PREVENÇÃO EM SAÚDE BUCAL NO LAR RECANTO DO CARINHO, FLORI'
+2025-08-05 17:14:03,281 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:14:03,506 [INFO] Documento inserido (id=44062) — título='RÁDIO PONTO UFSC - TEMPORADA 2020'
+2025-08-05 17:14:06,148 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:14:06,367 [INFO] Documento inserido (id=44063) — título='OBSERVATÓRIO DE DIREITOS HUMANOS: MAPEAMENTO DOS ATORES DE DEFESA DOS DIREITOS H'
+2025-08-05 17:14:18,742 [INFO] Departamento 'CIN' encontrado (id=24).
+2025-08-05 17:14:19,049 [INFO] Documento inserido (id=44064) — título='CONSERVAÇÃO, TRANSCRIÇÃO E DIGITALIZAÇÃO DOS MANUSCRITOS DAS COLÔNIAS DE BLUMENA'
+2025-08-05 17:14:22,401 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:14:22,633 [INFO] Documento inserido (id=44065) — título='EDUCAÇÃO AMBIENTAL PARA A IMPLEMENTAÇÃO DA COLETA SELETIVA SOLIDÁRIA NA UNIVERSI'
+2025-08-05 17:14:27,137 [INFO] Departamento 'MTM' encontrado (id=90).
+2025-08-05 17:14:27,342 [INFO] Documento inserido (id=44066) — título='OLIMPÍADAS REGIONAIS DE MATEMÁTICA'
+2025-08-05 17:14:31,847 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:14:32,052 [INFO] Documento inserido (id=44067) — título='EDUCAÇÃO AMBIENTAL NA UFSC'
+2025-08-05 17:14:37,376 [WARNING] Departamento 'NDI' não encontrado.
+2025-08-05 17:14:37,581 [INFO] Documento inserido (id=44068) — título='EDUCAÇÃO AMBIENTAL: REFLETINDO SOBRE A RELAÇÃO CRIANÇA E NATUREZA NA EDUCAÇÃO IN'
+2025-08-05 17:14:37,949 [INFO] Pessoa criada: JUCILAINE ZUCCO, CAROLINA SHIMOMURA SPINELLI (id=43902, vinculo=2)
+2025-08-05 17:14:43,920 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:14:44,089 [INFO] Documento inserido (id=44069) — título='LIOP "PROFISSÃO, CARREIRAS E PROJETOS DE VIDA": ESCOLHA, FORMAÇÃO, INSERÇÃO E PE'
+2025-08-05 17:14:48,425 [INFO] Departamento 'DET' encontrado (id=113).
+2025-08-05 17:14:48,642 [INFO] Documento inserido (id=44070) — título='REUSO E RECICLAGEM TÊXTIL COMO FORMA DE EDUCAÇÃO PARA A SUSTENTABILIDADE'
+2025-08-05 17:14:50,227 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:14:50,482 [INFO] Documento inserido (id=44071) — título='FORMAÇÃO CONTINUADA DE PROFISSIONAIS DAS POLÍTICAS DE ASSISTÊNCIA SOCIAL E SAÚDE'
+2025-08-05 17:14:56,432 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:14:56,583 [INFO] Documento inserido (id=44072) — título='PRÁTICAS DE EDIÇÃO PARA A REVISTA EJM'
+2025-08-05 17:15:08,553 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:15:08,811 [INFO] Documento inserido (id=44073) — título='REVISTA TEXTOS DE ECONOMIA (TEC): PUBLICAÇÃO E DISSEMINAÇÃO DO CONHECIMENTO EM E'
+2025-08-05 17:15:10,039 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:15:10,244 [INFO] Documento inserido (id=44074) — título='GRUPO REFLEXIVO PARA MÃES E PAIS POR ADOÇÃO - 2ª EDIÇÃO'
+2025-08-05 17:15:13,315 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:15:13,520 [INFO] Documento inserido (id=44075) — título='FORMAÇÃO CONTINUADA: ATUAÇÃO DA PSICOLOGIA EM CONTEXTOS EDUCATIVOS E DE ESCOLARI'
+2025-08-05 17:15:27,240 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:15:27,398 [INFO] Documento inserido (id=44076) — título='O REPOSITÓRIO DE CONTEÚDO DIGITAL (RCD): FONTES DE PESQUISA SOBRE HISTÓRIA DA ED'
+2025-08-05 17:15:29,493 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:15:29,700 [INFO] Documento inserido (id=44077) — título='DEPARTAMENTO DE SERVIÇO SOCIAL E CAMPOS DE ESTÁGIO: FORTALECIMENTO DA RELAÇÃO PO'
+2025-08-05 17:15:33,693 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:15:33,896 [INFO] Documento inserido (id=44078) — título='ODONTOLOGIA HOSPITALAR 2020: SUPORTE ODONTOLÓGICO PRE/TRANS E POS TRATAMENTO ONC'
+2025-08-05 17:15:39,271 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:15:39,528 [INFO] Documento inserido (id=44079) — título='TJUFSC O TELEJORNAL UNIVERSITÁRIO DIÁRIO DA UFSC - ANO 8'
+2025-08-05 17:15:43,456 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:15:43,623 [INFO] Documento inserido (id=44080) — título='CLÍNICA DE JUSTIÇA ECOLÓGICA'
+2025-08-05 17:15:49,571 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:15:49,965 [INFO] Documento inserido (id=44081) — título='OFICINAS DE INCLUSÃO DIGITAL, ESTIMULAÇÃO E REABILITAÇÃO COGNITIVA DE IDOSOS - O'
+2025-08-05 17:15:54,111 [INFO] Departamento 'QMC' encontrado (id=103).
+2025-08-05 17:15:54,272 [INFO] Documento inserido (id=44082) — título='ENSINO DE CIÊNCIAS POR INVESTIGAÇÃO POR MEIO DE AÇÕES DESENVOLVIDAS NO QUÍMIDEX '
+2025-08-05 17:15:58,474 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:15:58,675 [INFO] Documento inserido (id=44083) — título='REDE VER A CIDADE'
+2025-08-05 17:16:00,109 [WARNING] Departamento 'DCEE' não encontrado.
+2025-08-05 17:16:00,267 [INFO] Documento inserido (id=44084) — título='A INTERPRETAÇÃO DA LIBRAS NO ENSINO DA QUÍMICA E DA MATEMÁTICA: UM ESTUDO DOS SI'
+2025-08-05 17:16:03,536 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:16:03,795 [INFO] Documento inserido (id=44085) — título='DUNA2020 – ORGANIZAÇÃO DO VIII DESAFIO UNIVERSITÁRIO DE NAUTIDESIGN'
+2025-08-05 17:16:16,645 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:16:16,799 [INFO] Documento inserido (id=44086) — título='COTIDIANO UFSC'
+2025-08-05 17:16:19,418 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:16:19,666 [INFO] Documento inserido (id=44087) — título='PARTICIPA NETI'
+2025-08-05 17:16:24,274 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:16:24,581 [INFO] Documento inserido (id=44088) — título='ATUAÇÃO PROFISSIONAL EM PSICOLOGIA EDUCACIONAL NA EDUCAÇÃO INFANTIL II'
+2025-08-05 17:16:26,629 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:16:26,833 [INFO] Documento inserido (id=44089) — título='PRÁTICAS EDUCATIVAS DE PRIMEIROS SOCORROS NO AMBIENTE ESCOLAR E COMUNITÁRIO'
+2025-08-05 17:16:30,099 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:16:30,315 [INFO] Documento inserido (id=44090) — título='REALIDADE AUMENTADA NO ENSINO DE CIÊNCIAS'
+2025-08-05 17:16:47,210 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:16:47,365 [INFO] Documento inserido (id=44091) — título='FORMAÇÃO CONTINUADA DE PROFESSORES: IMPLICAÇÕES DO CURRÍCULO DO TERRITÓRIO CATAR'
+2025-08-05 17:16:51,204 [INFO] Departamento 'EMB' encontrado (id=57).
+2025-08-05 17:16:51,362 [INFO] Documento inserido (id=44092) — título='THINK TANK - CRIANDO O FUTURO - EDIÇÃO 2020'
+2025-08-05 17:16:53,763 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:16:53,968 [INFO] Documento inserido (id=44093) — título='PROGRAMA DE INTERVENÇÃO PSICOLÓGICA PARA PROMOÇÃO DA PARENTALIDADE POSITIVA III'
+2025-08-05 17:17:04,822 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:17:05,027 [INFO] Documento inserido (id=44094) — título='AÇÕES INTERDISCIPLINARES DE ENSINO TECNOLÓGICO PARA ESTUDANTES DO ENSINO FUNDAME'
+2025-08-05 17:17:07,689 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:17:07,859 [INFO] Documento inserido (id=44095) — título='A PERMANÊNCIA INDÍGENA NA UNIVERSIDADE: O PROCESSO PARTICIPATIVO PARA O PROJETO '
+2025-08-05 17:17:13,526 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:17:13,731 [INFO] Documento inserido (id=44096) — título='EDITORAÇÃO DA REVISTA MIX SUSTENTÁVEL 2020'
+2025-08-05 17:17:16,086 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:17:16,291 [INFO] Documento inserido (id=44097) — título='EDUCAÇÃO PERMANENTE EM ACUPUNTURA NA REDE MUNICIPAL DE SAÚDE DE FLORIANÓPOLIS'
+2025-08-05 17:17:21,301 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:17:21,506 [INFO] Documento inserido (id=44098) — título='PROJETO CINEDEBATE'
+2025-08-05 17:17:30,012 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:17:30,217 [INFO] Documento inserido (id=44099) — título='PORTUGUÊS COMO LÍNGUA DE ACOLHIMENTO A IMIGRANTES E REFUGIADOS'
+2025-08-05 17:17:32,879 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:17:33,084 [INFO] Documento inserido (id=44100) — título='REAS PARA A RUA: LICENCIAMENTO E DIVULGAÇÃO DE RECURSOS EDUCACIONAIS ABERTOS UAB'
+2025-08-05 17:17:35,234 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:17:35,411 [INFO] Documento inserido (id=44101) — título='USO DE FERRAMENTAS AUDIOVISUAIS PARA A PROMOÇÃO DA EDUCAÇÃO AMBIENTAL NO DISTRIT'
+2025-08-05 17:17:38,529 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:17:38,687 [INFO] Documento inserido (id=44102) — título='FORMAÇÃO PROFISSIONAL PARA A CONSTRUÇÃO DE PRÁTICAS SOCIAIS INCLUSIVAS'
+2025-08-05 17:17:45,166 [INFO] Departamento 'ECZ' encontrado (id=47).
+2025-08-05 17:17:45,371 [INFO] Documento inserido (id=44103) — título='DESMITIFICANDO TUBARÕES E RAIAS PARA EDUCAR E CONSERVAR: ANO 6'
+2025-08-05 17:17:47,829 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:17:48,034 [INFO] Documento inserido (id=44104) — título='REVISTA ACADÊMICA DA GRADUAÇÃO EM DIREITO DA UFSC – REVISTA AVANT'
+2025-08-05 17:17:57,556 [INFO] Departamento 'ECZ' encontrado (id=47).
+2025-08-05 17:17:57,761 [INFO] Documento inserido (id=44105) — título='POPULARIZAÇÃO DO CONHECIMENTO DA BIODIVERSIDADE MARINHA BRASILEIRA ATRAVÉS DA PR'
+2025-08-05 17:18:01,652 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:18:01,857 [INFO] Documento inserido (id=44106) — título='PROJETOS DE VIDA E TRABALHO: DESENVOLVIMENTO DE CARREIRA E APOSENTADORIA’ – LIOP'
+2025-08-05 17:18:06,260 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:18:06,412 [INFO] Documento inserido (id=44107) — título='AÇÕES EM SAÚDE E ENFERMAGEM PARA AS PESSOAS COM ESTOMAS INTESTINAIS: DESENVOLVIM'
+2025-08-05 17:18:11,409 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:18:11,585 [INFO] Documento inserido (id=44108) — título='CONSCIÊNCIA ALIMENTAR: UM PROCESSO DE CONEXÃO ENTRE O AMBIENTE, OS CORPOS E AS M'
+2025-08-05 17:18:13,530 [INFO] Commit parcial — 2200 linhas processadas.
+2025-08-05 17:18:13,916 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 17:18:14,146 [INFO] Documento inserido (id=44109) — título='DESENVOLVIMENTO DO SISTEMA DE SUSPENSÃO DE UM VEÍCULO DE FÓRMULA SAE JUNTO À EQU'
+2025-08-05 17:18:17,934 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:18:18,138 [INFO] Documento inserido (id=44110) — título='PSICOLOGIA AMBIENTAL E BEM-ESTAR NAS INSTITUIÇÕES'
+2025-08-05 17:18:21,006 [INFO] Departamento 'EPS' encontrado (id=64).
+2025-08-05 17:18:21,210 [INFO] Documento inserido (id=44111) — título='COLETA, ORGANIZAÇÃO, ANÁLISE E INTERPRETAÇÃO DE DADOS DA DEFESA CIVIL DE SANTA C'
+2025-08-05 17:18:23,084 [WARNING] Departamento 'NDI' não encontrado.
+2025-08-05 17:18:23,262 [INFO] Documento inserido (id=44112) — título='NDI COMUNIDADE: AMPLIANDO A RELAÇÃO TEORIA E PRÁTICA NA FORMAÇÃO INICIAL E CONTI'
+2025-08-05 17:18:34,215 [INFO] Departamento 'GCN' encontrado (id=73).
+2025-08-05 17:18:34,420 [INFO] Documento inserido (id=44113) — título='APRENDER E ENSINAR: UNIDADES DE CONSERVAÇÃO E A FAUNA E FLORA DA ILHA DE SANTA C'
+2025-08-05 17:18:39,262 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:18:39,404 [INFO] Documento inserido (id=44114) — título='IUS COMMUNE - GRUPO INTERINSTITUCIONAL EM HISTÓRIA DA CULTURA JURÍDICA'
+2025-08-05 17:18:45,786 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:18:45,919 [INFO] Documento inserido (id=44115) — título='MÃOS À HORTA! NA ESCOLA'
+2025-08-05 17:18:47,834 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:18:48,039 [INFO] Documento inserido (id=44116) — título='QUALIDADE DA ÁGUA DA LAGOA DA CONCEIÇÃO: CONSCIENTIZAÇÃO E MONITORAMENTO HIDROLÓ'
+2025-08-05 17:18:52,542 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:18:52,675 [INFO] Documento inserido (id=44117) — título='PROGRAMA DE COMUNICAÇÃO – DEPARTAMENTO DE ENGENHARIA SANITÁRIA E AMBIENTAL (ENS)'
+2025-08-05 17:18:56,111 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:18:56,248 [INFO] Documento inserido (id=44118) — título='PARQUE CIDADE DAS ABELHAS: PLANEJANDO OS ESPAÇOS DE INTEGRAÇÃO ENTRE UNIVERSIDAD'
+2025-08-05 17:19:02,478 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:19:02,682 [INFO] Documento inserido (id=44119) — título='AMBIENTE VIRTUAL EM QUÍMICA VERDE PARA PROFESSORES DE QUÍMICA DAS ESCOLAS - QUIM'
+2025-08-05 17:19:04,628 [INFO] Departamento 'EES' encontrado (id=123).
+2025-08-05 17:19:04,832 [INFO] Documento inserido (id=44120) — título='ESCOLA DO SOL: CONHECIMENTO, FORMAÇÃO E CAPACITAÇÃO EM ENERGIA SOLAR FOTOVOLTAIC'
+2025-08-05 17:19:08,006 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:19:08,140 [INFO] Documento inserido (id=44121) — título='LÍNGUA ESPANHOLA NA EDUCAÇÃO BÁSICA (LEEB)'
+2025-08-05 17:19:10,157 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:19:10,295 [INFO] Documento inserido (id=44122) — título='APLICAÇÃO DE RECURSOS DIGITAIS NA ODONTOLOGIA'
+2025-08-05 17:19:17,325 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:19:17,530 [INFO] Documento inserido (id=44123) — título='DESMISTIFICANDO A ESCOLA AUSTRÍACA'
+2025-08-05 17:19:20,396 [INFO] Departamento 'ENS' encontrado (id=62).
+2025-08-05 17:19:20,602 [INFO] Documento inserido (id=44124) — título='MELHORIAS DO SISTEMA DE ABASTECIMENTO DE ÁGUA DA UFSC E CONSCIENTIZAÇÃO PARA O U'
+2025-08-05 17:19:23,402 [INFO] Departamento 'ECV' encontrado (id=46).
+2025-08-05 17:19:23,571 [INFO] Documento inserido (id=44125) — título='ESTRUTURAS EM ARQUITETURA: UM ENSINO NECESSÁRIO'
+2025-08-05 17:19:25,347 [INFO] Departamento 'QMC' encontrado (id=103).
+2025-08-05 17:19:25,516 [INFO] Documento inserido (id=44126) — título='QUIMIDEX: A DIVULGAÇÃO DA CIÊNCIA, EM AMBIENTES TEMÁTICOS, EXPLORANDO TEMAS DE N'
+2025-08-05 17:19:31,149 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:19:31,285 [INFO] Documento inserido (id=44127) — título='ORTOKIDS - ACOMPANHAMENTO CLÍNICO DOS PROCEDIMENTOS ORTODÔNTICOS REALIZADOS NAS '
+2025-08-05 17:19:34,733 [INFO] Departamento 'HST' encontrado (id=74).
+2025-08-05 17:19:34,938 [INFO] Documento inserido (id=44128) — título='LUGARES DA RELIGIÃO EM FLORIANÓPOLIS: ESPAÇO E CULTURA MATERIAL'
+2025-08-05 17:19:36,576 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 17:19:36,781 [INFO] Documento inserido (id=44129) — título='LIMIARES'
+2025-08-05 17:19:38,625 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:19:38,829 [INFO] Documento inserido (id=44130) — título='RECURSOS EDUCACIONAIS DIGITAIS AUTOFORMATIVOS PARA FORMAÇÃO DE PROFISSIONAIS DA '
+2025-08-05 17:20:27,776 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:20:27,981 [INFO] Documento inserido (id=44131) — título='GT PLANO DE PREVENÇÃO AO SUICÍDIO'
+2025-08-05 17:20:29,243 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:20:29,378 [INFO] Documento inserido (id=44132) — título='EXAME ULTRASSONOGRÁFICO ABDOMINAL  EM CÃES E GATOS'
+2025-08-05 17:20:31,156 [INFO] Departamento 'EED' encontrado (id=50).
+2025-08-05 17:20:31,291 [INFO] Documento inserido (id=44133) — título='GRUPO DE ESTUDOS E PESQUISAS CURRÍCULO - ITINERA'
+2025-08-05 17:20:32,794 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:20:32,927 [INFO] Documento inserido (id=44134) — título='CASOTECA SAÚDE DO TRABALHADOR: CONSTRUINDO ESPAÇOS DE INTERLOCUÇÃO'
+2025-08-05 17:20:34,085 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:20:34,477 [INFO] Documento inserido (id=44135) — título='JOGO DIGITAL: ALÉM DAS TORRES'
+2025-08-05 17:20:39,655 [INFO] Departamento 'AQI' encontrado (id=6).
+2025-08-05 17:20:39,860 [INFO] Documento inserido (id=44136) — título='PREVENÇÃO E COMBATE À INCÊNDIOS NA ESTAÇÃO DE MARICULTURA ELPÍDIO BELTRAME - EME'
+2025-08-05 17:20:42,624 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 17:20:42,829 [INFO] Documento inserido (id=44137) — título='REVISTA BIOTEMAS'
+2025-08-05 17:20:47,744 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:20:47,882 [INFO] Documento inserido (id=44138) — título='"UBUNTU - EXISTIR COLETIVAMENTE ATRAVÉS DA CONSCIÊNCIA INTERSECCIONAL ( CLASSE, '
+2025-08-05 17:20:51,590 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:20:51,725 [INFO] Documento inserido (id=44139) — título='PROLÍMPICO'
+2025-08-05 17:20:53,370 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 17:20:53,581 [INFO] Documento inserido (id=44140) — título='PROGRAMA DE ACOLHIMENTO DE CALOUROS'
+2025-08-05 17:20:55,936 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:20:56,141 [INFO] Documento inserido (id=44141) — título='LIVING LAB WAZE CARPOOL'
+2025-08-05 17:20:57,370 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:20:57,677 [INFO] Documento inserido (id=44142) — título='PRODUÇÃO E USO DE VIDEOAULAS NA PRÁTICA DOCENTE PARA AS DISCIPLINAS DE MATEMÁTIC'
+2025-08-05 17:21:01,569 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:21:01,773 [INFO] Documento inserido (id=44143) — título='ACORDO DE COOPERAÇÃO ACADÊMICO CULTURAL BRASIL-ARGENTINA “PROJETO CÓRDOBA”'
+2025-08-05 17:21:05,357 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:21:05,506 [INFO] Documento inserido (id=44144) — título='COMISSÃO DE ASSESSORIA À MATERNIDADE DO HOSPITAL UNIVERSITARIO - COMATER'
+2025-08-05 17:21:07,303 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:21:07,508 [INFO] Documento inserido (id=44145) — título='COORDENAÇÃO PROGRAMA DE INICIAÇÃO CIENTÍFICA JR - OBMEP'
+2025-08-05 17:21:08,839 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:21:09,044 [INFO] Documento inserido (id=44146) — título='COORDENAÇÃO DO PROGRAMA MENTORES'
+2025-08-05 17:21:10,273 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:21:10,409 [INFO] Documento inserido (id=44147) — título='COORDENAÇÃO DO PROGRAMA OBMEP NA ESCOLA'
+2025-08-05 17:21:11,706 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:21:11,911 [INFO] Documento inserido (id=44148) — título='COORDENAÇÃO DO PROGRAMA MENTORES - OBMEP'
+2025-08-05 17:21:13,242 [INFO] Departamento 'MAT' encontrado (id=116).
+2025-08-05 17:21:13,391 [INFO] Documento inserido (id=44149) — título='COORDENAÇÃO DO PIC'
+2025-08-05 17:21:14,534 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 17:21:14,675 [INFO] Documento inserido (id=44150) — título='GRUPO DE DISCUSSÃO DE GENÉTICA E FISIOLOGIA DE MICRORGANISMOS'
+2025-08-05 17:21:20,615 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:21:20,820 [INFO] Documento inserido (id=44151) — título='MAPEAMENTO E DIAGNÓSTICO PARA ORQUESTRAÇÃO DO ECOSSISTEMA DE INOVAÇÃO DE SÃO BEN'
+2025-08-05 17:21:21,979 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:21:22,112 [INFO] Documento inserido (id=44152) — título='TREINAMENTO PROFISSIONAL EM ENDODONTIA'
+2025-08-05 17:21:34,022 [INFO] Departamento 'AQI' encontrado (id=6).
+2025-08-05 17:21:34,165 [INFO] Documento inserido (id=44153) — título='IV MOSTRA DE PESQUISA CIENTÍFICA'
+2025-08-05 17:21:36,213 [WARNING] Departamento 'CCE' não encontrado.
+2025-08-05 17:21:36,347 [INFO] Documento inserido (id=44154) — título='CADA ENCONTRO EU CONTO UM CONTO'
+2025-08-05 17:21:38,392 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:21:38,638 [INFO] Documento inserido (id=44155) — título='O ENSINO DE DISCIPLINAS ESCOLARES EM LÍNGUA FRANCESA (DNL - DISCIPLINAS NÃO LING'
+2025-08-05 17:21:45,092 [INFO] Departamento 'EPS' encontrado (id=64).
+2025-08-05 17:21:45,396 [INFO] Documento inserido (id=44156) — título='DESENVOLVIMENTO DE AÇÕES PARA REDUZIR EVASÃO E REPROVAÇÃO NOS CURSOS DE GRADUAÇÃ'
+2025-08-05 17:21:48,980 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:21:49,185 [INFO] Documento inserido (id=44157) — título='ATUALIZAÇÃO EM ENFERMAGEM COM FOCO EM BIOSSEGURANÇA E ASSISTÊNCIA DE ENFERMAGEM '
+2025-08-05 17:22:54,517 [INFO] Departamento 'LLE' encontrado (id=79).
+2025-08-05 17:22:54,722 [INFO] Documento inserido (id=44158) — título='UM PASSEIO PELA LITERATURA COM VALERIO MAGRELLI'
+2025-08-05 17:22:56,565 [INFO] Departamento 'SPB' encontrado (id=108).
+2025-08-05 17:22:56,770 [INFO] Documento inserido (id=44159) — título='AFLIÇÕES CONTEMPORÂNEAS: DIÁLOGOS E SUPERAÇÕES'
+2025-08-05 17:23:02,607 [INFO] Departamento 'DEC' encontrado (id=124).
+2025-08-05 17:23:02,812 [INFO] Documento inserido (id=44160) — título='APOIO PEDAGÓGICO AOS/AS ALUNOS/AS E PROFESSORES/AS, DA REDE PÚBLICA DE ENSINO DO'
+2025-08-05 17:23:06,488 [INFO] Departamento 'ECV' encontrado (id=46).
+2025-08-05 17:23:06,703 [INFO] Documento inserido (id=44161) — título='ELABORAÇÃO DE APOSTILA DE ESTÁTICA PARA ENGENHARIA CIVIL'
+2025-08-05 17:23:12,540 [INFO] Departamento 'JOR' encontrado (id=78).
+2025-08-05 17:23:12,745 [INFO] Documento inserido (id=44162) — título='JORNALISMO E AÇÃO COMUNITÁRIA - ETAPA 1'
+2025-08-05 17:23:16,258 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:23:16,392 [INFO] Documento inserido (id=44163) — título='GRUPO COVID-19-SC/BRASIL - HTTPS://COVID19SC.GITHUB.IO/INDEX.HTML'
+2025-08-05 17:23:22,095 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:23:22,268 [INFO] Documento inserido (id=44164) — título='CONFECÇÃO DE MATERIAL SOBRE "GLÂNDULAS SALIVARES" PARA A PÁGINA ELETRÔNICA HTTP:'
+2025-08-05 17:23:23,473 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:23:23,702 [INFO] Documento inserido (id=44165) — título='ELABORAÇÃO DE CONTEÚDOS CONCERNENTES À INTERFACE ENTRE LINGUAGENS E PEQUENA INFÂ'
+2025-08-05 17:23:25,136 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 17:23:25,340 [INFO] Documento inserido (id=44166) — título='GEAS - GRUPO DE ESTUDOS SOBRE ANIMAIS SELVAGENS'
+2025-08-05 17:23:27,696 [INFO] Departamento 'MTM' encontrado (id=90).
+2025-08-05 17:23:27,900 [INFO] Documento inserido (id=44167) — título='MATEMÁTICA DAS EPIDEMIAS'
+2025-08-05 17:23:29,232 [WARNING] Departamento 'PROEX' não encontrado.
+2025-08-05 17:23:29,366 [INFO] Documento inserido (id=44168) — título='NETI-EJA: DE OLHO NA INFORMAÇÃO!'
+2025-08-05 17:23:33,328 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:23:33,533 [INFO] Documento inserido (id=44169) — título='SALA DE SITUAÇÃO DIGITAL SGB_COVID: RELATÓRIOS DE ANÁLISES DOS RESULTADOS DA MAT'
+2025-08-05 17:23:35,991 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:23:36,195 [INFO] Documento inserido (id=44170) — título='REVISTA AVANT - SEMESTRE 2020.2'
+2025-08-05 17:23:46,333 [INFO] Departamento 'FIL' encontrado (id=68).
+2025-08-05 17:23:46,538 [INFO] Documento inserido (id=44171) — título='UMA FILÓSOFA POR MÊS'
+2025-08-05 17:23:53,911 [INFO] Departamento 'EEL' encontrado (id=51).
+2025-08-05 17:23:54,115 [INFO] Documento inserido (id=44172) — título='CANCELAMENTO DE ECO DE LINHA'
+2025-08-05 17:23:55,960 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 17:23:56,143 [INFO] Documento inserido (id=44173) — título='AUDIOMETER SIMULATOR FOR REMOTE EDUCATION'
+2025-08-05 17:24:00,157 [INFO] Departamento 'ARQ' encontrado (id=8).
+2025-08-05 17:24:00,362 [INFO] Documento inserido (id=44174) — título='POSTO SALVA VIDAS - PRAIA DA GALHETA'
+2025-08-05 17:24:03,499 [WARNING] Departamento 'SECARTE' não encontrado.
+2025-08-05 17:24:03,741 [INFO] Documento inserido (id=44175) — título='GUIAMENTO VIRTUAL NA FORTALEZA DE SÃO JOSÉ – FLORIANÓPOLIS, SANTA CATARINA. BRAS'
+2025-08-05 17:24:07,419 [INFO] Departamento 'CAD' encontrado (id=16).
+2025-08-05 17:24:07,553 [INFO] Documento inserido (id=44176) — título='WEBINÁRIOS LEGADO RECTORAL'
+2025-08-05 17:24:09,784 [INFO] Departamento 'ECZ' encontrado (id=47).
+2025-08-05 17:24:09,990 [INFO] Documento inserido (id=44177) — título='VELEJANDO NA CIÊNCIA'
+2025-08-05 17:24:11,729 [INFO] Departamento 'EMC' encontrado (id=58).
+2025-08-05 17:24:11,925 [INFO] Documento inserido (id=44178) — título='NAVEGANDO PELA TECNOLOGIA COM O VELEIRO ECO'
+2025-08-05 17:24:13,981 [INFO] Departamento 'BEG' encontrado (id=10).
+2025-08-05 17:24:14,115 [INFO] Documento inserido (id=44179) — título='GATO POR LEBRE: IDENTIFICAÇÃO MOLECULAR (BARCODE) DE FRAUDES EM ANIMAIS COMERCIA'
+2025-08-05 17:24:18,007 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 17:24:18,180 [INFO] Documento inserido (id=44180) — título='ASSIMETRIA – FESTIVAL UNIVERSITÁRIO DE CINEMA E AUDIOVISUAL'
+2025-08-05 17:24:21,520 [INFO] Departamento 'ART' encontrado (id=118).
+2025-08-05 17:24:21,662 [INFO] Documento inserido (id=44181) — título='FÓRUM PERMANENTE DE ESTUDOS SOBRE AS ARTES NEGRAS DA CENA, HISTÓRIA E CULTURA AF'
+2025-08-05 17:24:25,964 [INFO] Departamento 'AQI' encontrado (id=6).
+2025-08-05 17:24:26,102 [INFO] Documento inserido (id=44182) — título='DESENVOLVIMENTO DE UM SISTEMA DE INFORMAÇÃO GERENCIAL NO LABORATÓRIO DE MOLUSCOS'
+2025-08-05 17:24:28,234 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:24:28,370 [INFO] Documento inserido (id=44183) — título='ATENÇÃO ÀS CRIANÇAS COM HIPOMINERALIZAÇÃO MOLAR INCISIVO'
+2025-08-05 17:24:32,630 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:24:32,764 [INFO] Documento inserido (id=44184) — título='COMISSÃO DE COMUNICAÇÃO PARA O INSTITUTO DE ESTUDOS DE GÊNERO: GESTÃO 2020'
+2025-08-05 17:24:35,795 [INFO] Departamento 'CLC' encontrado (id=25).
+2025-08-05 17:24:35,928 [INFO] Documento inserido (id=44185) — título='PROJETO DE EXTENSÃO CIRURGIA GERAL E DO APARELHO DIGESTIVO'
+2025-08-05 17:24:39,498 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:24:39,632 [INFO] Documento inserido (id=44186) — título='NÓS PROPOMOS! CIDADANIA E INOVAÇÃO NA EDUCAÇÃO GEOGRÁFICA'
+2025-08-05 17:24:41,103 [INFO] Departamento 'FIT' encontrado (id=69).
+2025-08-05 17:24:41,236 [INFO] Documento inserido (id=44187) — título='AGRICULTURA URBANA: CONECTANDO CIÊNCIA, UNIVERSIDADE E EDUCAÇÃO BÁSICA VISANDO À'
+2025-08-05 17:24:44,207 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:24:44,352 [INFO] Documento inserido (id=44188) — título='ELABORAÇÃO DE MATERIAL INSTRUCIONAL SOBRE DIREITO AUTORAL E ENSINO NÃO PRESENCIA'
+2025-08-05 17:24:47,931 [INFO] Departamento 'DEF' encontrado (id=36).
+2025-08-05 17:24:48,066 [INFO] Documento inserido (id=44189) — título='ATLETISMO DESENVOLVIMENTO HUMANO E SAÚDE'
+2025-08-05 17:24:50,233 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:24:50,366 [INFO] Documento inserido (id=44190) — título='FORMAÇÃO EM SEGURANÇA ALIMENTAR E NUTRICIONAL E DIREITO HUMANO À ALIMENTAÇÃO ADE'
+2025-08-05 17:24:53,202 [INFO] Departamento 'EQA' encontrado (id=65).
+2025-08-05 17:24:53,406 [INFO] Documento inserido (id=44191) — título='REVISÃO "PEER REVIEW" DE MANUSCRITOS CIENTÍFICOS'
+2025-08-05 17:24:54,943 [INFO] Departamento 'FIL' encontrado (id=68).
+2025-08-05 17:24:55,093 [INFO] Documento inserido (id=44192) — título='INTENSIVO DE LEITURA: "POR UMA MORAL DA AMBIGÜIDADE" E "PIRRO E CINÉSIAS" DE BEA'
+2025-08-05 17:25:01,925 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:25:02,059 [INFO] Documento inserido (id=44193) — título='DIAGNÓSTICO E TRATAMENTO DE PACIENTES COM LESÃO ENDOPERIO'
+2025-08-05 17:25:11,941 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:25:12,160 [INFO] Documento inserido (id=44194) — título='ORGANIZAÇÃO, MEMÓRIA E TEMPO: PESQUISA, CURADORIA E PRODUÇÃO DE TUTORIAIS DE APL'
+2025-08-05 17:25:13,339 [INFO] Departamento 'ODT' encontrado (id=97).
+2025-08-05 17:25:13,479 [INFO] Documento inserido (id=44195) — título='JUNTA OFICIAL DE SAÚDE NA UNIDADE SIASS/HU 2020/1- PERÍCIA ODONTOLÓGICA'
+2025-08-05 17:25:14,707 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:25:14,841 [INFO] Documento inserido (id=44196) — título='VIDEOAULAS DE DESENHO TÉCNICO'
+2025-08-05 17:25:16,546 [INFO] Departamento 'OCN' encontrado (id=96).
+2025-08-05 17:25:16,694 [INFO] Documento inserido (id=44197) — título='EDUCAÇÃO AMBIENTAL MARINHO-COSTEIRA PARA A COMPREENSÃO DOS SERVIÇOS ECOSSISTÊMIC'
+2025-08-05 17:25:18,284 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:25:18,419 [INFO] Documento inserido (id=44198) — título='MINICURSOS EM LIBRAS NAS ASSOCIAÇÕES DE SURDOS'
+2025-08-05 17:25:19,922 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:25:20,055 [INFO] Documento inserido (id=44199) — título='AUXÍLIO NO DESENVOLVIMENTO DE INFOGRÁFICOS : REVISTA RBEG (2020)'
+2025-08-05 17:25:21,079 [WARNING] Departamento 'ENF' não encontrado.
+2025-08-05 17:25:21,213 [INFO] Documento inserido (id=44200) — título='LIGA ACADÊMICA DE ENFERMAGEM NEONATAL E PEDIÁTRICA: COMPARTILHANDO CONHECIMENTOS'
+2025-08-05 17:25:39,693 [INFO] Departamento 'EPS' encontrado (id=64).
+2025-08-05 17:25:39,828 [INFO] Documento inserido (id=44201) — título='QUALIFICAÇÃO DA ÁREA EXTERNA DE LAZER NA ASSOCIAÇÃO DE PAIS E AMIGOS DE AUTISTAS'
+2025-08-05 17:25:43,892 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:25:44,034 [INFO] Documento inserido (id=44202) — título='PET-MÍDIAS: INFORMAÇÃO E COMUNICAÇÃO (2ª EDIÇÃO/ 2020)'
+2025-08-05 17:25:52,589 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:25:52,800 [INFO] Documento inserido (id=44203) — título='PET-GRUPOS: INTERAÇÃO E ESTUDO (2ª EDIÇÃO/ 2020)'
+2025-08-05 17:26:01,812 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:26:01,948 [INFO] Documento inserido (id=44204) — título='NOCOES BASICAS DE ANATOMIA PARA VOLUNTARIOS DO NUCLEO ESPIRITA NOSSO LAR / CAPC '
+2025-08-05 17:26:03,758 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 17:26:03,963 [INFO] Documento inserido (id=44205) — título='MEU AMIGO LUSÓFONO III - UNIVERSITY OF SAN FRANCISCO E UNIVERSIDADE FEDERAL DE S'
+2025-08-05 17:26:09,287 [INFO] Departamento 'BEG' encontrado (id=10).
+2025-08-05 17:26:09,483 [INFO] Documento inserido (id=44206) — título='DESENVOLVIMENTO DE JOGOS DIGITAIS PARA O ENSINO DE GENÉTICA'
+2025-08-05 17:26:10,516 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:26:10,661 [INFO] Documento inserido (id=44207) — título='REPRESENTATIVIDADE DA UNIVERSIDADE FEDERAL DE SANTA CATARINA NO CONSELHO MUNICIP'
+2025-08-05 17:26:13,415 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:26:13,588 [INFO] Documento inserido (id=44208) — título='ORGANIZAÇÃO E ESCRITA DO LIVRO TEXTO "MECÂNICA MUSCULAR BÁSICA: DA ESTRUTURA SUB'
+2025-08-05 17:26:14,817 [INFO] Commit parcial — 2300 linhas processadas.
+2025-08-05 17:26:15,227 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:26:15,361 [INFO] Documento inserido (id=44209) — título='MECANISMOS E COMPONENTES PARA O DESIGN DE PRODUTO'
+2025-08-05 17:26:17,070 [WARNING] Departamento 'BU' não encontrado.
+2025-08-05 17:26:17,275 [INFO] Documento inserido (id=44210) — título='HISTÓRIAS DO COTIDIANO'
+2025-08-05 17:26:19,252 [INFO] Departamento 'EGC' encontrado (id=54).
+2025-08-05 17:26:19,387 [INFO] Documento inserido (id=44211) — título='PROGRAMA DE INOVAÇÃO DO TRIBUNAL REGIONAL DO TRABALHO DA 12ª REGIÃO: INOVA TRT-S'
+2025-08-05 17:26:24,989 [INFO] Departamento 'MEN' encontrado (id=85).
+2025-08-05 17:26:25,160 [INFO] Documento inserido (id=44212) — título='PODCAST "ENSINO EM TEMPOS CRÍTICOS"'
+2025-08-05 17:26:27,372 [INFO] Departamento 'NTR' encontrado (id=94).
+2025-08-05 17:26:27,515 [INFO] Documento inserido (id=44213) — título='LET'S TALK - VAMOS CONVERSAR'
+2025-08-05 17:26:30,047 [WARNING] Departamento 'FONO' não encontrado.
+2025-08-05 17:26:30,280 [INFO] Documento inserido (id=44214) — título='GRUPO DE ESTUDOS EM AUDIOLOGIA – ENFOQUE AMBIENTAL E OCUPACIONAL'
+2025-08-05 17:26:33,762 [INFO] Departamento 'PSI' encontrado (id=101).
+2025-08-05 17:26:33,897 [INFO] Documento inserido (id=44215) — título='NEUROACADEMIA: EXERCÍCIOS PARA O CÉREBRO COM AS NEUROTECNOLOGIAS'
+2025-08-05 17:26:34,991 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:26:35,196 [INFO] Documento inserido (id=44216) — título='QUIMIOTERAPIA ANTINEOPLÁSICA EM CÃES E GATOS'
+2025-08-05 17:26:37,756 [INFO] Departamento 'DSS' encontrado (id=44).
+2025-08-05 17:26:37,960 [INFO] Documento inserido (id=44217) — título='PROJETO WEB EDUCAÇÃO SEXUAL'
+2025-08-05 17:26:49,020 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:26:49,225 [INFO] Documento inserido (id=44218) — título='ACOMPANHAMENTO DIURNO DE PACIENTES CANINOS E FELINOS'
+2025-08-05 17:26:55,731 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:26:55,871 [INFO] Documento inserido (id=44219) — título='BOAS PRÁTICAS DE TRADUÇÃO DE LIBRAS EM VÍDEO: DO ROTEIRO À EDIÇÃO'
+2025-08-05 17:26:57,960 [WARNING] Departamento 'DEBSU' não encontrado.
+2025-08-05 17:26:58,134 [INFO] Documento inserido (id=44220) — título='REIKI SOLIDÁRIO'
+2025-08-05 17:27:01,340 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:27:01,513 [INFO] Documento inserido (id=44221) — título='PET-IDIOMAS: CURSOS DE LÍNGUAS E CURSOS DE FORMAÇÃO (2ª EDIÇÃO/ 2020)'
+2025-08-05 17:27:10,730 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:27:10,917 [INFO] Documento inserido (id=44222) — título='PET-GESTÃO: TUTORIA E COOPERAÇÃO (2ª EDIÇÃO/ 2020)'
+2025-08-05 17:27:20,356 [INFO] Departamento 'MOR' encontrado (id=89).
+2025-08-05 17:27:20,560 [INFO] Documento inserido (id=44223) — título='MORFOLOGIA PRÁTICA APLICADA DOS APARELHOS LOCOMOTOR E CARDIORRESPIRATÓRIO PARA A'
+2025-08-05 17:27:24,191 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:27:24,349 [INFO] Documento inserido (id=44224) — título='CONTAÇÃO DE HISTÓRIAS EM LIBRAS E PORTUGUÊS'
+2025-08-05 17:27:29,162 [INFO] Departamento 'LSB' encontrado (id=81).
+2025-08-05 17:27:29,296 [INFO] Documento inserido (id=44225) — título='PET-EVENTOS: PLANEJAMENTO E ORGANIZAÇÃO (2ª EDIÇÃO/ 2020)'
+2025-08-05 17:27:39,137 [WARNING] Departamento 'CTC' não encontrado.
+2025-08-05 17:27:39,343 [INFO] Documento inserido (id=44226) — título='V WORK WEEK'
+2025-08-05 17:27:40,776 [WARNING] Departamento 'CA' não encontrado.
+2025-08-05 17:27:40,980 [INFO] Documento inserido (id=44227) — título='CHUÁ - ESPORTE NO CA'
+2025-08-05 17:27:44,216 [INFO] Departamento 'MIP' encontrado (id=87).
+2025-08-05 17:27:44,349 [INFO] Documento inserido (id=44228) — título='SISTEMA PARA VERIFICAÇÃO CURRICULAR PARA ESTUDANTES DE CIÊNCIAS BIOLÓGICAS DA UF'
+2025-08-05 17:27:46,776 [WARNING] Departamento 'DLLV' não encontrado.
+2025-08-05 17:27:46,981 [INFO] Documento inserido (id=44229) — título='FUNDAMENTOS EDUCACIONAIS: IMPLICAÇÕES PARA A EDUCAÇÃO LINGUÍSTICA'
+2025-08-05 17:28:00,593 [INFO] Departamento 'CNM' encontrado (id=29).
+2025-08-05 17:28:00,726 [INFO] Documento inserido (id=44230) — título='CONVERSAS SOBRE DIREITOS HUMANOS'
+2025-08-05 17:28:07,666 [INFO] Departamento 'ECZ' encontrado (id=47).
+2025-08-05 17:28:07,871 [INFO] Documento inserido (id=44231) — título='PROJETO BROTAR: ENSINANDO E APRENDENDO EDUCAÇÃO AMBIENTAL'
+2025-08-05 17:28:16,783 [INFO] Departamento 'EGR' encontrado (id=55).
+2025-08-05 17:28:16,985 [INFO] Documento inserido (id=44232) — título='CONSULTORIA PARA A EMPRESA JUNIOR (UIPI) 2020_2'
+2025-08-05 17:28:29,223 [INFO] Departamento 'ECZ' encontrado (id=47).
+2025-08-05 17:28:29,358 [INFO] Documento inserido (id=44233) — título='PROGRAMA DE EDUCAÇÃO TUTORIAL DE CIÊNCIAS BIOLÓGICAS DA UFSC (PET BIOLOGIA)'
+2025-08-05 17:28:30,359 [INFO] Departamento 'EED' encontrado (id=50).
+2025-08-05 17:28:30,502 [INFO] Documento inserido (id=44234) — título='GRUPO DE ESTUDO MIGRAÇÃO E EDUCAÇÃO'
+2025-08-05 17:28:33,916 [WARNING] Departamento 'DABF' não encontrado.
+2025-08-05 17:28:34,051 [INFO] Documento inserido (id=44235) — título='GRUPO DE ESTUDOS EM HISTOLOGIA E PATOLOGIA (GEHISPA) 2020-2'
+2025-08-05 17:28:42,278 [INFO] Departamento 'DIR' encontrado (id=38).
+2025-08-05 17:28:42,412 [INFO] Documento inserido (id=44236) — título='GRUPO DE ESTUDOS EM SOCIOLOGIA DO DIREITO – SOCIODIR 2020-2 - NEOLIBERALISMO E N'

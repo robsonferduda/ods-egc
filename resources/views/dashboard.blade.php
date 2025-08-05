@@ -413,7 +413,7 @@
 
                 // Limpa PPG e Docente ao trocar centro
                 $('#ppg').empty().append('<option value="">Todos</option>');
-                $('#departamento').empty().append('<option value="">Selecione um docente</option>');
+                $('#departamento').empty().append('<option value="">Todos</option>');
             });
 
            
