@@ -46,12 +46,16 @@
 
             @switch($documento->id_tipo_documento)
               @case(1) {{-- Tese --}}
-              @case(3) {{-- Dissertação --}}
+                  {!! listaPorFuncao($porFuncao, 1, $rotulos) !!} {{-- Orientador --}}
+                  {!! listaPorFuncao($porFuncao, 2, $rotulos) !!} {{-- Aluno --}}
+                @break
+
+              @case(2) {{-- Dissertação --}}
                 {!! listaPorFuncao($porFuncao, 1, $rotulos) !!} {{-- Orientador --}}
                 {!! listaPorFuncao($porFuncao, 2, $rotulos) !!} {{-- Aluno --}}
                 @break
 
-              @case(2) {{-- Projeto de Extensão --}}
+              @case(4) {{-- Projeto de Extensão --}}
                 {!! listaPorFuncao($porFuncao, 3, $rotulos) !!} {{-- Coordenador --}}
                 {!! listaPorFuncao($porFuncao, 5, $rotulos) !!} {{-- Participante --}}
                 @break
