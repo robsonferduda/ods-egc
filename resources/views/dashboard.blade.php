@@ -361,12 +361,12 @@
 
             // PPGs
             $.ajax({
-                url: host + '/dados/ppgs',
+                url: host + '/dados/ppgs/todos',
                 type: 'GET',
                 success: function(data) {
                     $('#ppg').empty().append('<option value="">Todos</option>');
                     data.forEach(function(ppg) {
-                        $('#ppg').append(`<option value="${ppg.id}">${ppg.nm_curso_cur}</option>`);
+                        $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
                     });
                 }
             });
@@ -384,7 +384,9 @@
             });
 
             $('#centro').change(function() {
+
                 var centroId = $(this).val();
+
                 $.ajax({
                     url: host + '/dados/departamentos/centro/'+centroId,
                     type: 'GET',
@@ -397,25 +399,24 @@
                     }
                 });
 
-                // Limpa PPG e Docente ao trocar centro
-                $('#ppg').empty().append('<option value="">Todos</option>');
-                $('#docente').empty().append('<option value="">Selecione um docente</option>');
-            });
-
-            $('#centro').change(function() {
-                var centroId = $(this).val();
                 $.ajax({
-                    url: host + '/dados/ppgs',
+                    url: host + '/dados/ppgs/'+centroId,
                     type: 'GET',
                     data: { centro: centroId },
                     success: function(data) {
                         $('#ppg').empty().append('<option value="">Todos</option>');
                         data.forEach(function(ppg) {
-                            $('#ppg').append(`<option value="${ppg.id}">${ppg.nome}</option>`);
+                            $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
                         });
                     }
                 });
+
+                // Limpa PPG e Docente ao trocar centro
+                $('#ppg').empty().append('<option value="">Todos</option>');
+                $('#departamento').empty().append('<option value="">Selecione um docente</option>');
             });
+
+           
 
             $('#departamento').change(function() {
                 var departamentoId = $(this).val();

@@ -33,10 +33,15 @@ class DashboardController extends Controller
         return response()->json($departamentos);
     }
 
-    public function ppgs()
+    public function ppgs($centro)
     {
-        $departamentos = \App\PPG::orderBy('nm_curso_cur')->get(['id_ppg', 'nm_curso_cur']);
-        return response()->json($departamentos);
+        if ($centro == 'todos') {
+            $ppgs = \App\PPG::orderBy('nm_curso_cur')->get(['id_ppg', 'nm_curso_cur']);
+        }else{
+            $ppgs = \App\PPG::orderBy('nm_curso_cur')->where('cd_sigla_cen', $centro)->get(['id_ppg', 'nm_curso_cur']);
+        }        
+
+        return response()->json($ppgs);
     }
 
     public function docentes()
