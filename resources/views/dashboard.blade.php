@@ -159,7 +159,8 @@
             </div>
                 
             <div class="col-md-8">
-                <canvas id="chartjs-3" class="chartjs"></canvas>
+                <!-- <canvas id="chartjs-3" class="chartjs"></canvas> -->
+                <p>Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
             </div>
 
             <div class="col-md-12">

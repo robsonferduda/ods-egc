@@ -85,6 +85,27 @@ class DocenteController extends Controller
         return response()->json($dados);
     }
 
+    public function impactoMultidimensional($id)
+    {
+
+        $dimensoes = DB::table('documento_ods as d')
+        ->join('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
+        ->where('dp.id_pessoa_pes', $id)
+        ->select('d.id_dimensao', DB::raw('count(distinct d.id) as total'))
+        ->groupBy('d.id_dimensao')
+        ->pluck('total', 'id_dimensao')
+        ->toArray();
+
+        $totalDimensoes = 4;
+        $dimensoesAlcançadas = count($dimensoes);
+        $indice = $dimensoesAlcançadas / $totalDimensoes;
+
+        return response()->json([
+            'indice' => round($indice, 2),
+            'dimensoes' => $dimensoes
+        ]);
+    }
+
     public function getODS($id)
     {
 
