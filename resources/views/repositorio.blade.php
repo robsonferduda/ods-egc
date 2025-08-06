@@ -52,7 +52,7 @@
         <h6>UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
         <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12" style="display: grid; justify-content: center !important;">
         {{ $documentos->appends(request()->query())->links() }}
     </div>
     <div class="col-md-12"> 
@@ -73,7 +73,7 @@
             @endforeach
         </div>
     </div>
-    <div class="col-md-12 mb-5">
+    <div class="col-md-12 mb-5" style="display: grid; justify-content: center !important;">
         {{ $documentos->appends(request()->query())->links() }}
     </div>
 </div>
