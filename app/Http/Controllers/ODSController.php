@@ -38,6 +38,37 @@ class ODSController extends Controller
         $ppg = $request->input('ppg');
         $docente = $request->input('docente');
 
+        switch ($request->dimensao) {
+            
+            case 'pos-graduacao':
+                $dimensao =    array(6);
+                break;
+
+            case 'pesquisa':
+                $dimensao =    array(5);
+                break;
+
+            case 'extensao':
+                $dimensao =    array(2);
+                break;            
+            
+            case 'gestao':
+                $dimensao =    array(3);
+                break;
+
+            case 'inovacao':
+                $dimensao =    array(4);
+                break;
+
+            case 'ensino':
+                $dimensao =    array(1);
+                break;
+                
+            default:
+                $dimensao =    array(1,2,3,4,5,6);
+                break;
+        }
+
         $documentos = Documento::query()
             ->when($ano_inicio, function ($query) use ($ano_inicio) {
                 return $query->where('ano', '>=', $ano_inicio);
@@ -50,6 +81,9 @@ class ODSController extends Controller
             })
             ->when($docente, function ($query) use ($docente) {
                 return $query->where('nm_orientador', $docente);
+            })
+            ->when($dimensao, function ($query) use ($dimensao) {
+                return $query->whereIn('id_dimensao', $dimensao);
             })
             ->paginate(10);
 
