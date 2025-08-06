@@ -52,6 +52,9 @@
         <h6>UNIVERSIDADE FEDERAL DE SANTA CATARINA</h6>
         <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
     </div>
+    <div class="col-md-12">
+        {{ $documentos->appends(request()->query())->links() }}
+    </div>
     <div class="col-md-12"> 
         <div class="mb-1" id="lista_documentos">
             @foreach($documentos as $doc)
@@ -68,11 +71,10 @@
                     </p>
                 </div>
             @endforeach
-
-            <div class="mt-3" style="text-align:center;">
-                {{ $documentos->appends(request()->query())->links() }}
-            </div>
         </div>
+    </div>
+    <div class="col-md-12">
+        {{ $documentos->appends(request()->query())->links() }}
     </div>
 </div>
 @endsection
