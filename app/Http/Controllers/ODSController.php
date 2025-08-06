@@ -6,6 +6,7 @@ use DB;
 use Auth;
 use App\Ods;
 use App\Analise;
+use App\Dimensao;
 use App\Pontuacao;
 use App\Avaliacao;
 use App\Documento;
