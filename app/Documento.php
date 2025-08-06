@@ -33,4 +33,9 @@ class Documento extends Model
     {
         return $this->hasOne('App\TipoDocumento', 'id_tipo_documento', 'id_tipo_documento');
     }
+
+    public function ods()
+    {
+        return $this->hasOne('App\Ods', 'cod', 'ods');
+    }
 }
