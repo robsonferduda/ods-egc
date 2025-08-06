@@ -91,49 +91,45 @@
 
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
+            
             var dimensao = $("#dimensao").val();
             var ods = $("#ods").val();
 
-            documentosAnalisados(dimensao, ods); 
-
-            $(document).on('change', '#dimensao', function() {
-                
-                var dimensao = $(this).val();
-                documentosAnalisados(dimensao, ods);
-                
-            });
-
-            $(document).on('change', '#ods', function() {
-                
-                var dimensao = $("#dimensao").val();
-                var ods = $(this).val();
-                documentosAnalisados(dimensao, ods);
-                
-            });
-
-            function documentosAnalisados(dimensao, ods){
-
-                $.ajax({
-                    url: host+'/dados/documentos/'+dimensao+'/ods/'+ods,
-                    type: 'GET',
-                    beforeSend: function() {
-                        
-                    },
-                    success: function(data) {
-
-                        $('#lista_documentos').empty();
-
-                        data.forEach(element => {
-                            
-                            $('#lista_documentos').append('<p class="mb-0"><strong>Título</strong>: '+element.titulo+'</p><p class="mt-1 mb-0"><strong> '+element.complemento+'</strong></p><p class="mt-0"><span class="badge badge-pill" style="background: '+element.cor+'"> ODS '+element.ods+'</span></p>');
+            $.ajax({
+                url: host+'/dados/ano',
+                type: 'GET',
+                dataType: "json",
+                beforeSend: function() {
+                    $('.painel').loader('show');
+                },
+                success: function(data) {
+                    if(!data) {
+                        Swal.fire({
+                            text: 'Erro ao carregar períodos',
+                            type: "warning",
+                            icon: "warning",
                         });
-                    },
-                    complete: function(){
-                        
+                        return;
                     }
-                });
 
-            }
+                    data.forEach(function(value, i) {
+                        let option = new Option(value.ano, value.ano);
+                        if(i == 0) option.setAttribute('selected', true);
+                        $('#ano_inicio').append(option);
+                    });
+
+                    data.forEach(function(value, i) {
+                        let option = new Option(value.ano, value.ano);
+                        if(i == (data.length -1)) option.setAttribute('selected', true);
+                        $('#ano_fim').append(option);
+                    });
+
+                    $(".btn-filtrar").trigger("click");
+                },
+                complete: function(){
+                    $('.painel').loader('hide');
+                }
+            }); 
 
         });
     </script>
