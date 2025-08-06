@@ -59,7 +59,7 @@
                     <p class="mb-0"><strong>Título</strong>: {{ $doc->titulo }}</p>
                     <p class="mt-1 mb-0"><strong>{{ $doc->dimensao->nome }} - {{ $doc->tipo->ds_tipo_documento }}</strong></p>
                     <p class="mt-0">
-                        <span class="badge badge-pill" style="background: {{ $doc->classificacao->cor }}">ODS {{ $doc->ods }}</span>
+                        <span class="badge badge-pill" style="background: {{ $doc->classificacao }}">ODS {{ $doc->classificacao }}</span>
                         <a href="{{ url('documentos/dimensao/'.$doc->id_dimensao.'/detalhes/'.$doc->id) }}" target="_blank">
                             <span class="badge badge-pill detalhes-documento_off" data-dimensao="{{ $doc->id_dimensao }}" data-id="{{ $doc->id }}" style="background: #adadad;">
                                 <i class="fa fa-bar-chart"></i> Detalhes
