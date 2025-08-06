@@ -20,20 +20,26 @@
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
                         <option value="todas">Todas</option>
-                        <option value="extensao">Extensão</option>
-                        <option value="pesquisa">Pesquisa</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-2">
                 <div class="form-group">
-                    <label>Ano</label>
-                    <select class="form-control" name="ano" id="ano" aria-label="Default select example">
+                    <label>Ano Inicial</label>
+                    <select class="form-control" name="ano_inicial" id="ano_inicial" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
                 </div>   
             </div>    
-            <div class="col-md-6"> 
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Ano Final</label>
+                    <select class="form-control" name="ano_final" id="ano_final" aria-label="Default select example">
+                        <option>Todos</option>
+                    </select>
+                </div>   
+            </div>   
+            <div class="col-md-4"> 
                 <div class="form-group">
                     <label>ODS</label>
                     <select class="form-control" name="ods" id="ods" aria-label="Default select example">
