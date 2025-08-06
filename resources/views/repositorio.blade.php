@@ -19,7 +19,10 @@
                 <div class="form-group">
                     <label>Dimensão</label>
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
-                        <option value="todas">Todas</option>
+                        <option value="0">Todas</option>
+                        @foreach($dimensoes_ies as $key => $dimensao)
+                            <option value="{{ $dimensao->apelido }}">{{ $dimensao->nome }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

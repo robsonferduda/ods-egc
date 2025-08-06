@@ -38,6 +38,8 @@ class ODSController extends Controller
         $ppg = $request->input('ppg');
         $docente = $request->input('docente');
 
+        $dimensoes_ies = Dimensao::orderBy('nome')->get();
+
         switch ($request->dimensao) {
             
             case 'pos-graduacao':
@@ -87,7 +89,7 @@ class ODSController extends Controller
             })
             ->paginate(10);
 
-        return view('repositorio', compact('ods','documentos'));
+        return view('repositorio', compact('ods','documentos','dimensoes_ies'));
     }
 
     public function getDadosOds($ods)
