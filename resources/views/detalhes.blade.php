@@ -20,7 +20,7 @@
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>  
 
             @php
-              // Mapeamento de funções (id => rótulo)
+              // Mapeamento de rótulos por id_funcao_fun
               $rotulos = [
                 1 => 'Orientador',
                 2 => 'Aluno',
@@ -29,15 +29,36 @@
                 5 => 'Participante',
               ];
 
-              // Agrupa os participantes por função (id)
+              // Iniciais do vínculo (vêm de pessoa_pes -> vinculo_vin.ds_vinculo_vin)
+              $iniciaisVinculo = [
+                'Docente'        => 'D',
+                'Discente'       => 'Di',
+                'Administrativo' => 'A',
+                'Externo'        => 'E',
+              ];
+
+              // Agrupar por função para renderizar por blocos
               $porFuncao = $participantes->groupBy('id_funcao_fun');
 
-              // Helpers de impressão rápida
-              function listaPorFuncao($porFuncao, $idFuncao, $rotulos) {
+              /**
+               * Renderiza uma <ul> de pessoas por função, colocando iniciais de vínculo
+               * apenas quando a função for "Participante" (id 5).
+               */
+              function listaPorFuncaoComIniciais($porFuncao, $idFuncao, $rotulos, $iniciaisVinculo) {
                   if (!isset($porFuncao[$idFuncao]) || $porFuncao[$idFuncao]->isEmpty()) return '';
-                  $html = '<h6 class="mt-1">'.e($rotulos[$idFuncao]).'</h6><ul class="mt-1 mb-1">';
+
+                  $html = '<h6 class="mt-3">'.e($rotulos[$idFuncao]).'</h6><ul>';
                   foreach ($porFuncao[$idFuncao] as $p) {
-                      $html .= '<li>'.e($p->ds_nome_pessoa).'</li>';
+                      $nome  = e($p->ds_nome_pessoa);
+                      // Se for Participante (id 5), anexa a inicial do vínculo, se houver
+                      if ((int)$idFuncao === 5) {
+                          $sigla = isset($p->ds_vinculo_vin) && isset($iniciaisVinculo[$p->ds_vinculo_vin])
+                              ? $iniciaisVinculo[$p->ds_vinculo_vin]
+                              : null;
+                          $html .= '<li>'.$nome.($sigla ? ' ('.e($sigla).')' : '').'</li>';
+                      } else {
+                          $html .= '<li>'.$nome.'</li>';
+                      }
                   }
                   $html .= '</ul>';
                   return $html;
@@ -46,28 +67,24 @@
 
             @switch($documento->id_tipo_documento)
               @case(1) {{-- Tese --}}
-                  {!! listaPorFuncao($porFuncao, 1, $rotulos) !!} {{-- Orientador --}}
-                  {!! listaPorFuncao($porFuncao, 2, $rotulos) !!} {{-- Aluno --}}
-                @break
-
               @case(2) {{-- Dissertação --}}
-                {!! listaPorFuncao($porFuncao, 1, $rotulos) !!} {{-- Orientador --}}
-                {!! listaPorFuncao($porFuncao, 2, $rotulos) !!} {{-- Aluno --}}
+                {!! listaPorFuncaoComIniciais($porFuncao, 1, $rotulos, $iniciaisVinculo) !!} {{-- Orientador --}}
+                {!! listaPorFuncaoComIniciais($porFuncao, 2, $rotulos, $iniciaisVinculo) !!} {{-- Aluno --}}
                 @break
 
               @case(4) {{-- Projeto de Extensão --}}
-                {!! listaPorFuncao($porFuncao, 3, $rotulos) !!} {{-- Coordenador --}}
-                {!! listaPorFuncao($porFuncao, 5, $rotulos) !!} {{-- Participante --}}
+                {!! listaPorFuncaoComIniciais($porFuncao, 3, $rotulos, $iniciaisVinculo) !!} {{-- Coordenador --}}
+                {!! listaPorFuncaoComIniciais($porFuncao, 5, $rotulos, $iniciaisVinculo) !!} {{-- Participante (com iniciais) --}}
                 @break
 
               @case(5) {{-- Patente --}}
-                {!! listaPorFuncao($porFuncao, 4, $rotulos) !!} {{-- Inventor --}}
+                {!! listaPorFuncaoComIniciais($porFuncao, 4, $rotulos, $iniciaisVinculo) !!} {{-- Inventor --}}
                 @break
 
               @default
-                {{-- Fallback: lista tudo que vier --}}
-                @foreach($porFuncao as $idFuncao => $colecao)
-                  {!! listaPorFuncao($porFuncao, $idFuncao, $rotulos) !!}
+                {{-- Fallback: mostra tudo que houver, participantes com iniciais --}}
+                @foreach($porFuncao as $idFunc => $colecao)
+                  {!! listaPorFuncaoComIniciais($porFuncao, $idFunc, $rotulos, $iniciaisVinculo) !!}
                 @endforeach
             @endswitch
 
