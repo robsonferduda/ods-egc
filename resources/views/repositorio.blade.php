@@ -115,13 +115,13 @@
                     data.forEach(function(value, i) {
                         let option = new Option(value.ano, value.ano);
                         if(i == 0) option.setAttribute('selected', true);
-                        $('#ano_inicio').append(option);
+                        $('#ano_inicial').append(option);
                     });
 
                     data.forEach(function(value, i) {
                         let option = new Option(value.ano, value.ano);
                         if(i == (data.length -1)) option.setAttribute('selected', true);
-                        $('#ano_fim').append(option);
+                        $('#ano_final').append(option);
                     });
 
                     $(".btn-filtrar").trigger("click");
