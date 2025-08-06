@@ -130,7 +130,9 @@
             </div>
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
-                <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
+                <h6>DOCUMENTOS ANALISADOS 
+                    <a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">VER TODOS</a>
+                </h6>
                 <div class="mb-1" id="lista_documentos"></div>
             </div>
 
@@ -236,6 +238,33 @@
         document.addEventListener("DOMContentLoaded", function () {
         
             var host =  $('meta[name="base-url"]').attr('content');
+
+            $('#ver-todos').on('click', function(e) {
+                e.preventDefault();
+
+                // Pegue os valores dos filtros
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var ano_inicio = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+                var tipo = $("#tipo").val();
+
+                // Monte a query string
+                var params = $.param({
+                    ies: ies,
+                    dimensao: dimensao,
+                    ano_inicio: ano_inicio,
+                    ano_fim: ano_fim,
+                    ppg: ppg,
+                    docente: docente,
+                    tipo: tipo
+                });
+
+                // Redirecione para a página de destino com os filtros
+                window.location.href = "{{ url('repositorio') }}" + "?" + params;
+            });
 
             $(document).on('change', '#docente', function() {
 

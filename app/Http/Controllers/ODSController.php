@@ -30,10 +30,30 @@ class ODSController extends Controller
         
     }
 
-    public function repositorio()
+    public function repositorio(Request $request)
     {
         $ods = Ods::orderBy('cod')->get();
-        return view('repositorio', compact('ods'));
+        $ano_inicio = $request->input('ano_inicio');
+        $ano_fim = $request->input('ano_fim');
+        $ppg = $request->input('ppg');
+        $docente = $request->input('docente');
+
+        $documentos = Documento::query()
+            ->when($ano_inicio, function ($query) use ($ano_inicio) {
+                return $query->where('ano', '>=', $ano_inicio);
+            })
+            ->when($ano_fim, function ($query) use ($ano_fim) {
+                return $query->where('ano', '<=', $ano_fim);
+            })
+            ->when($ppg, function ($query) use ($ppg) {
+                return $query->where('nm_programa', $ppg);
+            })
+            ->when($docente, function ($query) use ($docente) {
+                return $query->where('nm_orientador', $docente);
+            })
+            ->paginate(10);
+
+        return view('repositorio', compact('ods','documentos'));
     }
 
     public function getDadosOds($ods)
