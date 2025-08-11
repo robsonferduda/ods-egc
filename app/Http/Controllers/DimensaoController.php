@@ -43,10 +43,42 @@ class DimensaoController extends Controller
         $query = Documento::query();
 
         if ($dimensao && $dimensao != '0') {
+
+            switch ($request->dimensao) {
+            
+                case 'pos-graduacao':
+                    $dimensao =    array(6);
+                    break;
+
+                case 'pesquisa':
+                    $dimensao =    array(5);
+                    break;
+
+                case 'extensao':
+                    $dimensao =    array(2);
+                    break;            
+                
+                case 'gestao':
+                    $dimensao =    array(3);
+                    break;
+
+                case 'inovacao':
+                    $dimensao =    array(4);
+                    break;
+
+                case 'ensino':
+                    $dimensao =    array(1);
+                    break;
+                    
+                default:
+                    $dimensao =    array(1,2,3,4,5,6);
+                    break;
+            }
+
             $query->where('id_dimensao', $dimensao);
         }
 
-        if ($tipo && $tipo != '0') {
+        if ($tipo && $tipo != 'todos') {
             $query->where('id_tipo_documento', $tipo);
         }
 
@@ -62,7 +94,7 @@ class DimensaoController extends Controller
         } elseif ($ano_fim && $ano_fim != 'Todos') {
             $query->where('ano', '<=', $ano_fim);
         }
-        
+
         $totais = $query
             ->selectRaw('id_dimensao, count(*) as total')
             ->groupBy('id_dimensao')
