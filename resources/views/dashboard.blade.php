@@ -465,7 +465,6 @@
                 });
             });
 
-
             $(document).on('change', '#dimensao', function() {
                 buscarTiposPorDimensao();
             });
@@ -534,11 +533,13 @@
 
                 var ies = $("#ies").val();
                 var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
                 var ano_inicial = $("#ano_inicio").val();
                 var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
-                var tipo = $("#tipo").val();
                 var host =  $('meta[name="base-url"]').attr('content');
 
                 if(docente){
@@ -588,8 +589,17 @@
                     if(tipo != "todos")
                         $(".filtros").append('<span class="badge badge-pill">'+$("#tipo option:selected" ).text()+'</span>');
 
+                    if(centro != "")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#centro option:selected" ).text()+'</span>');
+
+                    if(departamento != "")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#departamento option:selected" ).text()+'</span>');
+
                     if(ppg != "")
                         $(".filtros").append('<span class="badge badge-pill">'+$("#ppg option:selected" ).text()+'</span>');
+
+                    if(docente != "")
+                        $(".filtros").append('<span class="badge badge-pill">'+$("#docente option:selected" ).text()+'</span>');
                 
                     $(".filtros").append('<span class="badge badge-pill">'+$("#ano_inicio option:selected" ).text()+' - '+$("#ano_fim option:selected" ).text()+'</span>');
 
