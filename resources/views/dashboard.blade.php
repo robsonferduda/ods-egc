@@ -858,6 +858,11 @@
                 var host = $('meta[name="base-url"]').attr('content');
                 var token = $('meta[name="csrf-token"]').attr('content');
 
+                // Limpa os totais antes de atualizar
+                $('.total_dimensao').each(function() {
+                    $(this).text('-');
+                });
+
                 $.ajax({
                     url: host + '/dimensao/dados/total',
                     type: 'POST',
