@@ -106,9 +106,9 @@
                     <h6 class="center">Totais de documentos por ODS</h6>
                     <canvas id="myChart" width="400" height="365"></canvas>  
                     <h6 class="center mb-0">ODS</h6>
-                    <p class="mb-0 mt-0">Total de <strong id="total_documentos"></strong> documentos.</p>
+                    <p class="mb-0 mt-0">Total de <strong id="total_documentos"></strong> documentos</p>
                     <p>
-                        <span class="badge badge-pill" style="background: #ef8157;">Filtros aplicados</span><span class="filtros"></span>
+                        <span class="badge badge-pill" style="background: #ef8157; border-radius: 5px;">Filtros aplicados</span><span class="filtros"></span>
                     </p>
                 </div>
             </div>
