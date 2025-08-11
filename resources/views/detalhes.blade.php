@@ -122,10 +122,26 @@
              </div>
              <div class="row img-ods">
 
+               @php
+                  // Encontra o índice do maior valor (ODS)
+                  $maxIndex = 1;
+                  $maxValor = $ods[1] ?? 0;
+                  for ($i = 2; $i <= 16; $i++) {
+                     if (($ods[$i] ?? 0) > $maxValor) {
+                           $maxValor = $ods[$i];
+                           $maxIndex = $i;
+                     }
+                  }
+               @endphp
+
                @for ($i = 1; $i <= 16; $i++)
                   <div class="col-md-1 col-sm-3">
-                     <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods" alt="ODS {{ $i }}">
-                     <p class="result-proba">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
+                     @if ($i == $maxIndex)
+                        <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
+                     @else
+                        <img src="{{ asset('img/ods_icone_pb/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-nao-predominante" alt="ODS {{ $i }}">  
+                     @endif      
+                     <p class="">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
                   </div>
                @endfor                  
              </div>
