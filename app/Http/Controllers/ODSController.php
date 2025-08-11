@@ -104,6 +104,7 @@ class ODSController extends Controller
     {
         $where = " WHERE 1=1 ";
 
+        //Filtro dimensao
         switch ($request->dimensao) {
             
             case 'pos-graduacao':
@@ -135,22 +136,14 @@ class ODSController extends Controller
                 break;
         }
 
-        //if($ods > 0) $where .= " AND t3.cod = $ods";
-
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
+        //Filtro por tipo de documento
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND id_tipo_documento = '$request->tipo' ";
         }
 
+        //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
-        }
-
-        if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
-        }
-
-        if($request->docente){
-            $where .= " AND nm_orientador = '$request->docente'";
         }
 
         $sql = "SELECT t0.ods, 
@@ -207,16 +200,14 @@ class ODSController extends Controller
                 break;
         }
 
-        if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
-        }
-
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }
-
+        //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND id_tipo_documento = '$request->tipo' ";
+        }
+
+         //Filtro por ano
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         $sql = "SELECT t0.ods, t2.cor, count(*) as total 
@@ -287,26 +278,14 @@ class ODSController extends Controller
                 break;
         }
 
-        if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
-        }
-
-        if($request->docente){
-            $where .= " AND t2.id_pessoa_pes = $request->docente";
-        }
-
-        /*
-
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }
-
-       
-
-        */
-
+        //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND id_tipo_documento = '$request->tipo' ";
+        }
+
+         //Filtro por ano
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
@@ -436,18 +415,14 @@ class ODSController extends Controller
                 break;
         }
 
-        /*
-
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }*/
-
-        if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
-        }
-
+        //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
             $where .= " AND id_tipo_documento = '$request->tipo' ";
+        }
+
+        //Filtro por ano
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         $sql = "SELECT t0.ods, objetivo, t2.cor, count(*) as total 

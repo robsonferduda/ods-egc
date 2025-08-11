@@ -99,7 +99,7 @@
     <div class="col-md-9">
 
         <!-- Visualização de docente -->
-        <div class="row mt-3" id="dados-geral">            
+        <div class="row mt-3 mb-5" id="dados-geral">            
             
             <div class="col-md-8 painel">            
                 <div class="col-md-12">
