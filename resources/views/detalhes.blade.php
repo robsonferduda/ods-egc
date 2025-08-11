@@ -134,6 +134,10 @@
                   }
                @endphp
 
+               <div class="col-md-2 col-sm-3">
+                  <img src="{{ asset('img/ods-icone/ods_'.$maxIndex.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $maxIndex }}">
+               </div>
+
                @for ($i = 1; $i <= 16; $i++)
                   <div class="col-md-1 col-sm-3">
                      @if ($i == $maxIndex)
