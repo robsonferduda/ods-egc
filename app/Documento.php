@@ -34,6 +34,11 @@ class Documento extends Model
         return $this->hasOne('App\TipoDocumento', 'id_tipo_documento', 'id_tipo_documento');
     }
 
+    public function centro()
+    {
+        return $this->hasOne('App\Centro', 'cd_centro_cen', 'id_centro');
+    }
+
     public function classificacao()
     {
         return $this->hasOne('App\Ods', 'cod', 'ods');
