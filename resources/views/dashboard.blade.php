@@ -882,6 +882,7 @@
                             if (data.total[id] !== undefined) {
                                 $(this).text(data.total[id]);
                             }
+                            id = '-';
                         });
                     }
                 });
