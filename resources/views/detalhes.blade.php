@@ -135,13 +135,13 @@
                @endphp
 
                @for ($i = 1; $i <= 16; $i++)
-                  <div class="col-md-1 col-sm-3">
+                  <div class="col-md-2 col-sm-3">
                      @if ($i == $maxIndex)
                         <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
                      @else
                         <img src="{{ asset('img/ods_icone_pb/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-nao-predominante" alt="ODS {{ $i }}">  
                      @endif      
-                     <p class="">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
+                     <p class="center">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
                   </div>
                @endfor                  
              </div>
