@@ -349,7 +349,7 @@ class ODSController extends Controller
                     $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
                             FROM documento_ods t0
                             RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                            JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                            LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             $where
                             $complemento";
 
