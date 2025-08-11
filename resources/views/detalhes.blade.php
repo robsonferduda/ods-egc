@@ -120,7 +120,7 @@
                    <h6>ODS Predominates</h6>
                 </div>
              </div>
-             <div class="row img-ods">
+             <div class="row">
 
                @php
                   // Encontra o índice do maior valor (ODS)
@@ -135,13 +135,13 @@
                @endphp
 
                <div class="col-md-3 col-sm-12">
-                  <div class="col-md-2 col-sm-3">
+                  <div class="col-md-12 col-sm-12">
                      <img src="{{ asset('img/ods-icone/ods_'.$maxIndex.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $maxIndex }}">
                   </div>
                </div>
                <div class="col-md-9 col-sm-6">
                   @for ($i = 1; $i <= 16; $i++)
-                     <div class="col-md-1 col-sm-3">
+                     <div class="col-md-3 col-sm-3">
                         @if ($i == $maxIndex)
                            <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
                         @else
