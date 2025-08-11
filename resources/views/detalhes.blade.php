@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12 col-sm-12 mt-3">
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
-            <p class="mb-1"><strong>Centro</strong>: {{ $documento->centro->ds_nome_cen }} </p>
+            <p class="mb-1"><strong>Centro</strong>: {{ ($documento->centro) ? $documento->centro->ds_nome_cen : 'Não Informado' }} </p>
             <p class="mb-1"><strong>Departamento</strong>: {{ ($documento->departamento) ? $documento->departamento->ds_departamento_dep.'/'.$documento->departamento->ds_sigla_dep : 'Não Informado' }} </p>
             <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ $documento->dimensao->nome }} </p>
             <p class="mb-1"><strong>Dimensão ODS</strong>: {{ $documento->dimensaoOds->ds_dimensao }} </p>
