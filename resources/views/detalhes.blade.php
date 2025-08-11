@@ -134,20 +134,23 @@
                   }
                @endphp
 
-               <div class="col-md-2 col-sm-3">
-                  <img src="{{ asset('img/ods-icone/ods_'.$maxIndex.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $maxIndex }}">
-               </div>
-
-               @for ($i = 1; $i <= 16; $i++)
-                  <div class="col-md-1 col-sm-3">
-                     @if ($i == $maxIndex)
-                        <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
-                     @else
-                        <img src="{{ asset('img/ods_icone_pb/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-nao-predominante" alt="ODS {{ $i }}">  
-                     @endif      
-                     <p class="center">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
+               <div class="col-md-3 col-sm-12">
+                  <div class="col-md-2 col-sm-3">
+                     <img src="{{ asset('img/ods-icone/ods_'.$maxIndex.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $maxIndex }}">
                   </div>
-               @endfor                  
+               </div>
+               <div class="col-md-9 col-sm-6">
+                  @for ($i = 1; $i <= 16; $i++)
+                     <div class="col-md-1 col-sm-3">
+                        @if ($i == $maxIndex)
+                           <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
+                        @else
+                           <img src="{{ asset('img/ods_icone_pb/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-nao-predominante" alt="ODS {{ $i }}">  
+                        @endif      
+                        <p class="center">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
+                     </div>
+                  @endfor 
+               </div>
              </div>
              <div class="row">
                 <div class="col-md-12 mt-3 mb-5">
