@@ -13,21 +13,29 @@
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <p class="mb-1">
-                <strong>Perfil ODS</strong> é uma ferramenta de visualização de dados sobre ODS nas IES resultante de uma 
-                pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
-                documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
-            </p>
-            <p class="mb-1"><strong>Programa de Pós-Graduação em Engenharia e Gestão do Conhecimento</strong></p>
+            <p class="mb-1"><strong>Programa de Pós-Graduação em Engenharia, Gestão e Mídia do Conhecimento</strong></p>
             <p class="mb-1"><strong>Área de Concentração</strong>: Engenharia do Conhecimento</p>
             <p class="mb-1"><strong>Linha de Pesquisa</strong>: Teoria e prática em Engenharia do Conhecimento </p>
             <p class="mb-1"><strong>Nível</strong>: Doutorado </p>
             <p class="mb-1"><strong>Aluno</strong>: Robson Fernando Duda </p>
             <p class="mb-1"><strong>Orientador</strong>: Prof. Dr. Fernando Álvaro Ostuni Gauthier </p>
-            <p class="mb-1"><strong>Coorientador</strong>: Prof. Dr. Roberto Carlos dos Santos Pacheco </p>            
+            <p class="mb-1"><strong>Coorientador</strong>: Prof. Dr. Roberto Carlos dos Santos Pacheco </p>  
+            <p class="mb-1 mt-3">
+                <strong>Perfil ODS</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) 
+                aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental.
+                É uma ferramenta resultante de uma 
+                pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 
+                documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+            </p>
+                      
         </div>
     </div>  
-    <div class="row mt-5">
+    <div class="row mt-3">
+        <div class="col-md-12 col-sm-12">
+            <p><strong>Equipe Responsável</strong></p>
+        </div>
+    </div>
+    <div class="row mt-3">
         <div class="col-md-2 center">
             <img src="https://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4328641Z9" class="img-fluid rounded-circle w-100">
         </div>
