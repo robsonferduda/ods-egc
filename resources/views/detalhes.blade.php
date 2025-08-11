@@ -144,7 +144,7 @@
                <div class="col-md-9 col-sm-12">
                    <div class="row">
                      @for ($i = 1; $i <= 16; $i++)
-                        <div class="col-md-2 col-sm-3">
+                        <div class="col-md-1 col-sm-3">
                            @if ($i == $maxIndex)
                               <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods ods-predominante" alt="ODS {{ $i }}">
                            @else
