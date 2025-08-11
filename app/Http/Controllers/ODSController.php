@@ -312,8 +312,8 @@ class ODSController extends Controller
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
                 FROM documento_ods t0
                 RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
-                JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
+                LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
                 $where
                 GROUP BY t0.ods, t1.cor 
                 ORDER BY t0.ods";
@@ -352,8 +352,6 @@ class ODSController extends Controller
                             LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             $where
                             $complemento";
-
-                            dd($sql)   ;
 
                     $resultado = DB::connection('pgsql')->select($sql);
 
