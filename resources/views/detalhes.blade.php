@@ -106,6 +106,7 @@
                  @for ($i = 1; $i <= 16; $i++)
                   @php
                      $valor = $documento->probabilidades->{'probabilidade_ods_' . $i};
+                     $ods[$i] = $valor;
                   @endphp
                   <td class="center" data-valor="{{ $valor }}">
                      {{ number_format($valor * 100, 2, ',', '.') }}%
@@ -116,19 +117,18 @@
             </table>
             <div class="row ods-result d-none mt-5">
                 <div class="col-md-12 col-sm-12">
-                   <h6>ODS Identificados</h6>
+                   <h6>ODS Predominates</h6>
                 </div>
              </div>
              <div class="row img-ods">
 
-               @foreach($resultado as $ods => $valor)
-                  <p><strong>{{ strtoupper($ods) }}</strong>: {{ number_format($valor * 100, 2, ',', '.') }}%</p>
+               @for ($i = 1; $i <= 16; $i++)
+                  <p><strong>{{ strtoupper($i) }}</strong>: {{ number_format($ods[$id] * 100, 2, ',', '.') }}%</p>
                   <div class="col-md-2 col-sm-12">
-                     <img src="{{ assets('img/ods-icone/ods_1.png') }}" class="img-fluid img-ods" alt="ODS {{ $ods }}">
-                     <p class="result-proba">{{ number_format($valor * 100, 2, ',', '.') }}%</p>
+                     <img src="{{ assets('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods" alt="ODS {{ $i }}">
+                     <p class="result-proba">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
                   </div>
-               @endforeach
-                  
+               @endfor                  
              </div>
              <div class="row">
                 <div class="col-md-12 mt-3 mb-5">
