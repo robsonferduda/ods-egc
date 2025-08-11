@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Utils;
 use App\Dimensao;
+use App\Documento;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
