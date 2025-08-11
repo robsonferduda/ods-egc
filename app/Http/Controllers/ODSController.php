@@ -138,7 +138,7 @@ class ODSController extends Controller
 
         //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND id_tipo_documento = '$request->tipo' ";
+            $where .= " AND t0.id_tipo_documento = '$request->tipo' ";
         }
 
         //Filtro por ano
