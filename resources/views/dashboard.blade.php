@@ -137,6 +137,7 @@
             </div>
 
             <div class="col-sm-6 col-md-3"> 
+                <h6 class="mb-3">DOCUMENTOS POR DIMENSÃO</h6>
                 @foreach($dimensoes_ies as $key => $dimensao)
                     <div class="row box-dimensao box-dimensao-{{ $dimensao->apelido }}">
                         <div class="col-md-4 px-0 py-0"> 
