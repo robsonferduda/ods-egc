@@ -34,17 +34,36 @@ class DimensaoController extends Controller
 
     public function totalPorDimensao(Request $request)
     {
-        // Recupere os filtros enviados via AJAX, se necessário
         $dimensao = $request->input('dimensao');
         $tipo = $request->input('tipo');
         $ppg = $request->input('ppg');
         $ano_inicial = $request->input('ano_inicial');
         $ano_fim = $request->input('ano_fim');
 
-        // Busque os totais por dimensão (ajuste conforme sua lógica/model)
-        // Exemplo: retorna um array associativo [id_dimensao => total]
-        $totais = Documento::query()
-            // ->filtros($dimensao, $tipo, $ppg, $ano_inicial, $ano_fim) // se houver
+        $query = Documento::query();
+
+        if ($dimensao && $dimensao != '0') {
+            $query->where('id_dimensao', $dimensao);
+        }
+
+        if ($tipo && $tipo != '0') {
+            $query->where('id_tipo_documento', $tipo);
+        }
+
+        if ($ppg && $ppg != '0') {
+            $query->where('id_ppg', $ppg);
+        }
+
+        // Filtro de ano como intervalo (between)
+        if ($ano_inicial && $ano_inicial != 'Todos' && $ano_fim && $ano_fim != 'Todos') {
+            $query->whereBetween('ano', [$ano_inicial, $ano_fim]);
+        } elseif ($ano_inicial && $ano_inicial != 'Todos') {
+            $query->where('ano', '>=', $ano_inicial);
+        } elseif ($ano_fim && $ano_fim != 'Todos') {
+            $query->where('ano', '<=', $ano_fim);
+        }
+        
+        $totais = $query
             ->selectRaw('id_dimensao, count(*) as total')
             ->groupBy('id_dimensao')
             ->pluck('total', 'id_dimensao')
