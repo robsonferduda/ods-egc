@@ -123,7 +123,7 @@
              <div class="row img-ods">
 
                @for ($i = 1; $i <= 16; $i++)
-                  <div class="col-md-2 col-sm-12">
+                  <div class="col-md-1 col-sm-3">
                      <img src="{{ asset('img/ods-icone/ods_'.$i.'.png') }}" class="img-fluid img-ods" alt="ODS {{ $i }}">
                      <p class="result-proba">{{ number_format($ods[$i] * 100, 2, ',', '.') }}%</p>
                   </div>
