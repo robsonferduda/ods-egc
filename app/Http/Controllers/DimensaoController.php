@@ -31,7 +31,7 @@ class DimensaoController extends Controller
         return response()->json($tipos);
     }
 
-    public function totaisDimensoes(Request $request)
+    public function totalPorDimensao(Request $request)
     {
         // Recupere os filtros enviados via AJAX, se necessário
         $dimensao = $request->input('dimensao');
