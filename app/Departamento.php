@@ -11,7 +11,7 @@ class Departamento extends Model
     
     protected $connection = 'pgsql';
     protected $table = 'departamento_dep';
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_departamento_dep';
     protected $fillable = [""];
 
 }

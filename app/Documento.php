@@ -39,6 +39,16 @@ class Documento extends Model
         return $this->hasOne('App\Centro', 'cd_centro_cen', 'id_centro');
     }
 
+    public function departamento()
+    {
+        return $this->hasOne('App\Departamento', 'id_departamento_dep', 'id_departamento');
+    }
+
+    public function ppg()
+    {
+        return $this->hasOne('App\PPG', 'id_ppg', 'id_ppg');
+    }
+
     public function classificacao()
     {
         return $this->hasOne('App\Ods', 'cod', 'ods');
