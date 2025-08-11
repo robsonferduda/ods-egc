@@ -601,6 +601,7 @@
                     graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
                     painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
                     getFrequencia("chart", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
+                    atualizarTotaisDimensoes(dimensao, tipo, ppg, ano_inicial, ano_fim);
 
                     $("#dados-geral").removeClass("d-none");
                     $("#perfil-docente").addClass("d-none");
@@ -850,6 +851,34 @@
                     }
                 });
 
+            }
+
+            function atualizarTotaisDimensoes(dimensao, tipo, ppg, ano_inicial, ano_fim) {
+                var host = $('meta[name="base-url"]').attr('content');
+                var token = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: host + '/dimensao/dados/total',
+                    type: 'POST',
+                    data: {
+                        "_token": token,
+                        "dimensao": dimensao,
+                        "ppg": ppg,
+                        "ano_inicial": ano_inicial,
+                        "ano_fim": ano_fim,
+                        "tipo": tipo
+                    },
+                    success: function(data) {
+                        // data.total deve ser um array ou objeto com os totais por dimensão
+                        $('.total_dimensao').each(function(index, el) {
+                            var id = $(this).data('dimensao');
+                            // Supondo que data.total seja um objeto: { [id]: total }
+                            if (data.total[id] !== undefined) {
+                                $(this).text(data.total[id]);
+                            }
+                        });
+                    }
+                });
             }
 
             function documentosAnalisados(elementoPai, dimensao, tipo, ppg, anoInicial, anoFim, docente) {

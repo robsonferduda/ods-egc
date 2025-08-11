@@ -34,6 +34,7 @@ Route::get('dados/ppgs/{centro}', 'DashboardController@ppgs');
 Route::get('dados/docentes', 'DashboardController@docentes');
 
 Route::get('dimensao/{apelido}/tipos', 'DimensaoController@tiposPorDimensao');
+Route::get('dimensao/dados/total', 'DimensaoController@totalPorDimensao');
 
 Route::get('documento/{id}/classificar/{classificacao}', 'ODSController@classificarManual');
 Route::post('documento/ranking/ods', 'ODSController@getTotalDimensaoODS');
