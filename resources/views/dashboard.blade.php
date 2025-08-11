@@ -875,14 +875,13 @@
                         "tipo": tipo
                     },
                     success: function(data) {
-                        // data.total deve ser um array ou objeto com os totais por dimensão
-                        $('.total_dimensao').each(function(index, el) {
+                        $('.total_dimensao').each(function() {
                             var id = $(this).data('dimensao');
-                            // Supondo que data.total seja um objeto: { [id]: total }
-                            if (data.total[id] !== undefined) {
+                            if (data.total && data.total[id] !== undefined) {
                                 $(this).text(data.total[id]);
+                            } else {
+                                $(this).text('-');
                             }
-                            id = '-';
                         });
                     }
                 });
