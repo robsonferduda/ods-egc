@@ -353,8 +353,6 @@ class ODSController extends Controller
                             $where
                             $complemento";
 
-                    dd($sql);
-
                     $resultado = DB::connection('pgsql')->select($sql);
 
                     if($resultado){
