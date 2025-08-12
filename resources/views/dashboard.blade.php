@@ -372,7 +372,7 @@
                 success: function(data) {
                     $('#centro').empty().append('<option value="">Todos</option>');
                     data.forEach(function(centro) {
-                        $('#centro').append(`<option value="${centro.ds_sigla_cen}">${centro.ds_sigla_cen} - ${centro.ds_nome_cen}</option>`);
+                        $('#centro').append(`<option value="${centro.cd_centro_cen}">${centro.ds_sigla_cen} - ${centro.ds_nome_cen}</option>`);
                     });
                 }
             });
