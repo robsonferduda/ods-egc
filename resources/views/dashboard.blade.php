@@ -1038,7 +1038,7 @@
             }
 
             //DOCUMENTOS ANALISADOS
-            function documentosAnalisados(elementoPai, dimensao, tipo, anoInicial, anoFim, ppg, centro, departamento docente) {
+            function documentosAnalisados(elementoPai, dimensao, tipo, anoInicial, anoFim, centro, departamento, ppg, docente) {
               const url = `${host}/dados/documentos`;
 
               const payload = {
