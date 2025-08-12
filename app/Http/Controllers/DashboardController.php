@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
     public function departamentosPorCentro($centro)
     {
-        $centro = Centro::where('id_centro_cen', $sigla)->first();
+        $centro = Centro::where('id_centro_cen', $centro)->first();
 
         $departamentos = \App\Departamento::where('ds_sigla_cen', $centro->ds_sigla_cen)
             ->orderBy('ds_departamento_dep')
