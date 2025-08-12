@@ -40,7 +40,8 @@ class DashboardController extends Controller
         if ($centro == 'todos') {
             $ppgs = \App\PPG::orderBy('nm_curso_cur')->get(['id_ppg', 'nm_curso_cur']);
         }else{
-            $ppgs = \App\PPG::orderBy('nm_curso_cur')->where('cd_sigla_cen', $centro)->get(['id_ppg', 'nm_curso_cur']);
+            $centro = Centro::where('cd_centro_cen', $centro)->first();
+            $ppgs = \App\PPG::orderBy('nm_curso_cur')->where('cd_sigla_cen', $centro->ds_sigla_cen)->get(['id_ppg', 'nm_curso_cur']);
         }        
 
         return response()->json($ppgs);
