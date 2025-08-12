@@ -384,7 +384,7 @@
                 success: function(data) {
                     $('#departamento').empty().append('<option value="">Todos</option>');
                     data.forEach(function(dep) {
-                        $('#departamento').append(`<option value="${dep.ds_sigla_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
+                        $('#departamento').append(`<option value="${dep.id_departamento_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
                     });
                 }
             });
@@ -424,7 +424,7 @@
                     success: function(data) {
                         $('#departamento').empty().append('<option value="">Todos</option>');
                         data.forEach(function(dep) {
-                            $('#departamento').append(`<option value="${dep.ds_sigla_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
+                            $('#departamento').append(`<option value="${dep.id_departamento_dep}">${dep.ds_sigla_dep} - ${dep.ds_departamento_dep}</option>`);
                         });
                     }
                 });
@@ -644,9 +644,7 @@
                 complete: function(){
                     $('.top-docentes').loader('hide');
                 }
-            });
-
-           
+            });           
 
             $(document).on('click', '.perfil-docente-mostrar', function() {
                 
