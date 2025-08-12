@@ -545,7 +545,7 @@
                 if(docente){
 
                     carregaDocente(ppg, docente); 
-                    getFrequencia("evolucaoDocente", dimensao, tipo,ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    getFrequencia("evolucaoDocente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente); 
                     carregarGraficoDimensao(docente);
 

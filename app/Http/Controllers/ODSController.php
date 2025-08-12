@@ -313,7 +313,7 @@ class ODSController extends Controller
             $where .= " AND id_tipo_documento = '$request->tipo' ";
         }
 
-         //Filtro por ano
+        //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
