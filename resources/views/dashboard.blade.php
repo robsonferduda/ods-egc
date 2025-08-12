@@ -545,8 +545,8 @@
                 if(docente){
 
                     carregaDocente(ppg, docente); 
-                    getFrequencia("evolucaoDocente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
-                    documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
+                    getFrequencia("evolucaoDocente", dimensao, tipo,ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente); 
                     carregarGraficoDimensao(docente);
 
                     // Total de Documentos ODS por docente
