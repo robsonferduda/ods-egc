@@ -1103,7 +1103,7 @@
                 });
 
                 $.ajax({
-                    url: host + '/dimensao/dados/total',
+                    url: host + '/dados/total/dimensao',
                     type: 'POST',
                     data: {
                         "_token": token,

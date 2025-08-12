@@ -82,10 +82,6 @@ class DimensaoController extends Controller
             $query->where('id_tipo_documento', $tipo);
         }
 
-        if ($ppg && $ppg != '0') {
-            $query->where('id_ppg', $ppg);
-        }
-
         // Filtro de ano como intervalo (between)
         if ($ano_inicial && $ano_inicial != 'Todos' && $ano_fim && $ano_fim != 'Todos') {
             $query->whereBetween('ano', [$ano_inicial, $ano_fim]);
@@ -93,6 +89,21 @@ class DimensaoController extends Controller
             $query->where('ano', '>=', $ano_inicial);
         } elseif ($ano_fim && $ano_fim != 'Todos') {
             $query->where('ano', '<=', $ano_fim);
+        }
+
+         //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if ($ppg && $ppg != '0') {
+            $query->where('id_ppg', $ppg);
         }
 
         $totais = $query
