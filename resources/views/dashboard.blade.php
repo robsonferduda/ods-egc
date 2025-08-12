@@ -607,12 +607,12 @@
                     var dimensao_selecionada = $("#dimensao option:selected" ).text();
                     $(".dimensao-selecionada").text(dimensao_selecionada);
 
-                    graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim);  
-                    documentosAnalisados("#lista_documentos", dimensao, tipo, ppg, ano_inicial, ano_fim, docente); 
-                    graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim);
-                    painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim);
-                    getFrequencia("chart", dimensao, tipo, ppg, ano_inicial, ano_fim, docente);
-                    atualizarTotaisDimensoes(dimensao, tipo, ppg, ano_inicial, ano_fim);
+                    graficoDistribuicaoBarras(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);  
+                    documentosAnalisados("#lista_documentos", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente); 
+                    graficoTopOds(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    painelODS(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    getFrequencia("chart", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    atualizarTotaisDimensoes(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
 
                     $("#dados-geral").removeClass("d-none");
                     $("#perfil-docente").addClass("d-none");
@@ -794,41 +794,8 @@
 
             });
 
-            function graficoTopOds(dimensao, tipo, ppg, ano_inicial, ano_fim){
-
-                $.ajax({
-                    url: host+'/documento/ranking/ods',
-                    type: 'POST',
-                    data: {
-                            "_token": token,
-                            "dimensao": dimensao,
-                            "ppg": ppg,
-                            "ano_inicial": ano_inicial,
-                            "ano_fim": ano_fim,
-                            "tipo": tipo
-                    },
-                    beforeSend: function() {
-                        $('.top-ods').loader('show');                    
-                    },
-                    success: function(data) {
-
-                        var foto = "";
-
-                        $('.lista-ods').empty();            
-                        data.forEach(element => {
-
-                            foto = host+'/img/ods-icone/ods_'+element.ods+'.png';
-                            
-                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-4 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-8 pl-1"><p class="mb-0"><strong>ODS '+element.ods+'</strong></p><p class="mb-0">'+element.objetivo+'</p><span id="nm_ppg"><strong>'+element.total+' Documentos</strong></span></div></div>');
-                        });
-                    },
-                    complete: function(){
-                        $('.top-ods').loader('hide');
-                    }
-                });
-            }
-
-            function painelODS(dimensao, tipo, ppg, ano_inicial, ano_fim){
+            //Totais de documentos por ODS
+            function graficoDistribuicaoBarras(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente) {
 
                 $.ajax({
                     url: host+'/dados/geral',
@@ -836,130 +803,13 @@
                     data: {
                             "_token": token,
                             "dimensao": dimensao,
-                            "ppg": ppg,
                             "ano_inicial": ano_inicial,
                             "ano_fim": ano_fim,
-                            "tipo": tipo
-                    },
-                    beforeSend: function() {
-                                
-                    },
-                    success: function(data) {
-
-                        $(".perfil-ods").empty();
-
-                        for (let i=0; i < 17; i++)  {
-                            var ods = i+1;
-                            if(data.total[i] > 0 ){
-                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
-                            }else{
-                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
-                            }
-                        }
-                    },
-                    complete: function(){
-                        
-                    }
-                });
-
-            }
-
-            function atualizarTotaisDimensoes(dimensao, tipo, ppg, ano_inicial, ano_fim) {
-                var host = $('meta[name="base-url"]').attr('content');
-                var token = $('meta[name="csrf-token"]').attr('content');
-
-                // Limpa os totais antes de atualizar
-                $('.total_dimensao').each(function() {
-                    $(this).text('-');
-                });
-
-                $.ajax({
-                    url: host + '/dimensao/dados/total',
-                    type: 'POST',
-                    data: {
-                        "_token": token,
-                        "dimensao": dimensao,
-                        "ppg": ppg,
-                        "ano_inicial": ano_inicial,
-                        "ano_fim": ano_fim,
-                        "tipo": tipo
-                    },
-                    success: function(data) {
-                        $('.total_dimensao').each(function() {
-                            var id = $(this).data('dimensao');
-                            if (data.total && data.total[id] !== undefined) {
-                                $(this).text(data.total[id]);
-                            } else {
-                                $(this).text('-');
-                            }
-                        });
-                    }
-                });
-            }
-
-            function documentosAnalisados(elementoPai, dimensao, tipo, ppg, anoInicial, anoFim, docente) {
-              const url = `${host}/dados/documentos`;
-
-              const payload = {
-                "_token": token,
-                "dimensao": dimensao,
-                "ppg": ppg,
-                "ano_inicial": anoInicial,
-                "ano_fim": anoFim,
-                "tipo": tipo,
-                "docente": docente
-              };
-
-              $.ajax({
-                url: url,
-                type: 'POST',
-                data: payload,
-
-                beforeSend: function () {
-                  // Pode exibir loader aqui, se desejar
-                },
-
-                success: function (data) {
-                  const container = $(elementoPai);
-                  container.empty();
-
-                  data.forEach(doc => {
-                    const html = `
-                      <div class="box-documento">
-                        <p class="mb-0"><strong>Título</strong>: ${doc.titulo}</p>
-                        <p class="mt-1 mb-0"><strong>${doc.nome} - ${doc.ds_tipo_documento}</strong></p>
-                        <p class="mt-0">
-                          <span class="badge badge-pill" style="background: ${doc.cor}">ODS ${doc.ods}</span>
-                          <a href="${host}/documentos/dimensao/${doc.id_dimensao}/detalhes/${doc.id}" target="_blank">
-                            <span class="badge badge-pill detalhes-documento_off" data-dimensao="${doc.id_dimensao}" data-id="${doc.id}" style="background: #adadad;">
-                              <i class="fa fa-bar-chart"></i> Detalhes
-                            </span>
-                          </a>
-                        </p>
-                      </div>
-                    `;
-                    container.append(html);
-                  });
-                },
-
-                complete: function () {
-                  // Pode remover loader aqui
-                }
-              });
-            }
-
-            function graficoDistribuicaoBarras(dimensao, tipo, ppg, ano_inicial, ano_fim){
-
-                $.ajax({
-                    url: host+'/dados/geral',
-                    type: 'POST',
-                    data: {
-                            "_token": token,
-                            "dimensao": dimensao,
+                            "tipo": tipo,
+                            "centro": centro,
+                            "departamento": departamento,
                             "ppg": ppg,
-                            "ano_inicial": ano_inicial,
-                            "ano_fim": ano_fim,
-                            "tipo": tipo
+                            "docente": docente
                     },
                     beforeSend: function() {
                         $('.painel').loader('show');
@@ -1028,6 +878,255 @@
                     }
                 });
 
+            }
+
+            //ODS MAIS FREQUENTES
+            function graficoTopOds(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente){
+
+                $.ajax({
+                    url: host+'/documento/ranking/ods',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo,
+                            "ppg": ppg,
+                            "centro": centro,
+                            "departamento": departamento,
+                            "docente": docente
+                    },
+                    beforeSend: function() {
+                        $('.top-ods').loader('show');                    
+                    },
+                    success: function(data) {
+
+                        var foto = "";
+
+                        $('.lista-ods').empty();            
+                        data.forEach(element => {
+
+                            foto = host+'/img/ods-icone/ods_'+element.ods+'.png';
+                            
+                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-4 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-8 pl-1"><p class="mb-0"><strong>ODS '+element.ods+'</strong></p><p class="mb-0">'+element.objetivo+'</p><span id="nm_ppg"><strong>'+element.total+' Documentos</strong></span></div></div>');
+                        });
+                    },
+                    complete: function(){
+                        $('.top-ods').loader('hide');
+                    }
+                });
+            }
+
+            //EVOLUÇÃO POR ODS
+            function getFrequencia(elemento, dimensao, tipo, ano_inicial, ano_fim, docente, centro, departamento, docente, ppg) {
+
+                let chx = document.getElementById(elemento).getContext('2d');
+
+                $.ajax({
+                    url: host+'/dados/geral/frequencia',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo,
+                            "centro": centro,
+                            "departamento": departamento,
+                            "ppg": ppg,
+                            "docente": docente
+                    },
+                    beforeSend: function() {
+                        $('.box-evolucao').loader('show');
+                    },
+                    success: function(data) {
+
+                        datasets = [];
+
+                        data.frequencias.forEach(function(value, i) {
+
+                            dict = {};
+
+                            dict.data = value.totais;
+                            dict.label = "ODS "+value.ods;
+                            dict.borderColor = value.cor;
+                            dict.fill = false;
+
+                            datasets.push(dict);
+                        });                        
+                       
+                        let config = {
+                            type : 'line',
+                            data : {
+                                labels : data.sequencia,
+                                datasets : datasets
+                            },
+                            options : {
+                                title : {
+                                    display : true,
+                                    text : 'Chart JS Multiple Lines Example'
+                                },
+                                plugins: { 
+                                        title: { 
+                                            display: false, 
+                                            text: 'Distribuição de total por dimensão' 
+                                        }, 
+                                        legend: {
+                                            display: true,
+                                            position: 'bottom'
+                                        }
+                                }, 
+                            }
+                        };
+
+                        let GraficoEvolucao = null;
+                        let graphareaEvolucao = document.getElementById(elemento).getContext("2d");
+                        let chartStatusEvolucao = Chart.getChart(elemento); // <canvas> id
+                                    
+                        if (chartStatusEvolucao != undefined) {
+                            chartStatusEvolucao.destroy();
+                        }
+
+                        var grafico = new Chart(chx, config);
+
+                    },
+                    complete: function(){
+                        $('.box-evolucao').loader('hide');
+                    }
+                });
+            } 
+
+            //ODS IDENTIFICADOS
+            function painelODS(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente){
+
+                $.ajax({
+                    url: host+'/dados/geral',
+                    type: 'POST',
+                    data: {
+                            "_token": token,
+                            "dimensao": dimensao,
+                            "centro": centro,
+                            "departamento": departamento,
+                            "ppg": ppg,
+                            "docente": docente,
+                            "ano_inicial": ano_inicial,
+                            "ano_fim": ano_fim,
+                            "tipo": tipo
+                    },
+                    beforeSend: function() {
+                                
+                    },
+                    success: function(data) {
+
+                        $(".perfil-ods").empty();
+
+                        for (let i=0; i < 17; i++)  {
+                            var ods = i+1;
+                            if(data.total[i] > 0 ){
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods-icone/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                            }else{
+                                $(".perfil-ods").append('<div class="col-md-3 col-sm-4 mb-2 px-1"><img src="'+host+'/img/ods_icone_pb/ods_'+ods+'.png" class="img-fluid img-ods" alt="ODS"></div>');
+                            }
+                        }
+                    },
+                    complete: function(){
+                        
+                    }
+                });
+
+            }
+
+            //DOCUMENTOS ANALISADOS
+            function documentosAnalisados(elementoPai, dimensao, tipo, anoInicial, anoFim, ppg, centro, departamento docente) {
+              const url = `${host}/dados/documentos`;
+
+              const payload = {
+                "_token": token,
+                "dimensao": dimensao,
+                "ano_inicial": anoInicial,
+                "ano_fim": anoFim,
+                "tipo": tipo,
+                "ppg": ppg,
+                "centro": centro,
+                "departamento": departamento,
+                "docente": docente
+              };
+
+              $.ajax({
+                url: url,
+                type: 'POST',
+                data: payload,
+
+                beforeSend: function () {
+                  // Pode exibir loader aqui, se desejar
+                },
+
+                success: function (data) {
+                  const container = $(elementoPai);
+                  container.empty();
+
+                  data.forEach(doc => {
+                    const html = `
+                      <div class="box-documento">
+                        <p class="mb-0"><strong>Título</strong>: ${doc.titulo}</p>
+                        <p class="mt-1 mb-0"><strong>${doc.nome} - ${doc.ds_tipo_documento}</strong></p>
+                        <p class="mt-0">
+                          <span class="badge badge-pill" style="background: ${doc.cor}">ODS ${doc.ods}</span>
+                          <a href="${host}/documentos/dimensao/${doc.id_dimensao}/detalhes/${doc.id}" target="_blank">
+                            <span class="badge badge-pill detalhes-documento_off" data-dimensao="${doc.id_dimensao}" data-id="${doc.id}" style="background: #adadad;">
+                              <i class="fa fa-bar-chart"></i> Detalhes
+                            </span>
+                          </a>
+                        </p>
+                      </div>
+                    `;
+                    container.append(html);
+                  });
+                },
+
+                complete: function () {
+                  // Pode remover loader aqui
+                }
+              });
+            }
+
+            //DOCUMENTOS POR DIMENSÃO
+            function atualizarTotaisDimensoes(dimensao, tipo, ano_inicial, ano_fim, ppg, centro, departamento, docente) {
+
+                var host = $('meta[name="base-url"]').attr('content');
+                var token = $('meta[name="csrf-token"]').attr('content');
+
+                // Limpa os totais antes de atualizar
+                $('.total_dimensao').each(function() {
+                    $(this).text('-');
+                });
+
+                $.ajax({
+                    url: host + '/dimensao/dados/total',
+                    type: 'POST',
+                    data: {
+                        "_token": token,
+                        "dimensao": dimensao,
+                        "ppg": ppg,
+                        "ano_inicial": ano_inicial,
+                        "ano_fim": ano_fim,
+                        "tipo": tipo,
+                        "centro": centro,
+                        "departamento": departamento,
+                        "docente": docente
+                    },
+                    success: function(data) {
+                        $('.total_dimensao').each(function() {
+                            var id = $(this).data('dimensao');
+                            if (data.total && data.total[id] !== undefined) {
+                                $(this).text(data.total[id]);
+                            } else {
+                                $(this).text('-');
+                            }
+                        });
+                    }
+                });
             }
 
             function carregaDocente(ppg, docente){
@@ -1618,81 +1717,7 @@
                             .catch(error => console.error('Erro ao carregar gráfico:', error));
                     }
 
-            function getFrequencia(elemento, dimensao, tipo, ppg, ano_inicial, ano_fim, docente){
-
-                let chx = document.getElementById(elemento).getContext('2d');
-
-                $.ajax({
-                    url: host+'/dados/geral/frequencia',
-                    type: 'POST',
-                    data: {
-                            "_token": token,
-                            "dimensao": dimensao,
-                            "ppg": ppg,
-                            "ano_inicial": ano_inicial,
-                            "ano_fim": ano_fim,
-                            "tipo": tipo,
-                            "docente": docente
-                    },
-                    beforeSend: function() {
-                        $('.box-evolucao').loader('show');
-                    },
-                    success: function(data) {
-
-                        datasets = [];
-
-                        data.frequencias.forEach(function(value, i) {
-
-                            dict = {};
-
-                            dict.data = value.totais;
-                            dict.label = "ODS "+value.ods;
-                            dict.borderColor = value.cor;
-                            dict.fill = false;
-
-                            datasets.push(dict);
-                        });                        
-                       
-                        let config = {
-                            type : 'line',
-                            data : {
-                                labels : data.sequencia,
-                                datasets : datasets
-                            },
-                            options : {
-                                title : {
-                                    display : true,
-                                    text : 'Chart JS Multiple Lines Example'
-                                },
-                                plugins: { 
-                                        title: { 
-                                            display: false, 
-                                            text: 'Distribuição de total por dimensão' 
-                                        }, 
-                                        legend: {
-                                            display: true,
-                                            position: 'bottom'
-                                        }
-                                }, 
-                            }
-                        };
-
-                        let GraficoEvolucao = null;
-                        let graphareaEvolucao = document.getElementById(elemento).getContext("2d");
-                        let chartStatusEvolucao = Chart.getChart(elemento); // <canvas> id
-                                    
-                        if (chartStatusEvolucao != undefined) {
-                            chartStatusEvolucao.destroy();
-                        }
-
-                        var grafico = new Chart(chx, config);
-
-                    },
-                    complete: function(){
-                        $('.box-evolucao').loader('hide');
-                    }
-                });
-            }    
+               
       
 });
     </script>
