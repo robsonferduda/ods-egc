@@ -108,7 +108,7 @@
                     <h6 class="center mb-0">ODS</h6>
                     <p class="mb-0 mt-0">Total de <strong id="total_documentos"></strong> documentos</p>
                     <p>
-                        <span class="badge badge-pill" style="background: #ef8157; border-radius: 5px;">Filtros aplicados</span><span class="filtros"></span>
+                        <span class="badge badge-pill" style="background: #ef8157; border-radius: 5px;"><i class="fa fa-filter"></i> Filtros aplicados</span><span class="filtros"></span>
                     </p>
                 </div>
             </div>
