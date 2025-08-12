@@ -1092,7 +1092,7 @@
             }
 
             //DOCUMENTOS POR DIMENSÃO
-            function atualizarTotaisDimensoes(dimensao, tipo, ano_inicial, ano_fim, ppg, centro, departamento, docente) {
+            function atualizarTotaisDimensoes(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente) {
 
                 var host = $('meta[name="base-url"]').attr('content');
                 var token = $('meta[name="csrf-token"]').attr('content');
@@ -1108,12 +1108,12 @@
                     data: {
                         "_token": token,
                         "dimensao": dimensao,
-                        "ppg": ppg,
+                        "tipo": tipo,
                         "ano_inicial": ano_inicial,
                         "ano_fim": ano_fim,
-                        "tipo": tipo,
                         "centro": centro,
                         "departamento": departamento,
+                        "ppg": ppg,
                         "docente": docente
                     },
                     success: function(data) {
