@@ -146,6 +146,21 @@ class ODSController extends Controller
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
+         //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
+        }
+
         $sql = "SELECT t0.ods, 
                 t1.cor, 
                 t0.id,
@@ -208,6 +223,21 @@ class ODSController extends Controller
          //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
         }
 
         $sql = "SELECT t0.ods, t2.cor, count(*) as total 
@@ -286,6 +316,21 @@ class ODSController extends Controller
          //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
         }
 
         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
@@ -423,6 +468,21 @@ class ODSController extends Controller
         //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+         //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
         }
 
         $sql = "SELECT t0.ods, objetivo, t2.cor, count(*) as total 
