@@ -14,7 +14,7 @@ class DashboardController extends Controller
 
     public function centros()
     {
-        $centros = \App\Centro::orderBy('ds_nome_cen')->get(['ds_sigla_cen', 'ds_nome_cen']);
+        $centros = \App\Centro::orderBy('ds_nome_cen')->get(['cd_centro_cen', 'ds_sigla_cen', 'ds_nome_cen']);
         return response()->json($centros);
     }
 
