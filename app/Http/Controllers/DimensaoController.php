@@ -93,12 +93,12 @@ class DimensaoController extends Controller
 
          //Filtro por centro
         if($request->centro){
-            $where .= " AND id_centro = '$request->centro' ";
+            $query->where('id_centro', $request->centro);
         }
 
         //Filtro por departamento
         if($request->departamento){
-            $where .= " AND id_departamento = '$request->departamento' ";
+            $query->where('id_departamento', $request->departamento);
         }
 
         //Filtro por programa
