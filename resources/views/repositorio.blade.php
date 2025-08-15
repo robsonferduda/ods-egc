@@ -139,9 +139,6 @@
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
             
-            var dimensao = $("#dimensao").val();
-            var ods = $("#ods").val();
-
             $('.btn-filtrar').on('click', function(e) {
                 e.preventDefault();
 
@@ -202,10 +199,9 @@
                         $('#ano_final').append(option);
                     });
 
-                    $(".btn-filtrar").trigger("click");
                 },
                 complete: function(){
-                    $('.painel').loader('hide');
+                    
                 }
             }); 
 
