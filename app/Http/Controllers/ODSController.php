@@ -167,6 +167,7 @@ class ODSController extends Controller
                 t0.id_dimensao,
                 titulo,
                 t2.nome,
+                t0.ano,
                 t3.ds_tipo_documento 
                 FROM documento_ods t0
                 JOIN ods t1 ON t1.cod = t0.ods 
