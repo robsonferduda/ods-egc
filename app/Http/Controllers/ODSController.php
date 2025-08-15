@@ -106,7 +106,7 @@ class ODSController extends Controller
             })
             ->paginate(10);
 
-        return view('repositorio', compact('ods','documentos','dimensoes_ies'));
+        return view('repositorio', compact('ods','documentos','dimensoes_ies','ano_inicio','ano_fim'));
     }
 
     public function getDadosOds($ods)

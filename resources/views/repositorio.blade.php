@@ -28,7 +28,7 @@
                     <select class="form-control" name="dimensao" id="dimensao" aria-label="Selecione a dimensão">
                         <option value="0">Todas</option>
                         @foreach($dimensoes_ies as $key => $dimensao)
-                            <option value="{{ $dimensao->apelido }}">{{ $dimensao->nome }}</option>
+                            <option value="{{ $dimensao->apelido }}" {{ $dimensao->apelido == request('dimensao') ? 'selected' : '' }}>{{ $dimensao->nome }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -68,6 +68,9 @@
     </div>
     <div class="col-md-9">
         <div class="row">
+            <div class="col-md-12">
+                <h6 class="mb-2"><i class="fa fa-file-o"></i> Documentos Filtrados</h6>
+            </div>
             <div class="col-md-12" style="display: grid; justify-content: center !important;">
                 {{ $documentos->appends(request()->query())->links() }}
             </div>
