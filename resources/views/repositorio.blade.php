@@ -3,7 +3,7 @@
 <div class="row mt-3">
     <div class="col-md-12"> 
         <h5 class="mb-2" style="font-size: 14px !important;"><i class="fa fa-university" aria-hidden="true"></i> UNIVERSIDADE FEDERAL DE SANTA CATARINA</h5>
-        <h5 class="text-center">Repositório de Documentos</h5>
+        <h5 class="mb-2" style="font-size: 14px !important;">Repositório de Documentos</h5>
         <p><strong>Dimensão</strong>: <span class="dimensao-selecionada">Todas</span></p>
     </div>
 </div>
@@ -38,7 +38,6 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Ano Inicial</label>
                     <select class="form-control" name="ano_inicial" id="ano_inicial" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
@@ -46,7 +45,6 @@
             </div>    
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Ano Final</label>
                     <select class="form-control" name="ano_final" id="ano_final" aria-label="Default select example">
                         <option>Todos</option>
                     </select>
