@@ -246,21 +246,25 @@
                 // Pegue os valores dos filtros
                 var ies = $("#ies").val();
                 var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
                 var ano_inicio = $("#ano_inicio").val();
                 var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
-                var tipo = $("#tipo").val();
 
                 // Monte a query string
                 var params = $.param({
                     ies: ies,
                     dimensao: dimensao,
+                    tipo: tipo
                     ano_inicio: ano_inicio,
                     ano_fim: ano_fim,
+                    centro: centro,
+                    departamento: departamento,
                     ppg: ppg,
-                    docente: docente,
-                    tipo: tipo
+                    docente: docente                    
                 });
 
                 // Redirecione para a página de destino com os filtros

@@ -101,7 +101,7 @@
     <div class="col-md-9">
         <div class="row">
             <div class="col-md-12">
-                <h6 class="mb-2"><i class="fa fa-file-o"></i> Documentos Filtrados</h6>
+                <h6 class="mb-2"><i class="fa fa-files-o"></i> Documentos Filtrados</h6>
             </div>
             <div class="col-md-12" style="display: grid; justify-content: center !important;">
                 {{ $documentos->appends(request()->query())->links() }}
@@ -141,6 +141,37 @@
             
             var dimensao = $("#dimensao").val();
             var ods = $("#ods").val();
+
+            $('.btn-filtrar').on('click', function(e) {
+                e.preventDefault();
+
+                // Pegue os valores dos filtros
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
+                var ano_inicio = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+
+                // Monte a query string
+                var params = $.param({
+                    ies: ies,
+                    dimensao: dimensao,
+                    tipo: tipo
+                    ano_inicio: ano_inicio,
+                    ano_fim: ano_fim,
+                    centro: centro,
+                    departamento: departamento,
+                    ppg: ppg,
+                    docente: docente                    
+                });
+
+                // Redirecione para a página de destino com os filtros
+                window.location.href = "{{ url('repositorio') }}" + "?" + params;
+            });
 
             $.ajax({
                 url: host+'/dados/ano',
