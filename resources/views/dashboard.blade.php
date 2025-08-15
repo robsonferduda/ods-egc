@@ -258,7 +258,7 @@
                 var params = $.param({
                     ies: ies,
                     dimensao: dimensao,
-                    tipo: tipo
+                    tipo: tipo,
                     ano_inicio: ano_inicio,
                     ano_fim: ano_fim,
                     centro: centro,
