@@ -34,6 +34,14 @@
                 </div>
             </div>
             <div class="col-md-12">
+                <div class="form-group">
+                    <label>Documentos Analisados</label>
+                    <select class="form-control" name="tipo" id="tipo" aria-label="Selecione o tipo">
+                        <option value="todos">Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
                 <label>Período</label>
             </div>
             <div class="col-md-6">
@@ -50,17 +58,41 @@
                     </select>
                 </div>   
             </div>   
-            <div class="col-md-12"> 
+            <div class="col-md-12">       
                 <div class="form-group">
-                    <label>ODS</label>
-                    <select class="form-control" name="ods" id="ods" aria-label="Default select example">
-                        <option value="0">Todos</option>
-                        @foreach($ods as $key => $o)
-                            <option value="{{ $o->cod }}">ODS {{ $o->cod }} - {{ $o->objetivo }}</option>
-                        @endforeach
+                    <label>Centro</label>
+                    <select class="form-control" name="centro" id="centro" aria-label="Default select example">
+                        <option value="">Todos</option>
                     </select>
                 </div> 
-            </div>
+            </div> 
+
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Departamento</label>
+                    <select class="form-control" name="departamento" id="departamento" aria-label="Default select example">
+                        <option value="">Todos</option>
+                    </select>
+                </div> 
+            </div> 
+
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Programa de Pós-Graduação</label>
+                    <select class="form-control" name="ppg" id="ppg" aria-label="Default select example">
+                        <option value="">Todos</option>
+                    </select>
+                </div> 
+            </div> 
+            
+            <div class="col-md-12">       
+                <div class="form-group">
+                    <label>Docente</label>
+                    <select class="form-control" name="docente" id="docente" aria-label="Default select example">
+                        <option value="">Selecione um docente</option>
+                    </select>
+                </div> 
+            </div>  
             <div class="col-md-12 center"> 
                 <button type="button" class="btn btn-fill btn-primary btn-wd btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
             </div>
