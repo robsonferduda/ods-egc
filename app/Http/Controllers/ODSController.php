@@ -83,7 +83,7 @@ class ODSController extends Controller
             ->when($departamento, function ($query) use ($departamento) {
                 return $query->where('id_departamento', $departamento);
             })
-            ->when($tipo, function ($query) use ($tipo) {
+            ->when($tipo and $tipo != "todos", function ($query) use ($tipo) {
                 return $query->where('id_tipo_documento', $tipo);
             })
             ->when($dimensao, function ($query) use ($dimensao) {
