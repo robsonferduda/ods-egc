@@ -34,8 +34,12 @@ class ODSController extends Controller
     public function repositorio(Request $request)
     {
         $ods = Ods::orderBy('cod')->get();
+        $dimensao = $request->input('dimensao');
+        $tipo = $request->input('tipo');
         $ano_inicio = $request->input('ano_inicio');
         $ano_fim = $request->input('ano_fim');
+        $centro = $request->input('centro');
+        $departamento = $request->input('departamento');
         $ppg = $request->input('ppg');
         $docente = $request->input('docente');
 
@@ -73,6 +77,18 @@ class ODSController extends Controller
         }
 
         $documentos = Documento::query()
+            ->when($centro, function ($query) use ($centro) {
+                return $query->where('id_centro', $centro);
+            })
+            ->when($departamento, function ($query) use ($departamento) {
+                return $query->where('id_departamento', $departamento);
+            })
+            ->when($tipo, function ($query) use ($tipo) {
+                return $query->where('id_tipo_documento', $tipo);
+            })
+            ->when($dimensao, function ($query) use ($dimensao) {
+                return $query->whereIn('id_dimensao', $dimensao);
+            })
             ->when($ano_inicio, function ($query) use ($ano_inicio) {
                 return $query->where('ano', '>=', $ano_inicio);
             })
