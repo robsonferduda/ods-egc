@@ -20,7 +20,9 @@ class DashboardController extends Controller
 
     public function departamentos()
     {
-        $departamentos = \App\Departamento::orderBy('ds_departamento_dep')->get(['id_departamento_dep','ds_sigla_dep', 'ds_departamento_dep']);
+        $departamentos = \App\Departamento::orderBy('ds_sigla_dep')
+                                        ->get(['id_departamento_dep','ds_sigla_dep', 'ds_departamento_dep']);
+        
         return response()->json($departamentos);
     }
 
@@ -29,7 +31,7 @@ class DashboardController extends Controller
         $centro = Centro::where('cd_centro_cen', $centro)->first();
 
         $departamentos = \App\Departamento::where('ds_sigla_cen', $centro->ds_sigla_cen)
-            ->orderBy('ds_departamento_dep')
+            ->orderBy('ds_sigla_dep')
             ->get(['id_departamento_dep','ds_sigla_dep', 'ds_departamento_dep']);
 
         return response()->json($departamentos);
