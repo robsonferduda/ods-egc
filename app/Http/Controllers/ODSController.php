@@ -96,7 +96,7 @@ class ODSController extends Controller
                 return $query->where('ano', '<=', $ano_fim);
             })
             ->when($ppg, function ($query) use ($ppg) {
-                return $query->where('nm_programa', $ppg);
+                return $query->where('id_ppg', $ppg);
             })
             ->when($docente, function ($query) use ($docente) {
                 return $query->where('nm_orientador', $docente);
