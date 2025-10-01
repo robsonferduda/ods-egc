@@ -4,7 +4,7 @@
         <td colspan="18" style="text-align: center;"><strong>Relatório de Evolução por ODS/Ano</strong></td>
     </tr>
     <tr>
-        <td colspan="18"><strong>Filtros</strong>: {{ $dados[count($dados) + 1]['filtros'] }}</td>
+        <td colspan="18"><strong>Filtros</strong>: {{ $dados[count($dados)]['filtros'] }}</td>
     </tr>
     <tr>
         <th style="font-weight: bold; text-align: center;">Ano</th>
@@ -29,7 +29,7 @@
     </thead>
     <tbody>
         @foreach($dados as $key => $d)
-            @if($key < (count($dados) -1))
+            @if($key < (count($dados) - 1))
                 <tr>
                     <td style="text-align: center;">{{ $d['ano'] }}</td>
                     <td style="text-align: center;">{{ $d['1'] }}</td>
