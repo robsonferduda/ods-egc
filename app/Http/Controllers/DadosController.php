@@ -129,47 +129,69 @@ class DadosController extends Controller
         $where = "WHERE 1=1";
 
         switch ($request->dimensao) {
-            case 'extensao':
-                $where .= ' AND id_dimensao = 2 '; 
+            
+            case 'pos-graduacao':
+                $where .= ' AND t0.id_dimensao = 6 ';
                 break;
 
             case 'pesquisa':
-                $where .= ' AND id_dimensao = 1 ';
+                $where .= ' AND t0.id_dimensao = 5 ';
                 break;
+
+            case 'extensao':
+                $where .= ' AND t0.id_dimensao = 2 '; 
+                break;            
             
+            case 'gestao':
+                $where .= ' AND t0.id_dimensao = 3 ';
+                break;
+
+            case 'inovacao':
+                $where .= ' AND t0.id_dimensao = 4 ';
+                break;
+
+            case 'ensino':
+                $where .= ' AND t0.id_dimensao = 1 ';
+                break;
+                
             default:
                 
                 break;
         }
 
-        if($request->ppg){
-            $where .= " AND nm_programa = '$request->ppg'";
-        }
-
-        if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND an_base BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
-        }
-
+        //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND nm_subtipo_producao = '$request->tipo' ";
+            $where .= " AND t0.id_tipo_documento = '$request->tipo' ";
         }
 
-        if($request->docente){
-            $where .= " AND nm_orientador = '$request->docente'";
+        //Filtro por ano
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
-        /*
-            Definição dos ODS existentes
+        //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
 
-        */
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
 
-        $sql = "SELECT t1.ods, t2.cor, count(*) as total 
-                FROM capes_teses_dissertacoes_ctd t0
-                JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                RIGHT JOIN ods t2 ON t2.cod = t1.ods 
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
+        }
+
+         $sql = "SELECT t0.ods, t1.cor, count(*) as total 
+                FROM documento_ods t0
+                RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
                 $where
-                GROUP BY t1.ods, t2.cor 
-                ORDER BY t1.ods";
+                GROUP BY t0.ods, t1.cor 
+                ORDER BY t0.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
         
@@ -193,17 +215,17 @@ class DadosController extends Controller
 
             foreach ($lista_ods as $key => $ods) {
 
-                $complemento = ' AND an_base = '.$anos[$i].'
-                AND ods = '.$ods->cod.'
-                GROUP BY t1.ods, an_base, t2.cor 
-                ORDER BY t1.ods, an_base';
+                $complemento = ' AND ano = '.$anos[$i].'
+                                AND t0.ods = '.$ods->cod.'
+                                GROUP BY t0.ods, ano, t1.cor 
+                                ORDER BY t0.ods, ano';
 
-                $sql = "SELECT t1.ods, t0.an_base, t2.cor, count(*) as total 
-                        FROM capes_teses_dissertacoes_ctd t0
-                        JOIN documento_ods t1 ON t1.id_producao_intelectual = t0.id_producao_intelectual 
-                        RIGHT JOIN ods t2 ON t2.cod = t1.ods 
-                        $where
-                        $complemento";
+                $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
+                            FROM documento_ods t0
+                            RIGHT JOIN ods t1 ON t1.cod = t0.ods 
+                            LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                            $where
+                            $complemento";
 
                 $resultado = DB::connection('pgsql')->select($sql);
 

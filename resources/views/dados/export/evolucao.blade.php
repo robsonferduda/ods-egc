@@ -31,7 +31,7 @@
         @foreach($dados as $key => $d)
             @if($key < (count($dados)))
             @php
-                $formatacao = ($key > (count($dados) -2)) ? 'font-weight: bold;' : '';
+                $formatacao = ($key > (count($dados) - 3)) ? 'font-weight: bold;' : '';
             @endphp
                 <tr>
                     <td style="{{ $formatacao }} text-align: center;">{{ $d['ano'] }}</td>
