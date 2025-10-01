@@ -227,7 +227,7 @@ class DadosController extends Controller
 
         }
         $lista[count($anos)]['soma'] = 999;
-        $lista['filtros'] = '';
+        $lista[count($anos) + 1]['filtros'] = '';
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
 
