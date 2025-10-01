@@ -248,8 +248,6 @@ class DadosController extends Controller
 
         $lista[] = $linha_soma;
 
-        dd($lista);
-
         $lista[count($anos)]['filtros'] = '';
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
