@@ -227,7 +227,7 @@ class DadosController extends Controller
 
         }
 
-        return Excel::download(new DadosExport($lista), 'dados_evolucao.xlsx');
+        return Excel::download(new DadosExport($lista), date('Y-m-d-H-i-s').'dados_evolucao.xlsx');
     }
 
     public function lerArquivo(Request $request)
