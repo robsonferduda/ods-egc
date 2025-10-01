@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         @foreach($dados as $key => $d)
-            @if($key <= 15)
+            @if($key < count($dados))
                 <tr>
                     <td style="font-weight: bold; text-align: center;">{{ $d['ano'] }}</td>
                     <td style="font-weight: bold; text-align: center;">{{ $d['1'] }}</td>
@@ -51,7 +51,7 @@
         @endforeach
         <tr>
             <td style="text-align: center;">Totais</td>
-            <td style="text-align: center;">{{ $dados[17]['soma'] }}</td>
+            <td style="text-align: center;">{{ $dados[count($dados)-1]['soma'] }}</td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
