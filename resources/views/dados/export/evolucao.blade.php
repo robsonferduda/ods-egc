@@ -26,7 +26,7 @@
     </thead>
     <tbody>
         @foreach($dados as $key => $d)
-            @if($key < count($dados))
+            @if($key < (count($dados) -1))
                 <tr>
                     <td style="font-weight: bold; text-align: center;">{{ $d['ano'] }}</td>
                     <td style="font-weight: bold; text-align: center;">{{ $d['1'] }}</td>
