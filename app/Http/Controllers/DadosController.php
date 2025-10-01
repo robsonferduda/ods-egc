@@ -124,6 +124,11 @@ class DadosController extends Controller
 
     public function excel(Request $request)
     {
+
+        $filtros = '';
+
+        $filtros .= 'Período: '.$request->ano_inicial.' a '.$request->ano_fim.' </br>';
+
         $dados = array();
 
         $where = "WHERE 1=1";
@@ -278,7 +283,7 @@ class DadosController extends Controller
 
         $lista[] = $linha_percentual;
 
-        $lista[count($lista) - 1]['filtros'] = '';
+        $lista[count($lista) - 1]['filtros'] = $filtros;
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
 
