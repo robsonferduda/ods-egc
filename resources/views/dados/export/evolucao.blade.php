@@ -52,45 +52,5 @@
                 </tr>
             @endif
         @endforeach
-        <tr>
-            <td style="font-weight: bold; text-align: center;">Totais</td>
-            <td style="font-weight: bold; text-align: center;">{{ $dados[count($dados)-1]['soma'] }}</td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-        </tr>
-        <tr>
-            <td style="font-weight: bold; text-align: center;">Percentual</td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-            <td style="font-weight: bold; text-align: center;"></td>
-        </tr>
     </tbody>
 </table>
