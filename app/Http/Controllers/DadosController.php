@@ -9,10 +9,7 @@ use Mail;
 use App\Utils;
 use App\Ods;
 use App\Cidade;
-use App\CertificadoMetadado;
-use App\Participante;
-use App\ModeloCertificado;
-use App\CertificadoCiki;
+use App\Dimensao;
 use App\ParticipanteCiki;
 use App\Exports\DadosExport;
 use Laracasts\Flash\Flash;
@@ -134,34 +131,47 @@ class DadosController extends Controller
         $where = "WHERE 1=1";
 
         switch ($request->dimensao) {
+
+            $id_dimensao = 0;
             
             case 'pos-graduacao':
                 $where .= ' AND t0.id_dimensao = 6 ';
+                $id_dimensao = 6;
                 break;
 
             case 'pesquisa':
                 $where .= ' AND t0.id_dimensao = 5 ';
+                $id_dimensao = 5;
                 break;
 
             case 'extensao':
                 $where .= ' AND t0.id_dimensao = 2 '; 
+                $id_dimensao = 2;
                 break;            
             
             case 'gestao':
                 $where .= ' AND t0.id_dimensao = 3 ';
+                $id_dimensao = 3;
                 break;
 
             case 'inovacao':
                 $where .= ' AND t0.id_dimensao = 4 ';
+                $id_dimensao = 4;
                 break;
 
             case 'ensino':
                 $where .= ' AND t0.id_dimensao = 1 ';
+                $id_dimensao = 1;
                 break;
                 
             default:
                 
                 break;
+        }
+
+        if($id_dimensao){
+            $dimensao = Dimensao::where('id', $id_dimensao)->first();
+            $filtros .= ' / Dimensão IES: '.$dimensao->nome;
         }
 
         //Filtro por tipo de documento
