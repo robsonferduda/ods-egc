@@ -49,7 +49,7 @@
         @endforeach
         <tr>
             <td style="text-align: center;">Totais</td>
-            <td style="text-align: center;"></td>
+            <td style="text-align: center;">{{ $dados[17]['soma'] }}</td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
             <td style="text-align: center;"></td>
