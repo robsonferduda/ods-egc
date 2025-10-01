@@ -28,46 +28,46 @@
         @foreach($dados as $key => $d)
             @if($key < (count($dados) -1))
                 <tr>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['ano'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['1'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['2'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['3'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['4'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['5'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['6'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['7'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['8'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['9'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['10'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['11'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['12'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['13'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['14'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['15'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['16'] }}</td>
-                    <td style="font-weight: bold; text-align: center;">{{ $d['total'] }}</td>
+                    <td style="text-align: center;">{{ $d['ano'] }}</td>
+                    <td style="text-align: center;">{{ $d['1'] }}</td>
+                    <td style="text-align: center;">{{ $d['2'] }}</td>
+                    <td style="text-align: center;">{{ $d['3'] }}</td>
+                    <td style="text-align: center;">{{ $d['4'] }}</td>
+                    <td style="text-align: center;">{{ $d['5'] }}</td>
+                    <td style="text-align: center;">{{ $d['6'] }}</td>
+                    <td style="text-align: center;">{{ $d['7'] }}</td>
+                    <td style="text-align: center;">{{ $d['8'] }}</td>
+                    <td style="text-align: center;">{{ $d['9'] }}</td>
+                    <td style="text-align: center;">{{ $d['10'] }}</td>
+                    <td style="text-align: center;">{{ $d['11'] }}</td>
+                    <td style="text-align: center;">{{ $d['12'] }}</td>
+                    <td style="text-align: center;">{{ $d['13'] }}</td>
+                    <td style="text-align: center;">{{ $d['14'] }}</td>
+                    <td style="text-align: center;">{{ $d['15'] }}</td>
+                    <td style="text-align: center;">{{ $d['16'] }}</td>
+                    <td style="text-align: center;">{{ $d['total'] }}</td>
                 </tr>
             @endif
         @endforeach
         <tr>
-            <td style="text-align: center;">Totais</td>
-            <td style="text-align: center;">{{ $dados[count($dados)-1]['soma'] }}</td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
-            <td style="text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;">Totais</td>
+            <td style="font-weight: bold; text-align: center;">{{ $dados[count($dados)-1]['soma'] }}</td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
+            <td style="font-weight: bold; text-align: center;"></td>
         </tr>
         <tr>
             <td style="font-weight: bold; text-align: center;">Percentual</td>

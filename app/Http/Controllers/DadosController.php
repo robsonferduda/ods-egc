@@ -228,7 +228,9 @@ class DadosController extends Controller
         }
         $lista[count($anos)]['soma'] = 999;
 
-        return Excel::download(new DadosExport($lista), date('Y-m-d-H-i-s').'_dados_evolucao.xlsx');
+        $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
+
+        return Excel::download(new DadosExport($lista), $nome_arquivo);
     }
 
     public function lerArquivo(Request $request)
