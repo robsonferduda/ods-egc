@@ -4,7 +4,7 @@
         <td colspan="18" style="text-align: center;"><strong>Relatório de Evolução por ODS/Ano</strong></td>
     </tr>
     <tr>
-        <td colspan="18"><strong>Filtros</strong>: {{ $dados['filtro'] }}</td>
+        <td colspan="18"><strong>Filtros</strong>: {{ $dados['filtros'] }}</td>
     </tr>
     <tr>
         <th style="font-weight: bold; text-align: center;">Ano</th>
