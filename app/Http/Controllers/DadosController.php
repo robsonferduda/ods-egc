@@ -257,7 +257,7 @@ class DadosController extends Controller
 
         $lista[] = $linha_percentual;
 
-        $lista[count($anos)]['filtros'] = '';
+        $lista[count($lista) - 1]['filtros'] = '';
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
 
