@@ -163,7 +163,7 @@ class ODSController extends Controller
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
-         //Filtro por centro
+        //Filtro por centro
         if($request->centro){
             $where .= " AND id_centro = '$request->centro' ";
         }
@@ -385,9 +385,9 @@ class ODSController extends Controller
                 for ($i=0; $i < count($anos); $i++) { 
 
                     $complemento = ' AND ano = '.$anos[$i].'
-                                AND t0.ods = '.$ods->cod.'
-                                GROUP BY t0.ods, ano, t1.cor 
-                                ORDER BY t0.ods, ano';
+                                    AND t0.ods = '.$ods->cod.'
+                                    GROUP BY t0.ods, ano, t1.cor 
+                                    ORDER BY t0.ods, ano';
 
                     $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
                             FROM documento_ods t0

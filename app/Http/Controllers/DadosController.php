@@ -216,14 +216,13 @@ class DadosController extends Controller
             foreach ($lista_ods as $key => $ods) {
 
                 $complemento = ' AND ano = '.$anos[$i].'
-                                AND t0.ods = '.$ods->cod.'
-                                GROUP BY t0.ods, ano, t1.cor 
-                                ORDER BY t0.ods, ano';
+                                    AND t0.ods = '.$ods->cod.'
+                                    GROUP BY t0.ods, ano, t1.cor 
+                                    ORDER BY t0.ods, ano';
 
-                $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
+                    $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
                             FROM documento_ods t0
                             RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                            LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             $where
                             $complemento";
 
