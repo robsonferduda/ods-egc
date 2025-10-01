@@ -130,9 +130,9 @@ class DadosController extends Controller
 
         $where = "WHERE 1=1";
 
-        switch ($request->dimensao) {
+        $id_dimensao = 0;
 
-            $id_dimensao = 0;
+        switch ($request->dimensao) {
             
             case 'pos-graduacao':
                 $where .= ' AND t0.id_dimensao = 6 ';
