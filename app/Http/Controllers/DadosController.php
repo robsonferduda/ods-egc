@@ -127,7 +127,7 @@ class DadosController extends Controller
 
         $filtros = '';
 
-        $filtros .= 'Período: '.$request->ano_inicial.' a '.$request->ano_fim.' </br>';
+        $filtros .= 'Período de '.$request->ano_inicial.' a '.$request->ano_fim;
 
         $dados = array();
 
