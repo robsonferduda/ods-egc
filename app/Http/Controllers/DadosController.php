@@ -248,6 +248,15 @@ class DadosController extends Controller
 
         $lista[] = $linha_soma;
 
+        $linha_percentual = ['ano' => '%'];
+        for ($i = 1; $i <= $colunas; $i++) {
+            $perc = $soma_total > 0 ? ($soma_colunas[$i] / $soma_total) * 100 : 0;
+            $linha_percentual[$i] = number_format($perc, 2, ',', '') . '%';
+        }
+        $linha_percentual['total'] = '100,00%';
+
+        $lista[] = $linha_percentual;
+
         $lista[count($anos)]['filtros'] = '';
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
