@@ -29,7 +29,7 @@
     </thead>
     <tbody>
         @foreach($dados as $key => $d)
-            @if($key < (count($dados) - 1))
+            @if($key < (count($dados)))
                 <tr>
                     <td style="text-align: center;">{{ $d['ano'] }}</td>
                     <td style="text-align: center;">{{ $d['1'] }}</td>
