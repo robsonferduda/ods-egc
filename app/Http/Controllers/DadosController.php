@@ -226,7 +226,30 @@ class DadosController extends Controller
             $lista[$i]['total'] = array_sum($totais);
 
         }
-        $lista[count($anos)]['soma'] = 999;
+        
+        // Após o loop que monta $lista
+        $colunas = count($lista_ods); // número de ODS/colunas
+        $soma_colunas = array_fill(1, $colunas, 0);
+        $soma_total = 0;
+
+        foreach ($lista as $linha) {
+            for ($i = 1; $i <= $colunas; $i++) {
+                $soma_colunas[$i] += isset($linha[$i]) ? $linha[$i] : 0;
+            }
+            $soma_total += isset($linha['total']) ? $linha['total'] : 0;
+        }
+
+        // Adiciona linha de somatório ao final
+        $linha_soma = ['ano' => 'Total'];
+        for ($i = 1; $i <= $colunas; $i++) {
+            $linha_soma[$i] = $soma_colunas[$i];
+        }
+        $linha_soma['total'] = $soma_total;
+
+        $lista[] = $linha_soma;
+
+        dd($lista);
+
         $lista[count($anos)]['filtros'] = '';
 
         $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
