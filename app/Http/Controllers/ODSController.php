@@ -104,7 +104,7 @@ class ODSController extends Controller
             ->when($dimensao, function ($query) use ($dimensao) {
                 return $query->whereIn('id_dimensao', $dimensao);
             })
-            ->orderBy('ano')
+            ->orderByDesc('ano')
             ->paginate(10);
 
         return view('repositorio', compact('ods','documentos','dimensoes_ies','ano_inicio','ano_fim'));
@@ -191,7 +191,7 @@ class ODSController extends Controller
                 JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
                 JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
                 $where
-                ORDER BY ano 
+                ORDER BY ano DESC 
                 LIMIT 5";
 
         $dados = DB::connection('pgsql')->select($sql);
