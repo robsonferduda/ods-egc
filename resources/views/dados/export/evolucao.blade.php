@@ -30,8 +30,11 @@
     <tbody>
         @foreach($dados as $key => $d)
             @if($key < (count($dados)))
+            @php
+                $formatacao = ($key > (count($dados) -2)) ? 'font-weight: bold;' : '';
+            @endphp
                 <tr>
-                    <td style="text-align: center;">{{ $d['ano'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['ano'] }}</td>
                     <td style="text-align: center;">{{ $d['1'] }}</td>
                     <td style="text-align: center;">{{ $d['2'] }}</td>
                     <td style="text-align: center;">{{ $d['3'] }}</td>
