@@ -120,7 +120,7 @@
 
             <div class="col-md-12"> 
                 <h6 class="">Estatísticas do Centro</h6>
-                
+                <div id="card-dimensao-centro"></div>
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
@@ -453,6 +453,32 @@
                 // Limpa PPG e Docente ao trocar centro
                 $('#ppg').empty().append('<option value="">Todos</option>');
                 $('#departamento').empty().append('<option value="">Todos</option>');
+
+
+                $.get('/centro/dimensao/' + centroId, function(data){
+                    if(data.length > 0) {
+                        var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
+                        var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
+                        var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
+
+                        var html = `
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mb-2">${destaque.nm_dim_ies}</h5>
+                                    <p class="card-text mb-1">
+                                        <span class="display-4 font-weight-bold">${percentual}%</span>
+                                    </p>
+                                    <small class="text-muted">Dimensão mais destacada no centro ${destaque.sigla_centro}</small>
+                                </div>
+                            </div>
+                        `;
+                        $('#card-dimensao-centro').html(html);
+                    } else {
+                        $('#card-dimensao-centro').html('<div class="alert alert-warning">Nenhuma dimensão encontrada.</div>');
+                    }
+                });
+            });
+
             });
 
            
