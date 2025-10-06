@@ -455,7 +455,7 @@
                 $('#departamento').empty().append('<option value="">Todos</option>');
 
 
-                $.get('/centro/dimensao/' + centroId, function(data){
+                $.get(host + '/centro/dimensao/' + centroId, function(data){
                     if(data.length > 0) {
                         var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
                         var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
