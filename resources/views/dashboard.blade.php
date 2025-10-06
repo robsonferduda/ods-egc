@@ -120,7 +120,9 @@
 
             <div class="col-md-12"> 
                 <h6 class="">Estatísticas do Centro</h6>
-                <div id="card-dimensao-centro"></div>
+                <div class="row">
+                    <div class="col-md-4" id="card-dimensao-centro"></div>
+                </div>
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
@@ -464,7 +466,7 @@
                         var html = `
                             <div class="card shadow-sm mb-4">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title mb-2">${destaque.nm_dim_ies}</h5>
+                                    <h5 class="card-title mb-1">${destaque.nm_dim_ies}</h5>
                                     <p class="card-text mb-1">
                                         <span class="display-4 font-weight-bold">${percentual}%</span>
                                     </p>
