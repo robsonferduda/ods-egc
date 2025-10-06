@@ -27,7 +27,7 @@ class CentroController extends Controller
     public function calcularIES($id)
     {
         //Calcular o IES (Índice de Engajamento Sustentável) de um Centro
-        $ies = DB::select('SELECT calcular_ies_centro(?) AS ies;', [$id]);
+        $ies = DB::select('SELECT mv_sec_por_centro WHERE id_centro = ?;', [$id]);
 
         return response()->json($ies);
     }
