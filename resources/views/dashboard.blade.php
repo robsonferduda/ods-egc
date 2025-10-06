@@ -117,6 +117,11 @@
                 <h6 class="">ODS MAIS FREQUENTES</h6>
                 <div class="lista-ods"></div>
             </div>
+
+            <div class="col-md-12"> 
+                <h6 class="">Estatísticas do Centro</h6>
+                
+            </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
                 <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
