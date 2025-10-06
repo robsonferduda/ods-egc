@@ -598,7 +598,7 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             ICS
-                                            <span class="badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${ics}</span>                                            
@@ -636,7 +636,7 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             IES
-                                            <span class="badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
