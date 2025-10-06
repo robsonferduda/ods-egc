@@ -509,9 +509,9 @@
                     if(data.length > 0) {
                         var pesquisador = data[0];
                         var html = `
-                            <div class="card shadow-sm mb-4">
+                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title mb-2">${pesquisador.nome_pessoa}</h5>
+                                    <h5 class="card-title mb-0">${pesquisador.nome_pessoa}</h5>
                                     <p class="card-text mb-1">
                                         <span class="display-4 font-weight-bold">${pesquisador.total_docs}</span>
                                     </p>
