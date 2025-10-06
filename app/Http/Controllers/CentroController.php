@@ -79,4 +79,42 @@ class CentroController extends Controller
 
         return response()->json($dimensoes);
     }
+
+    public function pesquisador($id)
+    {
+
+        $dimensoes = DB::select('WITH id_docente AS (
+                                SELECT id_vinculo_vin AS id_docente_vin
+                                FROM public.vinculo_vin
+                                WHERE ds_vinculo_vin ILIKE "Docente"
+                                LIMIT 1
+                                ),
+                                contrib AS (
+                                SELECT
+                                    f.id_centro_resolvido      AS id_centro,
+                                    c.ds_sigla_cen             AS sigla_centro,
+                                    p.id_pessoa_pes            AS id_pessoa,
+                                    p.ds_nome_pessoa           AS nome_pessoa,
+                                    COUNT(DISTINCT f.id_documento_ods) AS total_docs
+                                FROM public.fato_documento_ods f
+                                JOIN public.documento_pessoa_dop dop ON dop.id_documento_ods = f.id_documento_ods
+                                JOIN public.pessoa_pes p             ON p.id_pessoa_pes = dop.id_pessoa_pes
+                                JOIN id_docente dvin                  ON p.id_vinculo_vin = dvin.id_docente_vin
+                                JOIN public.centro_cen c              ON c.cd_centro_cen = f.id_centro_resolvido
+                                WHERE f.id_centro_resolvido IS NOT NULL
+                                AND f.id_centro_resolvido = ?
+                                GROUP BY f.id_centro_resolvido, c.ds_sigla_cen, p.id_pessoa_pes, p.ds_nome_pessoa
+                                ),
+                                ranked AS (
+                                SELECT *,
+                                        ROW_NUMBER() OVER (PARTITION BY id_centro ORDER BY total_docs DESC, nome_pessoa) AS rk
+                                FROM contrib
+                                )
+                                SELECT id_centro, sigla_centro, id_pessoa, nome_pessoa, total_docs
+                                FROM ranked
+                                WHERE rk = 1
+                                ORDER BY total_docs DESC;', [$id]);
+
+        return response()->json($dimensoes);
+    }
 }
