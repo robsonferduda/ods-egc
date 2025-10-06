@@ -482,7 +482,7 @@
                         var html = `
                             <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title mb-0">IES</h5>
+                                    <h5 class="card-title mb-0">IES <sup>&reg;</sup></h5>
                                     <p class="card-text mb-1">
                                         <span class="display-4 font-weight-bold">${data[0].sec_index}</span>
                                     </p>
