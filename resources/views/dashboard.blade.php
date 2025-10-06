@@ -464,13 +464,13 @@
                         var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
 
                         var html = `
-                            <div class="card shadow-sm mb-4">
+                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                 <div class="card-body text-center">
-                                    <h5 class="card-title mb-1">${destaque.nm_dim_ies}</h5>
+                                    <h5 class="card-title mb-0">${destaque.nm_dim_ies}</h5>
                                     <p class="card-text mb-1">
                                         <span class="display-4 font-weight-bold">${percentual}%</span>
                                     </p>
-                                    <small class="text-muted">Dimensão mais destacada no centro ${destaque.sigla_centro}</small>
+                                    <small class="text-muted">Dimensão mais destacada no ${destaque.sigla_centro}</small>
                                 </div>
                             </div>
                         `;
