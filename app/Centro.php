@@ -10,4 +10,5 @@ class Centro extends Model
     protected $table = 'centro_cen';
 
     protected $fillable = [''];   
+
 }
