@@ -24,6 +24,14 @@ class CentroController extends Controller
         //$this->middleware('auth');
     }
 
+    public function calcularIES($id)
+    {
+        //Calcular o IES (Índice de Engajamento Sustentável) de um Centro
+        $ies = DB::select('SELECT calcular_ies_centro(?) AS ies;', [$id]);
+
+        return response()->json($ies);
+    }
+
     public function dimensao($id)
     {
         //Em cada Centro, em qual Dimensão IES ele mais se destaca

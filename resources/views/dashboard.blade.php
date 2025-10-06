@@ -92,8 +92,8 @@
                 </div> 
             </div>  
             <div class="col-md-12 center"> 
-                <button type="button" class="btn btn-fill btn-primary btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
                 <button type="button" class="btn btn-fill btn-warning btn-limpar ml-2"><i class="fa fa-eraser"></i> Limpar</button>
+                <button type="button" class="btn btn-fill btn-primary btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
             </div>
         </div>  
     </div>
@@ -124,6 +124,7 @@
                 <div class="row">
                     <div class="col-md-4" id="card-dimensao-centro"></div>
                     <div class="col-md-4" id="card-dimensao-ods"></div>
+                    <div class="col-md-4" id="card-ies"></div>
                     <div class="col-md-12" id="card-pesquisador-centro"></div>
                 </div>
             </div>
@@ -475,6 +476,28 @@
                 $('#ppg').empty().append('<option value="">Todos</option>');
                 $('#departamento').empty().append('<option value="">Todos</option>');
 
+                $.get(host + '/centro/ies/' + centroId, function(data){
+                    if(data.length > 0) {
+                        var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
+                        var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
+                        var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
+
+                        var html = `
+                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mb-0">${destaque.nm_ies}</h5>
+                                    <p class="card-text mb-1">
+                                        <span class="display-4 font-weight-bold">${percentual}%</span>
+                                    </p>
+                                    <small class="text-muted">IES mais destacado no ${destaque.sigla_centro}</small>
+                                </div>
+                            </div>
+                        `;
+                        $('#card-ies').html(html);
+                    } else {
+                        $('#card-ies').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
+                    }
+                });
 
                 $.get(host + '/centro/dimensao/' + centroId, function(data){
                     if(data.length > 0) {
