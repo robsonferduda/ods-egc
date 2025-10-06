@@ -578,7 +578,7 @@
                 if(centro){
                     $(".box-centro").removeClass("d-none");
 
-                    $.get(host + '/centro/ies/' + centroId, function(data){
+                    $.get(host + '/centro/ies/' + centro, function(data){
                         if(data.length > 0) {
                             
                             var html = `
@@ -598,7 +598,7 @@
                         }
                     });
 
-                    $.get(host + '/centro/dimensao/' + centroId, function(data){
+                    $.get(host + '/centro/dimensao/' + centro, function(data){
                         if(data.length > 0) {
                             var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
                             var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
@@ -621,7 +621,7 @@
                         }
                     });
 
-                    $.get(host + '/centro/dimensao-ods/' + centroId, function(data){
+                    $.get(host + '/centro/dimensao-ods/' + centro, function(data){
                         if(data.length > 0) {
                             var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
                             var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
@@ -644,7 +644,7 @@
                         }
                     });
 
-                    $.get('/centro/pesquisador/' + centroId, function(data){
+                    $.get('/centro/pesquisador/' + centro, function(data){
                         if(data.length > 0) {
                             var pesquisador = data[0];
                             var html = `
