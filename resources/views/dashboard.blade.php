@@ -477,7 +477,7 @@
                         $('#card-dimensao-centro').html('<div class="alert alert-warning">Nenhuma dimensão encontrada.</div>');
                     }
                 });
-            });
+            
 
             });
 
