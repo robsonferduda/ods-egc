@@ -51,4 +51,32 @@ class CentroController extends Controller
 
         return response()->json($dimensoes);
     }
+
+    public function dimensaoODS($id)
+    {
+        //Em cada Centro, em qual Dimensão ODS (Ambiental/Econômica/Institucional/Social) ele mais se destaca
+        $dimensoes = DB::select('WITH dist AS (
+                                SELECT
+                                    c.cd_centro_cen           AS id_centro,
+                                    c.ds_sigla_cen            AS sigla_centro,
+                                    do2.cd_dimensao_ods       AS id_dim_ods,
+                                    do2.ds_dimensao           AS nm_dim_ods,
+                                    COUNT(*)                  AS total_docs
+                                FROM public.fato_documento_ods f
+                                JOIN public.centro_cen c  ON c.cd_centro_cen = f.id_centro_resolvido
+                                JOIN public.dimensao_ods do2 ON do2.cd_dimensao_ods = f.id_dimensao_ods
+                                WHERE c.cd_centro_cen = ?
+                                GROUP BY c.cd_centro_cen, c.ds_sigla_cen, do2.cd_dimensao_ods, do2.ds_dimensao
+                                ),
+                                ranked AS (
+                                SELECT *,
+                                        ROW_NUMBER() OVER (PARTITION BY id_centro ORDER BY total_docs DESC, id_dim_ods) AS rk
+                                FROM dist
+                                )
+                                SELECT *
+                                FROM ranked
+                                ORDER BY sigla_centro, total_docs DESC;', [$id]);
+
+        return response()->json($dimensoes);
+    }
 }

@@ -17,6 +17,7 @@ Route::get('dashboard', 'HomeController@dashboard');
 Route::get('repositorio', 'ODSController@repositorio');
 
 Route::get('centro/dimensao/{centro}', 'CentroController@dimensao');
+Route::get('centro/dimensao-ods/{centro}', 'CentroController@dimensaoODS');
 
 Route::post('dados/excel', 'DadosController@excel');
 Route::post('dados/geral', 'ODSController@getTotalGeral');
