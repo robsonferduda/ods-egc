@@ -83,10 +83,10 @@ class CentroController extends Controller
     public function pesquisador($id)
     {
 
-        $dimensoes = DB::select('WITH id_docente AS (
+        $dimensoes = DB::select("WITH id_docente AS (
                                 SELECT id_vinculo_vin AS id_docente_vin
                                 FROM public.vinculo_vin
-                                WHERE ds_vinculo_vin ILIKE "Docente"
+                                WHERE ds_vinculo_vin ILIKE 'Docente'
                                 LIMIT 1
                                 ),
                                 contrib AS (
@@ -113,7 +113,7 @@ class CentroController extends Controller
                                 SELECT id_centro, sigla_centro, id_pessoa, nome_pessoa, total_docs
                                 FROM ranked
                                 WHERE rk = 1
-                                ORDER BY total_docs DESC;', [$id]);
+                                ORDER BY total_docs DESC;", [$id]);
 
         return response()->json($dimensoes);
     }
