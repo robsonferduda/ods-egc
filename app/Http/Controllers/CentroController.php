@@ -32,6 +32,14 @@ class CentroController extends Controller
         return response()->json($ies);
     }
 
+    public function calcularICS($id)
+    {
+        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
+        $ics = DB::select('SELECT * FROM mv_ics_por_centro_docods WHERE id_centro = ?;', [$id]);
+
+        return response()->json($ics);
+    }
+
     public function dimensao($id)
     {
         //Em cada Centro, em qual Dimensão IES ele mais se destaca

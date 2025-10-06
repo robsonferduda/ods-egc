@@ -122,8 +122,9 @@
             <div class="col-md-12 box-centro d-none"> 
                 <h6 class="">Estatísticas do Centro</h6>
                 <div class="row">
-                    <div class="col-md-4" id="card-dimensao-centro"></div>
+                    <!--<div class="col-md-4" id="card-dimensao-centro"></div>-->
                     <div class="col-md-4" id="card-dimensao-ods"></div>
+                    <div class="col-md-4" id="card-ics"></div>
                     <div class="col-md-4" id="card-ies"></div>
                     <div class="col-md-12" id="card-pesquisador-centro"></div>
                 </div>
@@ -578,6 +579,38 @@
                 if(centro){
                     $(".box-centro").removeClass("d-none");
 
+                    $.get(host + '/centro/ics/' + centro, function(data){
+                        if(data.length > 0) {
+
+                            var ics = parseFloat(data[0].ics);
+                            var nivel = '';
+
+                            if(ics > 50) {
+                                nivel = 'Crescimento';
+                            } else if(ics == 50) {
+                                nivel = 'Estável';
+                            } else if(ics < 50) {
+                                nivel = 'Queda';
+                            }
+                            
+                            var html = `
+                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">ICS</h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${ics}</span>
+                                            <span class="badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                        </p>
+                                        <small class="text-muted">Índice de Crescimento Sustentável</small>
+                                    </div>
+                                </div>
+                            `;
+                            $('#card-ics').html(html);
+                        } else {
+                            $('#card-ics').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
+                        }
+                    });
+
                     $.get(host + '/centro/ies/' + centro, function(data){
                         if(data.length > 0) {
 
@@ -599,7 +632,7 @@
                             var html = `
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">IES <sup>&reg;</sup></h5>
+                                        <h5 class="card-title mb-0">IES</h5>
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>
                                             <span class="badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
