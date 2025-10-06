@@ -484,9 +484,9 @@
                                 <div class="card-body text-center">
                                     <h5 class="card-title mb-0">IES</h5>
                                     <p class="card-text mb-1">
-                                        <span class="display-4 font-weight-bold">${data[0].sec_index}%</span>
+                                        <span class="display-4 font-weight-bold">${data[0].sec_index}/100</span>
                                     </p>
-                                    <small class="text-muted"> </small>
+                                    <small class="text-muted">Índice de Engajamento Sustentável do Centro</small>
                                 </div>
                             </div>
                         `;
