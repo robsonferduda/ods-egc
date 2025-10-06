@@ -93,6 +93,7 @@
             </div>  
             <div class="col-md-12 center"> 
                 <button type="button" class="btn btn-fill btn-primary btn-wd btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
+                <button type="button" class="btn btn-fill btn-secondary btn-wd btn-limpar ml-2"><i class="fa fa-eraser"></i> Limpar</button>
             </div>
         </div>  
     </div>
@@ -248,6 +249,22 @@
         document.addEventListener("DOMContentLoaded", function () {
         
             var host =  $('meta[name="base-url"]').attr('content');
+
+            $(document).on('click', '.btn-limpar', function() {
+                // Reseta selects para o valor padrão
+                $('#ies').val('ufsc');
+                $('#dimensao').val('0');
+                $('#tipo').val('todos');
+                $('#ano_inicio option').prop('selected', false).first().prop('selected', true);
+                $('#ano_fim option').prop('selected', false).last().prop('selected', true);
+                $('#centro').val('');
+                $('#departamento').val('');
+                $('#ppg').val('');
+                $('#docente').val('');
+
+                // Atualiza visualização e dispara o filtro padrão
+                $(".btn-filtrar").trigger("click");
+            });
 
             $('#ver-todos').on('click', function(e) {
                 e.preventDefault();
@@ -509,7 +526,7 @@
                     if(data.length > 0) {
                         var pesquisador = data[0];
                         var html = `
-                            <div class="card shadow-sm mb-2 mt-4" style="background: #f3f3f3;">
+                            <div class="card shadow-sm mb-2 mt-3" style="background: #f3f3f3;">
                                 <div class="card-body text-center">
                                     <h5 class="card-title mb-0">${pesquisador.nome_pessoa}</h5>
                                     <p class="card-text mb-1">
