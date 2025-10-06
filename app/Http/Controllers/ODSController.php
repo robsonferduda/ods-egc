@@ -34,8 +34,12 @@ class ODSController extends Controller
     public function repositorio(Request $request)
     {
         $ods = Ods::orderBy('cod')->get();
+        $dimensao = $request->input('dimensao');
+        $tipo = $request->input('tipo');
         $ano_inicio = $request->input('ano_inicio');
         $ano_fim = $request->input('ano_fim');
+        $centro = $request->input('centro');
+        $departamento = $request->input('departamento');
         $ppg = $request->input('ppg');
         $docente = $request->input('docente');
 
@@ -73,6 +77,18 @@ class ODSController extends Controller
         }
 
         $documentos = Documento::query()
+            ->when($centro, function ($query) use ($centro) {
+                return $query->where('id_centro', $centro);
+            })
+            ->when($departamento, function ($query) use ($departamento) {
+                return $query->where('id_departamento', $departamento);
+            })
+            ->when($tipo and $tipo != "todos", function ($query) use ($tipo) {
+                return $query->where('id_tipo_documento', $tipo);
+            })
+            ->when($dimensao, function ($query) use ($dimensao) {
+                return $query->whereIn('id_dimensao', $dimensao);
+            })
             ->when($ano_inicio, function ($query) use ($ano_inicio) {
                 return $query->where('ano', '>=', $ano_inicio);
             })
@@ -80,7 +96,7 @@ class ODSController extends Controller
                 return $query->where('ano', '<=', $ano_fim);
             })
             ->when($ppg, function ($query) use ($ppg) {
-                return $query->where('nm_programa', $ppg);
+                return $query->where('id_ppg', $ppg);
             })
             ->when($docente, function ($query) use ($docente) {
                 return $query->where('nm_orientador', $docente);
@@ -88,9 +104,10 @@ class ODSController extends Controller
             ->when($dimensao, function ($query) use ($dimensao) {
                 return $query->whereIn('id_dimensao', $dimensao);
             })
+            ->orderByDesc('ano')
             ->paginate(10);
 
-        return view('repositorio', compact('ods','documentos','dimensoes_ies'));
+        return view('repositorio', compact('ods','documentos','dimensoes_ies','ano_inicio','ano_fim'));
     }
 
     public function getDadosOds($ods)
@@ -146,7 +163,7 @@ class ODSController extends Controller
             $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
-         //Filtro por centro
+        //Filtro por centro
         if($request->centro){
             $where .= " AND id_centro = '$request->centro' ";
         }
@@ -167,12 +184,14 @@ class ODSController extends Controller
                 t0.id_dimensao,
                 titulo,
                 t2.nome,
+                t0.ano,
                 t3.ds_tipo_documento 
                 FROM documento_ods t0
                 JOIN ods t1 ON t1.cod = t0.ods 
                 JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
                 JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
                 $where
+                ORDER BY ano DESC 
                 LIMIT 5";
 
         $dados = DB::connection('pgsql')->select($sql);
@@ -366,9 +385,9 @@ class ODSController extends Controller
                 for ($i=0; $i < count($anos); $i++) { 
 
                     $complemento = ' AND ano = '.$anos[$i].'
-                                AND t0.ods = '.$ods->cod.'
-                                GROUP BY t0.ods, ano, t1.cor 
-                                ORDER BY t0.ods, ano';
+                                    AND t0.ods = '.$ods->cod.'
+                                    GROUP BY t0.ods, ano, t1.cor 
+                                    ORDER BY t0.ods, ano';
 
                     $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
                             FROM documento_ods t0

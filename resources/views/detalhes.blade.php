@@ -14,7 +14,12 @@
         <div class="col-md-12 col-sm-12 mt-3">
             <h6 class="mb-1"><strong>Detalhes do Documento Analisado</strong></h6>
             <p class="mb-1"><strong>Centro</strong>: {{ ($documento->centro) ? $documento->centro->ds_nome_cen : 'Não Informado' }} </p>
-            <p class="mb-1"><strong>Departamento</strong>: {{ ($documento->departamento) ? $documento->departamento->ds_departamento_dep.'/'.$documento->departamento->ds_sigla_dep : 'Não Informado' }} </p>
+            @if($documento->departamento)
+                <p class="mb-1"><strong>Departamento</strong>: {{ ($documento->departamento) ? $documento->departamento->ds_departamento_dep.'/'.$documento->departamento->ds_sigla_dep : 'Não Informado' }} </p>
+            @endif
+            @if($documento->ppg)
+                <p class="mb-1"><strong>Programa de Pós-Graduação</strong>: {{ ($documento->ppg) ? $documento->ppg->nm_curso_cur : 'Não Informado' }} </p>
+            @endif
             <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ $documento->dimensao->nome }} </p>
             <p class="mb-1"><strong>Dimensão ODS</strong>: {{ $documento->dimensaoOds->ds_dimensao }} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
@@ -91,8 +96,7 @@
 
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            <p class="mb-1 mt-2"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
-            <p class="mb-1"><strong>Índice de Gini</strong>: {{ $documento->probabilidades->gini }}</p>
+            <p class="mb-1 mt-2"><strong>Pós-processamento: Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
             <table class="table table-bordered" id="tabela-ods">
               <thead>
                 <tr>

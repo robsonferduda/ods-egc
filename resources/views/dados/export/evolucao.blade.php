@@ -1,51 +1,60 @@
 <table>
     <thead>
     <tr>
-        <td colspan="18"><strong>Relatório de Evolução por ODS/Ano</strong></td>
+        <td colspan="18" style="text-align: center;"><strong>Relatório de Evolução por ODS/Ano</strong></td>
     </tr>
     <tr>
-        <th>Ano</th>
-        <th>ODS 1</th>
-        <th>ODS 2</th>
-        <th>ODS 3</th>
-        <th>ODS 4</th>
-        <th>ODS 5</th>
-        <th>ODS 6</th>
-        <th>ODS 7</th>
-        <th>ODS 8</th>
-        <th>ODS 9</th>
-        <th>ODS 10</th>
-        <th>ODS 11</th>
-        <th>ODS 12</th>
-        <th>ODS 13</th>
-        <th>ODS 14</th>
-        <th>ODS 15</th>
-        <th>ODS 16</th>
-        <th>Total Geral</th>
+        <td><strong>Filtros</strong>:</td>
+        <td colspan="17"> {{ $dados[count($dados)-1]['filtros'] }}</td>
+    </tr>
+    <tr>
+        <th style="font-weight: bold; text-align: center;">Ano</th>
+        <th style="font-weight: bold; text-align: center;">ODS 1</th>
+        <th style="font-weight: bold; text-align: center;">ODS 2</th>
+        <th style="font-weight: bold; text-align: center;">ODS 3</th>
+        <th style="font-weight: bold; text-align: center;">ODS 4</th>
+        <th style="font-weight: bold; text-align: center;">ODS 5</th>
+        <th style="font-weight: bold; text-align: center;">ODS 6</th>
+        <th style="font-weight: bold; text-align: center;">ODS 7</th>
+        <th style="font-weight: bold; text-align: center;">ODS 8</th>
+        <th style="font-weight: bold; text-align: center;">ODS 9</th>
+        <th style="font-weight: bold; text-align: center;">ODS 10</th>
+        <th style="font-weight: bold; text-align: center;">ODS 11</th>
+        <th style="font-weight: bold; text-align: center;">ODS 12</th>
+        <th style="font-weight: bold; text-align: center;">ODS 13</th>
+        <th style="font-weight: bold; text-align: center;">ODS 14</th>
+        <th style="font-weight: bold; text-align: center;">ODS 15</th>
+        <th style="font-weight: bold; text-align: center;">ODS 16</th>
+        <th style="font-weight: bold; text-align: center;">Total Geral</th>
     </tr>
     </thead>
     <tbody>
-        @foreach($dados as $d)
-            <tr>
-                <td>{{ $d['ano'] }}</td>
-                <td>{{ $d['1'] }}</td>
-                <td>{{ $d['2'] }}</td>
-                <td>{{ $d['3'] }}</td>
-                <td>{{ $d['4'] }}</td>
-                <td>{{ $d['5'] }}</td>
-                <td>{{ $d['6'] }}</td>
-                <td>{{ $d['7'] }}</td>
-                <td>{{ $d['8'] }}</td>
-                <td>{{ $d['9'] }}</td>
-                <td>{{ $d['10'] }}</td>
-                <td>{{ $d['11'] }}</td>
-                <td>{{ $d['12'] }}</td>
-                <td>{{ $d['13'] }}</td>
-                <td>{{ $d['14'] }}</td>
-                <td>{{ $d['15'] }}</td>
-                <td>{{ $d['16'] }}</td>
-                <td>{{ $d['total'] }}</td>
-            </tr>
+        @foreach($dados as $key => $d)
+            @if($key < (count($dados)))
+            @php
+                $formatacao = ($key > (count($dados) - 3)) ? 'font-weight: bold;' : '';
+            @endphp
+                <tr>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['ano'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['1'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['2'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['3'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['4'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['5'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['6'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['7'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['8'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['9'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['10'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['11'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['12'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['13'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['14'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['15'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['16'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['total'] }}</td>
+                </tr>
+            @endif
         @endforeach
     </tbody>
 </table>

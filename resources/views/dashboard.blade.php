@@ -251,21 +251,25 @@
                 // Pegue os valores dos filtros
                 var ies = $("#ies").val();
                 var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
                 var ano_inicio = $("#ano_inicio").val();
                 var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
-                var tipo = $("#tipo").val();
 
                 // Monte a query string
                 var params = $.param({
                     ies: ies,
                     dimensao: dimensao,
+                    tipo: tipo,
                     ano_inicio: ano_inicio,
                     ano_fim: ano_fim,
+                    centro: centro,
+                    departamento: departamento,
                     ppg: ppg,
-                    docente: docente,
-                    tipo: tipo
+                    docente: docente                    
                 });
 
                 // Redirecione para a página de destino com os filtros
@@ -1075,12 +1079,13 @@
                         <p class="mb-0"><strong>Título</strong>: ${doc.titulo}</p>
                         <p class="mt-1 mb-0"><strong>${doc.nome} - ${doc.ds_tipo_documento}</strong></p>
                         <p class="mt-0">
-                          <span class="badge badge-pill" style="background: ${doc.cor}">ODS ${doc.ods}</span>
-                          <a href="${host}/documentos/dimensao/${doc.id_dimensao}/detalhes/${doc.id}" target="_blank">
-                            <span class="badge badge-pill detalhes-documento_off" data-dimensao="${doc.id_dimensao}" data-id="${doc.id}" style="background: #adadad;">
-                              <i class="fa fa-bar-chart"></i> Detalhes
-                            </span>
-                          </a>
+                            <span class="badge badge-pill" style="background: ${doc.cor}">ODS ${doc.ods}</span>
+                            <span class="badge badge-pill" style="background: black;">${doc.ano}</span>
+                              <a href="${host}/documentos/dimensao/${doc.id_dimensao}/detalhes/${doc.id}" target="_blank">
+                                <span class="badge badge-pill detalhes-documento_off" data-dimensao="${doc.id_dimensao}" data-id="${doc.id}" style="background: #adadad;">
+                                  <i class="fa fa-bar-chart"></i> Detalhes
+                                </span>
+                              </a>
                         </p>
                       </div>
                     `;
