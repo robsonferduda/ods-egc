@@ -509,7 +509,7 @@
                     if(data.length > 0) {
                         var pesquisador = data[0];
                         var html = `
-                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                            <div class="card shadow-sm mb-2 mt-4" style="background: #f3f3f3;">
                                 <div class="card-body text-center">
                                     <h5 class="card-title mb-0">${pesquisador.nome_pessoa}</h5>
                                     <p class="card-text mb-1">
