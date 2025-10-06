@@ -123,6 +123,7 @@
                 <div class="row">
                     <div class="col-md-4" id="card-dimensao-centro"></div>
                     <div class="col-md-4" id="card-dimensao-ods"></div>
+                    <div class="col-md-4" id="card-pesquisador-centro"></div>
                 </div>
             </div>
             
@@ -501,6 +502,26 @@
                         $('#card-dimensao-ods').html(html);
                     } else {
                         $('#card-dimensao-ods').html('<div class="alert alert-warning">Nenhuma dimensão ODS encontrada.</div>');
+                    }
+                });
+
+                $.get('/centro/pesquisador/' + centroId, function(data){
+                    if(data.length > 0) {
+                        var pesquisador = data[0];
+                        var html = `
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title mb-2">${pesquisador.nome_pessoa}</h5>
+                                    <p class="card-text mb-1">
+                                        <span class="display-4 font-weight-bold">${pesquisador.total_docs}</span>
+                                    </p>
+                                    <small class="text-muted">Pesquisador(a) com mais documentos no centro ${pesquisador.sigla_centro}</small>
+                                </div>
+                            </div>
+                        `;
+                        $('#card-pesquisador-centro').html(html);
+                    } else {
+                        $('#card-pesquisador-centro').html('<div class="alert alert-warning">Nenhum pesquisador encontrado.</div>');
                     }
                 });
             
