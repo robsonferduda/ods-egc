@@ -119,7 +119,7 @@
                 <div class="lista-ods"></div>
             </div>
 
-            <div class="col-md-12"> 
+            <div class="col-md-12 box-centro d-none"> 
                 <h6 class="">Estatísticas do Centro</h6>
                 <div class="row">
                     <div class="col-md-4" id="card-dimensao-centro"></div>
@@ -474,94 +474,7 @@
 
                 // Limpa PPG e Docente ao trocar centro
                 $('#ppg').empty().append('<option value="">Todos</option>');
-                $('#departamento').empty().append('<option value="">Todos</option>');
-
-                $.get(host + '/centro/ies/' + centroId, function(data){
-                    if(data.length > 0) {
-                        
-                        var html = `
-                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title mb-0">IES <sup>&reg;</sup></h5>
-                                    <p class="card-text mb-1">
-                                        <span class="display-4 font-weight-bold">${data[0].sec_index}</span>
-                                    </p>
-                                    <small class="text-muted">Índice de Engajamento Sustentável</small>
-                                </div>
-                            </div>
-                        `;
-                        $('#card-ies').html(html);
-                    } else {
-                        $('#card-ies').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
-                    }
-                });
-
-                $.get(host + '/centro/dimensao/' + centroId, function(data){
-                    if(data.length > 0) {
-                        var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
-                        var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
-                        var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
-
-                        var html = `
-                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title mb-0">${destaque.nm_dim_ies}</h5>
-                                    <p class="card-text mb-1">
-                                        <span class="display-4 font-weight-bold">${percentual}%</span>
-                                    </p>
-                                    <small class="text-muted">Dimensão IES mais destacada</small>
-                                </div>
-                            </div>
-                        `;
-                        $('#card-dimensao-centro').html(html);
-                    } else {
-                        $('#card-dimensao-centro').html('<div class="alert alert-warning">Nenhuma dimensão encontrada.</div>');
-                    }
-                });
-
-                $.get(host + '/centro/dimensao-ods/' + centroId, function(data){
-                    if(data.length > 0) {
-                        var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
-                        var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
-                        var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
-
-                        var html = `
-                            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title mb-0">${destaque.nm_dim_ods}</h5>
-                                    <p class="card-text mb-1">
-                                        <span class="display-4 font-weight-bold">${percentual}%</span>
-                                    </p>
-                                    <small class="text-muted">Dimensão ODS mais destacada no ${destaque.sigla_centro}</small>
-                                </div>
-                            </div>
-                        `;
-                        $('#card-dimensao-ods').html(html);
-                    } else {
-                        $('#card-dimensao-ods').html('<div class="alert alert-warning">Nenhuma dimensão ODS encontrada.</div>');
-                    }
-                });
-
-                $.get('/centro/pesquisador/' + centroId, function(data){
-                    if(data.length > 0) {
-                        var pesquisador = data[0];
-                        var html = `
-                            <div class="card shadow-sm mb-2 mt-3" style="background: #f3f3f3;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title mb-0">${pesquisador.nome_pessoa}</h5>
-                                    <p class="card-text mb-1">
-                                        <span class="display-4 font-weight-bold">${pesquisador.total_docs}</span>
-                                    </p>
-                                    <small class="text-muted">Pesquisador(a) com mais documentos no centro ${pesquisador.sigla_centro}</small>
-                                </div>
-                            </div>
-                        `;
-                        $('#card-pesquisador-centro').html(html);
-                    } else {
-                        $('#card-pesquisador-centro').html('<div class="alert alert-warning">Nenhum pesquisador encontrado.</div>');
-                    }
-                });
-            
+                $('#departamento').empty().append('<option value="">Todos</option>');            
 
             });
 
@@ -660,6 +573,100 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
                 var host =  $('meta[name="base-url"]').attr('content');
+
+                // Atualiza label dimensão
+                if(centro){
+                    $(".box-centro").removeClass("d-none");
+
+                    $.get(host + '/centro/ies/' + centroId, function(data){
+                        if(data.length > 0) {
+                            
+                            var html = `
+                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">IES <sup>&reg;</sup></h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${data[0].sec_index}</span>
+                                        </p>
+                                        <small class="text-muted">Índice de Engajamento Sustentável</small>
+                                    </div>
+                                </div>
+                            `;
+                            $('#card-ies').html(html);
+                        } else {
+                            $('#card-ies').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
+                        }
+                    });
+
+                    $.get(host + '/centro/dimensao/' + centroId, function(data){
+                        if(data.length > 0) {
+                            var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
+                            var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
+                            var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
+
+                            var html = `
+                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">${destaque.nm_dim_ies}</h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${percentual}%</span>
+                                        </p>
+                                        <small class="text-muted">Dimensão IES mais destacada</small>
+                                    </div>
+                                </div>
+                            `;
+                            $('#card-dimensao-centro').html(html);
+                        } else {
+                            $('#card-dimensao-centro').html('<div class="alert alert-warning">Nenhuma dimensão encontrada.</div>');
+                        }
+                    });
+
+                    $.get(host + '/centro/dimensao-ods/' + centroId, function(data){
+                        if(data.length > 0) {
+                            var destaque = data.find(function(item){ return item.rk === 1 || item.rk == "1"; });
+                            var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
+                            var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
+
+                            var html = `
+                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">${destaque.nm_dim_ods}</h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${percentual}%</span>
+                                        </p>
+                                        <small class="text-muted">Dimensão ODS mais destacada no ${destaque.sigla_centro}</small>
+                                    </div>
+                                </div>
+                            `;
+                            $('#card-dimensao-ods').html(html);
+                        } else {
+                            $('#card-dimensao-ods').html('<div class="alert alert-warning">Nenhuma dimensão ODS encontrada.</div>');
+                        }
+                    });
+
+                    $.get('/centro/pesquisador/' + centroId, function(data){
+                        if(data.length > 0) {
+                            var pesquisador = data[0];
+                            var html = `
+                                <div class="card shadow-sm mb-2 mt-3" style="background: #f3f3f3;">
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title mb-0">${pesquisador.nome_pessoa}</h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${pesquisador.total_docs}</span>
+                                        </p>
+                                        <small class="text-muted">Pesquisador(a) com mais documentos no centro ${pesquisador.sigla_centro}</small>
+                                    </div>
+                                </div>
+                            `;
+                            $('#card-pesquisador-centro').html(html);
+                        } else {
+                            $('#card-pesquisador-centro').html('<div class="alert alert-warning">Nenhum pesquisador encontrado.</div>');
+                        }
+                    });
+
+                }else{
+                    $(".box-centro").addClass("d-none");
+                }
 
                 if(docente){
 
