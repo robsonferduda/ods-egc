@@ -596,10 +596,12 @@
                             var html = `
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">ICS</h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">${ics}</span>
+                                        <h5 class="card-title mb-0">
+                                            ICS
                                             <span class="badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                        </h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${ics}</span>                                            
                                         </p>
                                         <small class="text-muted">Índice de Crescimento Sustentável</small>
                                     </div>
@@ -632,10 +634,12 @@
                             var html = `
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">IES</h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">${sec_index}</span>
+                                        <h5 class="card-title mb-0">
+                                            IES
                                             <span class="badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                        </h5>
+                                        <p class="card-text mb-1">
+                                            <span class="display-4 font-weight-bold">${sec_index}</span>                                           
                                         </p>
                                         <small class="text-muted">Índice de Engajamento Sustentável</small>
                                     </div>
