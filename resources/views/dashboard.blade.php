@@ -580,13 +580,29 @@
 
                     $.get(host + '/centro/ies/' + centro, function(data){
                         if(data.length > 0) {
+
+                            var sec_index = parseFloat(data[0].sec_index);
+                            var nivel = '';
+                            var descricao = '';
+
+                            if(sec_index >= 70) {
+                                nivel = 'Alto';
+                                descricao = 'Centro com alto volume, temática diversa, presença em várias dimensões IES, colaboração robusta e/ou crescimento recente.';
+                            } else if(sec_index >= 40) {
+                                nivel = 'Médio';
+                                descricao = 'Bom volume, mas pode faltar diversidade temática, transversalidade ou colaboração.';
+                            } else {
+                                nivel = 'Baixo';
+                                descricao = 'Nichado, pouco transversal e/ou produção baixa/estável — pede estímulo programático.';
+                            }
                             
                             var html = `
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">IES <sup>&reg;</sup></h5>
                                         <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">${data[0].sec_index}</span>
+                                            <span class="display-4 font-weight-bold">${sec_index}</span>
+                                            <span class="badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
                                         </p>
                                         <small class="text-muted">Índice de Engajamento Sustentável</small>
                                     </div>
