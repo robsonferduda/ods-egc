@@ -92,8 +92,8 @@
                 </div> 
             </div>  
             <div class="col-md-12 center"> 
-                <button type="button" class="btn btn-fill btn-primary btn-wd btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
-                <button type="button" class="btn btn-fill btn-secondary btn-wd btn-limpar ml-2"><i class="fa fa-eraser"></i> Limpar</button>
+                <button type="button" class="btn btn-fill btn-primary btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
+                <button type="button" class="btn btn-fill btn-warning btn-limpar ml-2"><i class="fa fa-eraser"></i> Limpar</button>
             </div>
         </div>  
     </div>
