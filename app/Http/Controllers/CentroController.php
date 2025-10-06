@@ -24,7 +24,7 @@ class CentroController extends Controller
         //$this->middleware('auth');
     }
 
-    public function grafo($id)
+    public function dimensao($id)
     {
         //Em cada Centro, em qual Dimensão IES ele mais se destaca
         $dimensoes = DB::select('WITH dist AS (
