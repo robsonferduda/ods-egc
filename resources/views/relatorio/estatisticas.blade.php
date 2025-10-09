@@ -1,4 +1,5 @@
-<h3 class="text-align: center;">Perfil ODS - Relatório de Diagnóstico</h3>
+<h3 style="text-align: center;">Perfil ODS - Relatório de Diagnóstico</h3>
+<p style="text-align: center;">{{ $periodo }}</p>
 <h4><strong>Centro</strong>:</h4>
 <table>
 	<tr>

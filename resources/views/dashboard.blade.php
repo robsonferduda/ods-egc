@@ -264,11 +264,30 @@
                 var canvas_evolucao = document.getElementById('chart');
                 var evolucaoBase64 = canvas_evolucao.toDataURL('image/png');
 
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
+                var ano_inicio = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+
                 $.post(host+'/gerar-pdf', 
                     { grafico: imgBase64, 
                         grafico_evolucao: evolucaoBase64,
-                      _token: '{{ csrf_token() }}' }, 
-                    
+                        _token: '{{ csrf_token() }}',
+                        dimensao: dimensao,
+                        tipo: tipo,
+                        centro: centro,
+                        departamento: departamento,
+                        ppg: ppg,
+                        ano_inicio: ano_inicio,
+                        ano_fim: ano_fim,
+                        tipo: tipo,
+                        docente: docente
+                    }, 
                     function(resposta){
                         window.open(resposta.url, '_blank');
                     });
