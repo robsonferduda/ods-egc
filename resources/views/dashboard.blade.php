@@ -131,7 +131,11 @@
             </div>
             
             <div class="col-md-8 mt-5 mb-5 box-evolucao">
-                <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
+                <h6>
+                    EVOLUÇÃO POR ODS 
+                    <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                    <span class="text-danger pdf-download" style="color: #15954e !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+                </h6>
                 <canvas id="chart" width="400" height="380"></canvas>
                 <p class="text-danger center" style="color: #ef1000 !important;">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
@@ -251,6 +255,16 @@
         document.addEventListener("DOMContentLoaded", function () {
         
             var host =  $('meta[name="base-url"]').attr('content');
+
+            $(document).on('click', '.pdf-download', function() {
+
+                var canvas = document.getElementById('myChart');
+                var imgBase64 = canvas.toDataURL('image/png');
+
+                $.post(host+'/gerar-pdf', { grafico: imgBase64, _token: '{{ csrf_token() }}' }, function(resposta){
+                    window.open(resposta.url, '_blank');
+                });
+            });
 
             $(document).on('click', '.btn-limpar', function() {
                 // Reseta selects para o valor padrão
@@ -1052,12 +1066,6 @@
                     },
                     complete: function(){
                         $('.painel').loader('hide'); 
-                        var canvas = document.getElementById('myChart');
-                        var imgBase64 = canvas.toDataURL('image/png');
-
-                        $.post(host+'/gerar-pdf', { grafico: imgBase64, _token: '{{ csrf_token() }}' }, function(resposta){
-                            window.open(resposta.url, '_blank');
-                        });
                     }
                 });
 
