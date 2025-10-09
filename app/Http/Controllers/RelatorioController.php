@@ -29,9 +29,12 @@ class RelatorioController extends Controller
 
         $html = view('relatorio.estatisticas', compact('grafico'))->render();
 
+        $file = date('Y-m-d_H-i-s_perfil_ods_resumo.pdf');
+
         $pdf = PDF::loadHTML($html);
-        $path = storage_path('app/public/estatisticas.pdf');
+        $path = public_path('relatorios/'.$file);
         $pdf->save($path);
+        
         return response()->json(['url' => asset('storage/estatisticas.pdf')]);
     }
 }
