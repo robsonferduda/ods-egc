@@ -35,6 +35,6 @@ class RelatorioController extends Controller
         $path = public_path('relatorios/'.$file);
         $pdf->save($path);
         
-        return response()->json(['url' => asset('storage/estatisticas.pdf')]);
+        return response()->json(['url' => asset('relatorios/'.$file)]);
     }
 }
