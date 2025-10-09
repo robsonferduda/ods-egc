@@ -1,2 +1,3 @@
-<img src="{{ $grafico }}" style="width: 600px;" />
-<h2>Estatísticas</h2>
+<h3>PErgil ODS - Relatório de Diagnóstico</h3>
+<h4><strong>Centro</strong>:</h4>
+<img src="{{ $grafico }}" style="width: 100px;" />
