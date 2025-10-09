@@ -88,3 +88,5 @@ Route::get('perfil/atualizar', 'UserController@atualizarPerfil');
 
 Route::get('colaborar', 'ColaboradorController@colaborar');
 Route::resource('colaborador', 'ColaboradorController');
+
+Route::post('gerar-pdf', 'RelatorioController@gerarPdf');
