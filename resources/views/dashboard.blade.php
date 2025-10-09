@@ -261,9 +261,17 @@
                 var canvas = document.getElementById('myChart');
                 var imgBase64 = canvas.toDataURL('image/png');
 
-                $.post(host+'/gerar-pdf', { grafico: imgBase64, _token: '{{ csrf_token() }}' }, function(resposta){
-                    window.open(resposta.url, '_blank');
-                });
+                var canvas_evolucao = document.getElementById('chart');
+                var evolucaoBase64 = canvas_evolucao.toDataURL('image/png');
+
+                $.post(host+'/gerar-pdf', 
+                    { grafico: imgBase64, 
+                        grafico_evolucao: evolucaoBase64,
+                      _token: '{{ csrf_token() }}' }, 
+                    
+                    function(resposta){
+                        window.open(resposta.url, '_blank');
+                    });
             });
 
             $(document).on('click', '.btn-limpar', function() {
