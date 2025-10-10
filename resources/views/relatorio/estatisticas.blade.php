@@ -51,8 +51,8 @@
 		}
 		.badge {
 			display: inline-block;
-			padding: 0.35em 0.7em;
-			font-size: 0.5em;
+			padding: 0.15em 0.4em;
+			font-size: 0.3em;
 			font-weight: 600;
 			border-radius: 0.5em;
 			vertical-align: middle;
