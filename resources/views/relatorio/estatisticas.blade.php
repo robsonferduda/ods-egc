@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             color: #222;
             margin: 20px;
         }
@@ -33,7 +33,7 @@
 			border-radius: 6px;
 			box-shadow: 0 2px 6px #0001;
 			margin-bottom: 5px;
-			padding: 6px 4px;
+			padding: 3px 2px;
 			border: 1px solid #e0e0e0;
 		}
 		.card-title {
@@ -45,7 +45,7 @@
 			text-align: center;
 		}
 		.display-4 {
-			font-size: 2.2rem;
+			font-size: 1.8rem;
 			font-weight: bold;
 		}
 		.badge {
@@ -83,7 +83,7 @@
 			margin-right: -8px;
 		}
 		.col-md-4 {
-			width: 32%;
+			width: 30%;
 			margin: 0 1%;
 			min-width: 200px;
 			box-sizing: border-box;
@@ -110,9 +110,6 @@
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Dimensão Predominante: {{ $dimensao_predominante }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Índice de Crescimento Sustentável: {{ $indice_crescimento_sustentavel }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Índice de Engajamento Sustentável: {{ $indice_engajamento_sustentavel }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Docente Destaque: {{ $docente_destaque }}</h5>
 	
 	<div class="row">
                     <!--<div class="col-md-4" id="card-dimensao-centro"></div>-->
