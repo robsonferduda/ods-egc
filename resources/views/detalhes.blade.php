@@ -21,7 +21,7 @@
                 <p class="mb-1"><strong>Programa de Pós-Graduação</strong>: {{ ($documento->ppg) ? $documento->ppg->nm_curso_cur : 'Não Informado' }} </p>
             @endif
             <p class="mb-1"><strong>Dimensão Institucional</strong>: {{ ($documento->dimensao) ? $documento->dimensao->nome : '<span>Não calculada</span>' }} </p>
-            <p class="mb-1"><strong>Dimensão ODS</strong>: {{ $documento->dimensaoOds->ds_dimensao }} </p>
+            <p class="mb-1"><strong>Dimensão ODS</strong>: {{ ($documento->dimensaoOds) ? $documento->dimensaoOds->ds_dimensao : '<span>Não calculada</span>' }} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>  
 
