@@ -28,6 +28,54 @@
             margin-bottom: 8px;
         }
         .center { text-align: center; }
+		.card {
+			background: #f3f3f3;
+			border-radius: 6px;
+			box-shadow: 0 2px 6px #0001;
+			margin-bottom: 18px;
+			padding: 18px 12px;
+			border: 1px solid #e0e0e0;
+		}
+		.card-title {
+			font-size: 1.1rem;
+			font-weight: bold;
+			margin-bottom: 6px;
+		}
+		.card-body {
+			text-align: center;
+		}
+		.display-4 {
+			font-size: 2.2rem;
+			font-weight: bold;
+		}
+		.badge {
+			display: inline-block;
+			padding: 0.35em 0.7em;
+			font-size: 0.95em;
+			font-weight: 600;
+			border-radius: 1em;
+			vertical-align: middle;
+			margin-left: 8px;
+		}
+		.badge-danger {
+			background: #dc3545;
+			color: #fff;
+		}
+		.badge-warning {
+			background: #ffc107;
+			color: #222;
+		}
+		.badge-pill {
+			border-radius: 1em;
+		}
+		.text-muted {
+			color: #6c757d;
+			font-size: 0.95em;
+		}
+		.mt-3 { margin-top: 1.2em; }
+		.mb-2 { margin-bottom: 0.8em; }
+		.mb-1 { margin-bottom: 0.4em; }
+		.center { text-align: center; }
     </style>
 </head>
 <body>
@@ -98,7 +146,7 @@
                                 </div>
                             </div>
                 </div>
-				
+
 	<h4 style="margin-top: 10px"><strong>Gráficos de Desempenho</strong>:</h4>
     <table>
         <tr>
