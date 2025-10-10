@@ -37,9 +37,10 @@
 			border: 1px solid #e0e0e0;
 		}
 		.card-title {
-			font-size: 1.1rem;
+			font-size: 1.0rem;
 			font-weight: bold;
-			margin-bottom: 6px;
+			margin-bottom: 3px;
+			margin-top: 3px;
 		}
 		.card-body {
 			text-align: center;
@@ -51,9 +52,9 @@
 		.badge {
 			display: inline-block;
 			padding: 0.35em 0.7em;
-			font-size: 0.95em;
+			font-size: 0.5em;
 			font-weight: 600;
-			border-radius: 1em;
+			border-radius: 0.5em;
 			vertical-align: middle;
 			margin-left: 8px;
 		}
