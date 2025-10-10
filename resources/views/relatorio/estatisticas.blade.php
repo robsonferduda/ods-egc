@@ -83,7 +83,7 @@
 			margin-right: -8px;
 		}
 		.col-md-4 {
-			width: 33%;
+			width: 31%;
 			margin: 0 1%;
 			min-width: 200px;
 			box-sizing: border-box;
@@ -105,11 +105,11 @@
 	<div style="margin-bottom: 10px; background-color: #f3f3f3; padding: 10px; border-radius: 5px;">
 		<h4><strong>Centro</strong>: {{ $centro }}</h4>
 	</div>
-	<h4><strong>Indicadores</strong></h4>
+	<h4><strong>Quantitativos</strong></h4>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos Analisados: {{ $total_documentos }}</h5>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
 	<h5 style="margin-bottom: 8px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
-		
+	<h4><strong>Indicadores</strong></h4>
 	<div class="row">
                     <!--<div class="col-md-4" id="card-dimensao-centro"></div>-->
                     <div class="col-md-4" id="card-dimensao-ods">
@@ -128,10 +128,10 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             ICS
-                                            <span class="pull-right badge badge-pill badge-danger" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Queda</span>
                                         </h5>
                                         <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">23.3</span>                                            
+                                            <span class="display-4 font-weight-bold">23.3</span>    
+											<span class="pull-right badge badge-pill badge-danger" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Queda</span>                                        
                                         </p>
                                         <small class="text-muted">Índice de Crescimento Sustentável</small>
                                     </div>
@@ -142,10 +142,10 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             IES
-                                            <span class="pull-right badge badge-pill badge-warning" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Médio</span>
                                         </h5>
                                         <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">60.7</span>                                           
+                                            <span class="display-4 font-weight-bold">60.7</span>    
+											<span class="pull-right badge badge-pill badge-warning" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Médio</span>                                       
                                         </p>
                                         <small class="text-muted">Índice de Engajamento Sustentável</small>
                                     </div>
