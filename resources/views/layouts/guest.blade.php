@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="utf-8" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -37,7 +36,7 @@
         </div>
         <a class="navbar-brand" href="{{ url('/') }}">
           <span style="text-transform: none;"> 
-            <img style="width: 30px; margin-right: 8px;" src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">PERFIL ODS
+            <img style="width: 30px; margin-right: 8px;" src="{{ asset('img/ods-icone/ods.png') }}" class="img-fluid" alt="Responsive image">{{ config('app.name') }}
           </span>
         </a>
       </div>
