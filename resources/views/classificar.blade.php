@@ -5,7 +5,7 @@
         <div class="header-text">
             <div class="header-text">
             <h3 class="mb-0">
-                Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Colaborar
+                {{ config('app.name') }} <i class="fa fa-angle-double-right" aria-hidden="true"></i> Colaborar
                 @include('layouts.nivel')
             </h3>
         </div>
