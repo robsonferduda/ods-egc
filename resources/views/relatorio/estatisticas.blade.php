@@ -31,17 +31,19 @@
     </style>
 </head>
 <body>
-    <h3 class="center">Perfil ODS - Relatório de Diagnóstico</h3>
-    <p class="center">{{ $periodo }}</p>
-    <h4><strong>Centro</strong>:</h4>
+    <h3 style="text-align: center; margin-bottom: 0px; font-weight: 700; text-transform: uppercase;" class="center">Perfil ODS - Relatório de Diagnóstico</h3>
+    <p style="" class="center">{{ $periodo }}</p>
+	<div style="margin-bottom: 10px; background-color: #c4c4c4; padding: 10px; border-radius: 5px;">
+		<h4><strong>Centro</strong>:</h4>
+	</div>
 	<h4><strong>Indicadores</strong></h4>
-	<h5>Total de Documentos Analisados: {{ $total_documentos }}</h5>
-	<h5>Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
-	<h5>Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
-	<h5>Dimensão Predominante: {{ $dimensao_predominante }}</h5>
-	<h5>Índice de Crescimento Sustentável: {{ $indice_crescimento_sustentavel }}</h5>
-	<h5>Índice de Engajamento Sustentável: {{ $indice_engajamento_sustentavel }}</h5>
-	<h5>Docente Destaque: {{ $docente_destaque }}</h5>
+	<h5 style="margin-bottom: 3px;">Total de Documentos Analisados: {{ $total_documentos }}</h5>
+	<h5 style="margin-bottom: 3px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
+	<h5 style="margin-bottom: 3px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
+	<h5 style="margin-bottom: 3px;">Dimensão Predominante: {{ $dimensao_predominante }}</h5>
+	<h5 style="margin-bottom: 3px;">Índice de Crescimento Sustentável: {{ $indice_crescimento_sustentavel }}</h5>
+	<h5 style="margin-bottom: 3px;">Índice de Engajamento Sustentável: {{ $indice_engajamento_sustentavel }}</h5>
+	<h5 style="margin-bottom: 3px;">Docente Destaque: {{ $docente_destaque }}</h5>
 	<h4><strong>Gráficos de Desempenho</strong>:</h4>
     <table>
         <tr>
