@@ -27,7 +27,7 @@
             height: auto;
             margin-bottom: 8px;
         }
-        .center { text-align: center; }
+        
 		.card {
 			background: #f3f3f3;
 			border-radius: 6px;
@@ -76,6 +76,32 @@
 		.mb-2 { margin-bottom: 0.8em; }
 		.mb-1 { margin-bottom: 0.4em; }
 		.center { text-align: center; }
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			margin-left: -8px;
+			margin-right: -8px;
+		}
+		.col-md-4 {
+			width: 32%;
+			margin: 0 1%;
+			min-width: 200px;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+		}
+		.col-md-12 {
+			width: 98%;
+			margin: 0 1%;
+			box-sizing: border-box;
+			display: block;
+		}
+		@media (max-width: 900px) {
+			.col-md-4, .col-md-12 {
+				width: 100% !important;
+				margin: 0 0 12px 0;
+			}
+		}
     </style>
 </head>
 <body>
