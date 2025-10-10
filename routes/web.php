@@ -8,7 +8,7 @@ Route::get('/', 'HomeController@dashboard');
 Route::get('home', 'HomeController@dashboard');
 Route::get('ods', function () { return view('welcome'); });
 Route::get('classificar', 'ODSController@classificar');
-Route::get('analisar', function () { return view('descobrir'); });
+Route::get('analisar', function () { return view('analisar'); });
 Route::post('ods/descobrir', 'ODSController@descobrir');
 Route::post('ods/descobrir/salvar', 'ODSController@descobrirSalvar');
 
