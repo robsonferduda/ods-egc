@@ -30,7 +30,9 @@ class RelatorioController extends Controller
 
         $periodo = 'Período de '.$request->ano_inicio.' a '.$request->ano_fim;
 
-        $html = view('relatorio.estatisticas', compact('grafico_total','grafico_evolucao','periodo'))->render();
+        $html = view('relatorio.estatisticas', compact('grafico_total',
+        'grafico_evolucao','periodo','total_documentos',
+        'documentos_sem_ods','documentos_com_ods','dimensao_predominante','indice_crescimento_sustentavel','indice_engajamento_sustentavel','docente_destaque'))->render();
 
         $file = date('Y-m-d_H-i-s_perfil_ods_resumo.pdf');
 
