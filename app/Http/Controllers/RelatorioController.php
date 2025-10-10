@@ -31,7 +31,7 @@ class RelatorioController extends Controller
         $periodo = 'Período de '.$request->ano_inicio.' a '.$request->ano_fim;
 
         if ($request->centro && $request->centro != 'todos') {
-            $centro = DB::table('centro_cen')->where('cd_centro_cen', $request->centro)->value('ds_sigla_cen');
+            $centro = DB::table('centro_cen')->where('cd_centro_cen', $request->centro)->value('ds_nome_cen');
         } else {
             $centro = 'Todos os Centros';
         }
