@@ -91,7 +91,7 @@
 			vertical-align: top;
 		}
 		.col-md-12 {
-			width: 93%;
+			width: 98%;
 			margin: 0 1%;
 			box-sizing: border-box;
 			display: block;
