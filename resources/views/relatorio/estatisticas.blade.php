@@ -32,8 +32,8 @@
 			background: #f3f3f3;
 			border-radius: 6px;
 			box-shadow: 0 2px 6px #0001;
-			margin-bottom: 18px;
-			padding: 18px 12px;
+			margin-bottom: 5px;
+			padding: 6px 4px;
 			border: 1px solid #e0e0e0;
 		}
 		.card-title {
@@ -96,12 +96,7 @@
 			box-sizing: border-box;
 			display: block;
 		}
-		@media (max-width: 900px) {
-			.col-md-4, .col-md-12 {
-				width: 100% !important;
-				margin: 0 0 12px 0;
-			}
-		}
+		
     </style>
 </head>
 <body>
