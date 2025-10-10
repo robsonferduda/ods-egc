@@ -30,6 +30,14 @@ class RelatorioController extends Controller
 
         $periodo = 'Período de '.$request->ano_inicio.' a '.$request->ano_fim;
 
+        $total_documentos = 0;
+        $documentos_sem_ods = 0;
+        $documentos_com_ods = 0;
+        $dimensao_predominante = '';
+        $indice_crescimento_sustentavel = 0;
+        $indice_engajamento_sustentavel = 0;
+        $docente_destaque = '';
+
         $html = view('relatorio.estatisticas', compact('grafico_total',
         'grafico_evolucao','periodo','total_documentos',
         'documentos_sem_ods','documentos_com_ods','dimensao_predominante','indice_crescimento_sustentavel','indice_engajamento_sustentavel','docente_destaque'))->render();
