@@ -130,13 +130,15 @@
                 </div>
             </div>
             
-            <div class="col-md-8 mt-5 mb-5 box-evolucao">
+            <div class="col-md-8 mt-5 mb-5">
                 <h6>
                     EVOLUÇÃO POR ODS 
                     <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
-                    <span class="text-danger pdf-download" style="color: #15954e !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+                    <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
                 </h6>
-                <canvas id="chart" width="400" height="380"></canvas>
+                <div class="box-evolucao">
+                    <canvas id="chart" width="400" height="380"></canvas>
+                </div>
                 <p class="text-danger center" style="color: #ef1000 !important;">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
 
