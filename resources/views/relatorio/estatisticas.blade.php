@@ -83,7 +83,7 @@
 			margin-right: -8px;
 		}
 		.col-md-4 {
-			width: 30%;
+			width: 33%;
 			margin: 0 1%;
 			min-width: 200px;
 			box-sizing: border-box;
@@ -91,7 +91,7 @@
 			vertical-align: top;
 		}
 		.col-md-12 {
-			width: 98%;
+			width: 93%;
 			margin: 0 1%;
 			box-sizing: border-box;
 			display: block;
@@ -108,9 +108,8 @@
 	<h4><strong>Indicadores</strong></h4>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos Analisados: {{ $total_documentos }}</h5>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Dimensão Predominante: {{ $dimensao_predominante }}</h5>
-	
+	<h5 style="margin-bottom: 8px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
+		
 	<div class="row">
                     <!--<div class="col-md-4" id="card-dimensao-centro"></div>-->
                     <div class="col-md-4" id="card-dimensao-ods">
@@ -120,7 +119,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">35.3%</span>
                                         </p>
-                                        <small class="text-muted">Dimensão ODS mais destacada no CFH</small>
+                                        <small class="text-muted">Dimensão Predominante</small>
                                     </div>
                                 </div>
                             </div>
