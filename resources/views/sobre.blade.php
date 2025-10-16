@@ -21,7 +21,7 @@
             <p class="mb-1"><strong>Orientador</strong>: Prof. Dr. Fernando Álvaro Ostuni Gauthier </p>
             <p class="mb-1"><strong>Coorientador</strong>: Prof. Dr. Roberto Carlos dos Santos Pacheco </p>  
             <p class="mb-1 mt-3">
-                <strong>Perfil ODS</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) 
+                <strong>{{ config('app.name') }}</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) 
                 aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental.
                 É uma ferramenta resultante de uma 
                 pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com 

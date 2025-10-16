@@ -5,7 +5,7 @@
         <div class="header-text">
             <div class="header-text">
             <h3 class="mb-0">
-                Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Colaborar
+                {{ config('app.name') }} <i class="fa fa-angle-double-right" aria-hidden="true"></i> Colaborar
                 @include('layouts.nivel')
             </h3>
         </div>
@@ -50,8 +50,8 @@
                                 </div>
                                 <div id="collapse" class="collapse" role="tabpanel" aria-labelledby="heading}">
                                 <div class="card-body">
-                                    <h6>{{ $texto->nm_producao }}</h6>
-                                    {{ ucfirst(mb_strtolower($texto->ds_resumo, 'UTF-8')) }}
+                                    <h6>{{ $texto->titulo }}</h6>
+                                    {{ ucfirst(mb_strtolower($texto->texto, 'UTF-8')) }}
                                 </div>
                                 </div>
                             </div>

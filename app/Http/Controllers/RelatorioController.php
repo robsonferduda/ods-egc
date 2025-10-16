@@ -25,13 +25,35 @@ class RelatorioController extends Controller
 
     public function gerarPdf(Request $request)
     {
-        $grafico = $request->input('grafico'); // base64 da imagem
+        $grafico_total = $request->input('grafico'); // base64 da imagem
+        $grafico_evolucao = $request->input('grafico_evolucao'); // base64 da imagem
 
-        $html = view('relatorio.estatisticas', compact('grafico'))->render();
+        $periodo = 'Período de '.$request->ano_inicio.' a '.$request->ano_fim;
 
-        $pdf = Pdf::loadHTML($html);
-        $path = storage_path('app/public/estatisticas.pdf');
+        if ($request->centro && $request->centro != 'todos') {
+            $centro = DB::table('centro_cen')->where('cd_centro_cen', $request->centro)->value('ds_nome_cen');
+        } else {
+            $centro = 'Todos os Centros';
+        }
+
+        $total_documentos = 0;
+        $documentos_sem_ods = 0;
+        $documentos_com_ods = 0;
+        $dimensao_predominante = '';
+        $indice_crescimento_sustentavel = 0;
+        $indice_engajamento_sustentavel = 0;
+        $docente_destaque = '';
+
+        $html = view('relatorio.estatisticas', compact('grafico_total',
+        'grafico_evolucao','periodo','total_documentos',
+        'documentos_sem_ods','documentos_com_ods','dimensao_predominante','indice_crescimento_sustentavel','indice_engajamento_sustentavel','docente_destaque', 'centro'))->render();
+
+        $file = date('Y-m-d_H-i-s_perfil_ods_resumo.pdf');
+
+        $pdf = PDF::loadHTML($html);
+        $path = public_path('relatorios/'.$file);
         $pdf->save($path);
-        return response()->json(['url' => asset('storage/estatisticas.pdf')]);
+
+        return response()->json(['url' => asset('relatorios/'.$file)]);
     }
 }

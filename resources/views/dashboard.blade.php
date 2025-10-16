@@ -130,9 +130,15 @@
                 </div>
             </div>
             
-            <div class="col-md-8 mt-5 mb-5 box-evolucao">
-                <h6>EVOLUÇÃO POR ODS <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span></h6>
-                <canvas id="chart" width="400" height="380"></canvas>
+            <div class="col-md-8 mt-5 mb-5">
+                <h6>
+                    EVOLUÇÃO POR ODS 
+                    <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                    <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+                </h6>
+                <div class="box-evolucao">
+                    <canvas id="chart" width="400" height="380"></canvas>
+                </div>
                 <p class="text-danger center" style="color: #ef1000 !important;">Clique na legenda para habilitar/desabiliar cada ODS</p>
             </div>
 
@@ -251,6 +257,43 @@
         document.addEventListener("DOMContentLoaded", function () {
         
             var host =  $('meta[name="base-url"]').attr('content');
+
+            $(document).on('click', '.pdf-download', function() {
+
+                var canvas = document.getElementById('myChart');
+                var imgBase64 = canvas.toDataURL('image/png');
+
+                var canvas_evolucao = document.getElementById('chart');
+                var evolucaoBase64 = canvas_evolucao.toDataURL('image/png');
+
+                var ies = $("#ies").val();
+                var dimensao = $("#dimensao").val();
+                var tipo = $("#tipo").val();
+                var ano_inicio = $("#ano_inicio").val();
+                var ano_fim = $("#ano_fim").val();
+                var centro = $("#centro").val();
+                var departamento = $("#departamento").val();
+                var ppg = $("#ppg").val();
+                var docente = $("#docente").val();
+
+                $.post(host+'/gerar-pdf', 
+                    { grafico: imgBase64, 
+                        grafico_evolucao: evolucaoBase64,
+                        _token: '{{ csrf_token() }}',
+                        dimensao: dimensao,
+                        tipo: tipo,
+                        centro: centro,
+                        departamento: departamento,
+                        ppg: ppg,
+                        ano_inicio: ano_inicio,
+                        ano_fim: ano_fim,
+                        tipo: tipo,
+                        docente: docente
+                    }, 
+                    function(resposta){
+                        window.open(resposta.url, '_blank');
+                    });
+            });
 
             $(document).on('click', '.btn-limpar', function() {
                 // Reseta selects para o valor padrão
@@ -598,7 +641,7 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             ICS
-                                            <span class="pull-right badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${ics}</span>                                            
@@ -636,7 +679,7 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             IES
-                                            <span class="pull-right badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
@@ -1052,12 +1095,6 @@
                     },
                     complete: function(){
                         $('.painel').loader('hide'); 
-                        var canvas = document.getElementById('myChart');
-                        var imgBase64 = canvas.toDataURL('image/png');
-
-                        $.post(host+'/gerar-pdf', { grafico: imgBase64, _token: '{{ csrf_token() }}' }, function(resposta){
-                            window.open(resposta.url, '_blank');
-                        });
                     }
                 });
 

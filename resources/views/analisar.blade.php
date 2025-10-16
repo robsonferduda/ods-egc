@@ -4,10 +4,14 @@
     <div class="col-md-12">
        <div class="header-text">
          <div class="header-text">
-            <h3 class="mb-0">
-                Perfil ODS <i class="fa fa-angle-double-right" aria-hidden="true"></i> Analisar Documentos
+            <h3>
+                {{ config('app.name') }} <i class="fa fa-angle-double-right" aria-hidden="true"></i> Analisar Documentos
                 @include('layouts.nivel')
             </h3>
+            <div class="cabecalho">
+               <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
+               <p>Informe seu texto para classificação automática</p>
+            </div>
         </div>
        </div>
     </div>  
@@ -17,11 +21,8 @@
          </div>
     @endif
     <div class="col-md-12">
-         <div class="cabecalho">
-            <h5 class="mb-0">Classificação de Textos de acordo com os ODS</h5>
-            <p>Informe seu texto para classificação automática</p>
-         </div>
-         @include('layouts.mensagens')
+            
+      @include('layouts.mensagens')
        <form method="POST" if="frmODS" action="{{ url('ods/descobrir/salvar') }}">
         @csrf
          
