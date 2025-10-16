@@ -29,7 +29,7 @@ class RelatorioController extends Controller
 
         $html = view('relatorio.estatisticas', compact('grafico'))->render();
 
-        $pdf = PDF::loadHTML($html);
+        $pdf = Pdf::loadHTML($html);
         $path = storage_path('app/public/estatisticas.pdf');
         $pdf->save($path);
         return response()->json(['url' => asset('storage/estatisticas.pdf')]);
