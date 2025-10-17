@@ -44,9 +44,9 @@ ID_DIMENSAO = 6
 
 # PostgreSQL por .env ou CLI
 PG_HOST = os.getenv("DB_HOST", "localhost")
-PG_DB   = os.getenv("DB_DATABASE",   "perfil_ods")
+PG_DB   = os.getenv("DB_DATABASE", "perfil_ods")
 PG_USER = os.getenv("DB_USERNAME", "postgres")
-PG_PASS = os.getenv("DB_PASSWORD_CIKI", "postgres")
+PG_PASS = os.getenv("DB_PASSWORD", "postgres")
 PG_PORT = int(os.getenv("DB_PORT", "5432"))
 
 # Funções / vínculos
