@@ -13,24 +13,28 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 import psycopg2
-from dotenv import load_dotenv
 
-# =========================
-# .ENV (um nível acima)
-# =========================
+# ---- dotenv opcional (carrega .env um nível acima) ----
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
 ENV_PATH = Path(__file__).resolve().parent.parent / ".env"
-if ENV_PATH.exists():
-    load_dotenv(ENV_PATH)
-    print(f"[INFO] Variáveis carregadas de {ENV_PATH}")
+if load_dotenv is not None and ENV_PATH.exists():
+    load_dotenv(str(ENV_PATH))
+    sys.stdout.write("[INFO] Variáveis carregadas de {}\n".format(ENV_PATH))
+    sys.stdout.flush()
 else:
-    print(f"[WARN] .env não encontrado em {ENV_PATH}, usando valores padrão/CLI")
+    sys.stdout.write("[WARN] .env não encontrado ou python-dotenv não instalado. Usando valores padrão/CLI.\n")
+    sys.stdout.flush()
 
 # =========================
 # CONFIG PADRÃO
 # =========================
 BASE = "https://repositorio.ufsc.br"
 START = "https://repositorio.ufsc.br/handle/123456789/214239/recent-submissions"
-HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.3)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.3-compat)"}
 
 # Critério de parada: coletar apenas Ano > MIN_YEAR
 MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
@@ -115,7 +119,7 @@ def extract_links_from_recent(page_url):
             break
     if not next_link:
         tag = soup.find("link", attrs={"rel": "next"})
-        if tag and tag.get("href"):
+        if tag is not None and tag.get("href"):
             next_link = urljoin(BASE, tag["href"])
 
     return unique, next_link
@@ -152,9 +156,9 @@ def normalize_people_list(values):
 # =========================
 # PARSE ITEM
 # =========================
-def map_tipo_documento(dc_type_value: str):
+def map_tipo_documento(dc_type_value):
     """
-    "Tese (Doutorado)"  -> 2
+    "Tese (Doutorado)"       -> 2
     "Dissertação (Mestrado)" -> 1
     """
     if not dc_type_value:
@@ -174,7 +178,8 @@ def parse_full_record(item_url):
         return None
 
     meta = {}
-    for tr in soup.select("table tr"):
+    rows = soup.select("table tr")
+    for tr in rows:
         tds = tr.find_all("td")
         if len(tds) >= 2:
             key = tds[0].get_text(" ", strip=True)
@@ -182,8 +187,12 @@ def parse_full_record(item_url):
             if key and val:
                 meta.setdefault(key, []).append(val)
 
-    def first(k): return (meta.get(k) or [None])[0]
-    def listvals(k): return meta.get(k) or []
+    def first(k):
+        vals = meta.get(k) or [None]
+        return vals[0]
+
+    def listvals(k):
+        return meta.get(k) or []
 
     # Ano
     ano_raw = first("dc.date.issued")
@@ -218,7 +227,7 @@ def parse_full_record(item_url):
         "ano": ano,
         "titulo": titulo,
         "resumo_pt": resumo_pt,
-        "abstract_en": abstract_en,      # não persiste, fica só no CSV
+        "abstract_en": abstract_en,      # só CSV
         "autores": autores,
         "orientadores": orientadores,
         "id_tipo_documento": id_tipo_documento,
@@ -226,9 +235,9 @@ def parse_full_record(item_url):
     }
 
 # =========================
-# CSV + CRAWL
+# CSV + CRAWL + persistência por item
 # =========================
-def crawl_line_by_line(outpath, start_url=START, min_year=MIN_YEAR, max_pages=None, delay=1.8, persist=False, id_ppg=None, id_centro=None):
+def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, id_ppg, id_centro):
     fieldnames = ["ano", "titulo", "resumo_pt", "abstract_en", "autores", "orientadores", "id_tipo_documento", "dc_type_raw", "url"]
     total_csv = 0
     total_ok_db = 0
@@ -296,7 +305,7 @@ def crawl_line_by_line(outpath, start_url=START, min_year=MIN_YEAR, max_pages=No
                 w.writerow(row)
                 total_csv += 1
 
-                # Persistência por item
+                # Persistência por item (transação própria)
                 if persist:
                     try:
                         persist_one_record(conn, data, id_ppg=id_ppg, id_centro=id_centro)
@@ -348,7 +357,7 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
         INSERT INTO documento_ods
             (titulo, texto, ano, id_dimensao, id_tipo_documento, id_ppg, id_centro)
         VALUES
-            (%s, %s, %s, %s, %s, %s, %s)
+            (%s,     %s,    %s,  %s,           %s,               %s,      %s)
         RETURNING id
     """, (titulo, resumo_pt, ano, ID_DIMENSAO, id_tipo_documento, id_ppg, id_centro))
     return cur.fetchone()[0]
@@ -410,12 +419,14 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
             )
 
             # Autores (Discente/Aluno)
-            for nome in rec.get("autores") or []:
+            autores = rec.get("autores") or []
+            for nome in autores:
                 id_p = get_or_create_pessoa(cur, nome, ID_VINCULO_AUTOR)
                 link_documento_pessoa(cur, id_doc, id_p, ID_FUNCAO_AUTOR)
 
             # Orientadores (Docente/Orientador)
-            for nome in rec.get("orientadores") or []:
+            orientadores = rec.get("orientadores") or []
+            for nome in orientadores:
                 id_p = get_or_create_pessoa(cur, nome, ID_VINCULO_ORIENTADOR)
                 link_documento_pessoa(cur, id_doc, id_p, ID_FUNCAO_ORIENTADOR)
 
@@ -423,7 +434,7 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
 # CLI
 # =========================
 def main():
-    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência linha a linha (tabelas reais)")
+    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência linha a linha (compat Python 3.6)")
     ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída")
     ap.add_argument("--start", default=START, help="URL inicial (recent-submissions)")
     ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Parar quando encontrar ano <= min-year")
@@ -445,8 +456,8 @@ def main():
         max_pages=args.max_pages,
         delay=args.delay,
         persist=args.persist,
-        id_ppg=args.ppg if args.ppg > 0 else None,
-        id_centro=args.centro if args.centro > 0 else None,
+        id_ppg=(args.ppg if args.ppg > 0 else None),
+        id_centro=(args.centro if args.centro > 0 else None),
     )
 
 if __name__ == "__main__":
