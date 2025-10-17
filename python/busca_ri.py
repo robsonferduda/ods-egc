@@ -441,8 +441,8 @@ def main():
     ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas")
     ap.add_argument("--delay", type=float, default=float(os.getenv("DELAY", "1.8")), help="Delay entre itens (s)")
     ap.add_argument("--persist", action="store_true", help="Ativa gravação no PostgreSQL (linha a linha)")
-    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", "0")), help="Valor para id_ppg (obrigatório quando --persist)")
-    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", "0")), help="Valor para id_centro (obrigatório quando --persist)")
+    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", 225)), help="Valor para id_ppg (obrigatório quando --persist)")
+    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", 13)), help="Valor para id_centro (obrigatório quando --persist)")
     args = ap.parse_args()
 
     if args.persist and (args.ppg <= 0 or args.centro <= 0):
