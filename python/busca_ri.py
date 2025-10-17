@@ -33,7 +33,7 @@ else:
 # CONFIG PADRÃO
 # =========================
 BASE = "https://repositorio.ufsc.br"
-START = "https://repositorio.ufsc.br/handle/123456789/75030/recent-submissions"
+START = "https://repositorio.ufsc.br/handle/123456789/82271/recent-submissions"
 HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.4-compat)"}
 
 # Critério de parada: coletar apenas Ano > MIN_YEAR
