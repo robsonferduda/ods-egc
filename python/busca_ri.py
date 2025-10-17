@@ -34,7 +34,7 @@ else:
 # =========================
 BASE = "https://repositorio.ufsc.br"
 START = "https://repositorio.ufsc.br/handle/123456789/214239/recent-submissions"
-HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.3-compat)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.4-compat)"}
 
 # Critério de parada: coletar apenas Ano > MIN_YEAR
 MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
@@ -44,7 +44,7 @@ ID_DIMENSAO = 6
 
 # PostgreSQL por .env ou CLI
 PG_HOST = os.getenv("DB_HOST", "localhost")
-PG_DB   = os.getenv("DB_DATABASE", "perfil_ods")
+PG_DB   = os.getenv("DB_DATABASE",   "perfil_ods")
 PG_USER = os.getenv("DB_USERNAME", "postgres")
 PG_PASS = os.getenv("DB_PASSWORD", "postgres")
 PG_PORT = int(os.getenv("DB_PORT", "5432"))
@@ -154,6 +154,22 @@ def normalize_people_list(values):
     return nomes
 
 # =========================
+# HANDLE ID
+# =========================
+def extract_handle_id(item_url):
+    """
+    Extrai o número do handle na forma /handle/123456789/<ID>
+    Retorna int ou None.
+    """
+    m = re.search(r"/handle/123456789/(\d+)", item_url or "")
+    if not m:
+        return None
+    try:
+        return int(m.group(1))
+    except ValueError:
+        return None
+
+# =========================
 # PARSE ITEM
 # =========================
 def map_tipo_documento(dc_type_value):
@@ -232,13 +248,18 @@ def parse_full_record(item_url):
         "orientadores": orientadores,
         "id_tipo_documento": id_tipo_documento,
         "dc_type_raw": dc_type,
+        "repo_id": extract_handle_id(item_url),
     }
 
 # =========================
 # CSV + CRAWL + persistência por item
 # =========================
 def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, id_ppg, id_centro):
-    fieldnames = ["ano", "titulo", "resumo_pt", "abstract_en", "autores", "orientadores", "id_tipo_documento", "dc_type_raw", "url"]
+    fieldnames = [
+        "ano", "titulo", "resumo_pt", "abstract_en",
+        "autores", "orientadores", "id_tipo_documento",
+        "dc_type_raw", "url", "repo_id"
+    ]
     total_csv = 0
     total_ok_db = 0
     page_count = 0
@@ -283,7 +304,10 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
 
                 ano = data.get("ano")
                 titulo = (data.get("titulo") or "").strip()
-                log("[ITEM] ano={} | tipo={} | titulo={}".format(ano, data.get("id_tipo_documento"), (titulo[:90] + ("..." if len(titulo) > 90 else ""))))
+                log("[ITEM] ano={} | tipo={} | repo_id={} | titulo={}".format(
+                    ano, data.get("id_tipo_documento"), data.get("repo_id"),
+                    (titulo[:90] + ("..." if len(titulo) > 90 else ""))
+                ))
 
                 if ano is not None and ano <= min_year:
                     log("[STOP] encontrado ano <= {}: {} → encerrando coleta.".format(min_year, ano))
@@ -301,6 +325,7 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                     "id_tipo_documento": data.get("id_tipo_documento") or "",
                     "dc_type_raw": data.get("dc_type_raw") or "",
                     "url": data.get("url") or "",
+                    "repo_id": data.get("repo_id") or ""
                 }
                 w.writerow(row)
                 total_csv += 1
@@ -339,10 +364,24 @@ def get_conn():
         host=PG_HOST, dbname=PG_DB, user=PG_USER, password=PG_PASS, port=PG_PORT
     )
 
-def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_ppg, id_centro):
+def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_ppg, id_centro, repo_id):
     """
-    documento_ods(id PK); evita duplicar por (titulo, ano)
+    documento_ods(id PK)
+    Regra de unicidade: id_producao_intelectual (quando presente).
+    Fallback: (titulo, ano).
     """
+    if repo_id is not None:
+        cur.execute("""
+            SELECT id
+            FROM documento_ods
+            WHERE id_producao_intelectual = %s
+            LIMIT 1
+        """, (repo_id,))
+        row = cur.fetchone()
+        if row:
+            return row[0]
+
+    # Fallback para registros antigos sem repo_id
     cur.execute("""
         SELECT id
         FROM documento_ods
@@ -353,13 +392,14 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
     if row:
         return row[0]
 
+    # Insert com id_producao_intelectual
     cur.execute("""
         INSERT INTO documento_ods
-            (titulo, texto, ano, id_dimensao, id_tipo_documento, id_ppg, id_centro)
+            (titulo, texto, ano, id_dimensao, id_tipo_documento, id_ppg, id_centro, id_producao_intelectual)
         VALUES
-            (%s,     %s,    %s,  %s,           %s,               %s,      %s)
+            (%s,     %s,    %s,  %s,           %s,               %s,      %s,       %s)
         RETURNING id
-    """, (titulo, resumo_pt, ano, ID_DIMENSAO, id_tipo_documento, id_ppg, id_centro))
+    """, (titulo, resumo_pt, ano, ID_DIMENSAO, id_tipo_documento, id_ppg, id_centro, repo_id))
     return cur.fetchone()[0]
 
 def get_or_create_pessoa(cur, nome, id_vinculo):
@@ -406,6 +446,7 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
             ano = rec.get("ano")
             resumo_pt = rec.get("resumo_pt") or None
             id_tipo_documento = rec.get("id_tipo_documento")
+            repo_id = rec.get("repo_id")
 
             # Documento
             id_doc = get_or_create_documento(
@@ -416,6 +457,7 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
                 id_tipo_documento=id_tipo_documento,
                 id_ppg=id_ppg,
                 id_centro=id_centro,
+                repo_id=repo_id
             )
 
             # Autores (Discente/Aluno)
@@ -434,15 +476,15 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
 # CLI
 # =========================
 def main():
-    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência linha a linha (compat Python 3.6)")
+    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência linha a linha (FINAL compat Python 3.6)")
     ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída")
     ap.add_argument("--start", default=START, help="URL inicial (recent-submissions)")
     ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Parar quando encontrar ano <= min-year")
     ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas")
     ap.add_argument("--delay", type=float, default=float(os.getenv("DELAY", "1.8")), help="Delay entre itens (s)")
     ap.add_argument("--persist", action="store_true", help="Ativa gravação no PostgreSQL (linha a linha)")
-    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", 225)), help="Valor para id_ppg (obrigatório quando --persist)")
-    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", 13)), help="Valor para id_centro (obrigatório quando --persist)")
+    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", "0")), help="Valor para id_ppg (obrigatório quando --persist)")
+    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", "0")), help="Valor para id_centro (obrigatório quando --persist)")
     args = ap.parse_args()
 
     if args.persist and (args.ppg <= 0 or args.centro <= 0):
