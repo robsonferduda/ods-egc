@@ -9,7 +9,7 @@ import subprocess
 from datetime import datetime
 
 # caminho do script principal
-COLETOR = os.path.join(os.path.dirname(__file__), "python", "busca_ri.py")
+COLETOR = os.path.join(os.path.dirname(__file__), "busca_ri.py")
 
 def log(msg):
     sys.stdout.write(msg.rstrip() + "\n")
