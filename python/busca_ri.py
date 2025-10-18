@@ -33,8 +33,8 @@ else:
 # CONFIG PADRÃO
 # =========================
 BASE = "https://repositorio.ufsc.br"
-START = "https://repositorio.ufsc.br/handle/123456789/128623/recent-submissions"
 HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.4-compat)"}
+DEFAULT_START = "https://repositorio.ufsc.br/handle/123456789/214239/recent-submissions"  # fallback
 
 # Critério de parada: coletar apenas Ano > MIN_YEAR
 MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
@@ -99,18 +99,15 @@ def extract_links_from_recent(page_url):
         if not href or "recent-submissions" in href:
             continue
         url = urljoin(BASE, href.split("?")[0])
-        # Itens costumam ter /handle/123456789/<idnum>
         if "/handle/123456789/" in url and len(url.split("/")) >= 6:
             links.append(url)
 
-    # desduplicar mantendo ordem
     seen, unique = set(), []
     for u in links:
         if u not in seen:
             seen.add(u)
             unique.append(u)
 
-    # "next page"
     next_link = None
     for a in soup.find_all("a"):
         t = a.get_text(" ", strip=True).lower()
@@ -157,10 +154,6 @@ def normalize_people_list(values):
 # HANDLE ID
 # =========================
 def extract_handle_id(item_url):
-    """
-    Extrai o número do handle na forma /handle/123456789/<ID>
-    Retorna int ou None.
-    """
     m = re.search(r"/handle/123456789/(\d+)", item_url or "")
     if not m:
         return None
@@ -173,10 +166,6 @@ def extract_handle_id(item_url):
 # PARSE ITEM
 # =========================
 def map_tipo_documento(dc_type_value):
-    """
-    "Tese (Doutorado)"       -> 2
-    "Dissertação (Mestrado)" -> 1
-    """
     if not dc_type_value:
         return None
     val = dc_type_value.lower()
@@ -210,7 +199,6 @@ def parse_full_record(item_url):
     def listvals(k):
         return meta.get(k) or []
 
-    # Ano
     ano_raw = first("dc.date.issued")
     ano = None
     if ano_raw:
@@ -221,14 +209,12 @@ def parse_full_record(item_url):
             except ValueError:
                 ano = None
 
-    # Campos
     titulo = first("dc.title")
     autores = normalize_people_list(listvals("dc.contributor.author") or [])
     orientadores = normalize_people_list(listvals("dc.contributor.advisor") or [])
     dc_type = first("dc.type")
     id_tipo_documento = map_tipo_documento(dc_type)
 
-    # Resumo PT / EN (guardamos PT em texto)
     resumos = listvals("dc.description.abstract") or []
     resumo_pt, abstract_en = None, None
     for r in resumos:
@@ -243,7 +229,7 @@ def parse_full_record(item_url):
         "ano": ano,
         "titulo": titulo,
         "resumo_pt": resumo_pt,
-        "abstract_en": abstract_en,      # só CSV
+        "abstract_en": abstract_en,
         "autores": autores,
         "orientadores": orientadores,
         "id_tipo_documento": id_tipo_documento,
@@ -314,7 +300,6 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                     stop = True
                     break
 
-                # CSV imediato
                 row = {
                     "ano": data.get("ano") or "",
                     "titulo": data.get("titulo") or "",
@@ -330,7 +315,6 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                 w.writerow(row)
                 total_csv += 1
 
-                # Persistência por item (transação própria)
                 if persist:
                     try:
                         persist_one_record(conn, data, id_ppg=id_ppg, id_centro=id_centro)
@@ -365,11 +349,6 @@ def get_conn():
     )
 
 def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_ppg, id_centro, repo_id):
-    """
-    documento_ods(id PK)
-    Regra de unicidade: id_producao_intelectual (quando presente).
-    Fallback: (titulo, ano).
-    """
     if repo_id is not None:
         cur.execute("""
             SELECT id
@@ -381,7 +360,6 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
         if row:
             return row[0]
 
-    # Fallback para registros antigos sem repo_id
     cur.execute("""
         SELECT id
         FROM documento_ods
@@ -392,7 +370,6 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
     if row:
         return row[0]
 
-    # Insert com id_producao_intelectual
     cur.execute("""
         INSERT INTO documento_ods
             (titulo, texto, ano, id_dimensao, id_tipo_documento, id_ppg, id_centro, id_producao_intelectual)
@@ -403,9 +380,6 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
     return cur.fetchone()[0]
 
 def get_or_create_pessoa(cur, nome, id_vinculo):
-    """
-    pessoa_pes(ds_nome_pessoa, id_vinculo_vin)
-    """
     cur.execute("""
         SELECT id_pessoa_pes
         FROM pessoa_pes
@@ -437,9 +411,6 @@ def link_documento_pessoa(cur, id_documento, id_pessoa, id_funcao):
     """, (id_documento, id_pessoa, id_funcao))
 
 def persist_one_record(conn, rec, id_ppg, id_centro):
-    """
-    Persiste UM item em transação própria.
-    """
     with conn:
         with conn.cursor() as cur:
             titulo = (rec.get("titulo") or "").strip()
@@ -448,7 +419,6 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
             id_tipo_documento = rec.get("id_tipo_documento")
             repo_id = rec.get("repo_id")
 
-            # Documento
             id_doc = get_or_create_documento(
                 cur,
                 titulo=titulo,
@@ -460,15 +430,11 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
                 repo_id=repo_id
             )
 
-            # Autores (Discente/Aluno)
-            autores = rec.get("autores") or []
-            for nome in autores:
+            for nome in rec.get("autores") or []:
                 id_p = get_or_create_pessoa(cur, nome, ID_VINCULO_AUTOR)
                 link_documento_pessoa(cur, id_doc, id_p, ID_FUNCAO_AUTOR)
 
-            # Orientadores (Docente/Orientador)
-            orientadores = rec.get("orientadores") or []
-            for nome in orientadores:
+            for nome in rec.get("orientadores") or []:
                 id_p = get_or_create_pessoa(cur, nome, ID_VINCULO_ORIENTADOR)
                 link_documento_pessoa(cur, id_doc, id_p, ID_FUNCAO_ORIENTADOR)
 
@@ -476,9 +442,10 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
 # CLI
 # =========================
 def main():
-    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência linha a linha (FINAL compat Python 3.6)")
+    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência (linha a linha)")
     ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída")
-    ap.add_argument("--start", default=START, help="URL inicial (recent-submissions)")
+    ap.add_argument("--start", default=DEFAULT_START,
+                    help="URL inicial (recent-submissions). Ex: --start https://repositorio.ufsc.br/handle/123456789/XXXXX/recent-submissions")
     ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Parar quando encontrar ano <= min-year")
     ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas")
     ap.add_argument("--delay", type=float, default=float(os.getenv("DELAY", "1.8")), help="Delay entre itens (s)")
