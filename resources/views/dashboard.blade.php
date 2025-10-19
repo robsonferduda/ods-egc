@@ -599,6 +599,7 @@
                     });
 
                     $('#ano_inicio').val(2015);
+                    $('#ano_fim').val(2025);
 
                     $(".btn-filtrar").trigger("click");
                 },
