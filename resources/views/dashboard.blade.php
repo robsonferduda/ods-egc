@@ -1129,7 +1129,7 @@
 
                             foto = host+'/img/ods-icone/ods_'+element.ods+'.png';
                             
-                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-md-4 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-md-8 pl-1"><p class="mb-0"><strong>ODS '+element.ods+'</strong></p><p class="mb-0">'+element.objetivo+'</p><span id="nm_ppg"><strong>'+element.total+' Documentos</strong></span></div></div>');
+                            $('.lista-ods').append('<div class="row mt-3 perfil-docente-mostrar-off" data-docente="'+element.ods+'"><div class="col-sm-2 col-md-4 center"><img src="'+foto+'" class="img-fluid w-100"></div><div class="col-sm-10 col-md-8 pl-1"><p class="mb-0"><strong>ODS '+element.ods+'</strong></p><p class="mb-0">'+element.objetivo+'</p><span id="nm_ppg"><strong>'+element.total+' Documentos</strong></span></div></div>');
                         });
                     },
                     complete: function(){
