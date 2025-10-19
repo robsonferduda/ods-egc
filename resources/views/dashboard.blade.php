@@ -158,10 +158,10 @@
                 <h6 class="mb-3">DOCUMENTOS POR DIMENSÃO</h6>
                 @foreach($dimensoes_ies as $key => $dimensao)
                     <div class="row box-dimensao box-dimensao-{{ $dimensao->apelido }}">
-                        <div class="col-md-4 px-0 py-0"> 
+                        <div class="col-sm-2 col-md-4 px-0 py-0"> 
                             <img src="{{ asset('img/icones-dimensao/'.$dimensao->img) }}" class="img-fluid">
                         </div>
-                        <div class="col-md-8"> 
+                        <div class="col-sm-10 col-md-8"> 
                             <p class="mt-3 total_dimensao" data-dimensao="{{ $dimensao->id }}">{{ $dimensao->total_dimensao }}</p>
                             <p><strong>Documentos</strong></p>
                         </div>
@@ -597,6 +597,8 @@
                         if(i == (data.length -1)) option.setAttribute('selected', true);
                         $('#ano_fim').append(option);
                     });
+
+                    $('#ano_inicio').val(2015);
 
                     $(".btn-filtrar").trigger("click");
                 },
