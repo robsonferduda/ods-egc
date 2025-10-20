@@ -342,7 +342,7 @@
                 window.location.href = "{{ url('repositorio') }}" + "?" + params;
             });
 
-            $(document).on('change', '#docenteooo', function() {
+            $(document).on('change', '#docente', function() {
 
                 var id = $(this).val();
 
@@ -781,7 +781,7 @@
 
                 if(docente){
 
-                    carregaDocente(ppg, docente); 
+                    //carregaDocente(ppg, docente); 
                     //getFrequencia("evolucaoDocente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente); 
                     //carregarGraficoDimensao(docente);
