@@ -33,7 +33,7 @@ else:
 # CONFIG PADRÃO
 # =========================
 BASE = "https://repositorio.ufsc.br"
-HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.5-compat)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.6-compat)"}
 DEFAULT_START = "https://repositorio.ufsc.br/handle/123456789/214239/recent-submissions"  # fallback
 
 # Critério: nunca gravar ano <= MIN_YEAR; parada depende de "paciência"
@@ -43,11 +43,11 @@ MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
 ID_DIMENSAO = 6
 
 # PostgreSQL por .env ou CLI
-PG_HOST = os.getenv("DB_HOST", "localhost")
-PG_DB   = os.getenv("DB_DATABASE",   "perfil_ods")
-PG_USER = os.getenv("DB_USERNAME", "postgres")
-PG_PASS = os.getenv("DB_PASSWORD", "postgres")
-PG_PORT = int(os.getenv("DB_PORT", "5432"))
+PG_HOST = os.getenv("PG_HOST", "localhost")
+PG_DB   = os.getenv("PG_DB",   "perfil_ods")
+PG_USER = os.getenv("PG_USER", "postgres")
+PG_PASS = os.getenv("PG_PASS", "postgres")
+PG_PORT = int(os.getenv("PG_PORT", "5432"))
 
 # Funções / vínculos
 ID_FUNCAO_AUTOR = 2        # Aluno
@@ -61,6 +61,21 @@ ID_VINCULO_ORIENTADOR = 2  # Docente
 def log(msg):
     sys.stdout.write(msg.rstrip() + "\n")
     sys.stdout.flush()
+
+# =========================
+# UTIL
+# =========================
+def normalize_start_url(u):
+    if not u:
+        return DEFAULT_START
+    u = u.strip()
+    if not u.endswith("/recent-submissions"):
+        # alguns links vieram sem o sufixo; normaliza
+        u = u.rstrip("/") + "/recent-submissions"
+    return u
+
+def safe_name(s):
+    return "".join(c if c.isalnum() or c in "-_." else "_" for c in s)[:80]
 
 # =========================
 # REDE / SOUP
@@ -309,13 +324,11 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                         log("[STOP] atingiu {} consecutivos com ano <= {} → encerrando coleta.".format(below_streak, min_year))
                         stop = True
                         break
-                    # segue para o próximo link sem gravar/persistir
                     continue
 
                 # ano > min_year → zera a contagem
                 if ano is not None and ano > min_year:
                     below_streak = 0
-                # se ano for None, não conta para parada e continua normalmente
 
                 # CSV imediato
                 row = {
@@ -333,7 +346,6 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                 w.writerow(row)
                 total_csv += 1
 
-                # Persistência por item (transação própria)
                 if persist:
                     try:
                         persist_one_record(conn, data, id_ppg=id_ppg, id_centro=id_centro)
@@ -460,13 +472,80 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
                 link_documento_pessoa(cur, id_doc, id_p, ID_FUNCAO_ORIENTADOR)
 
 # =========================
+# BATCH TSV
+# =========================
+def run_batch(file_path, sep, out_dir, logs_dir, default_min_year, default_delay, default_max_pages, default_patience, persist):
+    if not os.path.isdir(out_dir):
+        os.makedirs(out_dir)
+    if logs_dir and not os.path.isdir(logs_dir):
+        os.makedirs(logs_dir)
+
+    total = ok = fail = 0
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        first = f.readline()
+        f.seek(0)
+        has_header = any(k in first.lower() for k in ["nome", "ppg", "centro", "url"])
+        reader = csv.reader(f, delimiter=sep)
+        if has_header:
+            next(reader, None)
+
+        for row in reader:
+            if not row or len(row) < 4:
+                continue
+
+            nome = row[0].strip()
+            ppg = int(row[1].strip())
+            centro = int(row[2].strip())
+            url = normalize_start_url(row[3].strip())
+
+            min_year = int(row[4]) if len(row) > 4 and row[4].strip() else default_min_year
+            delay = float(row[5]) if len(row) > 5 and row[5].strip() else default_delay
+            max_pages = int(row[6]) if len(row) > 6 and row[6].strip() else default_max_pages
+            patience = int(row[7]) if len(row) > 7 and row[7].strip() else default_patience
+
+            out_csv = os.path.join(out_dir, "ufsc_{}_ppg{}_centro{}.csv".format(safe_name(nome), ppg, centro))
+            if logs_dir:
+                log_path = os.path.join(logs_dir, "batch_ppg{}_centro{}.log".format(ppg, centro))
+            else:
+                log_path = None
+
+            log("[RUN] {} (ppg={}, centro={})".format(nome, ppg, centro))
+            try:
+                crawl_line_by_line(
+                    outpath=out_csv,
+                    start_url=url,
+                    min_year=min_year,
+                    max_pages=max_pages,
+                    delay=delay,
+                    persist=persist,
+                    id_ppg=ppg,
+                    id_centro=centro,
+                    patience_below=patience
+                )
+                ok += 1
+                if log_path:
+                    with open(log_path, "a", encoding="utf-8") as lf:
+                        lf.write("OK {}\n".format(out_csv))
+                log("[OK ] Finalizado: {}".format(out_csv))
+            except Exception as e:
+                fail += 1
+                if log_path:
+                    with open(log_path, "a", encoding="utf-8") as lf:
+                        lf.write("FAIL: {}\n".format(str(e)))
+                log("[FAIL] {} → {}".format(nome, str(e)))
+            total += 1
+
+    log("\n[RESUMO BATCH] total={}, ok={}, falhas={}".format(total, ok, fail))
+
+# =========================
 # CLI
 # =========================
 def main():
-    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência (linha a linha) com parada por paciência")
-    ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída")
+    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência (linha a linha) com parada por paciência; suporta batch TSV")
+    ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída (modo single)")
     ap.add_argument("--start", default=DEFAULT_START,
-                    help="URL inicial (recent-submissions). Ex: --start https://repositorio.ufsc.br/handle/123456789/XXXXX/recent-submissions")
+                    help="URL inicial (recent-submissions) em modo single")
     ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Nunca gravar ano <= min-year")
     ap.add_argument("--patience-below", type=int,
                     default=int(os.getenv("PATIENCE_BELOW", "3")),
@@ -474,17 +553,40 @@ def main():
     ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas a varrer")
     ap.add_argument("--delay", type=float, default=float(os.getenv("DELAY", "1.8")), help="Delay entre itens (s)")
     ap.add_argument("--persist", action="store_true", help="Ativa gravação no PostgreSQL (linha a linha)")
-    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", "0")), help="Valor para id_ppg (obrigatório quando --persist)")
-    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", "0")), help="Valor para id_centro (obrigatório quando --persist)")
+    ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", "0")), help="Valor para id_ppg (single)")
+    ap.add_argument("--centro", type=int, default=int(os.getenv("ID_CENTRO", "0")), help="Valor para id_centro (single)")
+
+    # Batch TSV
+    ap.add_argument("--batch-file", help="Arquivo TSV/CSV com colunas: nome,ppg,centro,url[,min_year,delay,max_pages,patience_below]")
+    ap.add_argument("--sep", default="\t", help="Separador do batch (default: TAB '\\t'; use ',' para CSV)")
+    ap.add_argument("--out-dir", default="python/dados_coletados", help="Diretório base para CSVs do batch")
+    ap.add_argument("--logs-dir", default="logs", help="Diretório de logs do batch (opcional)")
+
     args = ap.parse_args()
 
+    # MODO BATCH
+    if args.batch_file:
+        run_batch(
+            file_path=args.batch_file,
+            sep=args.sep,
+            out_dir=args.out_dir,
+            logs_dir=args.logs_dir,
+            default_min_year=args.min_year,
+            default_delay=args.delay,
+            default_max_pages=args.max_pages,
+            default_patience=args.patience_below,
+            persist=args.persist
+        )
+        return
+
+    # MODO SINGLE
     if args.persist and (args.ppg <= 0 or args.centro <= 0):
-        log("[ERRO] Para persistir, informe --ppg e --centro (ou defina ID_PPG/ID_CENTRO no .env).")
+        log("[ERRO] Para persistir em modo single, informe --ppg e --centro (ou defina ID_PPG/ID_CENTRO no .env).")
         sys.exit(2)
 
     crawl_line_by_line(
         outpath=args.out,
-        start_url=args.start,
+        start_url=normalize_start_url(args.start),
         min_year=args.min_year,
         max_pages=args.max_pages,
         delay=args.delay,
