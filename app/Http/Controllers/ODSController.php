@@ -76,36 +76,53 @@ class ODSController extends Controller
                 break;
         }
 
-        $documentos = Documento::query()
-            ->when($centro, function ($query) use ($centro) {
-                return $query->where('id_centro', $centro);
-            })
-            ->when($departamento, function ($query) use ($departamento) {
-                return $query->where('id_departamento', $departamento);
-            })
-            ->when($tipo and $tipo != "todos", function ($query) use ($tipo) {
-                return $query->where('id_tipo_documento', $tipo);
-            })
-            ->when($dimensao, function ($query) use ($dimensao) {
-                return $query->whereIn('id_dimensao', $dimensao);
-            })
-            ->when($ano_inicio, function ($query) use ($ano_inicio) {
-                return $query->where('ano', '>=', $ano_inicio);
-            })
-            ->when($ano_fim, function ($query) use ($ano_fim) {
-                return $query->where('ano', '<=', $ano_fim);
-            })
-            ->when($ppg, function ($query) use ($ppg) {
-                return $query->where('id_ppg', $ppg);
-            })
-            ->when($docente, function ($query) use ($docente) {
-                return $query->where('nm_orientador', $docente);
-            })
-            ->when($dimensao, function ($query) use ($dimensao) {
-                return $query->whereIn('id_dimensao', $dimensao);
-            })
-            ->orderByDesc('ano')
-            ->paginate(10);
+        $where = " WHERE 1=1 ";
+
+        if($request->tipo and $request->tipo != "todos"){
+            $where .= " AND t0.id_tipo_documento = '$request->tipo' ";
+        }
+
+        //Filtro por ano
+        if($request->ano_inicial and $request->ano_fim){
+            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+        }
+
+        //Filtro por centro
+        if($request->centro){
+            $where .= " AND id_centro = '$request->centro' ";
+        }
+
+        //Filtro por departamento
+        if($request->departamento){
+            $where .= " AND id_departamento = '$request->departamento' ";
+        }
+
+        //Filtro por programa
+        if($request->ppg){
+            $where .= " AND id_ppg = '$request->ppg' ";
+        }
+
+        if($request->docente){
+            $where .= " AND t0.id IN(SELECT id_documento_ods FROM documento_pessoa_dop WHERE id_pessoa_pes = '$request->docente') ";
+        }
+
+        $sql = "SELECT t0.ods, 
+                t1.cor, 
+                t0.id,
+                t0.id_dimensao,
+                titulo,
+                t2.nome,
+                t0.ano,
+                t3.ds_tipo_documento 
+                FROM documento_ods t0
+                JOIN ods t1 ON t1.cod = t0.ods 
+                JOIN dimensao_ies t2 ON t2.id = t0.id_dimensao 
+                JOIN tipo_documento t3 ON t3.id_tipo_documento = t0.id_tipo_documento 
+                $where
+                ORDER BY ano DESC 
+                LIMIT 5";
+
+        $documentos = DB::connection('pgsql')->select($sql);
 
         return view('repositorio', compact('ods','documentos','dimensoes_ies','ano_inicio','ano_fim'));
     }

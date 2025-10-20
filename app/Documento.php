@@ -53,4 +53,9 @@ class Documento extends Model
     {
         return $this->hasOne('App\Ods', 'cod', 'ods');
     }
+
+    public function pessoas()
+    {
+        return $this->hasMany(DocumentoPessoa::class, 'id_documento_ods', 'id');
+    }
 }
