@@ -149,7 +149,7 @@
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
                 <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
-                <span>São listados apenas alguns documentos. <a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">Clique aqui </a>para ver todos</span>
+                <span class="text-danger">São listados apenas alguns documentos. <a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">Clique aqui </a>para ver todos</span>
                 <div class="mt-2 mb-1" id="lista_documentos"></div>
             </div>
 
@@ -240,8 +240,9 @@
             </div>
 
             <div class="col-sm-12 col-md-6 mb-5">        
-                <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                <div class="mb-1" id="lista_documentos_docente"></div>
+                <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
+                <span class="text-danger">São listados apenas alguns documentos. <a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">Clique aqui </a>para ver todos</span>
+                <div class="mt-3 mb-1" id="lista_documentos_docente"></div>
             </div>
 
                        
