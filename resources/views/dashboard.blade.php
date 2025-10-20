@@ -477,6 +477,16 @@
             });
 
             // Docentes
+            $('#docente').select2({
++               placeholder: 'Selecione um docente',
++               allowClear: true,
++               width: '100%',
++               language: {
++                   noResults: function() { return "Nenhum docente encontrado"; },
++                   searching: function() { return "Buscando..."; }
++               }
++           });
+
             $.ajax({
                 url: host + '/dados/docentes',
                 type: 'GET',
@@ -485,6 +495,8 @@
                     data.forEach(function(docente) {
                         $('#docente').append(`<option value="${docente.id_pessoa_pes}">${docente.ds_nome_pessoa}</option>`);
                     });
++                   // atualiza Select2
++                   $('#docente').val('').trigger('change.select2');
                 }
             });
 

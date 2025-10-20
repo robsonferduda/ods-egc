@@ -165,6 +165,13 @@
 <script src="//cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <script src="//cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
 
+  <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.0.0/cytoscape-cose-bilkent.min.js"></script>
+
+    <!-- ADICIONADO: Select2 CSS/JS -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   @yield('script')
   <script>
     $(document).ready(function() {
