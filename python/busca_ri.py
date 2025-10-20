@@ -43,11 +43,11 @@ MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
 ID_DIMENSAO = 6
 
 # PostgreSQL por .env ou CLI
-PG_HOST = os.getenv("PG_HOST", "localhost")
-PG_DB   = os.getenv("PG_DB",   "perfil_ods")
-PG_USER = os.getenv("PG_USER", "postgres")
-PG_PASS = os.getenv("PG_PASS", "postgres")
-PG_PORT = int(os.getenv("PG_PORT", "5432"))
+PG_HOST = os.getenv("DB_HOST", "localhost")
+PG_DB   = os.getenv("DB_DATABASE",   "perfil_ods")
+PG_USER = os.getenv("DB_USERNAME", "postgres")
+PG_PASS = os.getenv("DB_PASSWORD", "postgres")
+PG_PORT = int(os.getenv("DB_PORT", "5432"))
 
 # Funções / vínculos
 ID_FUNCAO_AUTOR = 2        # Aluno
