@@ -240,7 +240,7 @@
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
             </div>
 
-            <div class="col-sm-12 col-md-6 painel mb-5">        
+            <div class="col-sm-12 col-md-6 mb-5">        
                 <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
                 <div class="mb-1" id=""></div>
             </div>
