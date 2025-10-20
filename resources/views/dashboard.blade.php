@@ -175,13 +175,13 @@
                
             <div class="col-md-4 center">
                 <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
-                <h5 class="mb-0 mt-3" id="nm_docente"></h5>
-                <span id="nm_ppg"></span>
             </div>
 
             <!-- <canvas id="chartjs-3" class="chartjs"></canvas> -->
                 
             <div class="col-md-8">
+                <h5 class="mb-0 mt-3" id="nm_docente"></h5>
+                <span id="nm_ppg"></span>
                 <p>Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
                 <p>Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
             </div>
