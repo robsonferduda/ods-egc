@@ -342,7 +342,7 @@
                 window.location.href = "{{ url('repositorio') }}" + "?" + params;
             });
 
-            $(document).on('change', '#docente', function() {
+            $(document).on('change', '#docenteooo', function() {
 
                 var id = $(this).val();
 
