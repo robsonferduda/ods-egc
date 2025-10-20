@@ -24,7 +24,7 @@
             <p class="mb-1"><strong>Dimensão ODS</strong>: {!! ($documento->dimensaoOds) ? $documento->dimensaoOds->ds_dimensao : '<span>Não calculada</span>' !!} </p>
             <p class="mb-1"><strong>Tipo do Documento</strong>: {{ $documento->tipo->ds_tipo_documento }} </p>            
             <p class="mb-1"><strong>Título</strong>: {{ $documento->titulo }} </p>  
-
+            <p class="mb-1"><strong>Ano</strong>: {{ $documento->ano }} </p>  
             @php
               // Mapeamento de rótulos por id_funcao_fun
               $rotulos = [
