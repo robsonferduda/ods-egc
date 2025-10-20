@@ -32,7 +32,7 @@ user = config('DB_USERNAME')
 password = config('DB_PASSWORD')
 path = config('APP_PATH')
 
-dados_rotulados_osdg = pd.read_csv(path+'dados_treino_v2.csv')
+dados_rotulados_osdg = pd.read_csv(path+'dados_treino.csv')
 feature_ods = pd.read_csv(path+'feature_ods_5.csv')
 
 X_train, X_test, y_train, y_test = train_test_split(
