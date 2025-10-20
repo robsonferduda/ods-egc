@@ -1323,6 +1323,7 @@
 
                 complete: function () {
                   // Pode remover loader aqui
+                  $(elementoPai).loader('hide');
                 }
               });
             }
