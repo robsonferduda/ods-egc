@@ -631,29 +631,60 @@ class ODSController extends Controller
         foreach ($item as $k=>$v) {
             $args .= escapeshellarg(str_replace( array(' ', 'à','á','â','ã','ä', 'ç', 'è','é','ê','ë', 'ì','í','î','ï', 'ñ', 'ò','ó','ô','õ','ö', 'ù','ú','û','ü', 'ý','ÿ', 'À','Á','Â','Ã','Ä', 'Ç', 'È','É','Ê','Ë', 'Ì','Í','Î','Ï', 'Ñ', 'Ò','Ó','Ô','Õ','Ö', 'Ù','Ú','Û','Ü', 'Ý'), array(' ', 'a','a','a','a','a', 'c', 'e','e','e','e', 'i','i','i','i', 'n', 'o','o','o','o','o', 'u','u','u','u', 'y','y', 'A','A','A','A','A', 'C', 'E','E','E','E', 'I','I','I','I', 'N', 'O','O','O','O','O', 'U','U','U','U', 'Y'), $v));
         }
-        $cmd = "python3 ".base_path()."/ods-leve.py $args";
 
-        $result = exec($cmd, $output, $return);
+        $cmd = "python3 ".base_path()."/ods-leve.py $args 2>&1";
 
-        $output = str_replace("\r\n","", $output);
+        try {
+            exec($cmd, $output, $return);
 
-        $probabilidades = explode (";", $output[0]);
+            // Normaliza saída
+            $output_text = implode("\n", $output);
+            $output_text = str_replace("\r\n","",$output_text);
 
-        for ($i=0; $i < count($probabilidades)-1; $i++) { 
-            if($probabilidades[$i] > 0.1){
-                $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
+            // Verifica retorno do processo
+            if ($return !== 0) {
+                // retorna erro com saída do processo para depuração
+                return response()->json([
+                    'error' => true,
+                    'message' => 'Erro ao executar o modelo externo.',
+                    'details' => $output_text
+                ], 500);
             }
-            $distribuicao[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
-        }    
-        
-        usort($dados, function($a, $b) {
-            return $b['probabilidade'] <=> $a['probabilidade'];
-        });
 
-        $resultado['probabilidades'] = $distribuicao;
-        $resultado['resultado'] = $dados;
+            if (empty($output) || !isset($output[0]) || strlen(trim($output[0])) == 0) {
+                return response()->json([
+                    'error' => true,
+                    'message' => 'Nenhuma saída gerada pelo modelo.',
+                    'details' => $output_text
+                ], 500);
+            }
 
-        return response()->json($resultado);
+            $probabilidades = explode(";", $output[0]);
+
+            for ($i=0; $i < count($probabilidades)-1; $i++) {
+                if($probabilidades[$i] > 0.1){
+                    $dados[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
+                }
+                $distribuicao[] = array('ods' => $i+1, 'probabilidade' => $probabilidades[$i]);
+            }
+
+            usort($dados, function($a, $b) {
+                return $b['probabilidade'] <=> $a['probabilidade'];
+            });
+
+            $resultado['probabilidades'] = $distribuicao;
+            $resultado['resultado'] = $dados;
+
+            return response()->json($resultado);
+
+        } catch (\Throwable $e) {
+            // captura qualquer exceção e retorna JSON com mensagem
+            return response()->json([
+                'error' => true,
+                'message' => 'Exceção ao executar análise.',
+                'details' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function descobrirSalvar(Request $request)

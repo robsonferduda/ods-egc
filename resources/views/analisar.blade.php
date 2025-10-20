@@ -155,6 +155,15 @@
 
                      $(".resultado").html("");
 
+                     if (data.error) {
+                        Swal.fire({
+                           icon: 'error',
+                           title: 'Erro na análise',
+                           html: `<pre style="text-align:left; white-space:pre-wrap;">${data.message}<br>${data.details ? data.details : ''}</pre>`
+                        });
+                        return;
+                     }
+
                      if(data.resultado.length){
 
                         var cores = ["#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21","#FF3A21"];
@@ -241,7 +250,24 @@
                      }
                      
                   },
-                  error: function(){
+                  error: function(xhr){
+
+                     let msg = 'Erro desconhecido ao executar a análise.';
+                     let details = '';
+
+                     if (xhr.responseJSON && xhr.responseJSON.message) {
+                        msg = xhr.responseJSON.message;
+                        details = xhr.responseJSON.details || '';
+                     } else if (xhr.responseText) {
+                        details = xhr.responseText;
+                     }
+
+                     Swal.fire({
+                        icon: 'error',
+                        title: 'Falha na análise',
+                        html: `<div>${msg}</div><pre style="text-align:left; white-space:pre-wrap;">${details}</pre>`
+                     });
+
                      $('.texto_ods').loader('hide');
                   },
                   complete: function(){
