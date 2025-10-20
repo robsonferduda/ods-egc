@@ -1320,12 +1320,14 @@
                     `;
                     container.append(html);
                   });
+
+                  $("#lista_documentos_docente").loader('hide');
                 },
 
                 complete: function () {
                   // Pode remover loader aqui
                   $(elementoPai).loader('hide');
-                   $("#lista_documentos_docente").loader('hide');
+                   
                   
                 }
               });
