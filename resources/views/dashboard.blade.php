@@ -242,7 +242,7 @@
 
             <div class="col-sm-12 col-md-6 painel mb-5">        
                 <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                <div class="mb-1" id="lista_documentos_docente_"></div>
+                <div class="mb-1" id=""></div>
             </div>
 
                        
