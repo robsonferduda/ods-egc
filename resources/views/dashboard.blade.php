@@ -177,7 +177,7 @@
                 <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
             </div>
 
-            <!-- <canvas id="chartjs-3" class="chartjs"></canvas> -->
+            <canvas id="chartjs-3" class="chartjs"></canvas>
                 
             <div class="col-md-8">
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
