@@ -179,7 +179,7 @@ class ODSController extends Controller
         }
 
         if($request->docente){
-            $where .= " AND id IN(SELECT id_documento_ods FROM documento_pessoa_dop WHERE id_pessoa_pes = '$request->docente') ";
+            $where .= " AND t0.id IN(SELECT id_documento_ods FROM documento_pessoa_dop WHERE id_pessoa_pes = '$request->docente') ";
         }
 
         $sql = "SELECT t0.ods, 
