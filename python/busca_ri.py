@@ -33,10 +33,10 @@ else:
 # CONFIG PADRÃO
 # =========================
 BASE = "https://repositorio.ufsc.br"
-HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.4-compat)"}
+HEADERS = {"User-Agent": "Mozilla/5.0 (UFSC-Scraper/1.5-compat)"}
 DEFAULT_START = "https://repositorio.ufsc.br/handle/123456789/214239/recent-submissions"  # fallback
 
-# Critério de parada: coletar apenas Ano > MIN_YEAR
+# Critério: nunca gravar ano <= MIN_YEAR; parada depende de "paciência"
 MIN_YEAR = int(os.getenv("MIN_YEAR", "2021"))
 
 # Dimensão fixa (Pós-Graduação)
@@ -240,7 +240,7 @@ def parse_full_record(item_url):
 # =========================
 # CSV + CRAWL + persistência por item
 # =========================
-def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, id_ppg, id_centro):
+def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, id_ppg, id_centro, patience_below=3):
     fieldnames = [
         "ano", "titulo", "resumo_pt", "abstract_en",
         "autores", "orientadores", "id_tipo_documento",
@@ -254,6 +254,9 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
 
     if persist:
         conn = get_conn()
+
+    # contagem de consecutivos abaixo/igual ao limite
+    below_streak = 0
 
     with open(outpath, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fieldnames)
@@ -295,11 +298,26 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                     (titulo[:90] + ("..." if len(titulo) > 90 else ""))
                 ))
 
+                # --- regra de parada com "paciência" ---
+                # Nunca gravar se ano <= min_year; parar somente após 'patience_below' consecutivos
                 if ano is not None and ano <= min_year:
-                    log("[STOP] encontrado ano <= {}: {} → encerrando coleta.".format(min_year, ano))
-                    stop = True
-                    break
+                    below_streak += 1
+                    log("[SKIP] ano={} <= min_year={} (streak {}/{})".format(
+                        ano, min_year, below_streak, patience_below if patience_below > 0 else 0
+                    ))
+                    if patience_below > 0 and below_streak >= patience_below:
+                        log("[STOP] atingiu {} consecutivos com ano <= {} → encerrando coleta.".format(below_streak, min_year))
+                        stop = True
+                        break
+                    # segue para o próximo link sem gravar/persistir
+                    continue
 
+                # ano > min_year → zera a contagem
+                if ano is not None and ano > min_year:
+                    below_streak = 0
+                # se ano for None, não conta para parada e continua normalmente
+
+                # CSV imediato
                 row = {
                     "ano": data.get("ano") or "",
                     "titulo": data.get("titulo") or "",
@@ -315,6 +333,7 @@ def crawl_line_by_line(outpath, start_url, min_year, max_pages, delay, persist, 
                 w.writerow(row)
                 total_csv += 1
 
+                # Persistência por item (transação própria)
                 if persist:
                     try:
                         persist_one_record(conn, data, id_ppg=id_ppg, id_centro=id_centro)
@@ -349,6 +368,7 @@ def get_conn():
     )
 
 def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_ppg, id_centro, repo_id):
+    # Unicidade preferencial por id_producao_intelectual (repo_id)
     if repo_id is not None:
         cur.execute("""
             SELECT id
@@ -360,6 +380,7 @@ def get_or_create_documento(cur, titulo, ano, resumo_pt, id_tipo_documento, id_p
         if row:
             return row[0]
 
+    # Fallback por (titulo, ano)
     cur.execute("""
         SELECT id
         FROM documento_ods
@@ -442,12 +463,15 @@ def persist_one_record(conn, rec, id_ppg, id_centro):
 # CLI
 # =========================
 def main():
-    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência (linha a linha)")
+    ap = argparse.ArgumentParser(description="UFSC Recent Submissions → CSV + persistência (linha a linha) com parada por paciência")
     ap.add_argument("--out", default="ufsc_recent.csv", help="CSV de saída")
     ap.add_argument("--start", default=DEFAULT_START,
                     help="URL inicial (recent-submissions). Ex: --start https://repositorio.ufsc.br/handle/123456789/XXXXX/recent-submissions")
-    ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Parar quando encontrar ano <= min-year")
-    ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas")
+    ap.add_argument("--min-year", type=int, default=MIN_YEAR, help="Nunca gravar ano <= min-year")
+    ap.add_argument("--patience-below", type=int,
+                    default=int(os.getenv("PATIENCE_BELOW", "3")),
+                    help="Encerrar após N consecutivos com ano <= min-year (0 desativa)")
+    ap.add_argument("--max-pages", type=int, default=None, help="Máximo de páginas a varrer")
     ap.add_argument("--delay", type=float, default=float(os.getenv("DELAY", "1.8")), help="Delay entre itens (s)")
     ap.add_argument("--persist", action="store_true", help="Ativa gravação no PostgreSQL (linha a linha)")
     ap.add_argument("--ppg", type=int, default=int(os.getenv("ID_PPG", "0")), help="Valor para id_ppg (obrigatório quando --persist)")
@@ -467,6 +491,7 @@ def main():
         persist=args.persist,
         id_ppg=(args.ppg if args.ppg > 0 else None),
         id_centro=(args.centro if args.centro > 0 else None),
+        patience_below=args.patience_below,
     )
 
 if __name__ == "__main__":
