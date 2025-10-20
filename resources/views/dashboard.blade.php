@@ -148,9 +148,9 @@
             </div>
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
-                <h6>DOCUMENTOS ANALISADOS</h6>
-                <span>São listados apenas alguns documentos. Para acessar o repositório <strong><a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">VER TODOS</a></strong></span>
-                <div class="mb-1" id="lista_documentos"></div>
+                <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
+                <span>São listados apenas alguns documentos. <a id="ver-todos" style="font-weight: 500;" href="#" class="text-primary mb-5">Clique aqui</a>para ver todos e acessar o repositório</span>
+                <div class="mt-2 mb-1" id="lista_documentos"></div>
             </div>
 
             <div class="col-sm-6 col-md-3"> 
