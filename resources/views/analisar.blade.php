@@ -159,7 +159,7 @@
                         Swal.fire({
                            icon: 'error',
                            title: 'Erro na análise',
-                           html: `<pre style="text-align:left; white-space:pre-wrap;">${data.message}<br>${data.details ? data.details : ''}</pre>`
+                           html: `<pre style="text-align:left; white-space:pre-wrap;">${data.message}</pre>`
                         });
                         return;
                      }
@@ -265,7 +265,7 @@
                      Swal.fire({
                         icon: 'error',
                         title: 'Falha na análise',
-                        html: `<div>${msg}</div><pre style="text-align:left; white-space:pre-wrap;">${details}</pre>`
+                        html: `<div>${msg}</div>`
                      });
 
                      $('.texto_ods').loader('hide');
