@@ -1295,6 +1295,7 @@
 
                 beforeSend: function () {
                   // Pode exibir loader aqui, se desejar
+                    $(elementoPai).loader('show');
                 },
 
                 success: function (data) {
@@ -1324,7 +1325,8 @@
                 complete: function () {
                   // Pode remover loader aqui
                   $(elementoPai).loader('hide');
-                  alert("Teste");
+                   $("#lista_documentos_docente").loader('hide');
+                  
                 }
               });
             }
