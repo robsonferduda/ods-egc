@@ -177,7 +177,7 @@
                 <img src="" style="height: 195px;" class="img-fluid rounded-circle w-75 foto-perfil">            
             </div>
 
-            <canvas id="chartjs-3" class="chartjs"></canvas>
+            <!--<canvas id="chartjs-3" class="chartjs"></canvas>-->
                 
             <div class="col-md-8">
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
@@ -242,7 +242,7 @@
 
             <div class="col-sm-12 col-md-6 painel mb-5">        
                 <h6>DOCUMENTOS ANALISADOS <a style="font-weight: 500;" href="{{ url('repositorio') }}" class="text-primary mb-5">VER TODOS</a></h6>
-                <div class="mb-1" id="lista_documentos_docente"></div>
+                <div class="mb-1" id="lista_documentos_docente_"></div>
             </div>
 
             <div class="col-md-6 lista-ods mb-5"> </div>            
