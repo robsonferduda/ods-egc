@@ -182,8 +182,8 @@
             <div class="col-md-8">
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
-                <p>Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
-                <p>Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
+                <p class="mt-2">Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
+                <p class="mt-1">Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
             </div>
 
             <div class="col-md-12">
