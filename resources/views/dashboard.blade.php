@@ -223,10 +223,18 @@
             -->
             <div class="col-md-12"><hr/></div>
            
+           <!--
             <div class="col-md-8 mt-3 mb-5 box-evolucao">
                 <h6>EVOLUÇÃO POR ODS</h6>
                 <canvas id="evolucaoDocente" width="400" height="380"></canvas>
                 <p class="text-danger center">Clique na legenda para habilitar/desabiliar cada ODS</p>
+            </div>
+            -->
+
+            <div class="col-sm-12 col-md-8 mb-5">        
+                <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
+                <span class="text-danger">São listados apenas alguns documentos. <a id="" style="font-weight: 500;" href="#" class="text-primary mb-5 ver-todos">Clique aqui </a>para ver todos</span>
+                <div class="mt-3 mb-1" id="lista_documentos_docente"></div>
             </div>
 
             <div class="col-md-4 painel-icones mt-8 mb-0">
@@ -239,11 +247,7 @@
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
             </div>
 
-            <div class="col-sm-12 col-md-6 mb-5">        
-                <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
-                <span class="text-danger">São listados apenas alguns documentos. <a id="" style="font-weight: 500;" href="#" class="text-primary mb-5 ver-todos">Clique aqui </a>para ver todos</span>
-                <div class="mt-3 mb-1" id="lista_documentos_docente"></div>
-            </div>
+            
 
                        
         </div>  
