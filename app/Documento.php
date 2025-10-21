@@ -55,7 +55,7 @@ class Documento extends Model
     }
 
     public function pessoas()
-    {
-        return $this->hasMany(DocumentoPessoa::class, 'id_documento_ods', 'id');
+    { 
+        return $this->belongsToMany(Pessoa::class, 'documento_pessoa_dop', 'id_documento_ods', 'id_pessoa_pes'); 
     }
 }
