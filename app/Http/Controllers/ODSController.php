@@ -76,16 +76,24 @@ class ODSController extends Controller
                 break;
         }
 
-        $documentos = Documento::when($centro, fn($q)      => $q->where('id_centro', $centro))
-                    ->when($departamento, fn($q)=> $q->where('id_departamento', $departamento))
-                    ->when($ppg, fn($q)         => $q->where('id_ppg', $ppg))
-                    ->when($tipo && $tipo !== 'todos', fn($q) => $q->where('id_tipo_documento', $tipo))
-                    ->when($dimensao, fn($q)    => $q->whereIn('id_dimensao', $dimensao))
-                    ->when($anoInicial, fn($q)  => $q->where('ano', '>=', $anoInicial))
-                    ->when($anoFim, fn($q)      => $q->where('ano', '<=', $anoFim))
-                    ->when($docente, fn($q)     => $q->whereHas('pessoas', fn($p) => $p->whereKey($docente)))
-                    ->orderByDesc('ano')
-                    ->paginate(10);
+        $documentos = Documento::when($centro, fn($q) => $q->where('id_centro', $centro))
+                ->when($departamento, fn($q) => $q->where('id_departamento', $departamento))
+                ->when($ppg, fn($q) => $q->where('id_ppg', $ppg))
+                ->when($tipo && $tipo !== 'todos', fn($q) => $q->where('id_tipo_documento', $tipo))
+                ->when($dimensao, fn($q) => $q->whereIn('id_dimensao', $dimensao))
+                ->when($anoInicial, fn($q) => $q->where('ano', '>=', $anoInicial))
+                ->when($anoFim, fn($q) => $q->where('ano', '<=', $anoFim))
+                ->when($docente, function ($q) use ($docente) {
+                    return $q->whereExists(function ($sub) use ($docente) {
+                        $sub->select(DB::raw(1))
+                            ->from('documento_pessoa_dop as dp')
+                            ->whereColumn('dp.id_documento_ods', 'documento_ods.id')
+                            ->where('dp.id_pessoa_pes', $docente);
+                    });
+                })
+                ->orderByDesc('ano')
+                ->paginate(10);
+
 
         return view('repositorio', compact('ods','documentos','dimensoes_ies','ano_inicio','ano_fim'));
     }
