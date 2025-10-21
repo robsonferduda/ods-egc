@@ -91,11 +91,11 @@ class ODSController extends Controller
             ->when($dimensao, function ($q) use ($dimensao) {
                 return $q->whereIn('id_dimensao', $dimensao);
             })
-            ->when($anoInicial, function ($q) use ($anoInicial) {
-                return $q->where('ano', '>=', $anoInicial);
+            ->when($ano_inicio, function ($q) use ($ano_inicio) {
+                return $q->where('ano', '>=', $ano_inicio);
             })
-            ->when($anoFim, function ($q) use ($anoFim) {
-                return $q->where('ano', '<=', $anoFim);
+            ->when($ano_fim, function ($q) use ($ano_fim) {
+                return $q->where('ano', '<=', $ano_fim);
             })
             ->when($docente, function ($q) use ($docente) {
                 return $q->whereExists(function ($sub) use ($docente) {
