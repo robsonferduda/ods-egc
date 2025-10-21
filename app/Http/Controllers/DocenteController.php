@@ -68,13 +68,13 @@ class DocenteController extends Controller
     {
 
         $documentos = DB::table('documento_pessoa_dop as dop')
-            ->join('documento_ods as doc', 'doc.id', '=', 'dop.id_documento_ods')
-            ->join('ods', 'ods.cod', '=', 'doc.ods')
-            ->select('ods.cod', 'ods.nome', DB::raw('count(*) as total'))
-            ->where('dop.id_pessoa_pes', $id)
-            ->groupBy('ods.cod', 'ods.nome')
-            ->orderBy('ods.cod')
-            ->get();
+                    ->join('documento_ods as doc', 'doc.id', '=', 'dop.id_documento_ods')
+                    ->join('ods', 'ods.cod', '=', 'doc.ods')
+                    ->select('ods.cod', 'ods.nome', DB::raw('count(distinct doc.id) as total'))
+                    ->where('dop.id_pessoa_pes', $id)
+                    ->groupBy('ods.cod', 'ods.nome')
+                    ->orderBy('ods.cod')
+                    ->get();
 
         $labelsODS = $documentos->pluck('nome');
         $valoresODS = $documentos->pluck('total');
