@@ -76,8 +76,7 @@ class ODSController extends Controller
                 break;
         }
 
-        $documentos = Documento::query()
-                    ->when($centro, fn($q)      => $q->where('id_centro', $centro))
+        $documentos = Documento::when($centro, fn($q)      => $q->where('id_centro', $centro))
                     ->when($departamento, fn($q)=> $q->where('id_departamento', $departamento))
                     ->when($ppg, fn($q)         => $q->where('id_ppg', $ppg))
                     ->when($tipo && $tipo !== 'todos', fn($q) => $q->where('id_tipo_documento', $tipo))
