@@ -610,7 +610,7 @@
                         $('#ano_fim').append(option);
                     });
 
-                    $('#ano_inicio').val(2015);
+                    $('#ano_inicio').val(2012);
                     $('#ano_fim').val(2025);
 
                     $(".btn-filtrar").trigger("click");
@@ -782,7 +782,7 @@
                 if(docente){
 
                     carregaDocente(ppg, docente); 
-                    //getFrequencia("evolucaoDocente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    getFrequencia("evolucaoDocente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
                     documentosAnalisados("#lista_documentos_docente", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente); 
                     carregarGraficoDimensao(docente);
 
