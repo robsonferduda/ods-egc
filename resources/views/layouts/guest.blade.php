@@ -90,9 +90,15 @@
           </a>
         </li>
 
-          <li class="nav-item ">
+         <li class="nav-item ">
             <a href="{{ url('sobre') }}" class="nav-link">
               <i class="fa fa-info-circle"></i> SOBRE
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a href="{{ url('equipe') }}" class="nav-link">
+              <i class="fa fa-graduation-cap"></i> Equipe
             </a>
           </li>
           

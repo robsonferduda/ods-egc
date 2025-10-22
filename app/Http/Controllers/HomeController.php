@@ -115,6 +115,11 @@ class HomeController extends Controller
 
     public function sobre()
     {
+        return view('framework');
+    }
+
+    public function equipe()
+    {
         return view('sobre');
     }
 }

@@ -278,13 +278,15 @@ class ODSController extends Controller
         $j = 0;
 
         for ($i=0; $i < 17; $i++) { 
+            /*
             if(!in_array($i+1, $ods)){
                 $obj = (object) ['ods' => $i+1, 'cor' => '#000000', 'total' => 0];
                 $resultado[] = $obj;
             }else{
                 $resultado[] = $dados[$j];
                 $j++;
-            }
+            }*/
+            $resultado[] = $dados[$i];
         }
 
         $ods = array_column($resultado, 'ods');

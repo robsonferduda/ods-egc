@@ -6,6 +6,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@dashboard');
 Route::get('home', 'HomeController@dashboard');
+Route::get('sobre', 'HomeController@sobre');
+Route::get('equipe', 'HomeController@equipe');
 Route::get('ods', function () { return view('welcome'); });
 Route::get('classificar', 'ODSController@classificar');
 Route::get('analisar', function () { return view('analisar'); });
@@ -69,10 +71,6 @@ Route::get('docentes', 'ODSController@getTotalProfessores');
 Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
 Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
-
-
-
-Route::get('sobre', 'HomeController@sobre');
 
 Route::get('grafo', 'GrafoController@ods');
 
