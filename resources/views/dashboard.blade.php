@@ -543,7 +543,7 @@
             $('#departamento').change(function() {
 
                 var departamentoId = $(this).val();
-                $('#ppg').empty().append('<option value="">Todos</option>');
+                $('#ppg').val("");
 
             });
 
@@ -899,7 +899,7 @@
 
                 var ppg = $(this).val();
 
-                $('#departamento').empty().append('<option value="">Todos</option>');                               
+                $('#departamento').val("");                               
 
             });
 
