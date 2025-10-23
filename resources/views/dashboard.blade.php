@@ -543,18 +543,8 @@
             $('#departamento').change(function() {
 
                 var departamentoId = $(this).val();
-                
-                $.ajax({
-                    url: host + '/dados/docentes',
-                    type: 'GET',
-                    data: { departamento: departamentoId },
-                    success: function(data) {
-                        $('#docente').empty().append('<option value="">Selecione um docente</option>');
-                        data.forEach(function(docente) {
-                            $('#docente').append(`<option value="${docente.id}">${docente.nome}</option>`);
-                        });
-                    }
-                });
+                $('#ppg').empty().append('<option value="">Todos</option>');
+
             });
 
             $(document).on('change', '#dimensao', function() {
@@ -759,6 +749,7 @@
                         }
                     });
 
+                    /*
                     $.get('/centro/pesquisador/' + centro, function(data){
                         if(data.length > 0) {
                             var pesquisador = data[0];
@@ -777,7 +768,7 @@
                         } else {
                             $('#card-pesquisador-centro').html('<div class="alert alert-warning">Nenhum pesquisador encontrado.</div>');
                         }
-                    });
+                    });*/
 
                 }else{
                     $(".box-centro").addClass("d-none");
@@ -908,69 +899,7 @@
 
                 var ppg = $(this).val();
 
-                if(ppg){
-
-                    $.ajax({
-                        url: host+'/dados/ppg/docentes/'+ppg,
-                        type: 'GET',
-                        beforeSend: function() {
-                            
-                        },
-                        success: function(data) {
-
-                            
-
-                            if(!data) {
-                                Swal.fire({
-                                    text: 'Não foi possível buscar as emissoras. Entre em contato com o suporte.',
-                                    type: "warning",
-                                    icon: "warning",
-                                });
-                                return;
-                            }
-                            
-                            $('#docente').empty();
-                            $('#docente').append('<option value="">Selecione um docente</option>').val('');
-                            data.forEach(element => {
-                                let option = new Option(element.nm_orientador, element.nm_orientador);
-                                $('#docente').append(option);
-                            });
-
-                            $.ajax({
-                                url: host+'/docentes/ppg/'+ppg,
-                                type: 'GET',
-                                beforeSend: function() {
-                                    $('.top-docentes').loader('show');                    
-                                },
-                                success: function(data) {
-
-                                    $('.lista-docentes').empty();
-                                    data.forEach(element => {
-
-                                        foto = host+'/img/docentes/user.png';
-                                    
-                                        if(element.chave){
-                                            foto = host+'/img/docentes/'+element.chave+'.jpg';
-                                        }
-                                            
-                                        $('.lista-docentes').append('<div class="row mt-3"><div class="col-md-2 center"><img style="height: 50px;" src="'+foto+'" class="img-fluid rounded-circle w-100"></div><div class="col-md-10 pl-0"><p class="mb-0"><strong>'+element.nm_orientador+'</strong></p><span id="nm_ppg">'+element.total+' Documentos</span></div></div>');
-                                    });
-                                },
-                                complete: function(){
-                                    $('.top-docentes').loader('hide');
-                                }
-                            });
-
-                        },
-                        complete: function(){
-                            
-                        }
-                    });
-                
-                }else{
-                    $('#docente').empty();
-                    $('#docente').append('<option value="">Selecione um docente</option>').val('');
-                }
+                $('#departamento').empty().append('<option value="">Todos</option>');                               
 
             });
 
