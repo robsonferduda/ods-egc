@@ -32,7 +32,8 @@
             <h6>Processos</h6>  
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Modelagem</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Modelagem</strong>
+                    mapeamento e reconhecimento das fontes de conhecimento relevantes e representação do contexto universitário por meio de modelos conceituais.
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Produção de Conhecimento</span>
                 <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
@@ -40,7 +41,8 @@
             </div>    
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Análise</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Análise</strong> 
+                    utilização de métodos e técnicas de inteligência artificial para análise dos documentos institucionais e identificação da aderência aos ODS.
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Produção de Conhecimento</span>
                 <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
@@ -48,35 +50,37 @@
             </div>  
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Avaliação</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Avaliação</strong>
+                    produção de indicadores a partir da análise de dados institucionais, revelando o impacto da universidade sobre os ODS. 
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Gestão e Integração</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Armazenamento</span>
             </div>   
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Participação</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Participação</strong> 
+                    intereração entre os diversos atores institucionais para validação dos resultados e tomada de decisão. Neste processo, entra o conceito de gamificação para engajamento dos atores.
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Gestão e Integração</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Armazenamento</span>
             </div>   
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Acompanhamento</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Acompanhamento</strong> 
+                    aplicação do conhecimento produzido para monitoramento contínuo dos ODS na instituição, permitindo sua utilização estratégica no planejamento, nas políticas universitárias e no engajamento com a sociedade.
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Disseminação e Uso</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Compartilhamento </span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Aplicação</span>
             </div>  
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Compartilhamento</strong> é um assistente de apoio a identificação da aderência das instituições de ensino superior (IES) aos Objetivos de Desenvolvimento Sustentável (ODS), a partir da análise da sua base documental. É uma ferramenta resultante de uma pesquisa de doutorado em andamento que tem como objetivo o mapeamento do processo de identificação da aderência de objetivos ODS com documentos de natureza heterogênea, produzidos pelas instituições de ensino superior em suas atividades de ensino, pesquisa, extensão, gestão e inovação.
+                    <strong>Compartilhamento</strong>
+                    compartilhar resultados por meio de repositórios abertos, relatórios e painéis de visualização para apoiar a transparência e prestação de contas.
                 </p> 
                 <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Disseminação e Uso</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Compartilhamento </span>
+                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Aplicação</span>
             </div>        
         </div>
     </div>  
