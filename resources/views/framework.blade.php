@@ -28,60 +28,52 @@
     </div> 
     <div class="row mb-5">
         <div class="col-md-12 col-sm-12"> 
+            <h6 class="center mt-3">Representação Conceitual</h6> 
+            <p class="center text-danger">Etapas do framework e sua relação com a Governança dos ODS e da Gestão do Conhecimento</p>
             <img src="{{ asset('img/framework.png') }}" class="img-fluid mt-1" alt="Framework">  
-            <h6>Processos</h6>  
+            <h6 class="center mt-3">Processos</h6>  
+            <p class="center text-danger">Apresentação das etapas e duas definições e objetivos</p>
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Modelagem</strong>
                     mapeamento e reconhecimento das fontes de conhecimento relevantes e representação do contexto universitário por meio de modelos conceituais.
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Produção de Conhecimento</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
             </div>    
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Análise</strong> 
                     utilização de métodos e técnicas de inteligência artificial para análise dos documentos institucionais e identificação da aderência aos ODS.
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Produção de Conhecimento</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Identificação</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Criação</span>
             </div>  
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Avaliação</strong>
                     produção de indicadores a partir da análise de dados institucionais, revelando o impacto da universidade sobre os ODS. 
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Gestão e Integração</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Armazenamento</span>
             </div>   
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Participação</strong> 
                     intereração entre os diversos atores institucionais para validação dos resultados e tomada de decisão. Neste processo, entra o conceito de gamificação para engajamento dos atores.
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Gestão e Integração</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Armazenamento</span>
             </div>   
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Acompanhamento</strong> 
                     aplicação do conhecimento produzido para monitoramento contínuo dos ODS na instituição, permitindo sua utilização estratégica no planejamento, nas políticas universitárias e no engajamento com a sociedade.
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Disseminação e Uso</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Compartilhamento </span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Aplicação</span>
             </div>  
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Compartilhamento</strong>
                     compartilhar resultados por meio de repositórios abertos, relatórios e painéis de visualização para apoiar a transparência e prestação de contas.
                 </p> 
-                <span class="badge badge-pill" style="background: #fe9800; border-radius: 5px;">Disseminação e Uso</span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Compartilhamento </span>
-                <span class="badge badge-pill" style="background: #2196F3; border-radius: 5px;">Aplicação</span>
-            </div>        
+            </div> 
+            <div class="center">
+                <h6 class="mt-3">Arquitetura do Framework</h6>
+                <p class="text-danger">Representação das etapas e processos que estruturam o framework</p>
+                <img src="{{ asset('img/arquitetura.png') }}" class="img-fluid mt-1" alt="Arquitetura do Framework"> 
+            </div>       
         </div>
     </div>  
 </div>
