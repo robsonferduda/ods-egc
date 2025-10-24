@@ -32,7 +32,7 @@
             <p class="center text-danger">Etapas do framework e sua relação com a Governança dos ODS e da Gestão do Conhecimento</p>
             <img src="{{ asset('img/framework.png') }}" class="img-fluid mt-1" alt="Framework">  
             <h6 class="center mt-3">Processos</h6>  
-            <p class="center text-danger">Apresentação das etapas e duas definições e objetivos</p>
+            <p class="center text-danger">Apresentação das etapas e suas definições e objetivos</p>
             <div>
                 <p class="mb-1 mt-3">
                     <strong>Modelagem</strong>
