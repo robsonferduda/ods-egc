@@ -101,69 +101,55 @@
     </style>
 </head>
 <body>
-    <h3 style="text-align: center; margin-bottom: 0px; font-weight: 700; text-transform: uppercase;" class="center">Perfil ODS - Relatório de Diagnóstico</h3>
+    <h3 style="text-align: center; margin-bottom: 0px; font-weight: 700; text-transform: uppercase;" class="center">AI4SDG-GOV - Relatório de Diagnóstico</h3>
     <p style="" class="center">{{ $periodo }}</p>
-	<div style="margin-bottom: 10px; background-color: #f3f3f3; padding: 10px; border-radius: 5px;">
-		<h4><strong>Centro</strong>: {{ $centro }}</h4>
-	</div>
-	<h4><strong>Quantitativos</strong></h4>
+	<h5><strong>Unidade Administrativa</strong>: {{ $centro }}</h5>
+	<h4><strong>Dados Quantitativos</strong></h4>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos Analisados: {{ $total_documentos }}</h5>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
 	<h5 style="margin-bottom: 8px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
 	<h4><strong>Indicadores</strong></h4>
-	<div class="row">
-                    <!--<div class="col-md-4" id="card-dimensao-centro"></div>-->
-                    <div class="col-md-4" id="card-dimensao-ods">
-                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">Institucional</h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">35.3%</span>
-                                        </p>
-                                        <small class="text-muted">Dimensão Predominante</small>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-md-4" id="card-ics">
-                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">
-                                            ICS
-                                        </h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">23.3</span>    
-											<span class="pull-right badge badge-pill badge-danger" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Queda</span>                                        
-                                        </p>
-                                        <small class="text-muted">Índice de Crescimento Sustentável</small>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-md-4" id="card-ies">
-                                <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">
-                                            IES
-                                        </h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">60.7</span>    
-											<span class="pull-right badge badge-pill badge-warning" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Médio</span>                                       
-                                        </p>
-                                        <small class="text-muted">Índice de Engajamento Sustentável</small>
-                                    </div>
-                                </div>
-                            </div>
-                    <div class="col-md-12" id="card-pesquisador-centro">
-                                <div class="card shadow-sm mb-2 mt-3" style="background: #f3f3f3;">
-                                    <div class="card-body text-center">
-                                        <h5 class="card-title mb-0">ANDRÉIA ISABEL GIACOMOZZI</h5>
-                                        <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">22</span>
-                                        </p>
-                                        <small class="text-muted">Pesquisador(a) com mais documentos no centro CFH</small>
-                                    </div>
-                                </div>
-                            </div>
+	<div class="row">   
+        <div class="col-md-4" id="card-dimensao-ods">
+            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">Institucional</h5>
+                    <p class="card-text mb-1">
+                        <span class="display-4 font-weight-bold">35.3%</span>
+                    </p>
+                    <small class="text-muted">Dimensão Predominante</small>
                 </div>
+            </div>
+        </div>
+        <div class="col-md-4" id="card-ics">
+            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">
+                        ICS
+                    </h5>
+                    <p class="card-text mb-1">
+                        <span class="display-4 font-weight-bold">23.3</span>    
+						<span class="pull-right badge badge-pill badge-danger" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Queda</span>                                        
+                    </p>
+                    <small class="text-muted">Índice de Crescimento Sustentável</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4" id="card-ies">
+            <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">
+                        IES
+                    </h5>
+                    <p class="card-text mb-1">
+                        <span class="display-4 font-weight-bold">60.7</span>    
+						<span class="pull-right badge badge-pill badge-warning" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">Médio</span>                                       
+                    </p>
+                    <small class="text-muted">Índice de Engajamento Sustentável</small>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<h4 style="margin-top: 10px"><strong>Gráficos de Desempenho</strong>:</h4>
     <table>
@@ -178,6 +164,66 @@
             </td>
         </tr>
     </table>
-    <!-- Adicione mais conteúdo conforme necessário -->
+    
+    <table>
+	    <thead>
+	    <tr>
+	        <td colspan="18" style="text-align: center;"><strong>Relatório de Evolução por ODS/Ano</strong></td>
+	    </tr>
+	    <tr>
+	        <td><strong>Filtros</strong>:</td>
+	        <td colspan="17"> {{ $lista[count($lista)-1]['filtros'] }}</td>
+	    </tr>
+	    <tr>
+	        <th style="font-weight: bold; text-align: center;">Ano</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 1</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 2</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 3</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 4</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 5</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 6</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 7</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 8</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 9</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 10</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 11</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 12</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 13</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 14</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 15</th>
+	        <th style="font-weight: bold; text-align: center;">ODS 16</th>
+	        <th style="font-weight: bold; text-align: center;">Total Geral</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	        @foreach($lista as $key => $d)
+	            @if($key < (count($lista)))
+	            @php
+	                $formatacao = ($key > (count($lista) - 3)) ? 'font-weight: bold;' : '';
+	            @endphp
+	                <tr>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['ano'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['1'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['2'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['3'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['4'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['5'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['6'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['7'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['8'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['9'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['10'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['11'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['12'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['13'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['14'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['15'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['16'] }}</td>
+	                    <td style="{{ $formatacao }} text-align: center;">{{ $d['total'] }}</td>
+	                </tr>
+	            @endif
+	        @endforeach
+	    </tbody>
+	</table>
 </body>
 </html>
