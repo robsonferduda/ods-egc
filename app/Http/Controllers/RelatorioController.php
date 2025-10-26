@@ -123,10 +123,8 @@ class RelatorioController extends Controller
                 ORDER BY t0.ods";
 
         $dados = DB::connection('pgsql')->select($sql);
-        
-        $ods_encontrados = array_column($dados, 'ods');
-        
-        $total_documentos = 0;
+                
+        $total_documentos = count($dados);
         $documentos_sem_ods = 0;
         $documentos_com_ods = 0;
         $dimensao_predominante = '';
@@ -134,7 +132,7 @@ class RelatorioController extends Controller
         $indice_engajamento_sustentavel = 0;
         $docente_destaque = '';
 
-        $html = view('relatorio.estatisticas', compact('lista','grafico_total',
+        $html = view('relatorio.estatisticas', compact('grafico_total',
         'grafico_evolucao','periodo','total_documentos',
         'documentos_sem_ods','documentos_com_ods','dimensao_predominante','indice_crescimento_sustentavel','indice_engajamento_sustentavel','docente_destaque', 'centro'))->render();
 
