@@ -130,9 +130,9 @@
                 </div>
             </div>
 
-            <div class="col-md-4 painel-icones mt-8 mb-0">
+            <div class="col-md-12 painel-icones mt-8 mb-0">
                 <h6 class="mt-3">RESULTADOS E ESTATÍSTICAS</h6>
-                <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                <span class="text-success excel-download mr-3" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
                 <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
             </div>
             
