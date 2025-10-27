@@ -129,12 +129,16 @@
                     <div class="col-md-12" id="card-pesquisador-centro"></div>
                 </div>
             </div>
+
+            <div class="col-md-4 painel-icones mt-8 mb-0">
+                <h6 class="mt-3">RESULTADOS E ESTATÍSTICAS</h6>
+                <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+            </div>
             
             <div class="col-md-8 mt-5 mb-5">
                 <h6>
                     EVOLUÇÃO POR ODS 
-                    <span class="text-success excel-download" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
-                    <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
                 </h6>
                 <div class="box-evolucao">
                     <canvas id="chart" width="400" height="380"></canvas>
