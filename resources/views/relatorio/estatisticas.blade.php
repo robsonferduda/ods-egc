@@ -103,11 +103,11 @@
 <body>
     <h3 style="text-align: center; margin-bottom: 0px; font-weight: 700; text-transform: uppercase;" class="center">AI4SDG-GOV - Relatório de Diagnóstico</h3>
     <p style="" class="center">{{ $periodo }}</p>
-	<h4 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px; font-weight: 500;"><strong>Unidade Administrativa</strong>: {{ $centro }}</h4>
+	<h4 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;"><strong>Unidade Administrativa</strong>: {{ $centro }}</h4>
 	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;"><strong>Dados Quantitativos</strong></h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px; font-weight: 500;">Total de Documentos Analisados: {{ $total_documentos }}</h5>
-	<h5 style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px; font-weight: 500;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</h5>
-	<h5 style="margin-bottom: 8px; margin-top: 3px; padding-top: 0px; font-weight: 500;">Total de Documentos com ODS: {{ $documentos_com_ods }}</h5>
+	<p style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos Analisados: {{ $total_documentos }}</p>
+	<p style="margin-bottom: 3px; margin-top: 3px; padding-top: 0px;">Total de Documentos sem ODS: {{ $documentos_sem_ods }}</p>
+	<p style="margin-bottom: 8px; margin-top: 3px; padding-top: 0px;">Total de Documentos com ODS: {{ $documentos_com_ods }}</p>
 	<h4><strong>Indicadores</strong></h4>
 	<div class="row">   
         <div class="col-md-4" id="card-dimensao-ods">
