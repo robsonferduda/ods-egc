@@ -131,14 +131,14 @@
             </div>
 
             <div class="col-md-12 painel-icones mt-8 mb-0">
-                <h6 class="mt-3">RESULTADOS E ESTATÍSTICAS</h6>
+                <h6 class="mt-3"><i class="fa fa-share-alt" aria-hidden="true"></i> RESULTADOS E ESTATÍSTICAS</h6>
                 <span class="text-success excel-download mr-3" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
                 <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
             </div>
             
             <div class="col-md-8 mt-5 mb-5">
                 <h6>
-                    EVOLUÇÃO POR ODS 
+                    <i class="fa fa-line-chart" aria-hidden="true"></i> EVOLUÇÃO POR ODS 
                 </h6>
                 <div class="box-evolucao">
                     <canvas id="chart" width="400" height="380"></canvas>
@@ -152,7 +152,7 @@
             </div>
 
             <div class="col-sm-12 col-md-9 painel mb-5">        
-                <h6 class="mb-1">DOCUMENTOS ANALISADOS</h6>
+                <h6 class="mb-1"><i class="fa fa-file-text" aria-hidden="true"></i> DOCUMENTOS ANALISADOS</h6>
                 <span class="text-danger">São listados apenas alguns documentos. <a id="" style="font-weight: 500;" href="#" class="text-primary mb-5 ver-todos">Clique aqui </a>para ver todos</span>
                 <div class="mt-2 mb-1" id="lista_documentos"></div>
             </div>
