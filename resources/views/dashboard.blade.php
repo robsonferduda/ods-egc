@@ -136,7 +136,7 @@
                 <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
             </div>
             
-            <div class="col-md-8 mt-5 mb-5">
+            <div class="col-md-8 mt-3 mb-3">
                 <h6>
                     <i class="fa fa-line-chart" aria-hidden="true"></i> EVOLUÇÃO POR ODS 
                 </h6>
