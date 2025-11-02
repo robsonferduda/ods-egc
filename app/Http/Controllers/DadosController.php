@@ -280,22 +280,25 @@ class DadosController extends Controller
         for ($i = 1; $i <= $colunas; $i++) {
             $linha_soma[$i] = $soma_colunas[$i];
         }
+
         $linha_soma['total'] = $soma_total;
 
         $lista[] = $linha_soma;
 
         $linha_percentual = ['ano' => '%'];
+
         for ($i = 1; $i <= $colunas; $i++) {
             $perc = $soma_total > 0 ? ($soma_colunas[$i] / $soma_total) * 100 : 0;
             $linha_percentual[$i] = number_format($perc, 2, ',', '') . '%';
         }
+
         $linha_percentual['total'] = '100,00%';
 
         $lista[] = $linha_percentual;
 
         $lista[count($lista) - 1]['filtros'] = $filtros;
 
-        $nome_arquivo = date('Y-m-d-H-i-s').'_dados_evolucao.xlsx';
+        $nome_arquivo = date('Y_m_d_H_i_s').'_dados_evolucao.xlsx';
 
         return Excel::download(new DadosExport($lista), $nome_arquivo);
     }

@@ -9,6 +9,7 @@
     </tr>
     <tr>
         <th style="font-weight: bold; text-align: center;">Ano</th>
+        <th style="font-weight: bold; text-align: center;">ODS 0</th>
         <th style="font-weight: bold; text-align: center;">ODS 1</th>
         <th style="font-weight: bold; text-align: center;">ODS 2</th>
         <th style="font-weight: bold; text-align: center;">ODS 3</th>
@@ -52,6 +53,7 @@
                     <td style="{{ $formatacao }} text-align: center;">{{ $d['14'] }}</td>
                     <td style="{{ $formatacao }} text-align: center;">{{ $d['15'] }}</td>
                     <td style="{{ $formatacao }} text-align: center;">{{ $d['16'] }}</td>
+                    <td style="{{ $formatacao }} text-align: center;">{{ $d['17'] }}</td>
                     <td style="{{ $formatacao }} text-align: center;">{{ $d['total'] }}</td>
                 </tr>
             @endif
