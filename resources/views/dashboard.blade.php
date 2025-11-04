@@ -929,6 +929,17 @@
                 var docente = $("#docente").val();
                 var tipo = $("#tipo").val();
 
+                // informa usuário que o arquivo está sendo gerado
+                Swal.fire({
+                    title: 'Gerando planilha',
+                    html: 'Aguarde — o arquivo está sendo preparado para download.',
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
                 $.ajax({
                     url: host+'/dados/excel',
                     type: 'POST',
@@ -944,23 +955,51 @@
                             "tipo": tipo,
                             "docente": docente
                     },
-                    beforeSend: function() {
-                                           
-                    },
                     success: function(data) {
 
                         var blob = data;
                         var downloadUrl = URL.createObjectURL(blob);
-
-                        console.log(downloadUrl);
                         var a = document.createElement("a");
                         a.href = downloadUrl;
-                        a.download = "dados_evolucao.xlsx";
+
+                        // timestamp no formato YYYYMMDD_HHMMSS
+                        var now = new Date();
+                        var pad = (n) => n.toString().padStart(2, '0');
+                        var timestamp = now.getFullYear().toString()
+                                        + pad(now.getMonth() + 1)
+                                        + pad(now.getDate())
+                                        + '_'
+                                        + pad(now.getHours())
+                                        + pad(now.getMinutes())
+                                        + pad(now.getSeconds());
+
+                        a.download = "dados_evolucao_" + timestamp + ".xlsx";
                         document.body.appendChild(a);
+
+                        // fecha o modal de progresso antes de iniciar o download
+                        Swal.close();
+
                         a.click();
+
+                        // libera recursos e remove o elemento
+                        setTimeout(function(){
+                            URL.revokeObjectURL(downloadUrl);
+                            a.remove();
+                        }, 100);
+                    },
+                    error: function(xhr){
+                        // fecha modal de progresso e mostra erro
+                        Swal.close();
+                        var msg = 'Erro ao gerar planilha. Tente novamente.';
+                        if(xhr && xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON.message;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Falha',
+                            text: msg
+                        });
                     },
                     complete: function(){
-                       
+                    
                     }
                 });
 
