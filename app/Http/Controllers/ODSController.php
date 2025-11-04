@@ -279,8 +279,8 @@ class ODSController extends Controller
 
         for ($i=0; $i < 17; $i++) { 
             
-            if(!in_array($i+1, $ods)){
-                $obj = (object) ['ods' => $i+1, 'cor' => '#000000', 'total' => 0];
+            if(!in_array($i, $ods)){
+                $obj = (object) ['ods' => $i, 'cor' => '#000000', 'total' => 0];
                 $resultado[] = $obj;
             }else{
                 $resultado[] = $dados[$j];
@@ -401,6 +401,7 @@ class ODSController extends Controller
                             LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             $where
                             $complemento";
+
 
                     $resultado = DB::connection('pgsql')->select($sql);
 
