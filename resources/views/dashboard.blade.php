@@ -260,6 +260,7 @@
 @endsection
 @section('script')
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/cytoscape-cose-bilkent@4.0.0/cytoscape-cose-bilkent.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -1065,6 +1066,23 @@
                             options: {
                                 
                                 plugins: { 
+                                    // configura ChartDataLabels
+                                        datalabels: {
+                                            anchor: 'end',
+                                            align: 'end',
+                                            color: '#FFFFFF',
+                                            font: {
+                                                weight: 'bold',
+                                                size: 11
+                                            },
+                                            formatter: function(value, context) {
+                                                // mostra inteiro quando for número ou valor formatado
+                                                if (typeof value === 'number') {
+                                                    return value;
+                                                }
+                                                return value;
+                                            }
+                                        },
                                         title: { 
                                             display: false, 
                                             text: 'Distribuição de total por dimensão' 
