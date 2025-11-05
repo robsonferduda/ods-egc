@@ -698,7 +698,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
                                         </p>
-                                        <a href="{{ route('indices.engajamento', ['centro' => centro]) }}"><small class="text-muted">Índice de Engajamento Sustentável</small></a>
+                                        <a href=""><small class="text-muted">Índice de Engajamento Sustentável</small></a>
                                     </div>
                                 </div>
                             `;
