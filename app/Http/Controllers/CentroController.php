@@ -65,6 +65,8 @@ class CentroController extends Controller
             $ics_value = null;
         }
 
+        dd($ics_value);
+
         return view('indices.crescimento', compact('id', 'ics_value'));
     }
 
