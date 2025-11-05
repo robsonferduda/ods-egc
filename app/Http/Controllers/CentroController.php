@@ -58,7 +58,7 @@ class CentroController extends Controller
     {
         //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
         $ics = DB::select('SELECT * FROM mv_ics_por_centro_docods WHERE id_centro = ? ORDER BY ano;', [$id]);
-        return view('indices.crescimento', compact('id', 'ics_value'));
+        return view('indices.crescimento', compact('id', 'ics'));
     }
 
     public function indiceDimensao($id)
