@@ -36,7 +36,7 @@
                         <td>{{ $item->docs_ano }}</td>
                         <td>{{ $item->docs_janela_atual_3a }}</td>
                         <td>{{ $item->docs_janela_prev_3a }}</td>
-                        <td>{{ number_format($item->ics, 4, ',', '.') }}</td>
+                        <td>{{ number_format($item->ics_norm_0_100, 4, ',', '.') }}</td>
                     </tr>
                     @endforeach
                 </tbody>
