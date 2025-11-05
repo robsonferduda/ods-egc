@@ -39,13 +39,13 @@
                         <td>{{ $item->docs_janela_prev_3a }}</td>
                         <td>{{ number_format($item->ics_norm_0_100, 4, ',', '.') }}</td>
                         <td>
-                            @if($item->ics_norm_0_100 > 50) {
+                            @if($item->ics_norm_0_100 > 50) 
                                 @php $nivel = 'Crescimento'; @endphp
-                            } else if($item->ics_norm_0_100 == 50) {
+                            @else if($item->ics_norm_0_100 == 50) 
                                 @php $nivel = 'Estável'; @endphp
-                            } else if($item->ics_norm_0_100 < 50) {
+                            @else if($item->ics_norm_0_100 < 50) 
                                 @php $nivel = 'Queda'; @endphp
-                            }
+                            @endif
 
                             @if($nivel == 'Crescimento')
                                 <span class="badge badge-success">{{ $nivel }}</span>
