@@ -660,7 +660,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${ics}</span>                                            
                                         </p>
-                                        <a class="link_indices" href="${host}/indices/crescimento/${centro}" target="_blank"><small class=""><i class="fa fa-question-circle" aria-hidden="true"></i> Índice de Crescimento Sustentável</small></a>
+                                        <a class="link_indices" href="${host}/indices/crescimento/${centro}" target="_blank"><small class="">Índice de Crescimento Sustentável <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;
@@ -745,7 +745,7 @@
                                             <span class="display-4 font-weight-bold">${percentual}%</span>
                                         </p>
                                         
-                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensão Predominante<i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
+                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensão Predominante <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;
