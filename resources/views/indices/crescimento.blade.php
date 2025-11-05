@@ -17,7 +17,7 @@
             <p></p>  
         </div>
         <div class="col-md-12 col-sm-12">
-            <h6>{{ $item->nome_centro }}/{{ $item->sigla_centro }}</h6>
+            <h6>{{ $ics[0]->nome_centro }}/{{ $ics[0]->sigla_centro }}</h6>
             <p>Valores do ICS por Ano</p>
             <table class="table table-bordered">
                 <thead>
