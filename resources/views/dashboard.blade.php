@@ -639,7 +639,7 @@
                     $.get(host + '/centro/ics/' + centro +'/ano/' + ano_fim, function(data){
                         if(data.length > 0) {
 
-                            var ics = parseFloat(data[0].ics);
+                            var ics = parseFloat(data[0].ics_norm_0_100);
                             var nivel = '';
 
                             if(ics > 50) {
