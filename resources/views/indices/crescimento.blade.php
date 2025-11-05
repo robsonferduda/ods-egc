@@ -17,28 +17,28 @@
             <p></p>  
         </div>
         <div class="col-md-12 col-sm-12">
-            <h6>{{ $ics[0]->nome_centro }}/{{ $ics[0]->sigla_centro }}</h6>
-            <p>Valores do ICS por Ano</p>
+            <h6>CENTRO {{ $ics[0]->nome_centro }}/{{ $ics[0]->sigla_centro }}</h6>
+            <p class="mb-1">Valores do ICS por Ano</p>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Ano</th>
-                        <th>Documentos por Ano</th>
-                        <th>Documentos Atuais</th>
-                        <th>Documentos Anteriores</th>
-                        <th>ICS</th>
-                        <th>Siatuação</th>
+                        <th class="center">Ano</th>
+                        <th class="center">Documentos por Ano</th>
+                        <th class="center">Documentos Atuais</th>
+                        <th class="center">Documentos Anteriores</th>
+                        <th class="center">ICS</th>
+                        <th class="center">Situação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($ics as $item)
                     <tr>
-                        <td>{{ $item->ano }}</td>
-                        <td>{{ $item->docs_ano }}</td>
-                        <td>{{ $item->docs_janela_atual_3a }}</td>
-                        <td>{{ $item->docs_janela_prev_3a }}</td>
-                        <td>{{ number_format($item->ics_norm_0_100, 4, ',', '.') }}</td>
-                        <td>
+                        <td class="center">{{ $item->ano }}</td>
+                        <td class="center">{{ $item->docs_ano }}</td>
+                        <td class="center">{{ $item->docs_janela_atual_3a }}</td>
+                        <td class="center">{{ $item->docs_janela_prev_3a }}</td>
+                        <td class="center">{{ number_format($item->ics_norm_0_100, 2, ',', '.') }}</td>
+                        <td class="center">
                             @if($item->ics_norm_0_100 > 50) 
                                 @php $nivel = 'Crescimento'; @endphp
                             @elseif($item->ics_norm_0_100 == 50) 
