@@ -660,7 +660,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${ics}</span>                                            
                                         </p>
-                                        <small class="text-muted">Índice de Crescimento Sustentável</small>
+                                        <a class="link_indices" href="${host}/indices/crescimento/${centro}" target="_blank"><small class="text-muted"><i class="fa fa-question-circle" aria-hidden="true"></i> Índice de Crescimento Sustentável</small></a>
                                     </div>
                                 </div>
                             `;
@@ -721,7 +721,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${percentual}%</span>
                                         </p>
-                                        <small class="text-muted">Dimensão IES mais destacada</small>
+                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="text-muted"><small class="text-muted">Dimensão IES mais destacada <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;

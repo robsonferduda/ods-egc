@@ -72,6 +72,8 @@ Route::get('docentes/ppg/{ppg}', 'ODSController@getTotalProfessoresPPG');
 Route::get('docentes/ranking/{nome}', 'ODSController@getRanking');
 Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
 
+Route::get('indices/dimensoes/{centro}', 'CentroController@indiceDimensao')->name('indices.dimensoes');
+Route::get('indices/crescimento/{centro}', 'CentroController@indiceCrescimento')->name('indices.crescimento');
 Route::get('indices/engajamento/{centro}', 'CentroController@indiceEngajamento')->name('indices.engajamento');
 
 Route::get('grafo', 'GrafoController@ods');
