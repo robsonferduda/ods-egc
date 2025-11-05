@@ -54,6 +54,49 @@ class CentroController extends Controller
         return view('indices.engajamento', compact('id', 'ies_value'));
     }
 
+    public function indiceCrescimento($id)
+    {
+        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
+        $ics = DB::select('SELECT * FROM mv_ics_por_centro_docods WHERE id_centro = ?;', [$id]);
+
+        if (count($ics) > 0) {
+            $ics_value = $ics[0]->ics;
+        } else {
+            $ics_value = null;
+        }
+
+        return view('indices.crescimento', compact('id', 'ics_value'));
+    }
+
+    public function indiceDimensao($id)
+    {
+        //Em cada Centro, em qual Dimensão IES ele mais se destaca
+        $dimensoes = DB::select('WITH dist AS (
+                                SELECT
+                                    c.cd_centro_cen            AS id_centro,
+                                    c.ds_sigla_cen             AS sigla_centro,
+                                    di.id                      AS id_dim_ies,
+                                    di.nome                    AS nm_dim_ies,
+                                    COUNT(*)                   AS total_docs
+                                FROM public.fato_documento_ods f
+                                JOIN public.centro_cen c  ON c.cd_centro_cen = f.id_centro_resolvido
+                                JOIN public.dimensao_ies di ON di.id = f.id_dimensao
+                                WHERE c.cd_centro_cen = ?
+                                GROUP BY c.cd_centro_cen, c.ds_sigla_cen, di.id, di.nome
+                                ),
+                                ranked AS (
+                                SELECT *,
+                                        ROW_NUMBER() OVER (PARTITION BY id_centro ORDER BY total_docs DESC, id_dim_ies) AS rk
+                                FROM dist
+                                )
+                                SELECT *
+                                FROM ranked
+                                WHERE rk = 1
+                                ORDER BY sigla_centro, total_docs DESC; ', [$id]);
+
+        return view('indices.dimensoes', compact('id', 'dimensoes'));
+    }
+
     public function dimensao($id)
     {
         //Em cada Centro, em qual Dimensão IES ele mais se destaca

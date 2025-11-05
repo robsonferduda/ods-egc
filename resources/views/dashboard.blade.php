@@ -744,7 +744,8 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${percentual}%</span>
                                         </p>
-                                        <small class="text-muted">Dimensão ODS mais destacada no ${destaque.sigla_centro}</small>
+                                        
+                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensão Predominante<i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;
