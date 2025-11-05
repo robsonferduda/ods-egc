@@ -27,6 +27,7 @@
                         <th>Documentos Atuais</th>
                         <th>Documentos Anteriores</th>
                         <th>ICS</th>
+                        <th>Siatuação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,23 @@
                         <td>{{ $item->docs_janela_atual_3a }}</td>
                         <td>{{ $item->docs_janela_prev_3a }}</td>
                         <td>{{ number_format($item->ics_norm_0_100, 4, ',', '.') }}</td>
+                        <td>
+                            @if($item->ics_norm_0_100 > 50) {
+                                @php $nivel = 'Crescimento'; @endphp
+                            } else if($item->ics_norm_0_100 == 50) {
+                                @php $nivel = 'Estável'; @endphp
+                            } else if($item->ics_norm_0_100 < 50) {
+                                @php $nivel = 'Queda'; @endphp
+                            }
+
+                            @if($nivel == 'Crescimento')
+                                <span class="badge badge-success">{{ $nivel }}</span>
+                            @elseif($nivel == 'Estável')
+                                <span class="badge badge-warning">{{ $nivel }}</span>
+                            @else
+                                <span class="badge badge-danger">{{ $nivel }}</span>
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
