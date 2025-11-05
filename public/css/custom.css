@@ -7,6 +7,8 @@ footer { background-image: url('../img/ods-rodape.png'); padding: 8px 0 !importa
 .cabecalho {border-left: 12px solid #00bcd4; padding-left: 10px;}
 .show-text { color: black !important; font-weight: 600; }
 .show-text:hover { text-decoration:none; }
+.link_indices { color: #333; font-weight: 600; }
+.link_indices:hover { text-decoration: none; }
 mark1{
     background: #e5243b;
     color: black;
