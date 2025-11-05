@@ -41,9 +41,9 @@
                         <td>
                             @if($item->ics_norm_0_100 > 50) 
                                 @php $nivel = 'Crescimento'; @endphp
-                            @else if($item->ics_norm_0_100 == 50) 
+                            @elseif($item->ics_norm_0_100 == 50) 
                                 @php $nivel = 'Estável'; @endphp
-                            @else if($item->ics_norm_0_100 < 50) 
+                            @elseif($item->ics_norm_0_100 < 50) 
                                 @php $nivel = 'Queda'; @endphp
                             @endif
 
