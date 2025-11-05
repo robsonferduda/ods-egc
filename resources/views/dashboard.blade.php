@@ -636,7 +636,7 @@
                 if(centro){
                     $(".box-centro").removeClass("d-none");
 
-                    $.get(host + '/centro/ics/' + centro, function(data){
+                    $.get(host + '/centro/ics/' + centro +'/ano/' + ano_fim, function(data){
                         if(data.length > 0) {
 
                             var ics = parseFloat(data[0].ics);
