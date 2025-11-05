@@ -698,7 +698,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
                                         </p>
-                                        <small class="text-muted">Índice de Engajamento Sustentável</small>
+                                        <a href="{{ route('indices.engajamento', ['centro' => centro]) }}"><small class="text-muted">Índice de Engajamento Sustentável</small></a>
                                     </div>
                                 </div>
                             `;
@@ -933,7 +933,7 @@
                 // informa usuário que o arquivo está sendo gerado
                 Swal.fire({
                     title: 'Gerando planilha',
-                    html: 'Aguarde — o arquivo está sendo preparado para download.',
+                    html: '<p class="center">Aguarde! O arquivo está sendo preparado para download.</p>',
                     allowOutsideClick: false,
                     showConfirmButton: false,
                     didOpen: () => {

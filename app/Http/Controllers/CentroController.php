@@ -40,6 +40,20 @@ class CentroController extends Controller
         return response()->json($ics);
     }
 
+    public function indiceEngajamento($id)
+    {
+        //Calcular o IES (Índice de Engajamento Sustentável) de um Centro
+        $ies = DB::select('SELECT * FROM mv_sec_por_centro WHERE id_centro = ?;', [$id]);
+
+        if (count($ies) > 0) {
+            $ies_value = $ies[0]->sec_index;
+        } else {
+            $ies_value = null;
+        }
+
+        return view('indices.engajamento', compact('id', 'ies_value'));
+    }
+
     public function dimensao($id)
     {
         //Em cada Centro, em qual Dimensão IES ele mais se destaca
