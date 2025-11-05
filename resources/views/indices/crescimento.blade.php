@@ -19,7 +19,7 @@
         <div class="col-md-12 col-sm-12">
             <h6>CENTRO {{ $ics[0]->nome_centro }}/{{ $ics[0]->sigla_centro }}</h6>
             <p class="mb-1">Valores do ICS por Ano</p>
-            <table class="table table-bordered">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th class="center">Ano</th>
