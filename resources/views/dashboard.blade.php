@@ -698,7 +698,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
                                         </p>
-                                        <a class="link_indices" href="${host}/indices/engajamento/${centro}" target="_blank"><small class="text-muted">Índice de Engajamento Sustentável</small></a>
+                                        <a class="link_indices" href="${host}/indices/engajamento/${centro}" target="_blank"><small class="">Índice de Engajamento Sustentável <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;
