@@ -13,7 +13,34 @@
     </div>
     <div class="row">
         <div class="col-md-12 col-sm-12">
-            <p class="mb-1"><strong>Índice de Crescimento Sustentável </strong></p>    
+            <p class="mb-1"><strong>Índice de Crescimento Sustentável (ICS) </strong></p>  
+            <p></p>  
+        </div>
+        <div class="col-md-12 col-sm-12">
+            <h6>{{ $item->nome_centro }}/{{ $item->sigla_centro }}</h6>
+            <p>Valores do ICS por Ano</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Ano</th>
+                        <th>Documentos por Ano</th>
+                        <th>Documentos Atuais</th>
+                        <th>Documentos Anteriores</th>
+                        <th>ICS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($ics as $item)
+                    <tr>
+                        <td>{{ $item->ano }}</td>
+                        <td>{{ $item->docs_ano }}</td>
+                        <td>{{ $item->docs_janela_atual_3a }}</td>
+                        <td>{{ $item->docs_janela_prev_3a }}</td>
+                        <td>{{ number_format($item->ics, 4, ',', '.') }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>  
 </div>
