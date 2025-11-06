@@ -11,7 +11,7 @@
             <h6 class="mb-0 mt-1">Engenharia do Conhecimento/Teoria e prática em Engenharia do Conhecimento</h6>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-md-12 col-sm-12">
             <p class="mb-1 center"><strong>Índice de Crescimento Sustentável (ICS) </strong></p>              
         </div>
