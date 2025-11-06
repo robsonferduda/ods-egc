@@ -14,7 +14,8 @@
     <div class="row">
         <div class="col-md-12 col-sm-12">
             <p class="mb-1"><strong>Índice de Crescimento Sustentável (ICS) </strong></p>  
-            <p></p>  
+            <p>O Índice de Crescimento Sustentável (ICS) foi desenvolvido com o propósito de mensurar a tendência evolutiva da produção institucional vinculada aos Objetivos de Desenvolvimento Sustentável (ODS), em especial quando observada sob a ótica dos centros universitários. Trata-se de um indicador de natureza longitudinal, fundamentado na comparação entre janelas móveis de tempo, buscando identificar padrões de crescimento, estagnação ou retração ao longo de séries históricas.</p>  
+            <img src="{{ asset('img/ics.png') }}" class="img-fluid mt-1" alt="Responsive image">
         </div>
         <div class="col-md-12 col-sm-12">
             <h6>CENTRO {{ $ics[0]->nome_centro }}/{{ $ics[0]->sigla_centro }}</h6>
