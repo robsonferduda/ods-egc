@@ -185,8 +185,8 @@ class RelatorioController extends Controller
             }
 
             // IES - Índice de Engajamento Sustentável
-            $sql_ies = "SELECT sec_index FROM mv_ies_centro 
-                       WHERE cd_centro = '$request->centro'
+            $sql_ies = "SELECT sec_index FROM mv_sec_por_centro 
+                       WHERE id_centro = '$request->centro'
                        LIMIT 1";
             $result_ies = DB::connection('pgsql')->select($sql_ies);
             
@@ -207,19 +207,39 @@ class RelatorioController extends Controller
             }
 
             // Dimensão Predominante ODS
-            $sql_dim = "SELECT nm_dim_ods, total_docs, rk 
-                       FROM mv_dimensao_ods_centro 
-                       WHERE id_centro = '$request->centro'
-                       ORDER BY rk ASC
-                       LIMIT 1";
+            $sql_dim = "WITH dist AS (
+                            SELECT
+                                c.cd_centro_cen           AS id_centro,
+                                c.ds_sigla_cen            AS sigla_centro,
+                                do2.cd_dimensao_ods       AS id_dim_ods,
+                                do2.ds_dimensao           AS nm_dim_ods,
+                                COUNT(*)                  AS total_docs
+                            FROM public.fato_documento_ods f
+                            JOIN public.centro_cen c  ON c.cd_centro_cen = f.id_centro_resolvido
+                            JOIN public.dimensao_ods do2 ON do2.cd_dimensao_ods = f.id_dimensao_ods
+                            WHERE c.cd_centro_cen = '$request->centro'
+                            GROUP BY c.cd_centro_cen, c.ds_sigla_cen, do2.cd_dimensao_ods, do2.ds_dimensao
+                            ),
+                            ranked AS (
+                            SELECT *,
+                                    ROW_NUMBER() OVER (PARTITION BY id_centro ORDER BY total_docs DESC, id_dim_ods) AS rk
+                            FROM dist
+                            )
+                            SELECT *
+                            FROM ranked
+                            WHERE rk = 1
+                            ORDER BY sigla_centro, total_docs DESC
+                            LIMIT 1";
             $result_dim = DB::connection('pgsql')->select($sql_dim);
             
             if(!empty($result_dim)){
                 $dimensao_predominante = $result_dim[0]->nm_dim_ods;
                 
                 // Calcula o percentual
-                $sql_total_dim = "SELECT SUM(total_docs) as total FROM mv_dimensao_ods_centro 
-                                 WHERE cd_centro = '$request->centro'";
+                $sql_total_dim = "SELECT COUNT(*) as total 
+                                 FROM public.fato_documento_ods f
+                                 JOIN public.centro_cen c ON c.cd_centro_cen = f.id_centro_resolvido
+                                 WHERE c.cd_centro_cen = '$request->centro'";
                 $result_total_dim = DB::connection('pgsql')->select($sql_total_dim);
                 
                 if(!empty($result_total_dim) && $result_total_dim[0]->total > 0){
