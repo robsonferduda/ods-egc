@@ -132,8 +132,10 @@
 
             <div class="col-md-12 painel-icones mt-8 mb-0">
                 <h6 class="mt-3"><i class="fa fa-share-alt" aria-hidden="true"></i> RESULTADOS E ESTATÍSTICAS</h6>
-                <span class="text-success excel-download mr-3" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
-                <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+                <span class="text-success excel-download mr-3" style="color: #15954e !important; cursor: pointer;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                <span class="text-danger pdf-download" style="color: #dc3545 !important; cursor: pointer;" title="Selecione um centro para gerar o PDF">
+                    <i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF
+                </span>
             </div>
             
             <div class="col-md-8 mt-3 mb-3">
@@ -291,6 +293,24 @@
     .progress-bar-animated {
         animation: pulse 1.5s ease-in-out infinite;
     }
+    
+    /* Estilo para botão PDF desabilitado */
+    .pdf-download.disabled {
+        opacity: 0.4;
+        cursor: not-allowed !important;
+        pointer-events: none;
+        position: relative;
+    }
+    
+    .pdf-download:not(.disabled):hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .excel-download:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
 </style>
 @endsection
 @section('script')
@@ -303,6 +323,19 @@
             var host =  $('meta[name="base-url"]').attr('content');
 
             $(document).on('click', '.pdf-download', function() {
+
+                // Valida se há centro selecionado
+                var centro = $("#centro").val();
+                if(!centro || centro === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Centro não selecionado',
+                        html: '<p>Para gerar o PDF, é necessário selecionar um <strong>Centro</strong> nos filtros.</p>',
+                        confirmButtonText: 'Entendi',
+                        confirmButtonColor: '#007bff'
+                    });
+                    return false;
+                }
 
                 var canvas = document.getElementById('myChart');
                 var imgBase64 = canvas.toDataURL('image/png');
@@ -434,6 +467,9 @@
                 $('#departamento').val('');
                 $('#ppg').val('');
                 $('#docente').val('');
+
+                // Atualiza estado do botão PDF
+                atualizarEstadoBotaoPDF();
 
                 // Atualiza visualização e dispara o filtro padrão
                 $(".btn-filtrar").trigger("click");
@@ -568,6 +604,23 @@
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
 
+            // Função para atualizar estado do botão PDF
+            function atualizarEstadoBotaoPDF() {
+                var centro = $("#centro").val();
+                var $btnPdf = $('.pdf-download');
+                
+                if(!centro || centro === '') {
+                    $btnPdf.addClass('disabled');
+                    $btnPdf.attr('title', 'Selecione um centro para gerar o PDF');
+                } else {
+                    $btnPdf.removeClass('disabled');
+                    $btnPdf.attr('title', 'Clique para baixar o PDF com os dados filtrados');
+                }
+            }
+
+            // Inicializa o estado do botão ao carregar a página
+            atualizarEstadoBotaoPDF();
+
             //Carregar Centros
             $.ajax({
                 url: host+'/dados/centros',
@@ -632,6 +685,9 @@
             $('#centro').change(function() {
 
                 var centroId = $(this).val();
+
+                // Atualiza estado do botão PDF
+                atualizarEstadoBotaoPDF();
 
                 $.ajax({
                     url: host + '/dados/departamentos/centro/'+centroId,
