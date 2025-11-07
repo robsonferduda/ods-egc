@@ -258,6 +258,41 @@
     </div>
 </div>
 @endsection
+@section('style')
+<style>
+    /* Estilo customizado para o modal de loading */
+    .swal-loading-custom {
+        border-radius: 15px !important;
+        padding: 30px !important;
+    }
+    
+    .swal-loading-custom .swal2-title {
+        font-size: 24px !important;
+        color: #333 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Animação personalizada para o spinner */
+    @keyframes spin-smooth {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .spinner-border {
+        animation: spin-smooth 1s linear infinite;
+    }
+    
+    /* Efeito de pulso no progresso */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    
+    .progress-bar-animated {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+</style>
+@endsection
 @section('script')
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -936,11 +971,34 @@
                 // informa usuário que o arquivo está sendo gerado
                 Swal.fire({
                     title: 'Gerando planilha',
-                    html: '<p class="center">Aguarde! O arquivo está sendo preparado para download.</p>',
+                    html: `
+                        <div style="text-align: center; padding: 20px;">
+                            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; margin-bottom: 15px;">
+                                <span class="sr-only">Carregando...</span>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 16px; color: #333;">
+                                <strong>Processando seus dados...</strong>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                                O arquivo está sendo preparado para download.
+                            </p>
+                            <div style="margin-top: 15px;">
+                                <div class="progress" style="height: 8px; border-radius: 4px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         style="width: 100%; background-color: #007bff;" 
+                                         aria-valuenow="100" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
                     allowOutsideClick: false,
                     showConfirmButton: false,
-                    didOpen: () => {
-                        Swal.showLoading();
+                    customClass: {
+                        popup: 'swal-loading-custom'
                     }
                 });
 
