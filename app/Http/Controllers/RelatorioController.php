@@ -209,7 +209,7 @@ class RelatorioController extends Controller
             // Dimensão Predominante ODS
             $sql_dim = "SELECT nm_dim_ods, total_docs, rk 
                        FROM mv_dimensao_ods_centro 
-                       WHERE cd_centro = '$request->centro'
+                       WHERE id_centro = '$request->centro'
                        ORDER BY rk ASC
                        LIMIT 1";
             $result_dim = DB::connection('pgsql')->select($sql_dim);
