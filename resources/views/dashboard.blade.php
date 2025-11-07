@@ -480,7 +480,8 @@
                 success: function(data) {
                     $('#ppg').empty().append('<option value="">Todos</option>');
                     data.forEach(function(ppg) {
-                        $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
+                        let nomeLimpo = ppg.nm_curso_cur.replace(/Programa de Pós-Graduação em\s*/gi, '').replace(/Programa de Pós-graduação em\s*/gi, '');
+                        $('#ppg').append(`<option value="${ppg.id_ppg}">${nomeLimpo}</option>`);
                     });
                 }
             });
@@ -532,7 +533,8 @@
                     success: function(data) {
                         $('#ppg').empty().append('<option value="">Todos</option>');
                         data.forEach(function(ppg) {
-                            $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
+                            let nomeLimpo = ppg.nm_curso_cur.replace(/Programa de Pós-Graduação em\s*/gi, '').replace(/Programa de Pós-graduação em\s*/gi, '');
+                            $('#ppg').append(`<option value="${ppg.id_ppg}">${nomeLimpo}</option>`);
                         });
                     }
                 });
