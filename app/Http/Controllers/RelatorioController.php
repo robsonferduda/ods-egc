@@ -125,7 +125,7 @@ class RelatorioController extends Controller
         $dados = DB::connection('pgsql')->select($sql);
         
         // Calcula o total de documentos analisados
-        $sql_total_docs = "SELECT COUNT(DISTINCT t0.id_documento) as total 
+        $sql_total_docs = "SELECT COUNT(DISTINCT t0.id) as total 
                           FROM documento_ods t0
                           LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                           LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
@@ -135,7 +135,7 @@ class RelatorioController extends Controller
         $total_documentos = $result_total_docs[0]->total ?? 0;
         
         // Calcula documentos com ODS (pelo menos 1 ODS detectado)
-        $sql_docs_com_ods = "SELECT COUNT(DISTINCT t0.id_documento) as total 
+        $sql_docs_com_ods = "SELECT COUNT(DISTINCT t0.id) as total 
                             FROM documento_ods t0
                             LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
