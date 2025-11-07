@@ -259,14 +259,14 @@ class RelatorioController extends Controller
         // Busca dados para tabela de documentos por ODS e por ano
         $sql_tabela = "SELECT 
                         t0.ods,
-                        EXTRACT(YEAR FROM t0.dt_documento) as ano,
+                        t0.ano,
                         COUNT(DISTINCT t0.id) as total
                       FROM documento_ods t0
                       LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                       LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
                       $where
-                      GROUP BY t0.ods, EXTRACT(YEAR FROM t0.dt_documento)
-                      ORDER BY ano ASC, t0.ods ASC";
+                      GROUP BY t0.ods, t0.ano
+                      ORDER BY t0.ano ASC, t0.ods ASC";
         
         $dados_tabela = DB::connection('pgsql')->select($sql_tabela);
         
