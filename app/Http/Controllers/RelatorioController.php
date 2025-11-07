@@ -134,18 +134,25 @@ class RelatorioController extends Controller
         $result_total_docs = DB::connection('pgsql')->select($sql_total_docs);
         $total_documentos = $result_total_docs[0]->total ?? 0;
         
-        // Calcula documentos com ODS (pelo menos 1 ODS detectado)
+        // Calcula documentos com ODS (quando ods != 0)
         $sql_docs_com_ods = "SELECT COUNT(DISTINCT t0.id) as total 
                             FROM documento_ods t0
                             LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
                             LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
-                            $where AND t0.ods IS NOT NULL";
+                            $where AND t0.ods != 0";
         
         $result_docs_com_ods = DB::connection('pgsql')->select($sql_docs_com_ods);
         $documentos_com_ods = $result_docs_com_ods[0]->total ?? 0;
         
-        // Calcula documentos sem ODS
-        $documentos_sem_ods = $total_documentos - $documentos_com_ods;
+        // Calcula documentos sem ODS (quando ods = 0)
+        $sql_docs_sem_ods = "SELECT COUNT(DISTINCT t0.id) as total 
+                            FROM documento_ods t0
+                            LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
+                            LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
+                            $where AND t0.ods = 0";
+        
+        $result_docs_sem_ods = DB::connection('pgsql')->select($sql_docs_sem_ods);
+        $documentos_sem_ods = $result_docs_sem_ods[0]->total ?? 0;
               
         $total_ods_detectados = count(array_filter($dados, function($item) {
             return $item->total > 0;
