@@ -320,6 +320,40 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
 
+                // Mostra indicador de carregamento
+                Swal.fire({
+                    title: 'Gerando PDF',
+                    html: `
+                        <div style="text-align: center; padding: 20px;">
+                            <div class="spinner-border text-danger" role="status" style="width: 3rem; height: 3rem; margin-bottom: 15px;">
+                                <span class="sr-only">Carregando...</span>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 16px; color: #333;">
+                                <strong>Processando gráficos e dados...</strong>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                                O relatório em PDF está sendo gerado.
+                            </p>
+                            <div style="margin-top: 15px;">
+                                <div class="progress" style="height: 8px; border-radius: 4px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         style="width: 100%; background-color: #dc3545;" 
+                                         aria-valuenow="100" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    customClass: {
+                        popup: 'swal-loading-custom'
+                    }
+                });
+
                 $.post(host+'/gerar-pdf', 
                     { grafico: imgBase64, 
                         grafico_evolucao: evolucaoBase64,
@@ -335,7 +369,31 @@
                         docente: docente
                     }, 
                     function(resposta){
+                        // Fecha o modal de carregamento
+                        Swal.close();
+                        
+                        // Abre o PDF em nova aba
                         window.open(resposta.url, '_blank');
+                        
+                        // Mostra mensagem de sucesso
+                        $.notify({
+                            icon: 'fa fa-check',
+                            message: "<b>Sucesso!</b><br/> PDF gerado com sucesso."
+                        },{
+                            type: 'success',
+                            timer: 2000
+                        });
+                    })
+                    .fail(function(xhr) {
+                        // Fecha modal e mostra erro
+                        Swal.close();
+                        var msg = 'Erro ao gerar PDF. Tente novamente.';
+                        if(xhr && xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON.message;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Falha',
+                            text: msg
+                        });
                     });
             });
 
