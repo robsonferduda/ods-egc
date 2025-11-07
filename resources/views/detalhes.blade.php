@@ -96,7 +96,7 @@
 
             <p class="mb-1"><strong>Conteúdo</strong></p>
             <div class="documento-conteudo">{{ ucfirst(mb_strtolower($documento->texto, 'UTF-8')) }} </div>
-            <p class="mb-1 mt-2"><strong>Pós-processamento: Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
+            <p class="mb-1 mt-2"><strong>Índice de Shannon</strong>: {{ $documento->probabilidades->shannon }}</p>
             <table class="table table-bordered" id="tabela-ods">
               <thead>
                 <tr>
