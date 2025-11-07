@@ -372,13 +372,39 @@
                         // Fecha o modal de carregamento
                         Swal.close();
                         
-                        // Abre o PDF em nova aba
-                        window.open(resposta.url, '_blank');
+                        // Faz o download do PDF
+                        var a = document.createElement("a");
+                        a.href = resposta.url;
+                        
+                        // Extrai o nome do arquivo da URL ou cria um nome padrão
+                        var fileName = resposta.url.split('/').pop();
+                        if (!fileName.endsWith('.pdf')) {
+                            // Cria nome com timestamp
+                            var now = new Date();
+                            var pad = (n) => n.toString().padStart(2, '0');
+                            var timestamp = now.getFullYear().toString()
+                                            + pad(now.getMonth() + 1)
+                                            + pad(now.getDate())
+                                            + '_'
+                                            + pad(now.getHours())
+                                            + pad(now.getMinutes())
+                                            + pad(now.getSeconds());
+                            fileName = "relatorio_ods_" + timestamp + ".pdf";
+                        }
+                        
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        
+                        // Remove o elemento após o download
+                        setTimeout(function(){
+                            a.remove();
+                        }, 100);
                         
                         // Mostra mensagem de sucesso
                         $.notify({
                             icon: 'fa fa-check',
-                            message: "<b>Sucesso!</b><br/> PDF gerado com sucesso."
+                            message: "<b>Sucesso!</b><br/> PDF gerado e baixado com sucesso."
                         },{
                             type: 'success',
                             timer: 2000
