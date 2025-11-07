@@ -118,11 +118,38 @@
                []
         ];
 
-         $(".btn-salvar").click(function() {
+         $(".btn-salvar").click(function(e) {
+            var texto = $("#texto_ods").val().trim();
+            
+            if(texto === '') {
+               e.preventDefault();
+               $.notify({
+                  icon: 'fa fa-exclamation-triangle',
+                  message: "<b>Atenção</b><br/> Por favor, insira um texto para análise antes de salvar."
+               },{
+                  type: 'warning',
+                  timer: 2000
+               });
+               return false;
+            }
+            
             $('.texto_ods').loader('show');
          })
 
             $(".btn-discovery").click(function(){
+
+               var texto = $("#texto_ods").val().trim();
+               
+               if(texto === '') {
+                  $.notify({
+                     icon: 'fa fa-exclamation-triangle',
+                     message: "<b>Atenção</b><br/> Por favor, insira um texto para análise."
+                  },{
+                     type: 'warning',
+                     timer: 2000
+                  });
+                  return false;
+               }
 
                $.ajax({
                   url: host+'/ods/descobrir',
