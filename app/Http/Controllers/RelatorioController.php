@@ -163,7 +163,7 @@ class RelatorioController extends Controller
             
             // ICS - Índice de Crescimento Sustentável
             $sql_ics = "SELECT ics_norm_0_100 FROM mv_ics_por_centro_docods 
-                       WHERE cd_centro = '$request->centro' 
+                       WHERE id_centro = '$request->centro' 
                        AND ano = '$request->ano_fim'
                        LIMIT 1";
             $result_ics = DB::connection('pgsql')->select($sql_ics);
