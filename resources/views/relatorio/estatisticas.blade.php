@@ -177,6 +177,59 @@
             </td>
         </tr>
     </table>
+
+    @if(!empty($tabela_ods) && !empty($anos))
+    <h4 style="margin-top: 20px"><strong>Documentos por ODS e Ano</strong>:</h4>
+    <table class="table-dados" style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 10px;">
+        <thead>
+            <tr style="background-color: #f8f9fa; border-bottom: 2px solid #dee2e6;">
+                <th style="padding: 8px; text-align: center; border: 1px solid #dee2e6;">ODS</th>
+                @foreach($anos as $ano)
+                    <th style="padding: 8px; text-align: center; border: 1px solid #dee2e6;">{{ $ano }}</th>
+                @endforeach
+                <th style="padding: 8px; text-align: center; border: 1px solid #dee2e6; background-color: #e9ecef;"><strong>Total</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($tabela_ods as $ods => $valores_anos)
+            <tr>
+                <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6; font-weight: bold;">
+                    @if($ods == 0)
+                        Sem ODS
+                    @else
+                        ODS {{ $ods }}
+                    @endif
+                </td>
+                @php $total_linha = 0; @endphp
+                @foreach($anos as $ano)
+                    <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6;">
+                        {{ $valores_anos[$ano] ?? 0 }}
+                        @php $total_linha += ($valores_anos[$ano] ?? 0); @endphp
+                    </td>
+                @endforeach
+                <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6; background-color: #f8f9fa; font-weight: bold;">
+                    {{ $total_linha }}
+                </td>
+            </tr>
+            @endforeach
+            <tr style="background-color: #e9ecef; font-weight: bold;">
+                <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6;"><strong>Total</strong></td>
+                @foreach($anos as $ano)
+                    @php 
+                        $total_coluna = 0;
+                        foreach($tabela_ods as $valores_anos){
+                            $total_coluna += ($valores_anos[$ano] ?? 0);
+                        }
+                    @endphp
+                    <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6;">{{ $total_coluna }}</td>
+                @endforeach
+                <td style="padding: 8px; text-align: center; border: 1px solid #dee2e6; background-color: #dee2e6;">
+                    <strong>{{ $total_documentos }}</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @endif
     
 </body>
 </html>
