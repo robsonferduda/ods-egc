@@ -135,10 +135,11 @@
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">
                         ICS
+                        <span class="pull-right badge badge-pill badge-{{ $ics_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ics_nivel }}</span>                                        
                     </h5>
                     <p class="card-text mb-1">
                         <span class="display-4 font-weight-bold">{{ $ics_valor }}</span>    
-						<span class="pull-right badge badge-pill badge-{{ $ics_badge }}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">{{ $ics_nivel }}</span>                                        
+						
                     </p>
                     <small class="text-muted">Índice de Crescimento Sustentável</small>
                 </div>
@@ -152,7 +153,7 @@
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">
                         IES
-                        <span class="pull-right badge badge-pill badge-{{ $ies_badge }}" style="font-size: 1rem; vertical-align: top; margin-left: 8px;">{{ $ies_nivel }}</span>                                       
+                        <span class="pull-right badge badge-pill badge-{{ $ies_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ies_nivel }}</span>                                       
                     </h5>
                     <p class="card-text mb-1">
                         <span class="display-4 font-weight-bold">{{ $ies_valor }}</span>    
