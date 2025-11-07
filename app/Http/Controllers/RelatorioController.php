@@ -162,7 +162,7 @@ class RelatorioController extends Controller
         if($request->centro && $request->centro != 'todos'){
             
             // ICS - Índice de Crescimento Sustentável
-            $sql_ics = "SELECT ics_norm_0_100 FROM mv_ics_centro 
+            $sql_ics = "SELECT ics_norm_0_100 FROM mv_ics_por_centro_docods 
                        WHERE cd_centro = '$request->centro' 
                        AND ano = '$request->ano_fim'
                        LIMIT 1";
