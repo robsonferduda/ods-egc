@@ -30,7 +30,9 @@
         <div class="col-md-12 col-sm-12"> 
             <h6 class="center mt-3">Representação Conceitual</h6> 
             <p class="center text-danger">Etapas do framework e sua relação com a Governança dos ODS e da Gestão do Conhecimento</p>
-            <img src="{{ asset('img/framework.png') }}" class="img-fluid mt-1" alt="Framework">  
+            <div class="center">
+                <img src="{{ asset('img/framework.png') }}" class="img-fluid mt-1" alt="Framework">  
+            </div>
             <h6 class="center mt-3">Processos</h6>  
             <p class="center text-danger">Apresentação das etapas e suas definições e objetivos</p>
             <div>

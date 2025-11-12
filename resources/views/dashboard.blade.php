@@ -132,8 +132,10 @@
 
             <div class="col-md-12 painel-icones mt-8 mb-0">
                 <h6 class="mt-3"><i class="fa fa-share-alt" aria-hidden="true"></i> RESULTADOS E ESTATÍSTICAS</h6>
-                <span class="text-success excel-download mr-3" style="color: #15954e !important;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
-                <span class="text-danger pdf-download" style="color: #dc3545 !important;"><i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF</span>
+                <span class="text-success excel-download mr-3" style="color: #15954e !important; cursor: pointer;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
+                <span class="text-danger pdf-download" style="color: #dc3545 !important; cursor: pointer;" title="Selecione um centro para gerar o PDF">
+                    <i class="fa fa-file-pdf" aria-hidden="true"></i> Baixar PDF
+                </span>
             </div>
             
             <div class="col-md-8 mt-3 mb-3">
@@ -258,6 +260,59 @@
     </div>
 </div>
 @endsection
+@section('style')
+<style>
+    /* Estilo customizado para o modal de loading */
+    .swal-loading-custom {
+        border-radius: 15px !important;
+        padding: 30px !important;
+    }
+    
+    .swal-loading-custom .swal2-title {
+        font-size: 24px !important;
+        color: #333 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    /* Animação personalizada para o spinner */
+    @keyframes spin-smooth {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .spinner-border {
+        animation: spin-smooth 1s linear infinite;
+    }
+    
+    /* Efeito de pulso no progresso */
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+    }
+    
+    .progress-bar-animated {
+        animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    /* Estilo para botão PDF desabilitado */
+    .pdf-download.disabled {
+        opacity: 0.4;
+        cursor: not-allowed !important;
+        pointer-events: none;
+        position: relative;
+    }
+    
+    .pdf-download:not(.disabled):hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+    
+    .excel-download:hover {
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+    }
+</style>
+@endsection
 @section('script')
     <script src="https://unpkg.com/cytoscape@3.26.0/dist/cytoscape.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -268,6 +323,19 @@
             var host =  $('meta[name="base-url"]').attr('content');
 
             $(document).on('click', '.pdf-download', function() {
+
+                // Valida se há centro selecionado
+                var centro = $("#centro").val();
+                if(!centro || centro === '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Centro não selecionado',
+                        html: '<p>Para gerar o PDF, é necessário selecionar um <strong>Centro</strong> nos filtros.</p>',
+                        confirmButtonText: 'Entendi',
+                        confirmButtonColor: '#007bff'
+                    });
+                    return false;
+                }
 
                 var canvas = document.getElementById('myChart');
                 var imgBase64 = canvas.toDataURL('image/png');
@@ -285,6 +353,40 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
 
+                // Mostra indicador de carregamento
+                Swal.fire({
+                    title: 'Gerando PDF',
+                    html: `
+                        <div style="text-align: center; padding: 20px;">
+                            <div class="spinner-border text-danger" role="status" style="width: 3rem; height: 3rem; margin-bottom: 15px;">
+                                <span class="sr-only">Carregando...</span>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 16px; color: #333;">
+                                <strong>Processando gráficos e dados...</strong>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                                O relatório em PDF está sendo gerado.
+                            </p>
+                            <div style="margin-top: 15px;">
+                                <div class="progress" style="height: 8px; border-radius: 4px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         style="width: 100%; background-color: #dc3545;" 
+                                         aria-valuenow="100" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
+                    allowOutsideClick: false,
+                    showConfirmButton: false,
+                    customClass: {
+                        popup: 'swal-loading-custom'
+                    }
+                });
+
                 $.post(host+'/gerar-pdf', 
                     { grafico: imgBase64, 
                         grafico_evolucao: evolucaoBase64,
@@ -300,7 +402,57 @@
                         docente: docente
                     }, 
                     function(resposta){
-                        window.open(resposta.url, '_blank');
+                        // Fecha o modal de carregamento
+                        Swal.close();
+                        
+                        // Faz o download do PDF
+                        var a = document.createElement("a");
+                        a.href = resposta.url;
+                        
+                        // Extrai o nome do arquivo da URL ou cria um nome padrão
+                        var fileName = resposta.url.split('/').pop();
+                        if (!fileName.endsWith('.pdf')) {
+                            // Cria nome com timestamp
+                            var now = new Date();
+                            var pad = (n) => n.toString().padStart(2, '0');
+                            var timestamp = now.getFullYear().toString()
+                                            + pad(now.getMonth() + 1)
+                                            + pad(now.getDate())
+                                            + '_'
+                                            + pad(now.getHours())
+                                            + pad(now.getMinutes())
+                                            + pad(now.getSeconds());
+                            fileName = "relatorio_ods_" + timestamp + ".pdf";
+                        }
+                        
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        
+                        // Remove o elemento após o download
+                        setTimeout(function(){
+                            a.remove();
+                        }, 100);
+                        
+                        // Mostra mensagem de sucesso
+                        $.notify({
+                            icon: 'fa fa-check',
+                            message: "<b>Sucesso!</b><br/> PDF gerado e baixado com sucesso."
+                        },{
+                            type: 'success',
+                            timer: 2000
+                        });
+                    })
+                    .fail(function(xhr) {
+                        // Fecha modal e mostra erro
+                        Swal.close();
+                        var msg = 'Erro ao gerar PDF. Tente novamente.';
+                        if(xhr && xhr.responseJSON && xhr.responseJSON.message) msg = xhr.responseJSON.message;
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Falha',
+                            text: msg
+                        });
                     });
             });
 
@@ -315,6 +467,9 @@
                 $('#departamento').val('');
                 $('#ppg').val('');
                 $('#docente').val('');
+
+                // Atualiza estado do botão PDF
+                atualizarEstadoBotaoPDF();
 
                 // Atualiza visualização e dispara o filtro padrão
                 $(".btn-filtrar").trigger("click");
@@ -449,6 +604,23 @@
             var host =  $('meta[name="base-url"]').attr('content');
             var token = $('meta[name="csrf-token"]').attr('content');
 
+            // Função para atualizar estado do botão PDF
+            function atualizarEstadoBotaoPDF() {
+                var centro = $("#centro").val();
+                var $btnPdf = $('.pdf-download');
+                
+                if(!centro || centro === '') {
+                    $btnPdf.addClass('disabled');
+                    $btnPdf.attr('title', 'Selecione um centro para gerar o PDF');
+                } else {
+                    $btnPdf.removeClass('disabled');
+                    $btnPdf.attr('title', 'Clique para baixar o PDF com os dados filtrados');
+                }
+            }
+
+            // Inicializa o estado do botão ao carregar a página
+            atualizarEstadoBotaoPDF();
+
             //Carregar Centros
             $.ajax({
                 url: host+'/dados/centros',
@@ -480,7 +652,8 @@
                 success: function(data) {
                     $('#ppg').empty().append('<option value="">Todos</option>');
                     data.forEach(function(ppg) {
-                        $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
+                        let nomeLimpo = ppg.nm_curso_cur.replace(/Programa de Pós-Graduação em\s*/gi, '').replace(/Programa de Pós-graduação em\s*/gi, '');
+                        $('#ppg').append(`<option value="${ppg.id_ppg}">${nomeLimpo}</option>`);
                     });
                 }
             });
@@ -513,6 +686,9 @@
 
                 var centroId = $(this).val();
 
+                // Atualiza estado do botão PDF
+                atualizarEstadoBotaoPDF();
+
                 $.ajax({
                     url: host + '/dados/departamentos/centro/'+centroId,
                     type: 'GET',
@@ -532,7 +708,8 @@
                     success: function(data) {
                         $('#ppg').empty().append('<option value="">Todos</option>');
                         data.forEach(function(ppg) {
-                            $('#ppg').append(`<option value="${ppg.id_ppg}">${ppg.nm_curso_cur}</option>`);
+                            let nomeLimpo = ppg.nm_curso_cur.replace(/Programa de Pós-Graduação em\s*/gi, '').replace(/Programa de Pós-graduação em\s*/gi, '');
+                            $('#ppg').append(`<option value="${ppg.id_ppg}">${nomeLimpo}</option>`);
                         });
                     }
                 });
@@ -934,11 +1111,34 @@
                 // informa usuário que o arquivo está sendo gerado
                 Swal.fire({
                     title: 'Gerando planilha',
-                    html: '<p class="center">Aguarde! O arquivo está sendo preparado para download.</p>',
+                    html: `
+                        <div style="text-align: center; padding: 20px;">
+                            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem; margin-bottom: 15px;">
+                                <span class="sr-only">Carregando...</span>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 16px; color: #333;">
+                                <strong>Processando seus dados...</strong>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 14px; color: #666;">
+                                O arquivo está sendo preparado para download.
+                            </p>
+                            <div style="margin-top: 15px;">
+                                <div class="progress" style="height: 8px; border-radius: 4px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                         role="progressbar" 
+                                         style="width: 100%; background-color: #007bff;" 
+                                         aria-valuenow="100" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `,
                     allowOutsideClick: false,
                     showConfirmButton: false,
-                    didOpen: () => {
-                        Swal.showLoading();
+                    customClass: {
+                        popup: 'swal-loading-custom'
                     }
                 });
 
