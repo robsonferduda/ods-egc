@@ -1582,8 +1582,8 @@
                         foto = host+'/img/docentes/user.png';
                         $("#nm_docente").text(data.nome);
                                 
-                        if(data.chave){
-                            foto = host+'/img/docentes/'+data.chave+'.jpg';
+                        if(data.ds_foto != null && data.ds_foto != ""){
+                            foto = host+'/img/docentes/'+data.ds_foto;
                         }
 
                         $(".foto-perfil").attr('src', foto);
