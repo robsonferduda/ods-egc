@@ -187,8 +187,8 @@
             <div class="col-md-8">
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
-                <h6><img src="{{ asset('img/lattes.png') }}" class="img-fluid mt-1" alt="Ícone Lattes"><a class="url_lattes" href="" target="_blank"></a></h6>
-                <h6><img src="{{ asset('img/orcid.png') }}" class="img-fluid mt-1" alt="Ícone Orcid"><a class="url_orcid" href="" target="_blank"></a></h6>
+                <h6><img style="max-width: 20px;" src="{{ asset('img/lattes.png') }}" class="img-fluid mt-1" alt="Ícone Lattes"><a class="url_lattes" href="" target="_blank"></a></h6>
+                <h6><img style="max-width: 20px;" src="{{ asset('img/orcid.png') }}" class="img-fluid mt-1" alt="Ícone Orcid"><a class="url_orcid" href="" target="_blank"></a></h6>
                 <p class="mt-2 mb-0">Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
                 <p class="mt-1">Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
             </div>
@@ -1584,7 +1584,9 @@
                         foto = host+'/img/docentes/user.png';
                         $("#nm_docente").text(data.nome);
                         $(".url_lattes").attr('href', data.lattes);
+                        $(".url_lattes").text(data.lattes);
                         $(".url_orcid").attr('href', data.orcid);
+                        $(".url_orcid").text(data.orcid);
                                 
                         if(data.ds_foto != null && data.ds_foto != ""){
                             foto = host+'/img/docentes/'+data.ds_foto;
