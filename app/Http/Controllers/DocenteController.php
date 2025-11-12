@@ -27,8 +27,12 @@ class DocenteController extends Controller
     {
         $pessoa = Pessoa::find($id);
 
-        $dados = ['nome' => $pessoa->ds_nome_pessoa, 'ds_foto' => $pessoa->ds_image_pes];
-       
+        $dados = ['nome' => $pessoa->ds_nome_pessoa, 
+                  'ds_foto' => $pessoa->ds_image_pes,
+                  'lattes' => $pessoa->ds_lattes_pes,
+                  'orcid' => $pessoa->ds_orcid_pes
+        ];
+
         return response()->json($dados);
     }
 
