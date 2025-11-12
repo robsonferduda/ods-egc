@@ -187,8 +187,8 @@
             <div class="col-md-8">
                 <h5 class="mb-0 mt-3" id="nm_docente"></h5>
                 <span id="nm_ppg"></span>
-                <p><img style="max-width: 20px;" src="{{ asset('img/lattes.png') }}" class="img-fluid mt-1" alt="Ícone Lattes"><a class="url_lattes" href="" target="_blank"></a></p>
-                <p><img style="max-width: 20px;" src="{{ asset('img/orcid.png') }}" class="img-fluid mt-1" alt="Ícone Orcid"><a class="url_orcid" href="" target="_blank"></a></p>
+                <p><img style="max-width: 20px; margin-top: -5px !important; margin-right: 5px;" src="{{ asset('img/lattes.png') }}" class="img-fluid mt-1" alt="Ícone Lattes"><a class="url_lattes" href="" target="_blank"></a></p>
+                <p><img style="max-width: 20px; margin-top: -5px !important; margin-right: 5px;" src="{{ asset('img/orcid.png') }}" class="img-fluid mt-1" alt="Ícone Orcid"><a class="url_orcid" href="" target="_blank"></a></p>
                 <p class="mt-2 mb-0">Impacto Multidimensional: <strong class="impacto_multidimensional"></strong></p>
                 <p class="mt-1">Índice de Colaboração Acadêmica: <strong class="indice_colaboracao"></strong></p>
             </div>
