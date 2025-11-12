@@ -102,7 +102,7 @@ class DocenteController extends Controller
         ->pluck('total', 'id_dimensao')
         ->toArray();
 
-        $totalDimensoes = 4;
+        $totalDimensoes = 5;
         $dimensoesAlcançadas = count($dimensoes);
         $indice = $dimensoesAlcançadas / $totalDimensoes;
 
@@ -123,9 +123,7 @@ class DocenteController extends Controller
                 JOIN documento_pessoa_dop dp1 ON dp1.id_documento_ods = d1.id
                 JOIN documento_pessoa_dop dp2 ON dp2.id_documento_ods = d1.id
                      AND dp2.id_pessoa_pes != dp1.id_pessoa_pes
-                     AND dp2.id_funcao_fun IN (1, 3, 4)
                 WHERE dp1.id_pessoa_pes = ?
-                  AND dp1.id_funcao_fun IN (1, 3, 4)
                 GROUP BY d1.id
             ) sub
         ", [$idDocente]);
