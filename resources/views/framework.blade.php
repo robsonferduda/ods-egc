@@ -53,8 +53,8 @@
             </div>   
             <div>
                 <p class="mb-1 mt-3">
-                    <strong>Participação</strong> 
-                    intereração entre os diversos atores institucionais para validação dos resultados e tomada de decisão. Neste processo, entra o conceito de gamificação para engajamento dos atores.
+                    <strong>Participação</strong>  
+                    descreve a intereração entre os diversos atores institucionais para validação dos resultados e tomada de decisão. Neste processo, entra o conceito de gamificação para engajamento dos atores, contribuindo para a integração de conceitos e estimulando ações práticas de sustentabilidade.
                 </p> 
             </div>   
             <div>
