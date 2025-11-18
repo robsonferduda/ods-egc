@@ -97,11 +97,13 @@
             </div>
         </div>  
 
-        <div class="row">   
+        <div class="row mt-5">   
             <div class="col-md-12">
-                <div class="row mt-8">
+                <div class="row mt-2">
                     <h6>Painel ODS</h6>
                     <span class="text-danger">Clique no ODS para visualizar</span>
+                </div>
+                <div class="row mt-1">
                     <div class="col-md-3 col-sm-4 mb-2 px-1">
                         <a href="{{ url('ods/1') }}">
                             <img src="https://ai4sdg-gov.org/img/ods-icone/ods_1.png" class="img-fluid img-ods" alt="ODS 1">
