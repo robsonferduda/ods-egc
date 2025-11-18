@@ -96,6 +96,100 @@
                 <button type="button" class="btn btn-fill btn-primary btn-filtrar"><i class="fa fa-filter"></i> Filtrar</button>
             </div>
         </div>  
+
+        <div class="row">   
+            <div class="col-md-12">
+                <div class="row perfil-ods mt-8">
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/1') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_1.png" class="img-fluid img-ods" alt="ODS 1">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/2') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_2.png" class="img-fluid img-ods" alt="ODS 2">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/3') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_3.png" class="img-fluid img-ods" alt="ODS 3">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/4') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_4.png" class="img-fluid img-ods" alt="ODS 4">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/5') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_5.png" class="img-fluid img-ods" alt="ODS 5">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/6') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_6.png" class="img-fluid img-ods" alt="ODS 6">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/7') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_7.png" class="img-fluid img-ods" alt="ODS 7">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/8') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_8.png" class="img-fluid img-ods" alt="ODS 8">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/9') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_9.png" class="img-fluid img-ods" alt="ODS 9">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/10') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_10.png" class="img-fluid img-ods" alt="ODS 10">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/11') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_11.png" class="img-fluid img-ods" alt="ODS 11">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/12') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_12.png" class="img-fluid img-ods" alt="ODS 12">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/13') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_13.png" class="img-fluid img-ods" alt="ODS 13">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/14') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_14.png" class="img-fluid img-ods" alt="ODS 14">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/15') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_15.png" class="img-fluid img-ods" alt="ODS 15">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/16') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_16.png" class="img-fluid img-ods" alt="ODS 16">
+                        </a>
+                    </div>
+                    <div class="col-md-3 col-sm-4 mb-2 px-1">
+                        <a href="{{ url('ods/17') }}">
+                            <img src="https://ai4sdg-gov.org/img/ods-icone/ods_17.png" class="img-fluid img-ods" alt="ODS 17">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
     <div class="col-md-9">
 

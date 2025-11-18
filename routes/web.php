@@ -83,7 +83,8 @@ Route::get('avaliacoes', 'AvaliacaoController@avaliacoes');
 Route::get('minhas-avaliacoes', 'ODSController@avaliacoes');
 Route::get('minhas-analises', 'ODSController@analises');
 
-Route::get('ods/{ods}', 'ODSController@getDadosOds');
+Route::get('ods/{numero}', 'ODSController@panorama');
+Route::get('ods/{ods}/dados', 'ODSController@getDadosOds');
 
 Route::get('meu-perfil', 'UserController@perfil');
 Route::get('perfil/atualizar', 'UserController@atualizarPerfil');

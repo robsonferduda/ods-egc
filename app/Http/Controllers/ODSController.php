@@ -117,6 +117,56 @@ class ODSController extends Controller
 
         return response()->json($ods);
     }
+    
+    public function panorama($numero)
+    {
+        $ods = Ods::where('cod', $numero)->first();
+        
+        if (!$ods) {
+            abort(404, 'ODS não encontrada');
+        }
+        
+        // Buscar dados gerais da ODS
+        $sql = "SELECT count(*) as total_documentos
+                FROM documento_ods 
+                WHERE ods = ?
+                AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5";
+        
+        $total_documentos = DB::connection('pgsql')->select($sql, [$numero]);
+        
+        // Evolução anual dos últimos 5 anos
+        $sql_evolucao = "SELECT ano, count(*) as total
+                         FROM documento_ods
+                         WHERE ods = ?
+                         AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5
+                         GROUP BY ano
+                         ORDER BY ano";
+        
+        $evolucao = DB::connection('pgsql')->select($sql_evolucao, [$numero]);
+        
+        // Distribuição por dimensão IES
+        $sql_dimensao = "SELECT d.nome, d.apelido, count(*) as total
+                         FROM documento_ods doc
+                         JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                         WHERE doc.ods = ?
+                         GROUP BY d.nome, d.apelido
+                         ORDER BY total DESC";
+        
+        $dimensoes = DB::connection('pgsql')->select($sql_dimensao, [$numero]);
+        
+        // Top 5 documentos mais recentes
+        $sql_documentos = "SELECT doc.id, doc.titulo, doc.ano, d.nome as dimensao, t.ds_tipo_documento as tipo
+                           FROM documento_ods doc
+                           JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                           JOIN tipo_documento t ON t.id_tipo_documento = doc.id_tipo_documento
+                           WHERE doc.ods = ?
+                           ORDER BY doc.ano DESC, doc.id DESC
+                           LIMIT 10";
+        
+        $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$numero]);
+        
+        return view('ods.panorama', compact('ods', 'total_documentos', 'evolucao', 'dimensoes', 'documentos_recentes'));
+    }
 
     public function getDocumentos(Request $request)
     {
