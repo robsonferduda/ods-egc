@@ -100,8 +100,10 @@
         <div class="row mt-5">   
             <div class="col-md-12">
                 <div class="row">
-                    <h6>Painel ODS</h6>
-                    <span class="text-danger mt-1">Clique no ODS para visualizar</span>
+                    <div class="col-md-12">
+                        <h6>Painel ODS</h6>
+                        <span class="text-danger mt-1">Clique no ODS para visualizar</span>
+                    </div>
                 </div>
                 <div class="row mt-1" style="width: 97%; text-align: center; margin-left: 3px;">
                     <div class="col-md-3 col-sm-4 mb-2 px-1">
