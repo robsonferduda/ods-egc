@@ -100,7 +100,7 @@
         <div class="row mt-5">   
             <div class="col-md-12">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
                         <h6>Painel ODS</h6>
                         <span class="text-danger mt-1">Clique no ODS para visualizar</span>
                     </div>
