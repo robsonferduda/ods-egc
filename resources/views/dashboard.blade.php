@@ -99,7 +99,7 @@
 
         <div class="row">   
             <div class="col-md-12">
-                <div class="rowmt-8">
+                <div class="row mt-8">
                     <h6>Painel ODS</h6>
                     <span class="text-danger">Clique no ODS para visualizar</span>
                     <div class="col-md-3 col-sm-4 mb-2 px-1">
