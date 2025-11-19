@@ -11,21 +11,21 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="card mb-4" style="border-left: 5px solid #28a745;">
+        <div class="card mb-4" style="border-left: 5px solid {{ $cor_predominante }};">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <i class="fa fa-sitemap" style="font-size: 80px; color: #28a745;"></i>
+                        <i class="fa fa-sitemap" style="font-size: 80px; color: {{ $cor_predominante }};"></i>
                     </div>
                     <div class="col-md-10">
-                        <h3 style="color: #28a745;">{{ $departamento->ds_sigla_dep }} - {{ $departamento->ds_departamento_dep }}</h3>
+                        <h3 style="color: {{ $cor_predominante }};">{{ $departamento->ds_sigla_dep }} - {{ $departamento->ds_departamento_dep }}</h3>
                         <p class="lead">Panorama geral de produção acadêmica e engajamento com os ODS</p>
                         <hr>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="card text-center" style="background: #f8f9fa;">
                                     <div class="card-body">
-                                        <h2 class="mb-0" style="color: #28a745;">
+                                        <h2 class="mb-0" style="color: {{ $cor_predominante }};">
                                             {{ $total_documentos[0]->total_documentos ?? 0 }}
                                         </h2>
                                         <small>Documentos (últimos 5 anos)</small>
@@ -35,7 +35,7 @@
                             <div class="col-md-4">
                                 <div class="card text-center" style="background: #f8f9fa;">
                                     <div class="card-body">
-                                        <h2 class="mb-0" style="color: #28a745;">
+                                        <h2 class="mb-0" style="color: {{ $cor_predominante }};">
                                             {{ count($ods_distribuicao) }}
                                         </h2>
                                         <small>ODS identificados</small>
@@ -45,7 +45,7 @@
                             <div class="col-md-4">
                                 <div class="card text-center" style="background: #f8f9fa;">
                                     <div class="card-body">
-                                        <h2 class="mb-0" style="color: #28a745;">
+                                        <h2 class="mb-0" style="color: {{ $cor_predominante }};">
                                             {{ count($dimensoes) }}
                                         </h2>
                                         <small>Dimensões IES ativas</small>
@@ -63,7 +63,7 @@
 <div class="row">
     <div class="col-md-8">
         <div class="card mb-4">
-            <div class="card-header" style="background: #28a745; color: white;">
+            <div class="card-header" style="background: {{ $cor_predominante }}; color: white;">
                 <h5 class="mb-0"><i class="fa fa-line-chart"></i> Evolução Anual</h5>
             </div>
             <div class="card-body">
@@ -72,7 +72,7 @@
         </div>
 
         <div class="card mb-4">
-            <div class="card-header" style="background: #28a745; color: white;">
+            <div class="card-header" style="background: {{ $cor_predominante }}; color: white;">
                 <h5 class="mb-0"><i class="fa fa-file-text"></i> Documentos Recentes</h5>
             </div>
             <div class="card-body">
@@ -102,7 +102,7 @@
 
     <div class="col-md-4">
         <div class="card mb-4">
-            <div class="card-header" style="background: #28a745; color: white;">
+            <div class="card-header" style="background: {{ $cor_predominante }}; color: white;">
                 <h5 class="mb-0"><i class="fa fa-pie-chart"></i> Top 10 ODS</h5>
             </div>
             <div class="card-body">
@@ -111,7 +111,7 @@
         </div>
 
         <div class="card">
-            <div class="card-header" style="background: #28a745; color: white;">
+            <div class="card-header" style="background: {{ $cor_predominante }}; color: white;">
                 <h5 class="mb-0"><i class="fa fa-list"></i> Dimensões IES</h5>
             </div>
             <div class="card-body">
@@ -120,7 +120,7 @@
                         @foreach($dimensoes as $dim)
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 {{ $dim->nome }}
-                                <span class="badge badge-success badge-pill">{{ $dim->total }}</span>
+                                <span class="badge badge-pill" style="background: {{ $cor_predominante }};">{{ $dim->total }}</span>
                             </li>
                         @endforeach
                     </ul>
@@ -136,6 +136,8 @@
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 <script>
+    const corPredominante = '{{ $cor_predominante }}';
+    
     // Gráfico de Evolução Anual
     const ctxEvolucao = document.getElementById('chartEvolucao').getContext('2d');
     const chartEvolucao = new Chart(ctxEvolucao, {
@@ -145,8 +147,8 @@
             datasets: [{
                 label: 'Documentos por Ano',
                 data: {!! json_encode(array_column($evolucao, 'total')) !!},
-                backgroundColor: 'rgba(40, 167, 69, 0.2)',
-                borderColor: '#28a745',
+                backgroundColor: corPredominante + '33',
+                borderColor: corPredominante,
                 borderWidth: 3,
                 fill: true,
                 tension: 0.4

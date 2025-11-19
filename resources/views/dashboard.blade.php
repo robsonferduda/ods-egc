@@ -234,7 +234,7 @@
             <div class="col-md-12 mt-3 d-none" id="cards-panorama">
                 <h6 class="mb-3"><i class="fa fa-eye"></i> Visualizar Panoramas Detalhados</h6>
                 <div class="row">
-                    <div class="col-md-4 mb-3 card-panorama-centro" style="display: none;">
+                    <div class="col-md-6 mb-3 card-panorama-centro" style="display: none;">
                         <a href="#" class="link-panorama-centro text-decoration-none" target="_blank">
                             <div class="card shadow-sm hover-card" style="border-left: 4px solid #007bff; cursor: pointer;">
                                 <div class="card-body">
@@ -255,7 +255,7 @@
                         </a>
                     </div>
 
-                    <div class="col-md-4 mb-3 card-panorama-departamento" style="display: none;">
+                    <div class="col-md-6 mb-3 card-panorama-departamento" style="display: none;">
                         <a href="#" class="link-panorama-departamento text-decoration-none" target="_blank">
                             <div class="card shadow-sm hover-card" style="border-left: 4px solid #28a745; cursor: pointer;">
                                 <div class="card-body">
@@ -276,7 +276,7 @@
                         </a>
                     </div>
 
-                    <div class="col-md-4 mb-3 card-panorama-ppg" style="display: none;">
+                    <div class="col-md-6 mb-3 card-panorama-ppg" style="display: none;">
                         <a href="#" class="link-panorama-ppg text-decoration-none" target="_blank">
                             <div class="card shadow-sm hover-card" style="border-left: 4px solid #17a2b8; cursor: pointer;">
                                 <div class="card-body">

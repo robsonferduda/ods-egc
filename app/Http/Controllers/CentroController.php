@@ -242,7 +242,10 @@ class CentroController extends Controller
         
         $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
         
-        return view('panorama.centro', compact('centro', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+        // Cor do ODS predominante
+        $cor_predominante = !empty($ods_distribuicao) ? $ods_distribuicao[0]->cor : '#007bff';
+        
+        return view('panorama.centro', compact('centro', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes', 'cor_predominante'));
     }
 
     public function panoramaDepartamento($id)
@@ -303,7 +306,10 @@ class CentroController extends Controller
         
         $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
         
-        return view('panorama.departamento', compact('departamento', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+        // Cor do ODS predominante
+        $cor_predominante = !empty($ods_distribuicao) ? $ods_distribuicao[0]->cor : '#28a745';
+        
+        return view('panorama.departamento', compact('departamento', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes', 'cor_predominante'));
     }
 
     public function panoramaPPG($id)
@@ -364,6 +370,9 @@ class CentroController extends Controller
         
         $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
         
-        return view('panorama.ppg', compact('ppg', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+        // Cor do ODS predominante
+        $cor_predominante = !empty($ods_distribuicao) ? $ods_distribuicao[0]->cor : '#17a2b8';
+        
+        return view('panorama.ppg', compact('ppg', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes', 'cor_predominante'));
     }
 }
