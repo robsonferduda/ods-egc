@@ -16,6 +16,14 @@
                 <div class="row">
                     <div class="col-md-2 text-center">
                         <i class="fa fa-sitemap" style="font-size: 80px; color: {{ $cor_predominante }};"></i>
+                        @if(!empty($ods_distribuicao))
+                            <div class="mt-3">
+                                <img src="https://ai4sdg-gov.org/img/ods-icone/ods_{{ $ods_distribuicao[0]->ods }}.png" 
+                                     alt="ODS {{ $ods_distribuicao[0]->ods }}" 
+                                     style="width: 100px; height: 100px;">
+                                <small class="d-block mt-2 text-muted">ODS Predominante</small>
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-10">
                         <h3 style="color: {{ $cor_predominante }};">{{ $departamento->ds_sigla_dep }} - {{ $departamento->ds_departamento_dep }}</h3>
