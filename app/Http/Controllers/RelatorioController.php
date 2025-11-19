@@ -269,6 +269,16 @@ class RelatorioController extends Controller
             if(!empty($result_dim)){
                 $dimensao_predominante = $result_dim[0]->nm_dim_ods;
                 
+                // Mapear ODS por dimensão
+                $ods_por_dimensao = [
+                    'Ambiental' => [6, 7, 12, 13, 14, 15],
+                    'Social' => [1, 2, 3, 4, 5, 10],
+                    'Econômica' => [8, 9, 11],
+                    'Institucional' => [16, 17]
+                ];
+                
+                $dimensao_predominante_ods = $ods_por_dimensao[$dimensao_predominante] ?? [];
+                
                 // Calcula o percentual
                 $sql_total_dim = "SELECT COUNT(*) as total 
                                  FROM public.fato_documento_ods f
@@ -329,7 +339,7 @@ class RelatorioController extends Controller
         'ict_valor','ict_nivel','ict_badge','ict_ods_unicos',
         'ivc_valor','ivc_nivel','ivc_badge',
         'ivc_ano_anterior','ivc_total_anterior','ivc_ano_atual','ivc_total_atual',
-        'dimensao_predominante','dimensao_predominante_percentual',
+        'dimensao_predominante','dimensao_predominante_percentual','dimensao_predominante_ods',
         'docente_destaque', 'centro', 'tabela_ods', 'anos'))->render();
 
         $file = date('Y-m-d_H-i-s_perfil_ods_resumo.pdf');

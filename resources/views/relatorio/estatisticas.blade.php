@@ -123,7 +123,12 @@
                     <p class="card-text mb-1">
                         <span class="display-4 font-weight-bold">{{ $dimensao_predominante_percentual }}%</span>
                     </p>
-                    <small class="text-muted">Dimensionalidade</small>
+                    <small class="text-muted">
+                        @if(!empty($dimensao_predominante_ods))
+                            ODS {{ implode(', ', $dimensao_predominante_ods) }}<br>
+                        @endif
+                        Dimensionalidade
+                    </small>
                 </div>
             </div>
         </div>
@@ -150,11 +155,11 @@
         <div class="col-md-4" id="card-ivc">
             <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">
+                    <h5 class="card-title mb-0" style="margin-bottom: 0%;">
                         IVC-ODS
                         <span class="pull-right badge badge-pill badge-{{ $ivc_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ivc_nivel }}</span>                                       
                     </h5>
-                    <p class="card-text mb-1">
+                    <p class="card-text mb-1" style="margin-top: 0%;">
                         <span class="display-4 font-weight-bold">{{ $ivc_valor }}%</span>    
                     </p>
                     <small class="text-muted">{{ $ivc_ano_anterior }}: {{ $ivc_total_anterior }} => {{ $ivc_ano_atual }}: {{ $ivc_total_atual }}<br>Índice de Variação de Contribuição</small>
