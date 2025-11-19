@@ -62,7 +62,7 @@ class CentroController extends Controller
 
     public function indiceIVC($id)
     {
-       
+        
         return view('indices.ivc', compact('id'));
     }
 
