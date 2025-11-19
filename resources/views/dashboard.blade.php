@@ -342,22 +342,22 @@
                     </div>
                 @endforeach
             </div>
-        </div>
 
-        <!-- Mapa de Calor: ODS x Dimensões IES -->
-        <div class="row mb-5 mt-1">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white;">
-                        <h6 class="mb-2"><i class="fa fa-th"></i> MAPA DE CALOR - ODS x DIMENSÕES IES</h6>
-                    </div>
-                    <div class="card-body" style="overflow-x: auto;">
-                        <canvas id="heatmapOdsDimensoes" style="max-height: 600px;"></canvas>
-                        <div class="text-center mt-3">
-                            <small class="text-muted">
-                                <i class="fa fa-fire text-danger"></i> 
-                                Quanto mais quente a cor (laranja/vermelho), maior o número de documentos naquela combinação ODS/Dimensão
-                            </small>
+            <!-- Mapa de Calor: ODS x Dimensões IES -->
+            <div class="row mb-5 mt-1">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white;">
+                            <h6 class="mb-2"><i class="fa fa-th"></i> MAPA DE CALOR - ODS x DIMENSÕES IES</h6>
+                        </div>
+                        <div class="card-body" style="overflow-x: auto;">
+                            <canvas id="heatmapOdsDimensoes" style="max-height: 600px;"></canvas>
+                            <div class="text-center mt-3">
+                                <small class="text-muted">
+                                    <i class="fa fa-fire text-danger"></i> 
+                                    Quanto mais quente a cor (laranja/vermelho), maior o número de documentos naquela combinação ODS/Dimensão
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
