@@ -22,7 +22,22 @@
                 relacionados aos ODS. Este indicador permite identificar se houve aumento,
                 estabilidade ou redução na quantidade de documentos vinculados aos ODS em
                 determinado período.
-            </p>  
+            </p>
+            <p>
+                <strong>Cálculo:</strong> O índice compara a produção de documentos relacionados aos ODS
+                entre o ano atual e o ano anterior, expressando a variação em percentual.
+            </p>
+            <p class="text-center">
+                <code>IVC-ODS = ((Total Ano Atual - Total Ano Anterior) / Total Ano Anterior) × 100</code>
+            </p>
+            <p>
+                <strong>Interpretação:</strong>
+            </p>
+            <ul>
+                <li><strong>IVC > 0</strong>: Crescimento na produção relacionada aos ODS</li>
+                <li><strong>IVC = 0</strong>: Produção estável</li>
+                <li><strong>IVC < 0</strong>: Redução na produção relacionada aos ODS</li>
+            </ul>
         </div>
         <div class="col-md-12 col-sm-6 center">
             <img src="{{ asset('img/ivc.png') }}" class="img-fluid mt-1 w-20" style="width: 30%;" alt="Índice de Variação de Contribuição com ODS (IVC-ODS)">

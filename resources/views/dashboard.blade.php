@@ -1052,15 +1052,20 @@
                         
                         if(data.length > 0) {
 
-                            var ics = parseFloat(data[0].ics_norm_0_100);
+                            var ict_percentual = parseFloat(data[0].ict_percentual);
+                            var ict_ods_unicos = data[0].ict_ods_unicos;
                             var nivel = '';
+                            var cor = '';
 
-                            if(ics > 50) {
-                                nivel = 'Crescimento';
-                            } else if(ics == 50) {
-                                nivel = 'Estável';
-                            } else if(ics < 50) {
-                                nivel = 'Queda';
+                            if(ict_percentual >= 75) {
+                                nivel = 'Alto';
+                                cor = 'success';
+                            } else if(ict_percentual >= 50) {
+                                nivel = 'Médio';
+                                cor = 'warning';
+                            } else {
+                                nivel = 'Baixo';
+                                cor = 'danger';
                             }
                             
                             var html = `
@@ -1068,11 +1073,12 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             ICT-ODS
-                                            <span class="pull-right badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${cor}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">${ics}</span>                                            
+                                            <span class="display-4 font-weight-bold">${ict_percentual}%</span>
                                         </p>
+                                        <small class="text-muted">${ict_ods_unicos} de 16 ODS</small><br>
                                         <a class="link_indices" href="${host}/indices/ict/${centro}" target="_blank"><small class="">Índice de Colaboração Temática <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
@@ -1087,19 +1093,21 @@
                         
                         if(data.length > 0) {
 
-                            var sec_index = parseFloat(data[0].sec_index);
+                            var ivc_percentual = parseFloat(data[0].ivc_percentual);
+                            var variacao = data[0].variacao;
                             var nivel = '';
-                            var descricao = '';
+                            var cor = '';
+                            var icone = '';
 
-                            if(sec_index >= 1) {
-                                nivel = 'Crescimento';
-                                descricao = 'Crescimento';
-                            } else if(sec_index = 0) {
-                                nivel = 'Estável';
-                                descricao = 'Estável';
+                            if(variacao === 'Crescimento') {
+                                cor = 'success';
+                                icone = '<i class="fa fa-arrow-up"></i>';
+                            } else if(variacao === 'Estável') {
+                                cor = 'warning';
+                                icone = '<i class="fa fa-minus"></i>';
                             } else {
-                                nivel = 'Queda';
-                                descricao = 'Queda';
+                                cor = 'danger';
+                                icone = '<i class="fa fa-arrow-down"></i>';
                             }
                             
                             var html = `
@@ -1107,11 +1115,12 @@
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
                                             IVC-ODS
-                                            <span class="pull-right badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
+                                            <span class="pull-right badge badge-pill badge-${cor}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${variacao}</span>
                                         </h5>
                                         <p class="card-text mb-1">
-                                            <span class="display-4 font-weight-bold">${sec_index}</span>                                           
+                                            <span class="display-4 font-weight-bold">${icone} ${Math.abs(ivc_percentual)}%</span>
                                         </p>
+                                        <small class="text-muted">${data[0].ano_anterior}: ${data[0].total_anterior} → ${data[0].ano_atual}: ${data[0].total_atual}</small><br>
                                         <a class="link_indices" href="${host}/indices/ivc/${centro}" target="_blank"><small class="">Índice de Variação de Contribuição <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>

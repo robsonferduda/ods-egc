@@ -68,19 +68,70 @@ class CentroController extends Controller
 
     public function calcularICT($id, $ano)
     {
-        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
-        $ict = 0;
+        // ICT-ODS: Índice de Colaboração Temática
+        // Mede a diversidade temática - quantidade de ODS diferentes / 16 (não temos ODS 17)
+        
+        $resultado = DB::select('
+            SELECT 
+                COUNT(DISTINCT ods) as ods_unicos,
+                ROUND((COUNT(DISTINCT ods)::numeric / 16) * 100, 2) as ict_percentual
+            FROM documento_ods
+            WHERE id_centro = ?
+            AND ano = ?
+            AND ods BETWEEN 1 AND 16
+        ', [$id, $ano]);
 
-        return response()->json($ict);
+        if (count($resultado) > 0) {
+            return response()->json([
+                [
+                    'ict_ods_unicos' => $resultado[0]->ods_unicos,
+                    'ict_percentual' => $resultado[0]->ict_percentual,
+                    'ano' => $ano
+                ]
+            ]);
+        }
+
+        return response()->json([]);
     }
 
-
-    public function calcularIVC($id, $ano)
+    public function calcularIVC($id)
     {
-        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
-        $ivc = 0;
+        // IVC-ODS: Índice de Variação de Contribuição
+        // Mede a evolução anual: (total_ano_atual - total_ano_anterior) / total_ano_anterior
+        
+        $ano_atual = date('Y');
+        $ano_anterior = $ano_atual - 1;
 
-        return response()->json($ics);
+        $dados = DB::select('
+            SELECT 
+                ano,
+                COUNT(*) as total_documentos
+            FROM documento_ods
+            WHERE id_centro = ?
+            AND ano IN (?, ?)
+            GROUP BY ano
+            ORDER BY ano
+        ', [$id, $ano_anterior, $ano_atual]);
+
+        if (count($dados) >= 2) {
+            $total_anterior = $dados[0]->total_documentos;
+            $total_atual = $dados[1]->total_documentos;
+            
+            $ivc = (($total_atual - $total_anterior) / $total_anterior) * 100;
+            
+            return response()->json([
+                [
+                    'ivc_percentual' => round($ivc, 2),
+                    'ano_anterior' => $ano_anterior,
+                    'total_anterior' => $total_anterior,
+                    'ano_atual' => $ano_atual,
+                    'total_atual' => $total_atual,
+                    'variacao' => $ivc > 0 ? 'Crescimento' : ($ivc < 0 ? 'Queda' : 'Estável')
+                ]
+            ]);
+        }
+
+        return response()->json([]);
     }
 
     public function indiceCrescimento($id)

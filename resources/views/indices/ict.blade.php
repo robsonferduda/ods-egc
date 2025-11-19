@@ -17,14 +17,22 @@
         </div>
         <div class="col-md-12 col-sm-6">
             <p>
-                O ídice foi desenvolvido com o propósito de mensurar a diversidade temática
+                O índice foi desenvolvido com o propósito de mensurar a diversidade temática
                 das contribuições de unidades acadêmicas (como centros, departamentos ou
                 programas de pós-graduação), ou mesmo de docentes individualmente, em relação
                 aos ODS. Enquanto o IVC-ODS mede a intensidade temporal da produção
                 relacionada aos ODS, o ICT-ODS visa captar sua abrangência temática, refletindo a
                 capacidade da unidade ou ator institucional em atuar de forma transversal nos
                 diferentes ODS.
-            </p>  
+            </p>
+            <p>
+                <strong>Cálculo:</strong> O índice é calculado pela divisão do número de ODS distintos
+                em que a unidade contribuiu pelo total de 16 ODS (não incluímos o ODS 17 em nossa base),
+                multiplicado por 100 para expressá-lo em percentual.
+            </p>
+            <p class="text-center">
+                <code>ICT-ODS = (Nº de ODS únicos / 16) × 100</code>
+            </p>
         </div>
         <div class="col-md-12 col-sm-6 center">
             <img src="{{ asset('img/ict.png') }}" class="img-fluid mt-1 w-20" style="width: 30%;" alt="Índice de Colaboração Temática nos ODS (ICT-ODS)">
