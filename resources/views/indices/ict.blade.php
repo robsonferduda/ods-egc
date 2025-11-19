@@ -17,7 +17,7 @@
         </div>
         <div class="col-md-12 col-sm-6">
             <p>
-                O índice foi desenvolvido com o propósito de mensurar a diversidade temática
+                O ídice foi desenvolvido com o propósito de mensurar a diversidade temática
                 das contribuições de unidades acadêmicas (como centros, departamentos ou
                 programas de pós-graduação), ou mesmo de docentes individualmente, em relação
                 aos ODS. Enquanto o IVC-ODS mede a intensidade temporal da produção
@@ -29,9 +29,6 @@
                 <strong>Cálculo:</strong> O índice é calculado pela divisão do número de ODS distintos
                 em que a unidade contribuiu pelo total de 16 ODS (não incluímos o ODS 17 em nossa base),
                 multiplicado por 100 para expressá-lo em percentual.
-            </p>
-            <p class="text-center">
-                <code>ICT-ODS = (Nº de ODS únicos / 16) × 100</code>
             </p>
         </div>
         <div class="col-md-12 col-sm-6 center">

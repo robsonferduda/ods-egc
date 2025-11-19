@@ -27,9 +27,6 @@
                 <strong>Cálculo:</strong> O índice compara a produção de documentos relacionados aos ODS
                 entre o ano atual e o ano anterior, expressando a variação em percentual.
             </p>
-            <p class="text-center">
-                <code>IVC-ODS = ((Total Ano Atual - Total Ano Anterior) / Total Ano Anterior) × 100</code>
-            </p>
             <p>
                 <strong>Interpretação:</strong>
             </p>

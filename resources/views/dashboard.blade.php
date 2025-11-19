@@ -1101,13 +1101,13 @@
 
                             if(variacao === 'Crescimento') {
                                 cor = 'success';
-                                icone = '<i class="fa fa-arrow-up"></i>';
+                                icone = '<i class="fa fa-arrow-up" style="position: absolute; left: 15px; top: 15px; font-size: 25px;"></i>';
                             } else if(variacao === 'Estável') {
                                 cor = 'warning';
-                                icone = '<i class="fa fa-minus"></i>';
+                                icone = '<i class="fa fa-minus" style="position: absolute; left: 15px; top: 15px; font-size: 25px;"></i>';
                             } else {
                                 cor = 'danger';
-                                icone = '<i class="fa fa-arrow-down"></i>';
+                                icone = '<i class="fa fa-arrow-down" style="position: absolute; left: 15px; top: 15px; font-size: 25px;"></i>';
                             }
                             
                             var html = `
