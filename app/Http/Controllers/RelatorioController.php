@@ -159,57 +159,84 @@ class RelatorioController extends Controller
         }));
 
         // Busca os indicadores se houver centro selecionado
-        $ics_valor = null;
-        $ics_nivel = null;
-        $ies_valor = null;
-        $ies_nivel = null;
+        $ict_valor = null;
+        $ict_nivel = null;
+        $ict_ods_unicos = null;
+        $ivc_valor = null;
+        $ivc_nivel = null;
+        $ivc_ano_anterior = null;
+        $ivc_total_anterior = null;
+        $ivc_ano_atual = null;
+        $ivc_total_atual = null;
         $dimensao_predominante = null;
         $dimensao_predominante_percentual = null;
 
         if($request->centro && $request->centro != 'todos'){
             
-            // ICS - Índice de Crescimento Sustentável
-            $sql_ics = "SELECT ics_norm_0_100 FROM mv_ics_por_centro_docods 
-                       WHERE id_centro = '$request->centro' 
-                       AND ano = '$request->ano_fim'
-                       LIMIT 1";
-            $result_ics = DB::connection('pgsql')->select($sql_ics);
-            
-            if(!empty($result_ics)){
-                $ics_valor = number_format($result_ics[0]->ics_norm_0_100, 1, ',', '.');
-                $ics_float = floatval($result_ics[0]->ics_norm_0_100);
+            // ICT-ODS - Índice de Colaboração Temática
+            $resultado_ict = DB::select('
+                SELECT 
+                    COUNT(DISTINCT ods) as ods_unicos,
+                    ROUND((COUNT(DISTINCT ods)::numeric / 16) * 100, 2) as ict_percentual
+                FROM documento_ods
+                WHERE id_centro = ?
+                AND ano = ?
+                AND ods BETWEEN 1 AND 16
+            ', [$request->centro, $request->ano_fim]);
+
+            if(!empty($resultado_ict) && $resultado_ict[0]->ods_unicos > 0){
+                $ict_valor = number_format($resultado_ict[0]->ict_percentual, 1, ',', '.');
+                $ict_ods_unicos = $resultado_ict[0]->ods_unicos;
+                $ict_float = floatval($resultado_ict[0]->ict_percentual);
                 
-                if($ics_float > 50) {
-                    $ics_nivel = 'Crescimento';
-                    $ics_badge = 'success';
-                } else if($ics_float == 50) {
-                    $ics_nivel = 'Estável';
-                    $ics_badge = 'warning';
+                if($ict_float >= 75) {
+                    $ict_nivel = 'Alto';
+                    $ict_badge = 'success';
+                } else if($ict_float >= 50) {
+                    $ict_nivel = 'Médio';
+                    $ict_badge = 'warning';
                 } else {
-                    $ics_nivel = 'Queda';
-                    $ics_badge = 'danger';
+                    $ict_nivel = 'Baixo';
+                    $ict_badge = 'danger';
                 }
             }
 
-            // IES - Índice de Engajamento Sustentável
-            $sql_ies = "SELECT sec_index FROM mv_sec_por_centro 
-                       WHERE id_centro = '$request->centro'
-                       LIMIT 1";
-            $result_ies = DB::connection('pgsql')->select($sql_ies);
-            
-            if(!empty($result_ies)){
-                $ies_valor = number_format($result_ies[0]->sec_index, 1, ',', '.');
-                $ies_float = floatval($result_ies[0]->sec_index);
+            // IVC-ODS - Índice de Variação de Contribuição
+            $ano_atual = $request->ano_fim;
+            $ano_anterior = $ano_atual - 1;
+
+            $resultado_ivc = DB::select('
+                SELECT 
+                    ano,
+                    COUNT(*) as total_documentos
+                FROM documento_ods
+                WHERE id_centro = ?
+                AND ano IN (?, ?)
+                GROUP BY ano
+                ORDER BY ano
+            ', [$request->centro, $ano_anterior, $ano_atual]);
+
+            if(count($resultado_ivc) >= 2){
+                $total_anterior = $resultado_ivc[0]->total_documentos;
+                $total_atual = $resultado_ivc[1]->total_documentos;
                 
-                if($ies_float >= 70) {
-                    $ies_nivel = 'Alto';
-                    $ies_badge = 'success';
-                } else if($ies_float >= 40) {
-                    $ies_nivel = 'Médio';
-                    $ies_badge = 'warning';
+                $ivc = (($total_atual - $total_anterior) / $total_anterior) * 100;
+                $ivc_valor = number_format(abs($ivc), 1, ',', '.');
+                
+                $ivc_ano_anterior = $ano_anterior;
+                $ivc_total_anterior = $total_anterior;
+                $ivc_ano_atual = $ano_atual;
+                $ivc_total_atual = $total_atual;
+                
+                if($ivc > 0) {
+                    $ivc_nivel = 'Crescimento';
+                    $ivc_badge = 'success';
+                } else if($ivc < 0) {
+                    $ivc_nivel = 'Queda';
+                    $ivc_badge = 'danger';
                 } else {
-                    $ies_nivel = 'Baixo';
-                    $ies_badge = 'danger';
+                    $ivc_nivel = 'Estável';
+                    $ivc_badge = 'warning';
                 }
             }
 
@@ -299,8 +326,9 @@ class RelatorioController extends Controller
         'grafico_evolucao','periodo','total_documentos',
         'total_ods_detectados',
         'documentos_sem_ods','documentos_com_ods',
-        'ics_valor','ics_nivel','ics_badge',
-        'ies_valor','ies_nivel','ies_badge',
+        'ict_valor','ict_nivel','ict_badge','ict_ods_unicos',
+        'ivc_valor','ivc_nivel','ivc_badge',
+        'ivc_ano_anterior','ivc_total_anterior','ivc_ano_atual','ivc_total_atual',
         'dimensao_predominante','dimensao_predominante_percentual',
         'docente_destaque', 'centro', 'tabela_ods', 'anos'))->render();
 

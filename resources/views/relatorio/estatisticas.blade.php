@@ -123,43 +123,41 @@
                     <p class="card-text mb-1">
                         <span class="display-4 font-weight-bold">{{ $dimensao_predominante_percentual }}%</span>
                     </p>
-                    <small class="text-muted">Dimensão Predominante</small>
+                    <small class="text-muted">Dimensionalidade</small>
                 </div>
             </div>
         </div>
         @endif
         
-        @if($ics_valor)
-        <div class="col-md-4" id="card-ics">
+        @if($ict_valor)
+        <div class="col-md-4" id="card-ict">
             <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">
-                        ICS
-                        <span class="pull-right badge badge-pill badge-{{ $ics_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ics_nivel }}</span>                                        
+                        ICT-ODS
+                        <span class="pull-right badge badge-pill badge-{{ $ict_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ict_nivel }}</span>                                        
                     </h5>
                     <p class="card-text mb-1">
-                        <span class="display-4 font-weight-bold">{{ $ics_valor }}</span>    
-						
+                        <span class="display-4 font-weight-bold">{{ $ict_valor }}%</span>    
                     </p>
-                    <small class="text-muted">Índice de Crescimento Sustentável</small>
+                    <small class="text-muted">{{ $ict_ods_unicos }} de 16 ODS<br>Índice de Colaboração Temática</small>
                 </div>
             </div>
         </div>
         @endif
         
-        @if($ies_valor)
-        <div class="col-md-4" id="card-ies">
+        @if($ivc_valor)
+        <div class="col-md-4" id="card-ivc">
             <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                 <div class="card-body text-center">
                     <h5 class="card-title mb-0">
-                        IES
-                        <span class="pull-right badge badge-pill badge-{{ $ies_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ies_nivel }}</span>                                       
+                        IVC-ODS
+                        <span class="pull-right badge badge-pill badge-{{ $ivc_badge }}" style="font-size: 10px; vertical-align: top; margin-left: 8px;">{{ $ivc_nivel }}</span>                                       
                     </h5>
                     <p class="card-text mb-1">
-                        <span class="display-4 font-weight-bold">{{ $ies_valor }}</span>    
-						
+                        <span class="display-4 font-weight-bold">{{ $ivc_valor }}%</span>    
                     </p>
-                    <small class="text-muted">Índice de Engajamento Sustentável</small>
+                    <small class="text-muted">{{ $ivc_ano_anterior }}: {{ $ivc_total_anterior }} → {{ $ivc_ano_atual }}: {{ $ivc_total_atual }}<br>Índice de Variação de Contribuição</small>
                 </div>
             </div>
         </div>
