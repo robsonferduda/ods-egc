@@ -1049,6 +1049,7 @@
                     $(".box-centro").removeClass("d-none");
 
                     $.get(host + '/centro/ict/' + centro +'/ano/' + ano_fim, function(data){
+                        
                         if(data.length > 0) {
 
                             var ics = parseFloat(data[0].ics_norm_0_100);
@@ -1078,11 +1079,12 @@
                             `;
                             $('#card-ics').html(html);
                         } else {
-                            $('#card-ics').html('<div class="alert alert-warning">Nenhum ICT-ODS encontrado.</div>');
+                            $('#card-ics').html('<div class="alert alert-warning">Nenhum ICT-ODS calculado.</div>');
                         }
                     });
 
                     $.get(host + '/centro/ivc/' + centro, function(data){
+                        
                         if(data.length > 0) {
 
                             var sec_index = parseFloat(data[0].sec_index);
@@ -1116,7 +1118,7 @@
                             `;
                             $('#card-ies').html(html);
                         } else {
-                            $('#card-ies').html('<div class="alert alert-warning">Nenhum IVC-ODS encontrado.</div>');
+                            $('#card-ies').html('<div class="alert alert-warning">Nenhum IVC-ODS calculado.</div>');
                         }
                     });
 
