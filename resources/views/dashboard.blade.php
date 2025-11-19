@@ -447,7 +447,23 @@
                         Visualização das conexões e colaborações do docente com outros pesquisadores através de coautorias em documentos relacionados aos ODS
                     </small>
                 </div>
-                <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
+                <div class="mb-2 text-right">
+                    <div class="btn-group" role="group" aria-label="Controles do grafo">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-zoom-in" title="Ampliar">
+                            <i class="fa fa-search-plus"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-zoom-out" title="Reduzir">
+                            <i class="fa fa-search-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-zoom-reset" title="Resetar visualização">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-center" title="Centralizar">
+                            <i class="fa fa-crosshairs"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="cy" style="width: 100%; height: 500px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
                 <div class="text-center mt-3">
                     <div class="mt-2">
                         <p style="font-weight: 700" class="mb-1">Legenda dos Perfis</p>
@@ -769,7 +785,16 @@
                                 'text-halign': 'center',
                                 'color': '#fff',
                                 'text-outline-color': '#444',
-                                'text-outline-width': 2
+                                'text-outline-width': 2,
+                                'transition-property': 'background-color, border-color, border-width',
+                                'transition-duration': '0.3s'
+                              }
+                            },
+                            {
+                              selector: 'node:hover',
+                              style: {
+                                'border-width': 3,
+                                'border-color': '#000'
                               }
                             },
                             {
@@ -779,7 +804,16 @@
                                 'line-color': '#bbb',
                                 'target-arrow-color': '#999',
                                 'target-arrow-shape': 'triangle',
-                                'curve-style': 'bezier'
+                                'curve-style': 'bezier',
+                                'transition-property': 'line-color, width',
+                                'transition-duration': '0.3s'
+                              }
+                            },
+                            {
+                              selector: 'edge:hover',
+                              style: {
+                                'line-color': '#333',
+                                'width': 'mapData(value, 1, 10, 2, 6)'
                               }
                             }
                           ],
@@ -787,12 +821,19 @@
                             name: 'cose-bilkent',
                             animate: true,
                             fit: true,
-                            padding: 3,
+                            padding: 50,
                             idealEdgeLength: 180,
                             nodeRepulsion: 10000,
-                            edgeElasticity: 0.45, // ajuste fino da "mola"
+                            edgeElasticity: 0.45,
                             gravity: 0.25
-                          }
+                          },
+                          // Configurações de zoom e pan
+                          minZoom: 0.3,
+                          maxZoom: 3,
+                          wheelSensitivity: 0.2,
+                          userPanningEnabled: true,
+                          userZoomingEnabled: true,
+                          boxSelectionEnabled: false
                         });
 
                         // Tooltip nativo
@@ -807,6 +848,46 @@
                               tip: { width: 16, height: 8 }
                             }
                           });
+                        });
+
+                        // Controles de zoom e navegação
+                        $('#btn-zoom-in').off('click').on('click', function() {
+                            var currentZoom = cy.zoom();
+                            cy.animate({
+                                zoom: currentZoom * 1.3,
+                                duration: 300,
+                                easing: 'ease-in-out-cubic'
+                            });
+                        });
+
+                        $('#btn-zoom-out').off('click').on('click', function() {
+                            var currentZoom = cy.zoom();
+                            cy.animate({
+                                zoom: currentZoom * 0.7,
+                                duration: 300,
+                                easing: 'ease-in-out-cubic'
+                            });
+                        });
+
+                        $('#btn-zoom-reset').off('click').on('click', function() {
+                            cy.animate({
+                                fit: {
+                                    eles: cy.elements(),
+                                    padding: 50
+                                },
+                                duration: 500,
+                                easing: 'ease-in-out-cubic'
+                            });
+                        });
+
+                        $('#btn-center').off('click').on('click', function() {
+                            cy.animate({
+                                center: {
+                                    eles: cy.elements()
+                                },
+                                duration: 500,
+                                easing: 'ease-in-out-cubic'
+                            });
                         });                       
                     }
                 });
