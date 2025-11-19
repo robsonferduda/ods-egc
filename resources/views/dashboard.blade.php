@@ -738,6 +738,9 @@
                 window.location.href = "{{ url('repositorio') }}" + "?" + params;
             });
 
+            // Variável global para armazenar a instância do cytoscape
+            var cy = null;
+
             $(document).on('change', '#docente', function() {
 
                 var id = $(this).val();
@@ -750,7 +753,12 @@
                         const nodes = data.nodes;
                         const edges = data.edges;
 
-                        const cy = cytoscape({
+                        // Destruir instância anterior se existir
+                        if(cy) {
+                            cy.destroy();
+                        }
+
+                        cy = cytoscape({
                           container: document.getElementById('cy'),
                           elements: {
                             nodes: nodes.map(n => ({
@@ -852,42 +860,35 @@
 
                         // Controles de zoom e navegação
                         $('#btn-zoom-in').off('click').on('click', function() {
+                            if(!cy) return;
                             var currentZoom = cy.zoom();
-                            cy.animate({
-                                zoom: currentZoom * 1.3,
-                                duration: 300,
-                                easing: 'ease-in-out-cubic'
+                            var newZoom = currentZoom * 1.3;
+                            if(newZoom > cy.maxZoom()) newZoom = cy.maxZoom();
+                            cy.zoom({
+                                level: newZoom,
+                                renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
                             });
                         });
 
                         $('#btn-zoom-out').off('click').on('click', function() {
+                            if(!cy) return;
                             var currentZoom = cy.zoom();
-                            cy.animate({
-                                zoom: currentZoom * 0.7,
-                                duration: 300,
-                                easing: 'ease-in-out-cubic'
+                            var newZoom = currentZoom * 0.7;
+                            if(newZoom < cy.minZoom()) newZoom = cy.minZoom();
+                            cy.zoom({
+                                level: newZoom,
+                                renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
                             });
                         });
 
                         $('#btn-zoom-reset').off('click').on('click', function() {
-                            cy.animate({
-                                fit: {
-                                    eles: cy.elements(),
-                                    padding: 50
-                                },
-                                duration: 500,
-                                easing: 'ease-in-out-cubic'
-                            });
+                            if(!cy) return;
+                            cy.fit(cy.elements(), 50);
                         });
 
                         $('#btn-center').off('click').on('click', function() {
-                            cy.animate({
-                                center: {
-                                    eles: cy.elements()
-                                },
-                                duration: 500,
-                                easing: 'ease-in-out-cubic'
-                            });
+                            if(!cy) return;
+                            cy.center(cy.elements());
                         });                       
                     }
                 });
