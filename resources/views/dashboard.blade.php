@@ -1792,12 +1792,12 @@
             }
 
             function renderizarHeatmap(matriz) {
-                const dimensoes = ['Ensino', 'Pesquisa', 'Extensão', 'Gestão', 'Ambiental'];
+                const dimensoes = ['Ensino', 'Pesquisa', 'Extensão', 'Gestão', 'Inovação'];
                 const ods = Array.from({length: 17}, (_, i) => `ODS ${i + 1}`);
                 
                 // Preparar dados para o Chart.js
                 const datasets = dimensoes.map((dim, dimIndex) => {
-                    const apelido = ['ensino', 'pesquisa', 'extensao', 'gestao', 'ambiental'][dimIndex];
+                    const apelido = ['ensino', 'pesquisa', 'extensao', 'gestao', 'inovacao'][dimIndex];
                     const data = [];
                     
                     for(let odsNum = 1; odsNum <= 17; odsNum++) {
