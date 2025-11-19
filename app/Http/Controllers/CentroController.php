@@ -183,4 +183,187 @@ class CentroController extends Controller
 
         return response()->json($dimensoes);
     }
+
+    public function panoramaCentro($id)
+    {
+        $centro = \App\Centro::where('cd_centro_cen', $id)->first();
+        
+        if (!$centro) {
+            abort(404, 'Centro não encontrado');
+        }
+        
+        // Total de documentos
+        $sql = "SELECT count(*) as total_documentos
+                FROM documento_ods 
+                WHERE id_centro = ?
+                AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5";
+        
+        $total_documentos = DB::connection('pgsql')->select($sql, [$id]);
+        
+        // Evolução anual
+        $sql_evolucao = "SELECT ano, count(*) as total
+                         FROM documento_ods
+                         WHERE id_centro = ?
+                         AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5
+                         GROUP BY ano
+                         ORDER BY ano";
+        
+        $evolucao = DB::connection('pgsql')->select($sql_evolucao, [$id]);
+        
+        // Distribuição por ODS
+        $sql_ods = "SELECT t0.ods, t1.objetivo, t1.cor, count(*) as total
+                    FROM documento_ods t0
+                    JOIN ods t1 ON t1.cod = t0.ods
+                    WHERE t0.id_centro = ?
+                    GROUP BY t0.ods, t1.objetivo, t1.cor
+                    ORDER BY total DESC
+                    LIMIT 10";
+        
+        $ods_distribuicao = DB::connection('pgsql')->select($sql_ods, [$id]);
+        
+        // Distribuição por Dimensão IES
+        $sql_dimensao = "SELECT d.nome, d.apelido, count(*) as total
+                         FROM documento_ods doc
+                         JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                         WHERE doc.id_centro = ?
+                         GROUP BY d.nome, d.apelido
+                         ORDER BY total DESC";
+        
+        $dimensoes = DB::connection('pgsql')->select($sql_dimensao, [$id]);
+        
+        // Documentos recentes
+        $sql_documentos = "SELECT doc.id, doc.titulo, doc.ano, d.nome as dimensao, t.ds_tipo_documento as tipo, doc.ods
+                           FROM documento_ods doc
+                           JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                           JOIN tipo_documento t ON t.id_tipo_documento = doc.id_tipo_documento
+                           WHERE doc.id_centro = ?
+                           ORDER BY doc.ano DESC, doc.id DESC
+                           LIMIT 10";
+        
+        $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
+        
+        return view('panorama.centro', compact('centro', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+    }
+
+    public function panoramaDepartamento($id)
+    {
+        $departamento = \App\Departamento::where('id_departamento_dep', $id)->first();
+        
+        if (!$departamento) {
+            abort(404, 'Departamento não encontrado');
+        }
+        
+        // Total de documentos
+        $sql = "SELECT count(*) as total_documentos
+                FROM documento_ods 
+                WHERE id_departamento = ?
+                AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5";
+        
+        $total_documentos = DB::connection('pgsql')->select($sql, [$id]);
+        
+        // Evolução anual
+        $sql_evolucao = "SELECT ano, count(*) as total
+                         FROM documento_ods
+                         WHERE id_departamento = ?
+                         AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5
+                         GROUP BY ano
+                         ORDER BY ano";
+        
+        $evolucao = DB::connection('pgsql')->select($sql_evolucao, [$id]);
+        
+        // Distribuição por ODS
+        $sql_ods = "SELECT t0.ods, t1.objetivo, t1.cor, count(*) as total
+                    FROM documento_ods t0
+                    JOIN ods t1 ON t1.cod = t0.ods
+                    WHERE t0.id_departamento = ?
+                    GROUP BY t0.ods, t1.objetivo, t1.cor
+                    ORDER BY total DESC
+                    LIMIT 10";
+        
+        $ods_distribuicao = DB::connection('pgsql')->select($sql_ods, [$id]);
+        
+        // Distribuição por Dimensão IES
+        $sql_dimensao = "SELECT d.nome, d.apelido, count(*) as total
+                         FROM documento_ods doc
+                         JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                         WHERE doc.id_departamento = ?
+                         GROUP BY d.nome, d.apelido
+                         ORDER BY total DESC";
+        
+        $dimensoes = DB::connection('pgsql')->select($sql_dimensao, [$id]);
+        
+        // Documentos recentes
+        $sql_documentos = "SELECT doc.id, doc.titulo, doc.ano, d.nome as dimensao, t.ds_tipo_documento as tipo, doc.ods
+                           FROM documento_ods doc
+                           JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                           JOIN tipo_documento t ON t.id_tipo_documento = doc.id_tipo_documento
+                           WHERE doc.id_departamento = ?
+                           ORDER BY doc.ano DESC, doc.id DESC
+                           LIMIT 10";
+        
+        $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
+        
+        return view('panorama.departamento', compact('departamento', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+    }
+
+    public function panoramaPPG($id)
+    {
+        $ppg = \App\PPG::where('id_ppg', $id)->first();
+        
+        if (!$ppg) {
+            abort(404, 'Programa de Pós-Graduação não encontrado');
+        }
+        
+        // Total de documentos
+        $sql = "SELECT count(*) as total_documentos
+                FROM documento_ods 
+                WHERE id_ppg = ?
+                AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5";
+        
+        $total_documentos = DB::connection('pgsql')->select($sql, [$id]);
+        
+        // Evolução anual
+        $sql_evolucao = "SELECT ano, count(*) as total
+                         FROM documento_ods
+                         WHERE id_ppg = ?
+                         AND ano >= EXTRACT(YEAR FROM CURRENT_DATE) - 5
+                         GROUP BY ano
+                         ORDER BY ano";
+        
+        $evolucao = DB::connection('pgsql')->select($sql_evolucao, [$id]);
+        
+        // Distribuição por ODS
+        $sql_ods = "SELECT t0.ods, t1.objetivo, t1.cor, count(*) as total
+                    FROM documento_ods t0
+                    JOIN ods t1 ON t1.cod = t0.ods
+                    WHERE t0.id_ppg = ?
+                    GROUP BY t0.ods, t1.objetivo, t1.cor
+                    ORDER BY total DESC
+                    LIMIT 10";
+        
+        $ods_distribuicao = DB::connection('pgsql')->select($sql_ods, [$id]);
+        
+        // Distribuição por Dimensão IES
+        $sql_dimensao = "SELECT d.nome, d.apelido, count(*) as total
+                         FROM documento_ods doc
+                         JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                         WHERE doc.id_ppg = ?
+                         GROUP BY d.nome, d.apelido
+                         ORDER BY total DESC";
+        
+        $dimensoes = DB::connection('pgsql')->select($sql_dimensao, [$id]);
+        
+        // Documentos recentes
+        $sql_documentos = "SELECT doc.id, doc.titulo, doc.ano, d.nome as dimensao, t.ds_tipo_documento as tipo, doc.ods
+                           FROM documento_ods doc
+                           JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                           JOIN tipo_documento t ON t.id_tipo_documento = doc.id_tipo_documento
+                           WHERE doc.id_ppg = ?
+                           ORDER BY doc.ano DESC, doc.id DESC
+                           LIMIT 10";
+        
+        $documentos_recentes = DB::connection('pgsql')->select($sql_documentos, [$id]);
+        
+        return view('panorama.ppg', compact('ppg', 'total_documentos', 'evolucao', 'ods_distribuicao', 'dimensoes', 'documentos_recentes'));
+    }
 }

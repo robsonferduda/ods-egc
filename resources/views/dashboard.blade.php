@@ -230,6 +230,75 @@
                 </div>
             </div>
 
+            <!-- Cards clicáveis para visualizar panoramas -->
+            <div class="col-md-12 mt-3 d-none" id="cards-panorama">
+                <h6 class="mb-3"><i class="fa fa-eye"></i> Visualizar Panoramas Detalhados</h6>
+                <div class="row">
+                    <div class="col-md-4 mb-3 card-panorama-centro" style="display: none;">
+                        <a href="#" class="link-panorama-centro text-decoration-none" target="_blank">
+                            <div class="card shadow-sm hover-card" style="border-left: 4px solid #007bff; cursor: pointer;">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            <i class="fa fa-building fa-2x" style="color: #007bff;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0 text-dark">Panorama do Centro</h6>
+                                            <small class="text-muted nome-centro"></small>
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-external-link" style="color: #007bff;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-4 mb-3 card-panorama-departamento" style="display: none;">
+                        <a href="#" class="link-panorama-departamento text-decoration-none" target="_blank">
+                            <div class="card shadow-sm hover-card" style="border-left: 4px solid #28a745; cursor: pointer;">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            <i class="fa fa-sitemap fa-2x" style="color: #28a745;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0 text-dark">Panorama do Departamento</h6>
+                                            <small class="text-muted nome-departamento"></small>
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-external-link" style="color: #28a745;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-4 mb-3 card-panorama-ppg" style="display: none;">
+                        <a href="#" class="link-panorama-ppg text-decoration-none" target="_blank">
+                            <div class="card shadow-sm hover-card" style="border-left: 4px solid #17a2b8; cursor: pointer;">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            <i class="fa fa-graduation-cap fa-2x" style="color: #17a2b8;"></i>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0 text-dark">Panorama do PPG</h6>
+                                            <small class="text-muted nome-ppg"></small>
+                                        </div>
+                                        <div>
+                                            <i class="fa fa-external-link" style="color: #17a2b8;"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-12 painel-icones mt-8 mb-0">
                 <h6 class="mt-3"><i class="fa fa-share-alt" aria-hidden="true"></i> RESULTADOS E ESTATÍSTICAS</h6>
                 <span class="text-success excel-download mr-3" style="color: #15954e !important; cursor: pointer;"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Baixar Planilha</span>
@@ -412,6 +481,16 @@
     .excel-download:hover {
         opacity: 0.8;
         transition: opacity 0.3s ease;
+    }
+    
+    /* Efeito hover nos cards de panorama */
+    .hover-card {
+        transition: all 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
     }
 </style>
 @endsection
@@ -910,6 +989,40 @@
                 var ppg = $("#ppg").val();
                 var docente = $("#docente").val();
                 var host =  $('meta[name="base-url"]').attr('content');
+
+                // Controlar exibição dos cards de panorama
+                if(centro || departamento || ppg) {
+                    $('#cards-panorama').removeClass('d-none');
+                    
+                    // Card de Centro
+                    if(centro) {
+                        $('.card-panorama-centro').show();
+                        $('.link-panorama-centro').attr('href', host + '/panorama/centro/' + centro);
+                        $('.nome-centro').text($('#centro option:selected').text());
+                    } else {
+                        $('.card-panorama-centro').hide();
+                    }
+                    
+                    // Card de Departamento
+                    if(departamento) {
+                        $('.card-panorama-departamento').show();
+                        $('.link-panorama-departamento').attr('href', host + '/panorama/departamento/' + departamento);
+                        $('.nome-departamento').text($('#departamento option:selected').text());
+                    } else {
+                        $('.card-panorama-departamento').hide();
+                    }
+                    
+                    // Card de PPG
+                    if(ppg) {
+                        $('.card-panorama-ppg').show();
+                        $('.link-panorama-ppg').attr('href', host + '/panorama/ppg/' + ppg);
+                        $('.nome-ppg').text($('#ppg option:selected').text());
+                    } else {
+                        $('.card-panorama-ppg').hide();
+                    }
+                } else {
+                    $('#cards-panorama').addClass('d-none');
+                }
 
                 // Atualiza label dimensão
                 if(centro){
