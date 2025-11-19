@@ -359,23 +359,23 @@ class ODSController extends Controller
                 break;
 
             case 'pesquisa':
-                $where .= ' AND id_dimensao = 5 ';
+                $where .= ' AND t0.id_dimensao = 5 ';
                 break;
 
             case 'extensao':
-                $where .= ' AND id_dimensao = 2 '; 
+                $where .= ' AND t0.id_dimensao = 2 '; 
                 break;            
             
             case 'gestao':
-                $where .= ' AND id_dimensao = 3 ';
+                $where .= ' AND t0.id_dimensao = 3 ';
                 break;
 
             case 'inovacao':
-                $where .= ' AND id_dimensao = 4 ';
+                $where .= ' AND t0.id_dimensao = 4 ';
                 break;
 
             case 'ensino':
-                $where .= ' AND id_dimensao = 1 ';
+                $where .= ' AND t0.id_dimensao = 1 ';
                 break;
             
             default:
@@ -385,42 +385,35 @@ class ODSController extends Controller
 
         //Filtro por tipo de documento
         if($request->tipo and $request->tipo != "todos"){
-            $where .= " AND id_tipo_documento = '$request->tipo' ";
+            $where .= " AND t0.id_tipo_documento = '$request->tipo' ";
         }
 
         //Filtro por ano
         if($request->ano_inicial and $request->ano_fim){
-            $where .= " AND ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
+            $where .= " AND t0.ano BETWEEN '$request->ano_inicial' AND '$request->ano_fim' ";
         }
 
         //Filtro por centro
         if($request->centro){
-            $where .= " AND id_centro = '$request->centro' ";
+            $where .= " AND t0.id_centro = '$request->centro' ";
         }
 
         //Filtro por departamento
         if($request->departamento){
-            $where .= " AND id_departamento = '$request->departamento' ";
+            $where .= " AND t0.id_departamento = '$request->departamento' ";
         }
 
         //Filtro por programa
         if($request->ppg){
-            $where .= " AND id_ppg = '$request->ppg' ";
+            $where .= " AND t0.id_ppg = '$request->ppg' ";
         }
 
-        $sql = "SELECT t0.ods, t1.cor, count(*) as total 
-                FROM documento_ods t0
-                RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
-                LEFT JOIN pessoa_pes t3 ON t3.id_pessoa_pes = t2.id_pessoa_pes
-                $where
-                GROUP BY t0.ods, t1.cor 
-                ORDER BY t0.ods";
+        //Filtro por docente
+        if($request->docente){
+            $where .= " AND EXISTS (SELECT 1 FROM documento_pessoa_dop dp WHERE dp.id_documento_ods = t0.id AND dp.id_pessoa_pes = '$request->docente') ";
+        }
 
-        $dados = DB::connection('pgsql')->select($sql);
-        
-        $ods_encontrados = array_column($dados, 'ods');
-        
+        // Gerar sequência de anos
         $anos = array();
         $anos[] = (int) $request->ano_inicial;
         $inicio = (int) $request->ano_inicial;
@@ -429,43 +422,46 @@ class ODSController extends Controller
             $anos[] = $inicio += 1;
         }
 
+        // Query otimizada: 1 única consulta para todos os ODS e anos
+        $sql = "SELECT t0.ods, t0.ano, t1.cor, COUNT(*) as total 
+                FROM documento_ods t0
+                JOIN ods t1 ON t1.cod = t0.ods 
+                $where
+                GROUP BY t0.ods, t0.ano, t1.cor 
+                ORDER BY t0.ods, t0.ano";
+
+        $resultados = DB::connection('pgsql')->select($sql);
+
+        // Indexar resultados por ODS e ano para acesso rápido
+        $dados_indexados = [];
+        foreach ($resultados as $r) {
+            if (!isset($dados_indexados[$r->ods])) {
+                $dados_indexados[$r->ods] = ['cor' => $r->cor, 'anos' => []];
+            }
+            $dados_indexados[$r->ods]['anos'][$r->ano] = $r->total;
+        }
+
+        // Montar array de frequências
         $frequencias = array();
         $lista_ods = Ods::orderBy('cod')->get();
 
-        foreach ($lista_ods as $key => $ods) {
-
-            $historico = array();
-
-            if(in_array($ods->cod, $ods_encontrados)){
-
-                for ($i=0; $i < count($anos); $i++) { 
-
-                    $complemento = ' AND ano = '.$anos[$i].'
-                                    AND t0.ods = '.$ods->cod.'
-                                    GROUP BY t0.ods, ano, t1.cor 
-                                    ORDER BY t0.ods, ano';
-
-                    $sql = "SELECT t0.ods, t0.ano, t1.cor, count(*) as total 
-                            FROM documento_ods t0
-                            RIGHT JOIN ods t1 ON t1.cod = t0.ods 
-                            LEFT JOIN documento_pessoa_dop t2 ON t2.id_documento_ods = t0.id
-                            $where
-                            $complemento";
-
-
-                    $resultado = DB::connection('pgsql')->select($sql);
-
-                    if($resultado){
-                        $historico[] = $resultado[0]->total;
-                    }else{
-                        $historico[] = 0;
-                    }
+        foreach ($lista_ods as $ods) {
+            if (isset($dados_indexados[$ods->cod])) {
+                $historico = array();
+                
+                // Preencher histórico para cada ano
+                foreach ($anos as $ano) {
+                    $historico[] = isset($dados_indexados[$ods->cod]['anos'][$ano]) 
+                                    ? $dados_indexados[$ods->cod]['anos'][$ano] 
+                                    : 0;
                 }
 
-                $totais = $anos;
-                $frequencias[] = array('ods' => $ods->cod, 'cor' => $ods->cor, 'totais' => $historico);
+                $frequencias[] = array(
+                    'ods' => $ods->cod, 
+                    'cor' => $dados_indexados[$ods->cod]['cor'], 
+                    'totais' => $historico
+                );
             }
-            
         }
 
         $dados = array('sequencia' => $anos, 'frequencias' => $frequencias);
