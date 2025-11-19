@@ -148,7 +148,7 @@
                 var ods = $(this).data("ods");
 
                 $.ajax({
-                    url: host+'/ods/'+ods,
+                    url: host+'/ods/'+ods+'/dados',
                     type: 'GET',
                     beforeSend: function() {
                     
