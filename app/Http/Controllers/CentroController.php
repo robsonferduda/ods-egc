@@ -94,13 +94,13 @@ class CentroController extends Controller
         return response()->json([]);
     }
 
-    public function calcularIVC($id)
+    public function calcularIVC($id, $ano)
     {
         // IVC-ODS: Índice de Variação de Contribuição
         // Mede a evolução anual: (total_ano_atual - total_ano_anterior) / total_ano_anterior
         
-        $ano_atual = date('Y');
-        $ano_anterior = $ano_atual - 1;
+        $ano_atual = $ano;
+        $ano_anterior = $ano - 1;
 
         $dados = DB::select('
             SELECT 

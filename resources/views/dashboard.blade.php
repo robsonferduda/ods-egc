@@ -1089,7 +1089,7 @@
                         }
                     });
 
-                    $.get(host + '/centro/ivc/' + centro, function(data){
+                    $.get(host + '/centro/ivc/' + centro + '/ano/' + ano_fim, function(data){
                         
                         if(data.length > 0) {
 
