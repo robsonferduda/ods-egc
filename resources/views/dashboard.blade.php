@@ -1066,7 +1066,7 @@
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
-                                            ICS
+                                            ICT-ODS
                                             <span class="pull-right badge badge-pill badge-${nivel === 'Crescimento' ? 'success' : (nivel === 'Estável' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
@@ -1078,7 +1078,7 @@
                             `;
                             $('#card-ics').html(html);
                         } else {
-                            $('#card-ics').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
+                            $('#card-ics').html('<div class="alert alert-warning">Nenhum ICT-ODS encontrado.</div>');
                         }
                     });
 
@@ -1104,7 +1104,7 @@
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
                                         <h5 class="card-title mb-0">
-                                            IES
+                                            IVC-ODS
                                             <span class="pull-right badge badge-pill badge-${nivel === 'Alto' ? 'success' : (nivel === 'Médio' ? 'warning' : 'danger')}" style="font-size: 0.7rem; vertical-align: top; margin-left: 8px; position: absolute; right: 9px;">${nivel}</span>
                                         </h5>
                                         <p class="card-text mb-1">
@@ -1116,7 +1116,7 @@
                             `;
                             $('#card-ies').html(html);
                         } else {
-                            $('#card-ies').html('<div class="alert alert-warning">Nenhum IES encontrado.</div>');
+                            $('#card-ies').html('<div class="alert alert-warning">Nenhum IVC-ODS encontrado.</div>');
                         }
                     });
 
