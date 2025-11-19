@@ -1048,7 +1048,7 @@
                 if(centro){
                     $(".box-centro").removeClass("d-none");
 
-                    $.get(host + '/centro/ics/' + centro +'/ano/' + ano_fim, function(data){
+                    $.get(host + '/centro/ict/' + centro +'/ano/' + ano_fim, function(data){
                         if(data.length > 0) {
 
                             var ics = parseFloat(data[0].ics_norm_0_100);
@@ -1082,7 +1082,7 @@
                         }
                     });
 
-                    $.get(host + '/centro/ies/' + centro, function(data){
+                    $.get(host + '/centro/ivc/' + centro, function(data){
                         if(data.length > 0) {
 
                             var sec_index = parseFloat(data[0].sec_index);
