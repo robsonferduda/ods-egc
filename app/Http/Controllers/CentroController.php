@@ -126,7 +126,7 @@ class CentroController extends Controller
                     'total_anterior' => $total_anterior,
                     'ano_atual' => $ano_atual,
                     'total_atual' => $total_atual,
-                    'variacao' => $ivc > 0 ? 'Crescimento' : ($ivc < 0 ? 'Queda' : 'Estável')
+                    'variacao' => $ivc > 0 ? 'Aumento' : ($ivc < 0 ? 'Queda' : 'Estável')
                 ]
             ]);
         }

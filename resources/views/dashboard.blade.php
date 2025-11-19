@@ -1099,7 +1099,7 @@
                             var cor = '';
                             var icone = '';
 
-                            if(variacao === 'Crescimento') {
+                            if(variacao === 'Aumento') {
                                 cor = 'success';
                                 icone = '<i class="fa fa-arrow-up" style="position: absolute; left: 15px; top: 15px; font-size: 25px;"></i>';
                             } else if(variacao === 'Estável') {
