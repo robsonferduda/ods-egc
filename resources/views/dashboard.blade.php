@@ -450,7 +450,7 @@
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
                 <div class="text-center mt-3">
                     <div class="mt-2">
-                        <h6 class="mb-1">Legenda de Perfis</h6>
+                        <p style="font-weight: 700" class="mb-1">Legenda dos Perfis</p>
                         <small class="text-muted">
                             <span class="badge" style="background-color: #007bff; color: white;">Orientador</span>
                             <span class="badge" style="background-color: #C5192D; color: white;">Coordenador</span>
