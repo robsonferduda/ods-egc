@@ -441,10 +441,12 @@
 
             <div class="col-md-12 mb-5">
                 <h6><i class="fa fa-users" aria-hidden="true"></i> Rede de Relacionamentos</h6>
-                <small class="text-muted text-center">
-                    <i class="fa fa-info-circle"></i> 
-                    Visualização das conexões e colaborações do docente com outros pesquisadores através de coautorias em documentos relacionados aos ODS
-                </small>
+                <div style="text-align: center">
+                    <small class="text-muted text-center">
+                        <i class="fa fa-info-circle"></i> 
+                        Visualização das conexões e colaborações do docente com outros pesquisadores através de coautorias em documentos relacionados aos ODS
+                    </small>
+                </div>
                 <div id="cy" style="width: 100%; height: 400px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
                 <div class="text-center mt-3">
                     <div class="mt-2">
