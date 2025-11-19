@@ -113,7 +113,7 @@ class CentroController extends Controller
 
         //Distribuição por ODS e suas dimensões
         $ods_por_dimensao = DB::select('SELECT 
-                                    f.ods_cod,
+                                    f.ods_cod as ods,
                                     o.objetivo,
                                     o.cor,
                                     do2.cd_dimensao_ods,
