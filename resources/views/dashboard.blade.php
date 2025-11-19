@@ -446,7 +446,8 @@
                         <i class="fa fa-info-circle"></i> 
                         Visualização das conexões e colaborações do docente com outros pesquisadores através de coautorias em documentos relacionados aos ODS
                     </small>
-                </div>
+                </div>               
+                <div id="cy" style="width: 100%; height: 500px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
                 <div class="mb-2 text-right">
                     <div class="btn-group" role="group" aria-label="Controles do grafo">
                         <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-zoom-in" title="Ampliar">
@@ -463,7 +464,6 @@
                         </button>
                     </div>
                 </div>
-                <div id="cy" style="width: 100%; height: 500px; border: 1px solid #8080801c; border-radius: 8px; background: #8080800a;"></div>
                 <div class="text-center mt-3">
                     <div class="mt-2">
                         <p style="font-weight: 700" class="mb-1">Legenda dos Perfis</p>
