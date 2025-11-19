@@ -329,7 +329,7 @@
             </div>
 
             <div class="col-sm-6 col-md-3"> 
-                <h6 class="mb-3">DOCUMENTOS POR DIMENSÃO</h6>
+                <h6 class="mb-1">DOCUMENTOS POR DIMENSÃO</h6>
                 @foreach($dimensoes_ies as $key => $dimensao)
                     <div class="row box-dimensao box-dimensao-{{ $dimensao->apelido }}">
                         <div class="col-sm-2 col-md-4 px-0 py-0"> 
@@ -345,18 +345,18 @@
         </div>
 
         <!-- Mapa de Calor: ODS x Dimensões IES -->
-        <div class="row mt-4">
+        <div class="row mb-4 mt-1">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header" style="background: #007bff; color: white;">
+                    <div class="card-header" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%); color: white;">
                         <h6 class="mb-0"><i class="fa fa-th"></i> MATRIZ DE ENGAJAMENTO: ODS x DIMENSÕES IES</h6>
                     </div>
                     <div class="card-body" style="overflow-x: auto;">
                         <canvas id="heatmapOdsDimensoes" style="max-height: 600px;"></canvas>
                         <div class="text-center mt-3">
                             <small class="text-muted">
-                                <i class="fa fa-info-circle"></i> 
-                                Quanto mais escura a cor, maior o número de documentos naquela combinação ODS/Dimensão
+                                <i class="fa fa-fire"></i> 
+                                Quanto mais quente a cor (laranja/vermelho), maior o número de documentos naquela combinação ODS/Dimensão
                             </small>
                         </div>
                     </div>
@@ -1811,12 +1811,16 @@
                         backgroundColor: function(context) {
                             const value = context.raw;
                             if(value === 0) return 'rgba(200, 200, 200, 0.1)';
-                            // Escala de azul baseada no valor
+                            // Escala de laranja/vermelho baseada no valor (cor de calor)
                             const max = Math.max(...data);
                             const intensity = max > 0 ? value / max : 0;
-                            return `rgba(0, 123, 255, ${0.2 + (intensity * 0.8)})`;
+                            // Gradiente: laranja claro → laranja → vermelho
+                            const r = 255;
+                            const g = Math.floor(165 - (intensity * 100)); // 165 (laranja) → 65 (vermelho)
+                            const b = Math.floor(50 * (1 - intensity)); // 50 → 0
+                            return `rgba(${r}, ${g}, ${b}, ${0.3 + (intensity * 0.7)})`;
                         },
-                        borderColor: 'rgba(0, 123, 255, 0.3)',
+                        borderColor: 'rgba(255, 140, 0, 0.5)',
                         borderWidth: 1
                     };
                 });
