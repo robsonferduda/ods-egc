@@ -113,18 +113,18 @@ class CentroController extends Controller
 
         //Distribuição por ODS e suas dimensões
         $ods_por_dimensao = DB::select('SELECT 
-                                    f.ods,
+                                    f.ods_cod,
                                     o.objetivo,
                                     o.cor,
                                     do2.cd_dimensao_ods,
                                     do2.ds_dimensao,
                                     COUNT(*) as total_docs
                                 FROM public.fato_documento_ods f
-                                JOIN public.ods o ON o.cod = f.ods
+                                JOIN public.ods o ON o.cod = f.ods_cod
                                 JOIN public.dimensao_ods do2 ON do2.cd_dimensao_ods = f.id_dimensao_ods
                                 WHERE f.id_centro_resolvido = ?
-                                GROUP BY f.ods, o.objetivo, o.cor, do2.cd_dimensao_ods, do2.ds_dimensao
-                                ORDER BY f.ods, total_docs DESC', [$id]);
+                                GROUP BY f.ods_cod, o.objetivo, o.cor, do2.cd_dimensao_ods, do2.ds_dimensao
+                                ORDER BY f.ods_cod, total_docs DESC', [$id]);
 
         return view('indices.dimensoes', compact('id', 'centro', 'dimensoes_ies', 'dimensoes_ods', 'ods_por_dimensao'));
     }
