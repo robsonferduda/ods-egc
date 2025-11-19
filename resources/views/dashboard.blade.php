@@ -858,40 +858,58 @@
                           });
                         });
 
-                        // Controles de zoom e navegação
-                        $('#btn-zoom-in').off('click').on('click', function() {
-                            if(!cy) return;
-                            var currentZoom = cy.zoom();
-                            var newZoom = currentZoom * 1.3;
-                            if(newZoom > cy.maxZoom()) newZoom = cy.maxZoom();
-                            cy.zoom({
-                                level: newZoom,
-                                renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
-                            });
-                        });
-
-                        $('#btn-zoom-out').off('click').on('click', function() {
-                            if(!cy) return;
-                            var currentZoom = cy.zoom();
-                            var newZoom = currentZoom * 0.7;
-                            if(newZoom < cy.minZoom()) newZoom = cy.minZoom();
-                            cy.zoom({
-                                level: newZoom,
-                                renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
-                            });
-                        });
-
-                        $('#btn-zoom-reset').off('click').on('click', function() {
-                            if(!cy) return;
-                            cy.fit(cy.elements(), 50);
-                        });
-
-                        $('#btn-center').off('click').on('click', function() {
-                            if(!cy) return;
-                            cy.center(cy.elements());
-                        });                       
+                        console.log('Grafo carregado com sucesso', cy);
                     }
                 });
+            });
+
+            // Controles de zoom - fora do AJAX para garantir que funcionem
+            $(document).on('click', '#btn-zoom-in', function() {
+                if(!cy) {
+                    console.log('Grafo ainda não carregado');
+                    return;
+                }
+                var currentZoom = cy.zoom();
+                var newZoom = currentZoom * 1.3;
+                if(newZoom > cy.maxZoom()) newZoom = cy.maxZoom();
+                cy.zoom({
+                    level: newZoom,
+                    renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
+                });
+                console.log('Zoom in aplicado:', newZoom);
+            });
+
+            $(document).on('click', '#btn-zoom-out', function() {
+                if(!cy) {
+                    console.log('Grafo ainda não carregado');
+                    return;
+                }
+                var currentZoom = cy.zoom();
+                var newZoom = currentZoom * 0.7;
+                if(newZoom < cy.minZoom()) newZoom = cy.minZoom();
+                cy.zoom({
+                    level: newZoom,
+                    renderedPosition: { x: cy.width() / 2, y: cy.height() / 2 }
+                });
+                console.log('Zoom out aplicado:', newZoom);
+            });
+
+            $(document).on('click', '#btn-zoom-reset', function() {
+                if(!cy) {
+                    console.log('Grafo ainda não carregado');
+                    return;
+                }
+                cy.fit(cy.elements(), 50);
+                console.log('Reset aplicado');
+            });
+
+            $(document).on('click', '#btn-center', function() {
+                if(!cy) {
+                    console.log('Grafo ainda não carregado');
+                    return;
+                }
+                cy.center(cy.elements());
+                console.log('Centralização aplicada');
             });
         });
     </script>
