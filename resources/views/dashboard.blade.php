@@ -1144,6 +1144,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${percentual}%</span>
                                         </p>
+                                        <small class="text-muted"></small><br>
                                         <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensão IES mais destacada <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
@@ -1160,6 +1161,12 @@
                             var totalDocs = data.reduce(function(sum, item){ return sum + parseInt(item.total_docs); }, 0);
                             var percentual = totalDocs > 0 ? ((destaque.total_docs / totalDocs) * 100).toFixed(1) : 0;
 
+                            // Formatar lista de ODS
+                            var odsTexto = '';
+                            if(destaque.ods_lista && destaque.ods_lista.length > 0) {
+                                odsTexto = 'ODS ' + destaque.ods_lista.join(', ');
+                            }
+
                             var html = `
                                 <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                                     <div class="card-body text-center">
@@ -1167,8 +1174,8 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${percentual}%</span>
                                         </p>
-                                        
-                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensão Predominante <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
+                                        <small class="text-muted">${odsTexto}</small><br>
+                                        <a class="link_indices" href="${host}/indices/dimensoes/${centro}" target="_blank"><small class="">Dimensionalidade <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;

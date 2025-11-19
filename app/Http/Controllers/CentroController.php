@@ -262,6 +262,23 @@ class CentroController extends Controller
                                 FROM ranked
                                 ORDER BY sigla_centro, total_docs DESC;', [$id]);
 
+        // Mapear ODS por dimensão (baseado na documentação do sistema)
+        $ods_por_dimensao = [
+            'Ambiental' => [6, 7, 12, 13, 14, 15],
+            'Social' => [1, 2, 3, 4, 5, 10],
+            'Econômica' => [8, 9, 11],
+            'Institucional' => [16, 17]
+        ];
+
+        // Adicionar lista de ODS a cada dimensão
+        foreach ($dimensoes as $dimensao) {
+            if (isset($ods_por_dimensao[$dimensao->nm_dim_ods])) {
+                $dimensao->ods_lista = $ods_por_dimensao[$dimensao->nm_dim_ods];
+            } else {
+                $dimensao->ods_lista = [];
+            }
+        }
+
         return response()->json($dimensoes);
     }
 
