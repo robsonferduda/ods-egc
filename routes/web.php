@@ -24,6 +24,8 @@ Route::get('centro/dimensao-ods/{centro}', 'CentroController@dimensaoODS');
 Route::get('centro/pesquisador/{centro}', 'CentroController@pesquisador');
 Route::get('centro/ies/{centro}', 'CentroController@calcularIES');
 Route::get('centro/ics/{centro}/ano/{ano}', 'CentroController@calcularICS');
+Route::get('centro/ivc/{centro}', 'CentroController@calcularIVC');
+Route::get('centro/ict/{centro}/ano/{ano}', 'CentroController@calcularICT');
 
 Route::post('dados/excel', 'DadosController@excel');
 Route::post('dados/geral', 'ODSController@getTotalGeral');

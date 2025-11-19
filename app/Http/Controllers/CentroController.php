@@ -66,6 +66,23 @@ class CentroController extends Controller
         return view('indices.ivc', compact('id'));
     }
 
+    public function calcularICT($id, $ano)
+    {
+        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
+        $ict = 0;
+
+        return response()->json($ict);
+    }
+
+
+    public function calcularIVC($id, $ano)
+    {
+        //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
+        $ivc = 0;
+
+        return response()->json($ics);
+    }
+
     public function indiceCrescimento($id)
     {
         //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro
