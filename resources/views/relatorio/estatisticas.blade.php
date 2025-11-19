@@ -119,8 +119,8 @@
         <div class="col-md-4" id="card-dimensao-ods">
             <div class="card shadow-sm mb-2" style="background: #f3f3f3;">
                 <div class="card-body text-center">
-                    <h5 class="card-title mb-0">{{ $dimensao_predominante }}</h5>
-                    <p class="card-text mb-1">
+                    <h5 class="card-title mb-0" style="margin-bottom: 0%;">{{ $dimensao_predominante }}</h5>
+                    <p class="card-text mb-1" style="margin-top: 0%;">
                         <span class="display-4 font-weight-bold">{{ $dimensao_predominante_percentual }}%</span>
                     </p>
                     <small class="text-muted">
