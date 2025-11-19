@@ -63,8 +63,10 @@ class CentroController extends Controller
 
     public function indiceDimensao($id)
     {
-        //Em cada Centro, em qual Dimensão IES ele mais se destaca
-        $dimensoes = DB::select('WITH dist AS (
+        $centro = \App\Centro::where('cd_centro_cen', $id)->first();
+        
+        //Dimensão IES mais destacada
+        $dimensoes_ies = DB::select('WITH dist AS (
                                 SELECT
                                     c.cd_centro_cen            AS id_centro,
                                     c.ds_sigla_cen             AS sigla_centro,
@@ -84,10 +86,47 @@ class CentroController extends Controller
                                 )
                                 SELECT *
                                 FROM ranked
-                                WHERE rk = 1
-                                ORDER BY sigla_centro, total_docs DESC; ', [$id]);
+                                ORDER BY total_docs DESC; ', [$id]);
 
-        return view('indices.dimensoes', compact('id', 'dimensoes'));
+        //Dimensão ODS predominante (Ambiental/Econômica/Institucional/Social)
+        $dimensoes_ods = DB::select('WITH dist AS (
+                                SELECT
+                                    c.cd_centro_cen           AS id_centro,
+                                    c.ds_sigla_cen            AS sigla_centro,
+                                    do2.cd_dimensao_ods       AS id_dim_ods,
+                                    do2.ds_dimensao           AS nm_dim_ods,
+                                    COUNT(*)                  AS total_docs
+                                FROM public.fato_documento_ods f
+                                JOIN public.centro_cen c  ON c.cd_centro_cen = f.id_centro_resolvido
+                                JOIN public.dimensao_ods do2 ON do2.cd_dimensao_ods = f.id_dimensao_ods
+                                WHERE c.cd_centro_cen = ?
+                                GROUP BY c.cd_centro_cen, c.ds_sigla_cen, do2.cd_dimensao_ods, do2.ds_dimensao
+                                ),
+                                ranked AS (
+                                SELECT *,
+                                        ROW_NUMBER() OVER (PARTITION BY id_centro ORDER BY total_docs DESC, id_dim_ods) AS rk
+                                FROM dist
+                                )
+                                SELECT *
+                                FROM ranked
+                                ORDER BY total_docs DESC; ', [$id]);
+
+        //Distribuição por ODS e suas dimensões
+        $ods_por_dimensao = DB::select('SELECT 
+                                    f.ods,
+                                    o.objetivo,
+                                    o.cor,
+                                    do2.cd_dimensao_ods,
+                                    do2.ds_dimensao,
+                                    COUNT(*) as total_docs
+                                FROM public.fato_documento_ods f
+                                JOIN public.ods o ON o.cod = f.ods
+                                JOIN public.dimensao_ods do2 ON do2.cd_dimensao_ods = f.id_dimensao_ods
+                                WHERE f.id_centro_resolvido = ?
+                                GROUP BY f.ods, o.objetivo, o.cor, do2.cd_dimensao_ods, do2.ds_dimensao
+                                ORDER BY f.ods, total_docs DESC', [$id]);
+
+        return view('indices.dimensoes', compact('id', 'centro', 'dimensoes_ies', 'dimensoes_ods', 'ods_por_dimensao'));
     }
 
     public function dimensao($id)
