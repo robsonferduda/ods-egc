@@ -2,7 +2,7 @@
 @section('content')
 <div class="row mt-3">
     <div class="col-md-12">
-        <a href="{{ url('/') }}" class="btn btn-sm btn-secondary mb-3">
+        <a href="{{ url('/') }}" class="btn btn-sm btn-secondary pull-right mb-3">
             <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
         </a>
     </div>
@@ -24,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="card text-center" style="background: #f8f9fa;">
                                     <div class="card-body">
-                                        <h5 class="mb-0" style="color: #6c757d;">
+                                        <h5 class="mb-2" style="color: #6c757d;">
                                             @if(count($dimensoes_ies) > 0)
                                                 {{ $dimensoes_ies[0]->nm_dim_ies }}
                                             @else
@@ -61,7 +61,7 @@
     <div class="col-md-6">
         <div class="card mb-4">
             <div class="card-header" style="background: #6c757d; color: white;">
-                <h6 class="mb-0"><i class="fa fa-graduation-cap"></i> Dimensões IES</h6>
+                <h6 class="mb-2"><i class="fa fa-graduation-cap"></i> Dimensões IES</h6>
             </div>
             <div class="card-body">
                 <canvas id="chartDimensoesIES" height="250"></canvas>
@@ -85,7 +85,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" style="background: #6c757d; color: white;">
-                <h6 class="mb-0"><i class="fa fa-table"></i> Distribuição ODS por Dimensão</h6>
+                <h6 class="mb-2"><i class="fa fa-table"></i> Distribuição ODS por Dimensão</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -134,7 +134,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" style="background: #6c757d; color: white;">
-                <h6 class="mb-0"><i class="fa fa-info-circle"></i> Sobre as Dimensões</h6>
+                <h6 class="mb-2"><i class="fa fa-info-circle"></i> Sobre as Dimensões</h6>
             </div>
             <div class="card-body">
                 <h6 class="mb-2">Dimensões IES (Instituição de Ensino Superior)</h6>
