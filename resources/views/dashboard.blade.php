@@ -1072,7 +1072,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${ics}</span>                                            
                                         </p>
-                                        <a class="link_indices" href="${host}/indices/crescimento/${centro}" target="_blank"><small class="">Índice de Crescimento Sustentável <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
+                                        <a class="link_indices" href="${host}/indices/ict/${centro}" target="_blank"><small class="">Índice de Colaboração Temática <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;
@@ -1089,15 +1089,15 @@
                             var nivel = '';
                             var descricao = '';
 
-                            if(sec_index >= 70) {
-                                nivel = 'Alto';
-                                descricao = 'Centro com alto volume, temática diversa, presença em várias dimensões IES, colaboração robusta e/ou crescimento recente.';
-                            } else if(sec_index >= 40) {
-                                nivel = 'Médio';
-                                descricao = 'Bom volume, mas pode faltar diversidade temática, transversalidade ou colaboração.';
+                            if(sec_index >= 1) {
+                                nivel = 'Crescimento';
+                                descricao = 'Crescimento';
+                            } else if(sec_index = 0) {
+                                nivel = 'Estável';
+                                descricao = 'Estável';
                             } else {
-                                nivel = 'Baixo';
-                                descricao = 'Nichado, pouco transversal e/ou produção baixa/estável — pede estímulo programático.';
+                                nivel = 'Queda';
+                                descricao = 'Queda';
                             }
                             
                             var html = `
@@ -1110,7 +1110,7 @@
                                         <p class="card-text mb-1">
                                             <span class="display-4 font-weight-bold">${sec_index}</span>                                           
                                         </p>
-                                        <a class="link_indices" href="${host}/indices/engajamento/${centro}" target="_blank"><small class="">Índice de Engajamento Sustentável <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
+                                        <a class="link_indices" href="${host}/indices/ivc/${centro}" target="_blank"><small class="">Índice de Variação de Contribuição <i class="fa fa-question-circle" aria-hidden="true"></i></small></a>
                                     </div>
                                 </div>
                             `;

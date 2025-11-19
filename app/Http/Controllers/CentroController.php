@@ -54,6 +54,20 @@ class CentroController extends Controller
         return view('indices.engajamento', compact('id', 'ies_value'));
     }
 
+    public function indiceICT($id)
+    {
+        //Calcular o IES (Índice de Engajamento Sustentável) de um Centro
+        $ict = DB::select('SELECT * FROM mv_ict_por_centro_docods WHERE id_centro = ? ORDER BY ano;', [$id]);
+        return view('indices.ict', compact('id', 'ict'));
+    }
+
+    public function indiceIVC($id)
+    {
+        //Calcular o IES (Índice de Engajamento Sustentável) de um Centro
+        $ivc = DB::select('SELECT * FROM mv_ivc_por_centro_docods WHERE id_centro = ? ORDER BY ano;', [$id]);
+        return view('indices.ivc', compact('id', 'ivc'));
+    }
+
     public function indiceCrescimento($id)
     {
         //Calcular o ICS (Índice de Crescimento Sustentável) de um Centro

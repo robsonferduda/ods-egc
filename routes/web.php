@@ -76,6 +76,8 @@ Route::get('docentes/max-ranking', 'ODSController@getMaxRanking');
 Route::get('indices/dimensoes/{centro}', 'CentroController@indiceDimensao')->name('indices.dimensoes');
 Route::get('indices/crescimento/{centro}', 'CentroController@indiceCrescimento')->name('indices.crescimento');
 Route::get('indices/engajamento/{centro}', 'CentroController@indiceEngajamento')->name('indices.engajamento');
+Route::get('indices/ivc/{centro}', 'CentroController@indiceIVC')->name('indices.ivc');
+Route::get('indices/ict/{centro}', 'CentroController@indiceICT')->name('indices.ict');
 
 Route::get('panorama/centro/{id}', 'CentroController@panoramaCentro')->name('panorama.centro');
 Route::get('panorama/departamento/{id}', 'CentroController@panoramaDepartamento')->name('panorama.departamento');
