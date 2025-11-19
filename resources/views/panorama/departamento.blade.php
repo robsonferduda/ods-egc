@@ -3,7 +3,7 @@
 @section('content')
 <div class="row mt-3">
     <div class="col-md-12">
-        <a href="{{ url('/') }}" class="btn btn-sm btn-secondary mb-3">
+        <a href="{{ url('/') }}" class="btn btn-sm btn-secondary pull-right mb-3">
             <i class="fa fa-arrow-left"></i> Voltar ao Dashboard
         </a>
     </div>
