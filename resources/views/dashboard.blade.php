@@ -344,6 +344,26 @@
             </div>
         </div>
 
+        <!-- Mapa de Calor: ODS x Dimensões IES -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" style="background: #007bff; color: white;">
+                        <h6 class="mb-0"><i class="fa fa-th"></i> MATRIZ DE ENGAJAMENTO: ODS x DIMENSÕES IES</h6>
+                    </div>
+                    <div class="card-body" style="overflow-x: auto;">
+                        <canvas id="heatmapOdsDimensoes" style="max-height: 600px;"></canvas>
+                        <div class="text-center mt-3">
+                            <small class="text-muted">
+                                <i class="fa fa-info-circle"></i> 
+                                Quanto mais escura a cor, maior o número de documentos naquela combinação ODS/Dimensão
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Visualização de docente -->
         <div class="row mt-3 d-none" id="perfil-docente">
                
@@ -1243,6 +1263,7 @@
                     painelODS(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
                     getFrequencia("chart", dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
                     atualizarTotaisDimensoes(dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente);
+                    carregarHeatmapOdsDimensoes(ano_inicial, ano_fim, centro, departamento, ppg);
 
                     $("#dados-geral").removeClass("d-none");
                     $("#perfil-docente").addClass("d-none");
@@ -1741,6 +1762,115 @@
                   
                 }
               });
+            }
+
+            //MAPA DE CALOR: ODS x DIMENSÕES IES
+            var heatmapChart = null;
+            
+            function carregarHeatmapOdsDimensoes(ano_inicial, ano_fim, centro, departamento, ppg) {
+                var host = $('meta[name="base-url"]').attr('content');
+                var token = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: host + '/dados/matriz/ods-dimensoes',
+                    type: 'POST',
+                    data: {
+                        "_token": token,
+                        "ano_inicio": ano_inicial,
+                        "ano_fim": ano_fim,
+                        "centro": centro,
+                        "departamento": departamento,
+                        "ppg": ppg
+                    },
+                    success: function(matriz) {
+                        renderizarHeatmap(matriz);
+                    },
+                    error: function() {
+                        console.error('Erro ao carregar dados do heatmap');
+                    }
+                });
+            }
+
+            function renderizarHeatmap(matriz) {
+                const dimensoes = ['Ensino', 'Pesquisa', 'Extensão', 'Gestão', 'Ambiental'];
+                const ods = Array.from({length: 17}, (_, i) => `ODS ${i + 1}`);
+                
+                // Preparar dados para o Chart.js
+                const datasets = dimensoes.map((dim, dimIndex) => {
+                    const apelido = ['ensino', 'pesquisa', 'extensao', 'gestao', 'ambiental'][dimIndex];
+                    const data = [];
+                    
+                    for(let odsNum = 1; odsNum <= 17; odsNum++) {
+                        const valor = matriz[odsNum] && matriz[odsNum][apelido] ? matriz[odsNum][apelido] : 0;
+                        data.push(valor);
+                    }
+                    
+                    return {
+                        label: dim,
+                        data: data,
+                        backgroundColor: function(context) {
+                            const value = context.raw;
+                            if(value === 0) return 'rgba(200, 200, 200, 0.1)';
+                            // Escala de azul baseada no valor
+                            const max = Math.max(...data);
+                            const intensity = max > 0 ? value / max : 0;
+                            return `rgba(0, 123, 255, ${0.2 + (intensity * 0.8)})`;
+                        },
+                        borderColor: 'rgba(0, 123, 255, 0.3)',
+                        borderWidth: 1
+                    };
+                });
+
+                const ctx = document.getElementById('heatmapOdsDimensoes').getContext('2d');
+                
+                // Destruir gráfico anterior se existir
+                if(heatmapChart) {
+                    heatmapChart.destroy();
+                }
+                
+                heatmapChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ods,
+                        datasets: datasets
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return context.dataset.label + ': ' + context.raw + ' documentos';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                stacked: true,
+                                title: {
+                                    display: true,
+                                    text: 'Número de Documentos'
+                                }
+                            },
+                            y: {
+                                stacked: true,
+                                title: {
+                                    display: true,
+                                    text: 'Objetivos de Desenvolvimento Sustentável'
+                                }
+                            }
+                        }
+                    }
+                });
             }
 
             //DOCUMENTOS POR DIMENSÃO

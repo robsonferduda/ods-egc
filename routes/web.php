@@ -15,6 +15,7 @@ Route::post('ods/descobrir', 'ODSController@descobrir');
 Route::post('ods/descobrir/salvar', 'ODSController@descobrirSalvar');
 
 Route::get('dashboard', 'HomeController@dashboard');
+Route::post('dados/matriz/ods-dimensoes', 'HomeController@matrizOdsDimensoes');
 
 Route::get('repositorio', 'ODSController@repositorio');
 

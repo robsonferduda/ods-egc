@@ -113,6 +113,63 @@ class HomeController extends Controller
         return view('dashboard', compact('ods','dimensoes_ies','nodes', 'edges'));
     }
 
+    public function matrizOdsDimensoes(Request $request)
+    {
+        $ano_inicio = $request->input('ano_inicio');
+        $ano_fim = $request->input('ano_fim');
+        $centro = $request->input('centro');
+        $departamento = $request->input('departamento');
+        $ppg = $request->input('ppg');
+
+        $sql = "SELECT 
+                    doc.ods,
+                    d.id as id_dimensao,
+                    d.apelido as dimensao_apelido,
+                    COUNT(*) as total
+                FROM documento_ods doc
+                JOIN dimensao_ies d ON d.id = doc.id_dimensao
+                WHERE 1=1";
+
+        $params = [];
+
+        if ($ano_inicio && $ano_fim) {
+            $sql .= " AND doc.ano BETWEEN ? AND ?";
+            $params[] = $ano_inicio;
+            $params[] = $ano_fim;
+        }
+
+        if ($centro && $centro != 'todos') {
+            $sql .= " AND doc.id_centro = ?";
+            $params[] = $centro;
+        }
+
+        if ($departamento && $departamento != 'todos') {
+            $sql .= " AND doc.id_departamento = ?";
+            $params[] = $departamento;
+        }
+
+        if ($ppg && $ppg != 'todos') {
+            $sql .= " AND doc.id_ppg = ?";
+            $params[] = $ppg;
+        }
+
+        $sql .= " GROUP BY doc.ods, d.id, d.apelido
+                  ORDER BY doc.ods, d.id";
+
+        $resultados = DB::connection('pgsql')->select($sql, $params);
+
+        // Organizar dados para o heatmap
+        $matriz = [];
+        foreach ($resultados as $row) {
+            if (!isset($matriz[$row->ods])) {
+                $matriz[$row->ods] = [];
+            }
+            $matriz[$row->ods][$row->dimensao_apelido] = $row->total;
+        }
+
+        return response()->json($matriz);
+    }
+
     public function sobre()
     {
         return view('framework');
