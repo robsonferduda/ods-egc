@@ -27,7 +27,7 @@
             </p>  
         </div>
         <div class="col-md-12 col-sm-6 center">
-            <img src="{{ asset('img/ics.png') }}" class="img-fluid mt-1 w-20" style="width: 30%;" alt="Índice de Colaboração Temática nos ODS (ICT-ODS)">
+            <img src="{{ asset('img/ict.png') }}" class="img-fluid mt-1 w-20" style="width: 30%;" alt="Índice de Colaboração Temática nos ODS (ICT-ODS)">
         </div>
     </div>  
 </div>
