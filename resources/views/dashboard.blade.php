@@ -1718,7 +1718,7 @@
             }
 
             //EVOLUÇÃO POR ODS
-            function getFrequencia(elemento, dimensao, tipo, ano_inicial, ano_fim, centro, departamento, docente, ppg) {
+            function getFrequencia(elemento, dimensao, tipo, ano_inicial, ano_fim, centro, departamento, ppg, docente) {
 
                 let chx = document.getElementById(elemento).getContext('2d');
 
