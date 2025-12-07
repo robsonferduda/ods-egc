@@ -157,7 +157,7 @@ class TheController extends Controller
             'por_centro' => DB::table('documento_ods as d')
                 ->join('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
                 ->join('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dp.id_pessoa_pes')
-                ->join('centro_cen as c', 'c.cd_centro_cen', '=', 'p.id_centro')
+                ->join('centro_cen as c', 'c.cd_centro_cen', '=', 'd.id_centro')
                 ->select('c.ds_sigla_cen as centro', DB::raw('count(distinct d.id) as total'))
                 ->where('d.ods', $numero)
                 ->groupBy('c.ds_sigla_cen')
