@@ -21,6 +21,11 @@
                     </a>
                 </li>
                 <li class="nav-item me-4">
+                    <a class="nav-link text-primary" href="{{ url('the/dashboard') }}">
+                        <i class="fas fa-trophy me-1"></i> THE Impact Rankings
+                    </a>
+                </li>
+                <li class="nav-item me-4">
                     <a class="nav-link text-dark" href="{{ url('classificar') }}">
                         <i class="fas fa-handshake me-1"></i> COLABORAR
                     </a>

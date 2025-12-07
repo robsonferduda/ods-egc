@@ -102,3 +102,13 @@ Route::get('colaborar', 'ColaboradorController@colaborar');
 Route::resource('colaborador', 'ColaboradorController');
 
 Route::post('gerar-pdf', 'RelatorioController@gerarPdf');
+
+// THE Impact Rankings
+Route::prefix('the')->group(function () {
+    Route::get('/dashboard', 'TheController@dashboard');
+    Route::get('/prontidao', 'TheController@indiceProntidao');
+    Route::get('/ods/{numero}/evidencias', 'TheController@evidenciasOds');
+    Route::get('/gaps', 'TheController@analiseGaps');
+    Route::get('/exportar/{ods}', 'TheController@exportarEvidencias');
+    Route::get('/matriz', 'TheController@matrizAlinhamento');
+});
