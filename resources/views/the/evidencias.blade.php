@@ -175,15 +175,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
 <script>
 $(document).ready(function() {
-    $('#tabelaEvidencias').DataTable({
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Portuguese-Brasil.json"
-        },
-        "order": [[5, "desc"]], // Ordenar por probabilidade
-        "pageLength": 25,
-        "paging": false
-    });
-
+    
     // Gráfico por Centro
     var ctxCentros = document.getElementById('chartCentros').getContext('2d');
     var chartCentros = new Chart(ctxCentros, {
