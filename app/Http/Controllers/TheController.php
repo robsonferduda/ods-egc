@@ -133,7 +133,7 @@ class TheController extends Controller
                 'd.id',
                 'd.titulo',
                 'd.ano',
-                'd.resumo',
+                'd.texto as resumo',
                 'p.nm_pessoa_pes as autor',
                 'c.ds_sigla_cen as centro',
                 'dim.ds_dimensao as dimensao',
