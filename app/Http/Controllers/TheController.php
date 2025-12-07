@@ -127,7 +127,7 @@ class TheController extends Controller
             ->leftJoin('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
             ->leftJoin('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dp.id_pessoa_pes')
             ->leftJoin('centro_cen as c', 'c.cd_centro_cen', '=', 'd.id_centro')
-            ->leftJoin('dimensao as dim', 'dim.id', '=', 'd.id_dimensao')
+            ->leftJoin('dimensao_ods as dim', 'dim.id', '=', 'd.id_dimensao')
             ->where('d.ods', $numero)
             ->select(
                 'd.id',
