@@ -136,10 +136,8 @@ class TheController extends Controller
                 'd.texto as resumo',
                 'p.ds_nome_pessoa as autor',
                 'c.ds_sigla_cen as centro',
-                'dim.ds_dimensao as dimensao',
-                'd.probabilidade'
+                'dim.ds_dimensao as dimensao'
             )
-            ->orderBy('d.probabilidade', 'desc')
             ->orderBy('d.ano', 'desc')
             ->paginate(50);
             
