@@ -151,7 +151,7 @@
                                 <td>{{ $evidencia->dimensao ?? 'N/A' }}</td>
                                 <td class="text-center">
                                     <span class="badge badge-info">
-                                        {{ number_format($evidencia->probabilidade * 100, 1) }}%
+                                        
                                     </span>
                                 </td>
                             </tr>
