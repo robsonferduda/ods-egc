@@ -134,7 +134,7 @@ class TheController extends Controller
                 'd.titulo',
                 'd.ano',
                 'd.texto as resumo',
-                'p.nm_pessoa_pes as autor',
+                'p.ds_nome_pessoa as autor',
                 'c.ds_sigla_cen as centro',
                 'dim.ds_dimensao as dimensao',
                 'd.probabilidade'
