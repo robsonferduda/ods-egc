@@ -107,6 +107,48 @@
         </div>
     </div>
 
+     <!-- Próximas Ações -->
+    <div class="col-md-12 mb-4">
+        <div class="card shadow border-left-warning">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-warning">
+                    <i class="fas fa-tasks"></i> Próximas Ações Recomendadas
+                </h6>
+            </div>
+            <div class="card-body">
+                <ol class="mb-0">
+                    @php
+                        $odsFortes = collect($statusOds)->where('nivel', 'forte')->take(3);
+                        $odsFracos = collect($statusOds)->where('nivel', 'fraco')->take(3);
+                    @endphp
+                    
+                    @if($odsFortes->count() > 0)
+                        <li class="mb-2">
+                            <strong>Priorizar submissão dos ODSs fortes:</strong> 
+                            {{ $odsFortes->pluck('numero')->implode(', ') }}
+                        </li>
+                    @endif
+                    
+                    @if($odsFracos->count() > 0)
+                        <li class="mb-2">
+                            <strong>Buscar evidências para ODSs fracos:</strong> 
+                            {{ $odsFracos->pluck('numero')->implode(', ') }}
+                        </li>
+                    @endif
+                    
+                    <li class="mb-2">
+                        <strong>Revisar</strong> <a href="{{ url('the/gaps') }}">análise de gaps</a> 
+                        para identificar departamentos a contactar
+                    </li>
+                    
+                    <li class="mb-0">
+                        <strong>Exportar evidências</strong> dos ODSs prontos para preparar submissão
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
     <!-- Tabela de Status por ODS -->
     <div class="col-md-12 mb-4">
         <div class="card shadow">
@@ -199,47 +241,7 @@
         </div>
     </div>
 
-    <!-- Próximas Ações -->
-    <div class="col-md-12 mb-4">
-        <div class="card shadow border-left-warning">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-warning">
-                    <i class="fas fa-tasks"></i> Próximas Ações Recomendadas
-                </h6>
-            </div>
-            <div class="card-body">
-                <ol class="mb-0">
-                    @php
-                        $odsFortes = collect($statusOds)->where('nivel', 'forte')->take(3);
-                        $odsFracos = collect($statusOds)->where('nivel', 'fraco')->take(3);
-                    @endphp
-                    
-                    @if($odsFortes->count() > 0)
-                        <li class="mb-2">
-                            <strong>Priorizar submissão dos ODSs fortes:</strong> 
-                            {{ $odsFortes->pluck('numero')->implode(', ') }}
-                        </li>
-                    @endif
-                    
-                    @if($odsFracos->count() > 0)
-                        <li class="mb-2">
-                            <strong>Buscar evidências para ODSs fracos:</strong> 
-                            {{ $odsFracos->pluck('numero')->implode(', ') }}
-                        </li>
-                    @endif
-                    
-                    <li class="mb-2">
-                        <strong>Revisar</strong> <a href="{{ url('the/gaps') }}">análise de gaps</a> 
-                        para identificar departamentos a contactar
-                    </li>
-                    
-                    <li class="mb-0">
-                        <strong>Exportar evidências</strong> dos ODSs prontos para preparar submissão
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
+   
 </div>
 
 <style>

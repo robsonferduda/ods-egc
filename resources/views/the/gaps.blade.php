@@ -22,6 +22,70 @@
         </div>
     @endif
 
+    <!-- Recomendações Gerais -->
+    <div class="col-md-12 mb-4">
+        <div class="card shadow border-left-info">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-info">
+                    <i class="fas fa-lightbulb"></i> Recomendações Estratégicas
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="font-weight-bold text-primary">Estratégia de Curto Prazo (3 meses)</h6>
+                        <ol>
+                            <li class="mb-2">
+                                <strong>Submeter ODSs Fortes</strong> - Focar nos {{ $fortes->count() }} ODSs com evidências robustas
+                            </li>
+                            <li class="mb-2">
+                                <strong>Mapear Gaps Críticos</strong> - Contactar departamentos para os {{ $criticos->count() }} ODSs fracos
+                            </li>
+                            <li class="mb-2">
+                                <strong>Validar Dados</strong> - Confirmar informações com gestores institucionais
+                            </li>
+                            <li class="mb-0">
+                                <strong>Preparar Traduções</strong> - Documentos chave em inglês para THE
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="font-weight-bold text-success">Estratégia de Médio Prazo (6-12 meses)</h6>
+                        <ol>
+                            <li class="mb-2">
+                                <strong>Reforçar ODSs Médios</strong> - Ampliar evidências dos {{ $atencao->count() }} ODSs de atenção
+                            </li>
+                            <li class="mb-2">
+                                <strong>Criar Indicadores</strong> - Desenvolver métricas alinhadas ao THE
+                            </li>
+                            <li class="mb-2">
+                                <strong>Engajar Centros</strong> - Workshops sobre THE Impact Rankings
+                            </li>
+                            <li class="mb-0">
+                                <strong>Monitoramento Contínuo</strong> - Sistema de atualização de evidências
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="alert alert-warning mb-0">
+                    <h6 class="alert-heading">
+                        <i class="fas fa-exclamation-triangle"></i> Atenção Especial
+                    </h6>
+                    <p class="mb-2">
+                        <strong>ODSs Priorizados pelo THE Impact Rankings 2025:</strong>
+                    </p>
+                    <ul class="mb-0">
+                        <li>ODS 3 (Saúde), 4 (Educação), 5 (Gênero) - Obrigatórios</li>
+                        <li>ODS 8 (Trabalho), 11 (Cidades), 13 (Clima), 17 (Parcerias) - Recomendados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ODSs Críticos -->
     @if($criticos->count() > 0)
     <div class="col-md-12 mb-4">
@@ -210,69 +274,7 @@
     </div>
     @endif
 
-    <!-- Recomendações Gerais -->
-    <div class="col-md-12 mb-4">
-        <div class="card shadow border-left-info">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-info">
-                    <i class="fas fa-lightbulb"></i> Recomendações Estratégicas
-                </h6>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h6 class="font-weight-bold text-primary">Estratégia de Curto Prazo (3 meses)</h6>
-                        <ol>
-                            <li class="mb-2">
-                                <strong>Submeter ODSs Fortes</strong> - Focar nos {{ $fortes->count() }} ODSs com evidências robustas
-                            </li>
-                            <li class="mb-2">
-                                <strong>Mapear Gaps Críticos</strong> - Contactar departamentos para os {{ $criticos->count() }} ODSs fracos
-                            </li>
-                            <li class="mb-2">
-                                <strong>Validar Dados</strong> - Confirmar informações com gestores institucionais
-                            </li>
-                            <li class="mb-0">
-                                <strong>Preparar Traduções</strong> - Documentos chave em inglês para THE
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 class="font-weight-bold text-success">Estratégia de Médio Prazo (6-12 meses)</h6>
-                        <ol>
-                            <li class="mb-2">
-                                <strong>Reforçar ODSs Médios</strong> - Ampliar evidências dos {{ $atencao->count() }} ODSs de atenção
-                            </li>
-                            <li class="mb-2">
-                                <strong>Criar Indicadores</strong> - Desenvolver métricas alinhadas ao THE
-                            </li>
-                            <li class="mb-2">
-                                <strong>Engajar Centros</strong> - Workshops sobre THE Impact Rankings
-                            </li>
-                            <li class="mb-0">
-                                <strong>Monitoramento Contínuo</strong> - Sistema de atualização de evidências
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-
-                <hr class="my-4">
-
-                <div class="alert alert-warning mb-0">
-                    <h6 class="alert-heading">
-                        <i class="fas fa-exclamation-triangle"></i> Atenção Especial
-                    </h6>
-                    <p class="mb-2">
-                        <strong>ODSs Priorizados pelo THE Impact Rankings 2025:</strong>
-                    </p>
-                    <ul class="mb-0">
-                        <li>ODS 3 (Saúde), 4 (Educação), 5 (Gênero) - Obrigatórios</li>
-                        <li>ODS 8 (Trabalho), 11 (Cidades), 13 (Clima), 17 (Parcerias) - Recomendados</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 <style>
