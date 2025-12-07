@@ -133,7 +133,6 @@
                                 <th width="120">Autor</th>
                                 <th width="80">Centro</th>
                                 <th width="100">Dimensão</th>
-                                <th width="80" class="text-center">Prob.</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,11 +148,6 @@
                                 <td>{{ $evidencia->autor ?? 'N/A' }}</td>
                                 <td>{{ $evidencia->centro ?? 'N/A' }}</td>
                                 <td>{{ $evidencia->dimensao ?? 'N/A' }}</td>
-                                <td class="text-center">
-                                    <span class="badge badge-info">
-                                        
-                                    </span>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>

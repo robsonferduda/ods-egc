@@ -170,6 +170,8 @@ class TheController extends Controller
                 ->orderBy('total', 'desc')
                 ->get()
         ];
+
+        dd( $stats);
             
         return view('the.evidencias', compact('numero', 'nomeOds', 'evidencias', 'stats'));
     }
