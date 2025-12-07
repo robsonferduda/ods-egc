@@ -80,24 +80,13 @@
     </div>
 
     <!-- Gráficos -->
-    <div class="col-md-6 mb-4" style="max-height: 200px;">
+    <div class="col-md-12 mb-4" style="max-height: 200px;">
         <div class="card shadow">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Distribuição por Centro</h6>
             </div>
             <div class="card-body">
                 <canvas id="chartCentros"></canvas>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6 mb-4" style="max-height: 200px;">
-        <div class="card shadow">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Distribuição por Dimensão</h6>
-            </div>
-            <div class="card-body">
-                <canvas id="chartDimensoes"></canvas>
             </div>
         </div>
     </div>
@@ -201,34 +190,6 @@ $(document).ready(function() {
             plugins: {
                 legend: {
                     display: false
-                }
-            }
-        }
-    });
-
-    // Gráfico por Dimensão
-    var ctxDimensoes = document.getElementById('chartDimensoes').getContext('2d');
-    var chartDimensoes = new Chart(ctxDimensoes, {
-        type: 'pie',
-        data: {
-            labels: {!! json_encode($stats['por_dimensao']->pluck('dimensao')) !!},
-            datasets: [{
-                data: {!! json_encode($stats['por_dimensao']->pluck('total')) !!},
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.7)',
-                    'rgba(54, 162, 235, 0.7)',
-                    'rgba(255, 206, 86, 0.7)',
-                    'rgba(75, 192, 192, 0.7)',
-                    'rgba(153, 102, 255, 0.7)'
-                ]
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true,
-            plugins: {
-                legend: {
-                    position: 'bottom'
                 }
             }
         }
