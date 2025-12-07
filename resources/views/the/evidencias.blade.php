@@ -80,7 +80,7 @@
     </div>
 
     <!-- Gráficos -->
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4" style="max-height: 200px;">
         <div class="card shadow">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Distribuição por Centro</h6>
@@ -91,7 +91,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6 mb-4" style="max-height: 200px;">
         <div class="card shadow">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Distribuição por Dimensão</h6>
