@@ -17,9 +17,9 @@ class TheController extends Controller
         $centrosEngajados = DB::table('documento_ods as d')
             ->join('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
             ->join('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dp.id_pessoa_pes')
-            ->whereNotNull('d.id_centro_cen')
-            ->distinct('d.id_centro_cen')
-            ->count('d.id_centro_cen');
+            ->whereNotNull('d.id_centro')
+            ->distinct('d.id_centro')
+            ->count('d.id_centro');
             
         $docentesAtivos = DB::table('documento_pessoa_dop')
             ->distinct('id_pessoa_pes')
