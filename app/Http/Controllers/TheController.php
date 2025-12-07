@@ -62,7 +62,7 @@ class TheController extends Controller
         $status = [];
         $odsNomes = $this->getOdsNomes();
         
-        for ($i = 1; $i <= 17; $i++) {
+        for ($i = 1; $i <= 16; $i++) {
             $evidencias = DB::table('documento_ods')
                 ->where('ods', $i)
                 ->where('ods', '!=', 0)
@@ -107,7 +107,7 @@ class TheController extends Controller
     private function calcularPrioridade($ods, $evidencias)
     {
         // ODSs mais comuns no THE Impact Rankings
-        $odsComuns = [3, 4, 5, 8, 9, 11, 13, 16, 17];
+        $odsComuns = [3, 4, 5, 8, 9, 11, 13, 16];
         
         if (in_array($ods, $odsComuns) && $evidencias >= 35) {
             return 'alta';
@@ -165,10 +165,10 @@ class TheController extends Controller
                 ->limit(10)
                 ->get(),
             'por_dimensao' => DB::table('documento_ods as d')
-                ->join('dimensao as dim', 'dim.id', '=', 'd.id_dimensao')
-                ->select('dim.nome as dimensao', DB::raw('count(*) as total'))
+                ->join('dimensao_ods as dim', 'dim.cd_dimensao_ods', '=', 'd.id_dimensao_ods')
+                ->select('dim.ds_dimensao as dimensao', DB::raw('count(*) as total'))
                 ->where('d.ods', $numero)
-                ->groupBy('dim.nome')
+                ->groupBy('dim.ds_dimensao')
                 ->orderBy('total', 'desc')
                 ->get()
         ];
@@ -253,7 +253,7 @@ class TheController extends Controller
         foreach ($dimensoes as $dimensao) {
             $linha = ['dimensao' => $dimensao->nome, 'id' => $dimensao->id];
             
-            for ($ods = 1; $ods <= 17; $ods++) {
+            for ($ods = 1; $ods <= 16; $ods++) {
                 $total = DB::table('documento_ods')
                     ->where('id_dimensao', $dimensao->id)
                     ->where('ods', $ods)
