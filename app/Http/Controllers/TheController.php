@@ -127,7 +127,7 @@ class TheController extends Controller
             ->leftJoin('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
             ->leftJoin('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dp.id_pessoa_pes')
             ->leftJoin('centro_cen as c', 'c.cd_centro_cen', '=', 'd.id_centro')
-            ->leftJoin('dimensao_ods as dim', 'dim.id', '=', 'd.id_dimensao')
+            ->leftJoin('dimensao_ods as dim', 'dim.cd_dimensao_ods', '=', 'd.id_dimensao_ods')
             ->where('d.ods', $numero)
             ->select(
                 'd.id',
@@ -136,7 +136,7 @@ class TheController extends Controller
                 'd.resumo',
                 'p.nm_pessoa_pes as autor',
                 'c.ds_sigla_cen as centro',
-                'dim.nome as dimensao',
+                'dim.ds_dimensao as dimensao',
                 'd.probabilidade'
             )
             ->orderBy('d.probabilidade', 'desc')
