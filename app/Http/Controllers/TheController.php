@@ -8,11 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TheController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function dashboard()
     {
         $totalEvidencias = DB::table('documento_ods')
@@ -22,9 +17,9 @@ class TheController extends Controller
         $centrosEngajados = DB::table('documento_ods as d')
             ->join('documento_pessoa_dop as dp', 'dp.id_documento_ods', '=', 'd.id')
             ->join('pessoa_pes as p', 'p.id_pessoa_pes', '=', 'dp.id_pessoa_pes')
-            ->whereNotNull('p.id_centro_cen')
-            ->distinct('p.id_centro_cen')
-            ->count('p.id_centro_cen');
+            ->whereNotNull('d.id_centro_cen')
+            ->distinct('d.id_centro_cen')
+            ->count('d.id_centro_cen');
             
         $docentesAtivos = DB::table('documento_pessoa_dop')
             ->distinct('id_pessoa_pes')
