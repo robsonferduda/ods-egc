@@ -188,7 +188,7 @@
                                 </td>
                                 <td><strong>{{ $ods['nome'] }}</strong></td>
                                 <td class="text-center">
-                                    <span class="badge badge-secondary badge-pill" style="font-size: 14px;">
+                                    <span class="badge badge-primary badge-pill" style="font-size: 14px;">
                                         {{ $ods['evidencias'] }}
                                     </span>
                                 </td>
